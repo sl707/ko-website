@@ -1,10 +1,11 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "ko-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "고씨중앙종문회 공식 웹사이트",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Samuel Lee <samulee@seas.upenn.edu>",
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.15.2",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
     "gatsby-plugin-image": "^2.15.1",
@@ -12,12 +13,14 @@
     "gatsby-plugin-offline": "^5.15.1",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sharp": "^4.15.1",
+    "gatsby-plugin-styled-components": "^5.16.0",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.1",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
