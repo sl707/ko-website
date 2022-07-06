@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
