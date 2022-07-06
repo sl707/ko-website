@@ -22,10 +22,6 @@ const centralSubmenu = [
   {
     name: '장학금 지급',
     url: 'link16'
-  },
-  {
-    name: '오시는 길',
-    url: 'link17'
   }
 ]
 
@@ -143,6 +139,11 @@ export const navLinks = [
   {
     name: '알림',
     url: 'link6',
+    submenu: []
+  },
+  {
+    name: '오시는 길',
+    url: 'link7',
     submenu: []
   }
 ]
