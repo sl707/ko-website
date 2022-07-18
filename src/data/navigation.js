@@ -1,53 +1,57 @@
 const centralSubmenu = [
   {
     name: '회장 인사',
-    url: 'link11'
+    url: '/introduction/'
   },
   {
     name: '발자취',
-    url: 'link12'
+    url: '/baljachwi/'
   },
   {
     name: '회칙',
-    url: 'link13'
+    url: '/regulations/'
   },
   {
     name: '종훈',
-    url: 'link14'
+    url: '/jonghun/'
   },
   {
-    name: '성시표기',
-    url: 'link15'
-  },
-  {
-    name: '장학금 지급',
-    url: 'link16'
+    name: '장학회/장학금',
+    url: '/scholarship/'
   }
 ]
 
 const historySubmenu = [
   {
-    name: '고을라/고말로',
-    url: 'link21'
+    name: '시조 고을나왕',
+    url: '/father/'
+  },
+  {
+    name: '중시조 고말로',
+    url: '/midfather/'
   },
   {
     name: '개국설화',
-    url: 'link22'
+    url: '/openingstory/'
   },
   {
     name: '유래',
-    url: 'link23'
+    url: '/origin/'
   },
   {
     name: '9대 파조',
-    url: 'link24'
+    url: '/pajo/'
   },
   {
     name: '연원',
     url: 'link25'
   },
   {
-    name: '삼성혈/왕위전',
+    name: '삼성혈',
+    url: 'link26'
+  },
+  {
+    name: '왕워전',
     url: 'link26'
   },
   {
@@ -57,6 +61,10 @@ const historySubmenu = [
   {
     name: '종기 해설',
     url: 'link28'
+  },
+  {
+    name: '성시표기',
+    url: 'link15'
   }
 ]
 
@@ -66,28 +74,12 @@ const memberSubmenu = [
     url: 'link31'
   },
   {
-    name: '고문/위원회',
-    url: 'link32'
-  },
-  {
     name: '지방',
     url: 'link33'
   },
   {
-    name: '중국',
-    url: 'link34'
-  },
-  {
     name: '장학회',
     url: 'link35'
-  },
-  {
-    name: '제주',
-    url: 'link36'
-  },
-  {
-    name: '역대 회장단',
-    url: 'link37'
   }
 ]
 
@@ -101,7 +93,7 @@ const gallerySubmenu = [
     url: 'link42'
   },
   {
-    name: '제향',
+    name: '연수원',
     url: 'link43'
   },
   {
@@ -110,15 +102,15 @@ const gallerySubmenu = [
   }
 ]
 
-export const navLinks = [
+const navLinks = [
   {
     name: '중앙종문회',
-    url: 'link1',
+    url: '/introduction/',
     submenu: centralSubmenu
   },
   {
     name: '역사',
-    url: 'link2',
+    url: '/father/',
     submenu: historySubmenu
   },
   {
@@ -142,8 +134,10 @@ export const navLinks = [
     submenu: []
   },
   {
-    name: '오시는 길',
+    name: '연락/오시는 길',
     url: 'link7',
     submenu: []
   }
 ]
+
+export default navLinks

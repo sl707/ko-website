@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import { navLinks } from '../data/navigation'
+import navLinks from '../data/navigation'
 
 const HeaderWrapper = s.header`
   margin: 0 auto;
@@ -35,6 +35,7 @@ const NavLink = s(Link)`
 `
 
 const SubnavWrapper = s.nav`
+  background-color: white;
   position: absolute; 
   display: none;
   z-index: 10;
