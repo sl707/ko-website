@@ -20,7 +20,7 @@ const MenuPanel = () => (
     <LinkBlock blkImage={'example.png'} blkTitle={'역사'} blkLink={'/father/'}/>
     <LinkBlock blkImage={'example.png'} blkTitle={'임원'} blkLink={'/centralmembers/'}/>
     <LinkBlock blkImage={'example.png'} blkTitle={'연락/오시는 길'} blkLink={'/contact/'}/>
-    </MenuSubwrapper>
+  </MenuSubwrapper>
 )
 
 export default MenuPanel
