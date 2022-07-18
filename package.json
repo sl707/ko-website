@@ -6,6 +6,7 @@
   "author": "Samuel Lee <samulee@seas.upenn.edu>",
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.7",
+    "esm": "^3.2.25",
     "gatsby": "^4.15.2",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
     "gatsby-plugin-image": "^2.15.1",

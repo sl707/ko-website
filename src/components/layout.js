@@ -12,8 +12,11 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import Footer from './footer'
 import './layout.css'
+import { StaticImage } from 'gatsby-plugin-image'
+import PageTitle from './page-title'
+import { SubHeading } from '../data/typography'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageTitle, pageSubtitle }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,7 +37,9 @@ const Layout = ({ children }) => {
           padding: 'var(--size-gutter)'
         }}
       > */}
-        <main>{children}</main>
+      {pageTitle && <PageTitle pageTitle={pageTitle} />}
+      {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
+      <main>{children}</main>
         {/* <footer
           style={{
             marginTop: 'var(--space-5)',

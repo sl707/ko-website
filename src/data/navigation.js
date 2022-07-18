@@ -1,149 +1,143 @@
 const centralSubmenu = [
   {
     name: '회장 인사',
-    url: 'link11'
+    url: '/introduction/'
   },
   {
     name: '발자취',
-    url: 'link12'
+    url: '/baljachwi/'
   },
   {
     name: '회칙',
-    url: 'link13'
+    url: '/regulations/'
   },
   {
-    name: '종훈',
-    url: 'link14'
+    name: '종기해설',
+    url: '/emblem/'
   },
   {
-    name: '성시표기',
-    url: 'link15'
-  },
-  {
-    name: '장학금 지급',
-    url: 'link16'
+    name: '장학회/장학금',
+    url: '/scholarship/'
   }
 ]
 
 const historySubmenu = [
   {
-    name: '고을라/고말로',
-    url: 'link21'
+    name: '시조 고을나왕',
+    url: '/father/'
+  },
+  {
+    name: '중시조 고말로',
+    url: '/midfather/'
   },
   {
     name: '개국설화',
-    url: 'link22'
+    url: '/openingstory/'
   },
   {
     name: '유래',
-    url: 'link23'
+    url: '/origin/'
   },
   {
-    name: '9대 파조',
-    url: 'link24'
+    name: '9대 분파조',
+    url: '/pajo/'
   },
   {
-    name: '연원',
-    url: 'link25'
+    name: '탐라국의 연원',
+    url: '/yeonwon/'
   },
   {
-    name: '삼성혈/왕위전',
-    url: 'link26'
+    name: '삼성혈',
+    url: '/samseonghyeol/'
+  },
+  {
+    name: '왕워전',
+    url: '/wangwijeon/'
+  },
+  {
+    name: '성시표기',
+    url: '/character/'
+  },
+  {
+    name: '종훈',
+    url: '/jonghun/'
   },
   {
     name: '항렬표',
-    url: 'link27'
-  },
-  {
-    name: '종기 해설',
-    url: 'link28'
+    url: '/nameorder/'
   }
 ]
 
 const memberSubmenu = [
   {
-    name: '중앙회',
-    url: 'link31'
+    name: '중앙종문회',
+    url: '/centralmembers/'
   },
   {
-    name: '고문/위원회',
-    url: 'link32'
+    name: '중앙종문장학회',
+    url: '/scholarshipmembers/'
   },
   {
-    name: '지방',
-    url: 'link33'
-  },
-  {
-    name: '중국',
-    url: 'link34'
-  },
-  {
-    name: '장학회',
-    url: 'link35'
-  },
-  {
-    name: '제주',
-    url: 'link36'
-  },
-  {
-    name: '역대 회장단',
-    url: 'link37'
+    name: '지방종문회',
+    url: '/provincemembers/'
   }
 ]
 
 const gallerySubmenu = [
   {
-    name: '종회/이사회',
-    url: 'link41'
-  },
-  {
-    name: '큰행사',
-    url: 'link42'
+    name: '총회/이사회',
+    url: '/gathering/'
   },
   {
     name: '제향',
-    url: 'link43'
+    url: '/jehyang/'
+  },
+  {
+    name: '연수원',
+    url: '/institute/'
   },
   {
     name: '기타',
-    url: 'link45'
+    url: '/otherevents/'
   }
 ]
 
-export const navLinks = [
+const navLinks = [
   {
     name: '중앙종문회',
-    url: 'link1',
+    url: '/introduction/',
     submenu: centralSubmenu
   },
   {
-    name: '역사',
-    url: 'link2',
+    name: '고씨역사',
+    url: '/father/',
     submenu: historySubmenu
   },
   {
     name: '임원',
-    url: 'link3',
+    url: '/centralmembers/',
     submenu: memberSubmenu
   },
   {
     name: '소식/자료실',
-    url: 'link4',
+    url: '/gathering/',
     submenu: gallerySubmenu
   },
   {
     name: '종보',
-    url: 'link5',
+    url: '/newspaper/',
     submenu: []
   },
   {
     name: '알림',
-    url: 'link6',
+    url: '/alert/',
     submenu: []
   },
   {
-    name: '오시는 길',
-    url: 'link7',
+    name: '연락/오시는 길',
+    url: '/contact/',
     submenu: []
   }
 ]
+
+export default navLinks
