@@ -12,8 +12,8 @@ const centralSubmenu = [
     url: '/regulations/'
   },
   {
-    name: '종훈',
-    url: '/jonghun/'
+    name: '종기해설',
+    url: '/emblem/'
   },
   {
     name: '장학회/장학금',
@@ -39,66 +39,66 @@ const historySubmenu = [
     url: '/origin/'
   },
   {
-    name: '9대 파조',
+    name: '9대 분파조',
     url: '/pajo/'
   },
   {
-    name: '연원',
-    url: 'link25'
+    name: '탐라국의 연원',
+    url: '/yeonwon/'
   },
   {
     name: '삼성혈',
-    url: 'link26'
+    url: '/samseonghyeol/'
   },
   {
     name: '왕워전',
-    url: 'link26'
-  },
-  {
-    name: '항렬표',
-    url: 'link27'
-  },
-  {
-    name: '종기 해설',
-    url: 'link28'
+    url: '/wangwijeon/'
   },
   {
     name: '성시표기',
-    url: 'link15'
+    url: '/character/'
+  },
+  {
+    name: '종훈',
+    url: '/jonghun/'
+  },
+  {
+    name: '항렬표',
+    url: '/nameorder/'
   }
 ]
 
 const memberSubmenu = [
   {
-    name: '중앙회',
-    url: 'link31'
+    name: '중앙종문회',
+    url: '/centralmembers/'
   },
   {
-    name: '지방',
-    url: 'link33'
+    name: '중앙종문장학회',
+    url: '/scholarshipmembers/'
   },
   {
-    name: '장학회',
-    url: 'link35'
+    name: '지방종문회',
+    url: '/provincemembers/'
   }
 ]
 
 const gallerySubmenu = [
   {
-    name: '종회/이사회',
-    url: 'link41'
+    name: '총회/이사회',
+    url: '/gathering/'
   },
   {
-    name: '큰행사',
-    url: 'link42'
+    name: '제향',
+    url: '/jehyang/'
   },
   {
     name: '연수원',
-    url: 'link43'
+    url: '/institute/'
   },
   {
     name: '기타',
-    url: 'link45'
+    url: '/otherevents/'
   }
 ]
 
@@ -109,33 +109,33 @@ const navLinks = [
     submenu: centralSubmenu
   },
   {
-    name: '역사',
+    name: '고씨역사',
     url: '/father/',
     submenu: historySubmenu
   },
   {
     name: '임원',
-    url: 'link3',
+    url: '/centralmembers/',
     submenu: memberSubmenu
   },
   {
     name: '소식/자료실',
-    url: 'link4',
+    url: '/gathering/',
     submenu: gallerySubmenu
   },
   {
     name: '종보',
-    url: 'link5',
+    url: '/newspaper/',
     submenu: []
   },
   {
     name: '알림',
-    url: 'link6',
+    url: '/alert/',
     submenu: []
   },
   {
     name: '연락/오시는 길',
-    url: 'link7',
+    url: '/contact/',
     submenu: []
   }
 ]

@@ -14,12 +14,12 @@ const MenuSubwrapper = s.div`
 
 const MenuPanel = () => (
   <MenuSubwrapper>
-    <LinkBlock blkImage={'example.png'} blkTitle={'고씨종보'} blkLink={'/newspaper'}/>
-    <LinkBlock blkImage={'example.png'} blkTitle={'중앙종문회'} blkLink={'/central'}/>
-    <LinkBlock blkImage={'example.png'} blkTitle={'항렬표'} blkLink={'/history/name'}/>
-    <LinkBlock blkImage={'example.png'} blkTitle={'역사'} blkLink={'/history'}/>
-    <LinkBlock blkImage={'example.png'} blkTitle={'임원'} blkLink={'/people'}/>
-    <LinkBlock blkImage={'example.png'} blkTitle={'연락/오시는 길'} blkLink={'/info'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'고씨종보'} blkLink={'/newspaper/'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'항렬표'} blkLink={'/nameorder/'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'역사'} blkLink={'/father/'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'임원'} blkLink={'/centralmembers/'}/>
+    <LinkBlock blkImage={'example.png'} blkTitle={'연락/오시는 길'} blkLink={'/contact/'}/>
     </MenuSubwrapper>
 )
 

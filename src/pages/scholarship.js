@@ -18,7 +18,8 @@ const ScholarshipPage = () => (
       조성하였다.<br /><br />
 
       장학금 지급 현황은 1995년 제1차로 대학생 7명과 고등학생 13명에게 16,800,000만원의 장학금을 지급한 것을 시작으로 2020년 3월 현재 대학생 406명과 고등학생 413명 등 821명의 고씨고등학생 및 대학생들에게 총계 금액 9억4천5백사십만 원의 장학금을 지급하였다.<br /><br />
-      <ScholarshipLink href={'고씨 장학금.xlsx'} download>2022 장학금 지급 현황</ScholarshipLink>
+      <ScholarshipLink href={'고씨 장학금.xlsx'} download>2022 장학금 지급 현황</ScholarshipLink><br />
+      *추가 정보*
       </Text>
     </TextWrapperOne>
   </Layout>

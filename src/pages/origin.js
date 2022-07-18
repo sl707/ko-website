@@ -19,7 +19,7 @@ const originText = (
 )
 const OriginPage = () => (
   <Layout pageTitle={'역사'} pageSubtitle={'유래'}>
-    <Post imageUrl={'/뿌리공원.JPG'} text={originText} />
+    <Post imageUrl={'/유래.jpg'} text={originText} />
   </Layout>
 )
 

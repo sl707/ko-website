@@ -20,6 +20,9 @@ export const TextWrapperOne = s.div`
 export const TextSubheading = s.h3`
 `
 
+export const TextSubheadingSmall = s.h5`
+`
+
 export const Text = s.p`
   // display: flex;
   // width: 100%;
