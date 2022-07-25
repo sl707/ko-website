@@ -135,18 +135,20 @@ const HamburgerLine = s.div`
   margin: 3px 0;
 `
 
-const navbarLinks = (small, selectHook) => navLinks.map(link => (
+const navbarLinks = (small, selectNav, setSelectNav) => navLinks.map(link => (
   <NavSingleWrapper>
-    <NavSingleTitle onClick={small && (() =>
-      ((link.name === selectHook.selectNav)
-        ? selectHook.setSelectNav('')
-        : selectHook.setSelectNav(link.name)))}
-    >
-      {!small || (small && link.submenu.length === 0) ? <NavLink to={link.url}>{link.name}</NavLink> : link.name}
-    </NavSingleTitle>
+    {
+      (!small || (small && link.submenu.length === 0))
+        ? <NavSingleTitle><NavLink to={link.url}>{link.name}</NavLink></NavSingleTitle>
+        : <NavSingleTitle onClick={() =>
+          ((link.name === selectNav)
+            ? setSelectNav('')
+            : setSelectNav(link.name))}
+      >{link.name}</NavSingleTitle>
+    }
     <SubnavWrapper>
       {
-        (!small || (selectHook.selectNav === link.name)) &&
+        (!small || (selectNav === link.name)) &&
         link.submenu.map(sublink => (
           <SubnavLink
             to={sublink.url}
@@ -183,7 +185,7 @@ const Header = ({ siteTitle }) => {
           {navbarLinks(false)}
         </NavSubWrapper>
       </NavWrapper>
-      {navOn && <NavSubWrapperSmall>{navbarLinks(true, { selectNav, setSelectNav })}</NavSubWrapperSmall>}
+      {navOn && <NavSubWrapperSmall>{navbarLinks(true, selectNav, setSelectNav)}</NavSubWrapperSmall>}
     </HeaderWrapper>
   )
 }

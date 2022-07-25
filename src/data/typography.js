@@ -11,15 +11,16 @@ export const SubHeading = s.div`
   font-size: 23px;
 `
 
-export const SmallerSubHeading = s.h2`
+export const SmallerSubHeading = s.div`
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
   padding: 30px;
-  padding-bottom: 0;
+  padding-bottom: 10px;
   margin: 0;
   top: 100%;
+  font-size: 23px;
 `
 
 export const TextWrapperOne = s.div`

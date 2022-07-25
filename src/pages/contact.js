@@ -51,7 +51,7 @@ const ContactPage = () => (
     <Post imageUrl={'/종문회빌딩.jpg'}/>
     <SmallerSubHeading>지하철</SmallerSubHeading>
     <Post imageUrl={'/지도1.png'} text={subwayText} addStyle={{ display: 'grid' }}/>
-    <SmallerSubHeading>버스</SmallerSubHeading>
+    <SmallerSubHeading>버 스</SmallerSubHeading>
     <Post imageUrl={'/지도2.png'} text={busText} />
   </Layout>
 )
