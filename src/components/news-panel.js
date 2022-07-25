@@ -36,7 +36,7 @@ const NewsPanelBackground = s.img`
 
 const NewsPanel = () => (
   <NewsPanelWrapper>
-    <NewsPanelBackground src={'/삼성혈.jpeg'} />
+    <NewsPanelBackground src={'/삼성혈.jpg'} />
     <AlbumSlideshow />
     <AlertTable />
   </NewsPanelWrapper>
