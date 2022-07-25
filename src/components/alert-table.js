@@ -10,9 +10,12 @@ const AlertSubwrapper = s.div`
   display: table-row;
   align-items: center;
   justify-content: space-between;
-  margin: auto;
+  margin: 10px;
   background-color: white;
   border: 3px solid grey;
+  width: 95%;
+  padding: 15px;
+  max-width: 480px;
  `
 
 const AlertSubtitle = s.h1`
@@ -25,7 +28,12 @@ const AlertSubtitle = s.h1`
 const AlertTableWrapper = s.table`
   border: 1px solid grey;
   border-collapse: collapse;
-  width: 420px;
+  width: 100%;
+`
+
+const AlertTableCellWrapper = s.tr`
+  border: 1px solid grey;
+  border-collapse: collapse;
 `
 
 const AlertTableCell = s(Link)`
@@ -35,7 +43,6 @@ const AlertTableCell = s(Link)`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border: 1px solid grey;
 `
 
 const AlertTableCellTitle = s.div`
@@ -48,24 +55,68 @@ const AlertTableCellDate = s.small`
   text-align: right;
 `
 
-const AlertSubpanel = () => (
-  <AlertSubwrapper>
-    <AlertSubtitle>
-      공지사항
-    </AlertSubtitle>
-    <AlertTableWrapper>
-      {alertList.sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 7).map(alert => (
+const AlertTableHead = s.div`
+  display: flex;
+  padding: 10px 7px 10px 7px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 3px solid grey;
+  border-collapse: collapse;
+`
+
+const BlankLine = s.div`
+  width: 100%;
+  height: 2px;
+  background-color: #dfdfdf;
+  margin: 5px 0;
+`
+
+const alertTableHeader = (
+  <AlertTableHead>
+    <AlertTableCellTitle style={{ fontWeight: 'bolder' }}>
+      제목
+    </AlertTableCellTitle>
+    <AlertTableCellDate style={{ fontSize: '15px' }}>
+      날자
+    </AlertTableCellDate>
+  </AlertTableHead>
+)
+
+const AlertSubpanel = props => {
+  const alertArray = props.page ? alertList : alertList.slice(0, 7)
+  for (let i = alertArray.length; i < 7; i++) {
+    alertArray[i] = {
+      empty: true
+    }
+  }
+  return (
+  <AlertSubwrapper style={props.page && { width: '80%', maxWidth: 'none', padding: '0' }}>
+    {
+      !(props.page) &&
+      <AlertSubtitle>
+        알 림
+      </AlertSubtitle>
+    }
+    <AlertTableWrapper style={props.page && { width: '100%' }}>
+      {props.page && alertTableHeader}
+      {alertArray.map(alert => (
+        <AlertTableCellWrapper>
           <AlertTableCell to={`/alert/${alert.alertId}`}>
-            <AlertTableCellTitle>
+{ alert.empty
+  ? <BlankLine></BlankLine>
+  : <><AlertTableCellTitle>
               {alert.title}
-            </AlertTableCellTitle>
-            <AlertTableCellDate>
-              {alert.date.toLocaleDateString('en-CA').slice(5)}
-            </AlertTableCellDate>
-          </AlertTableCell>
+            </AlertTableCellTitle><AlertTableCellDate>
+                {alert.date && alert.date.toLocaleDateString('en-CA').slice(props.page ? 0 : 5)}
+              </AlertTableCellDate></>
+}          </AlertTableCell>
+        </AlertTableCellWrapper>
       ))}
     </AlertTableWrapper>
   </AlertSubwrapper>
-)
+  )
+}
 
 export default AlertSubpanel

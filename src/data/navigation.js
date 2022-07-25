@@ -16,7 +16,7 @@ const centralSubmenu = [
     url: '/emblem/'
   },
   {
-    name: '장학회/장학금',
+    name: '장학회 / 장학금',
     url: '/scholarship/'
   }
 ]
@@ -63,7 +63,7 @@ const historySubmenu = [
     url: '/jonghun/'
   },
   {
-    name: '항렬표',
+    name: '대동항렬표',
     url: '/nameorder/'
   }
 ]
@@ -85,7 +85,7 @@ const memberSubmenu = [
 
 const gallerySubmenu = [
   {
-    name: '총회/이사회',
+    name: '총회 / 이사회',
     url: '/gathering/'
   },
   {
@@ -114,27 +114,27 @@ const navLinks = [
     submenu: historySubmenu
   },
   {
-    name: '임원',
+    name: '임 원',
     url: '/centralmembers/',
     submenu: memberSubmenu
   },
   {
-    name: '소식/자료실',
+    name: '소식 / 자료실',
     url: '/gathering/',
     submenu: gallerySubmenu
   },
   {
-    name: '종보',
+    name: '종 보',
     url: '/newspaper/',
     submenu: []
   },
   {
-    name: '알림',
+    name: '알 림',
     url: '/alert/',
     submenu: []
   },
   {
-    name: '연락/오시는 길',
+    name: '연락 / 오시는 길',
     url: '/contact/',
     submenu: []
   }

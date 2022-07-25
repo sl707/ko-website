@@ -2,6 +2,7 @@ import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
+import BigTitle from './big-title'
 
 const MainPanelWrapper = s.div`
   display: flex;
@@ -22,9 +23,10 @@ const MainPanelText = s.h1`
 
 const MainPanel = () => (
   <MainPanelWrapper>
-    <MainPanelText>
+    <BigTitle text={'고씨중앙종문회'} subtext={'탐라국의 왕손'} />
+    {/* <MainPanelText>
       고씨중앙종문회
-    </MainPanelText>
+    </MainPanelText> */}
     <StaticImage
      src="../images/왕위전1.jpg"
      loading="eager"

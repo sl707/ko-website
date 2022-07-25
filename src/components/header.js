@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import s from 'styled-components'
 import { Link } from 'gatsby'
@@ -7,9 +7,15 @@ import navLinks from '../data/navigation'
 
 const HeaderWrapper = s.header`
   margin: 0 auto;
-  padding: var(--space-4) var(--size-gutter);
-  display: flex;
+  padding: 10px;
+  padding-top: 15px;
+  display: grid;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  background-color: white;
 `
 const TitleWrapper = s(Link)`
   display: flex;
@@ -21,6 +27,7 @@ const TitleText = s.div`
   text-decoration: none;
   align-items: center;
   display: flex;
+  font-size: 28px;
 `
 const NavWrapper = s.nav`
   display: flex;
@@ -30,20 +37,57 @@ const NavWrapper = s.nav`
   overflow: hidden;
 `
 
+const NavSubWrapper = s.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  overflow: hidden;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+`
+
+const NavSubWrapperSmall = s.div`
+  top: 0%
+  z-index: 20;
+  position: relative;
+  float: right;
+  background-color: #fff7a2;
+  overflow: visible;
+  display: grid;
+  border: 2px solid #f8ba32;
+  @media screen and (min-width: 1000px) {
+    display: none;
+  }
+`
+
 const NavLink = s(Link)`
   text-decoration: none;
+  font-size: 20px;
 `
 
 const SubnavWrapper = s.nav`
   background-color: white;
   position: absolute; 
   display: none;
-  z-index: 10;
+  z-index: 30;
+  text-align: center;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1000px) {
+    top: 80%;
+  }
 `
 
 const SubnavLink = s(Link)`
   display: table-row;
   text-decoration: none;
+  padding: 7px;
   &:hover {
     text-decoration: underline;
   }
@@ -51,48 +95,95 @@ const SubnavLink = s(Link)`
 
 const NavSingleWrapper = s.div`
   overflow: hidden;
-  &:hover ${SubnavWrapper} {
-    display: table
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width: 1000px) {
+    &:hover ${SubnavWrapper} {
+      display: table
+    }
+    display: flex;
+    flex-direction: column;
   }
 `
 
-const Header = ({ siteTitle }) => (
-  <HeaderWrapper>
-    <NavWrapper>
-      <TitleWrapper to="/">
-        <StaticImage
-          src="../images/종기1.png"
-          to="/"
-          loading="eager"
-          width={40}
-        />
-        <TitleText> {siteTitle} </TitleText>
-      </TitleWrapper>
+const MenuIcon = s.div`
+  position: relative;
+  float: right;
+  display: none;
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+const NavSingleTitle = s.div`
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  @media screen and (max-width: 1000px) {
+    border: 1px solid #f8ba32;
+  }
+`
+
+const HamburgerLine = s.div`
+  width: 25px;
+  height: 2px;
+  background-color: black;
+  margin: 3px 0;
+`
+
+const navbarLinks = (small, selectHook) => navLinks.map(link => (
+  <NavSingleWrapper>
+    <NavSingleTitle onClick={small && (() =>
+      ((link.name === selectHook.selectNav)
+        ? selectHook.setSelectNav('')
+        : selectHook.setSelectNav(link.name)))}
+    >
+      {!small || (small && link.submenu.length === 0) ? <NavLink to={link.url}>{link.name}</NavLink> : link.name}
+    </NavSingleTitle>
+    <SubnavWrapper>
       {
-        navLinks.map(link => (
-          <NavSingleWrapper>
-            <NavLink
-              to={link.url}
-            >
-              {link.name}
-            </NavLink>
-            <SubnavWrapper>
-              {
-                link.submenu.map(sublink => (
-                  <SubnavLink
-                    to={sublink.url}
-                  >
-                    {sublink.name}
-                  </SubnavLink>
-                ))
-              }
-            </SubnavWrapper>
-          </NavSingleWrapper>
+        (!small || (selectHook.selectNav === link.name)) &&
+        link.submenu.map(sublink => (
+          <SubnavLink
+            to={sublink.url}
+          >
+            {sublink.name}
+          </SubnavLink>
         ))
       }
-    </NavWrapper>
-  </HeaderWrapper>
-)
+    </SubnavWrapper>
+  </NavSingleWrapper>
+))
+
+const Header = ({ siteTitle }) => {
+  const [navOn, setNavOn] = useState(false)
+  const [selectNav, setSelectNav] = useState('')
+  return (
+    <HeaderWrapper>
+      <NavWrapper>
+        <TitleWrapper to="/">
+          <StaticImage
+            src="../images/고씨마크.png"
+            to="/"
+            loading="eager"
+            width={40}
+          />
+          <TitleText> {siteTitle} </TitleText>
+        </TitleWrapper>
+        <MenuIcon onClick={() => setNavOn(!navOn)}>
+          <HamburgerLine></HamburgerLine>
+          <HamburgerLine></HamburgerLine>
+          <HamburgerLine></HamburgerLine>
+        </MenuIcon>
+        <NavSubWrapper>
+          {navbarLinks(false)}
+        </NavSubWrapper>
+      </NavWrapper>
+      {navOn && <NavSubWrapperSmall>{navbarLinks(true, { selectNav, setSelectNav })}</NavSubWrapperSmall>}
+    </HeaderWrapper>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string

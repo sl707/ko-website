@@ -9,13 +9,16 @@ import AlertTable from './alert-table'
 const NewsPanelWrapper = s.div`
   display: flex;
   position: relative;
-  padding: 100px 20px 100px 20px;
-  // background-image: url("삼성혈.jpg");
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
+  padding: 75px;
   overflow: hidden;
+  justify-content: space-between;
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+  }
 `
 
 const NewsPanelBackground = s.img`

@@ -1,46 +1,56 @@
 const postList = [
   {
-    title: 'The Wonderful Title 1',
-    text: 'The text of the post1 This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-10'),
-    image: '/example.png',
-    postId: 6
+    title: '제47회 군산시 정기총회',
+    text: ('고재갑 중앙종문회장 · 고재유 전 광주광역시장 · 고재규 전사관(중앙종문회 부회장) · 고문구 초헌관(중안종문회 이사) · 고달석 아헌관(중앙조운회 이사) · 종헌관 고삼식(중앙종문회 이사) · 숭모사 고영곤 총무이사 · 고형곤 재무이사 · 고병채 수석부회장 · 고영근 감사 · 고하영 감사 · 고동영 이사 · 군상종문회 고선풍 회장 · 고봉희 재무 · 고찬영 임피회장 · 고창종문회 고황규 회장(중앙종문회 부회장) · 고광헌 도산사 대종회 전직회장 · 고양규 화수회장 · 고용진 재무 · 음성종문회 고제해 회장 · 고재철 감사 · 광산종문회 고봉석 수석부회장(중앙종문회 이사) · 고병선 출렬공 총무 · 광주·전남종문회 고윤근 수석부회장 · 고창옥 부회장 · 고행석 재무 · 울산종문회 고성용 전회장(중앙종문회 이사) · 고태진 사무국장 · 고태일 훈정공회장 · 고영택 천정공회장 · 익산종문회 고금만 회장 · 고용만 총무 고홍곤 사무국장 · 부산종문회 고영철 회장(중앙종문회 이사) · 고재경 사무처장 · 고환규 전주회장 · 중앙종문회 고재훈 총무국장, 고영기 업무국장'),
+    date: new Date('2020-05-08'),
+    image: '/총회47.jpg',
+    type: '총회/이사회',
+    postId: 1
   },
   {
-    title: 'The Wonderful Title 2',
-    text: 'The text of the post. This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-9'),
-    image: '/gatsby-icon.png',
-    postId: 5
-  },
-  {
-    title: 'The Wonderful Title 3',
-    text: 'The text of the post. This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-8'),
-    image: '/gatsby-icon.png',
-    postId: 4
-  },
-  {
-    title: 'The Wonderful Title 4',
-    text: 'The text of the post. This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-7'),
-    image: '/example.png',
-    postId: 3
-  },
-  {
-    title: 'The Wonderful Title 5',
-    text: 'The text of the post. This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-6'),
-    image: '/gatsby-icon.png',
+    title: '제48회 광주광역시 정기총회',
+    text: '◆외빈 : 김병내 광주남구청장 · 임미란 광주시의원 · 윤영덕 국회의원(이준연 수석부위원장) · 김화중 전 보건복지부장관\n' +
+
+    '◆중앙종문회 : 고재갑 회장 · 고재유 전 광주광역시장 · 고현석 전 곡성군수 · 고길호 전 신 안군수 · 고황규 중앙부회장 · 고영철·고재청·고봉석·고일갑 중앙이사\n' +
+
+    '◆광주전남종문회 : 고달석 회장 · 고정주 전 회장 · 고윤근 수석부회장 · 고춘석 삼영산업 회 장 · 고재수 도유사 · 고재춘 춘추회장 · 고광종 탐라회장 · 고운석 전회장 · 고재형 탐라회 총무 · 고영붕 청장년회장 · 고만주 부호히장 · 고영우 총무 · 고행석 재무 · 고명균 점 탐라 회장 · 고형석 광산재무 · 고광수 목포회장 · 고광준 담양회장 · 고구주 곡성회장 · 고규동 총무 · 고재무 화순회장 · 고연호 총무 · 고연두 장흥부회장 · 고영천 전회장 · 고현익 영암 회장 · 고인철 총무 · 고영길 무안함평회장 · 고병주 장성회장 · 고재진 총무 · 고영휘 신안 총무 · 고창옥 지도위원 · 고해주 전 시청회장 · 고영창 의열공도유사 · 고영민 해사공도유사 · 고행주 청량두방도유사 · 고병선 충렬공 총무 · 고현종 전 사무총장 · 고영창 전 총무 · 고 규형 탐라회 재무 · 고영윤 감사 · 고동석 감사 · 고장석 충렬공도유사 · 고병돈 광복회장 · 고윤석 전 탐라회장 · 고광헌 전 도산사회장 · 고용진 고창 재무···',
+    date: new Date('2021-03-23'),
+    image: '/총회48.jpg',
+    type: '총회/이사회',
     postId: 2
   },
   {
-    title: 'The Wonderful Title 6',
-    text: 'The text of the post. This should contain deails of the alert, and can be a long if needed, and can also contain 한국어.',
-    date: new Date('2022-07-5'),
-    image: '/example.png',
-    postId: 1
+    title: '제49회 문경시 정기총회',
+    text: '◆중앙종문회장 : 고재갑 회장 · 고재규 부회장(양양한상종문회장) · 고성근 부회장 · 고문구 부회장(울산종문회장) · 고달석 부회장(광주전남종문회장) · 이사 고연규(대전회장) · 이사 고 재청 · 이사 고삼식(음성총무) · 이사 고성용(전 울산회장) · 이사 고준길 · 이사 고만진 ·\n' +
+
+    '이사 고영철 · 고영기 국장\n' +
+
+    '울산종문회 : 부회장 고태일 · 부회장 고영택 · 이사 고두승\n' +
+
+    '부산종문회 : 회장 고영우 · 이사 고일환 · 사무처장 고재경\n' +
+
+    '광주전남종문회 : 총무 고영우 · 재무 고행석 · 임원 고해주\n' +
+
+    '대전종문회 : 총무 고성운 · 임원 고학선\n' +
+
+    '대구종문회 : 회장 고덕환 · 총무 고성일\n' +
+
+    '양양한상종문회 : 총무 고재환 ·이사 고현승\n' +
+
+    '◆문경종친회 : 회장 고규환(중앙장학회 명예이사장) , 명예회장 고진태 ,\n' +
+
+    '고문 : 고운환 · 고시탁 · 고병환 · 고영조 , 수석부회장 고정환 ,\n' +
+
+    '부회장 : 고성기 · 고유환 · 고일진 · 고재복 , 감사 : 고봉환 · 고성주 , 사무국장 : 고국환 ,\n' +
+
+    '문경시장 고윤환 · 경상북도의회의장 고우현 · 이사 고재석 · 고재운 · 고육환 · 고병천 · 고 재선 · 고명원 · 고 환 · 고명환 · 고학림 · 고시수 · 고준식 · 고두환 · 고종현 · 청년회장 고재형 · 총무 고경완 · 임원 고상범 ·고현환 · 고란회장 고순애 · 총무 고경남 · 사현회장 고 세창 총무 고복환 · 임원 고재흠 · 영란회장 한계남 · 총무 김명숙 · 고재동 농협지부장 · 고 성환 문경관광재단 사무국장 · 박춘남 문경시의원\n',
+    date: new Date('2022-03-23'),
+    image: '/총회49.jpg',
+    type: '총회/이사회',
+    postId: 3
   }
 ]
 
-export default postList
+const sortedPostList = postList.sort((a, b) => b.date.getTime() - a.date.getTime())
+
+export default sortedPostList

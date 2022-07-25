@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const RegulationsPage = () => (
-  <Layout pageTitle={'중앙종문회'} pageSubtitle={'회칙'}>
+  <Layout pageTitle={'중 앙 종 문 회'} pageSubtitle={'회 칙'}>
     <TextWrapperOne>
       <Text>
       <TextSubheading>제1장 총 칙</TextSubheading>

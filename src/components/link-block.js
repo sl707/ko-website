@@ -3,29 +3,49 @@ import s from 'styled-components'
 import { Link } from 'gatsby'
 
 const BlockWrapper = s(Link)`
-  display: table-row;
+  display: block;
   position: relative;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
   border: thin solid black;
-  margin: 10px 10px 10px 10px;
+  margin: 30px 50px;
+  text-decoration: none;
+  text-align: center;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  @media screen and (max-width: 750px) {
+    margin: 8px;
+  }
 `
 
 const BlockImage = s.img`
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  opacity: 0.2;
+  object-fit: cover;
+  overflow: hidden;
 `
 
-const BlockText = s.h4`
+const BlockText = s.h2`
   position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 25%;
 `
 
 const LinkBlock = props => (
   <BlockWrapper to={props.blkLink}>
-    <BlockImage src={props.blkImage} alt="MISSING PNG"/>
     <BlockText>
       {props.blkTitle}
+      <br />
+      {props.blkTitle2}
     </BlockText>
+    <BlockImage src={props.blkImage} alt="MISSING PNG"/>
   </BlockWrapper>
 )
 

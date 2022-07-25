@@ -6,7 +6,13 @@ const PageHeader = s.h1`
   z-index: 1;
   position: absolute;
   color: white;
-  background-color: black;
+  background-color: #1f1f1f;
+  border: 5px solid #663946;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: outset;
 `
 
 const PageTitleWrapper = s.div`

@@ -4,15 +4,12 @@ import React from 'react'
 import s from 'styled-components'
 
 import Layout from '../components/layout'
+import Post from '../components/post'
 
-const StandardPost = ({ pageContext: { post } }) => {
+const StandardPost = ({ pageContext: { post, type } }) => {
   return (
-  <Layout>
-    <img
-      src={post.image}
-      alt="MISSING JPG"
-    />
-    {post.text}
+  <Layout pageTitle={type} pageSubtitle={post.title}>
+    <Post imageUrl={post.image} text={post.text} date={post.date}/>
   </Layout>
   )
 }

@@ -12,7 +12,7 @@ const wangText = (
 )
 
 const WangwijeonPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'왕위전'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'왕위전'}>
     <Post imageUrl={'/왕위전2.jpg'} text={wangText} />
   </Layout>
 

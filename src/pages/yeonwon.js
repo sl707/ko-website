@@ -27,7 +27,7 @@ const yeonwonText = (
 )
 
 const YeonwonPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'탐라국의 연원'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'탐라국의 연원'}>
     <Post imageUrl={'/연원.jpg'} text={yeonwonText} />
   </Layout>
 )

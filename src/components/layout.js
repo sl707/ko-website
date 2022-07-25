@@ -30,6 +30,7 @@ const Layout = ({ children, pageTitle, pageSubtitle }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || '고씨중앙종문회'} />
+      <br /><br /><br />
       {/* <div
         style={{
           margin: '0 auto',

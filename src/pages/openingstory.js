@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const BaljachwiPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'개국설화'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'개국설화'}>
     <TextWrapperOne>
       <Text>
         고씨(髙氏)는 고을나왕(髙乙那王)을 시조(始祖)로 하여 45세손(世孫) 자견왕(自堅王)까지 탐라군주(耽羅郡主)로 세습(世襲)해 오다가 서기 938년(고려 태조 21) 자견왕(自堅王)의 태자(太子) 말로 공(末老 公)이 고려(高麗)에 내조(來朝)하여 그가 곧 우리나라 고씨(髙氏)의 중시조(中始祖)가 되었으며, 그의 아들 유(維), 강(綱), 소(紹) 형제가 모두 고려(高麗)에서 과거에 급제하고 벼슬을 지냄으로써 본토(本土 : 육지)의 진출이 시작되었다.<br />
