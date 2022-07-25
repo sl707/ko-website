@@ -36,7 +36,7 @@ const PostSlideText = s.div`
 const PostBlock = props => (
   <PostWrapper>
     <PostSlide
-      to={props.news ? `/newspaper/${props.post.newsNumber}/` : `/post/${props.post.postId}/`}
+      to={props.news ? props.post.newsUrl : `/post/${props.post.postId}/`}
       style={props.front && { margin: '0px' }}>
       <PostSlideImage
         src={props.news ? `/news/${props.post.newsNumber}main.jpg` : props.post.image}
