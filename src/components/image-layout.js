@@ -9,8 +9,8 @@ const ImageLayout = props => (
       alt="MISSING JPG"
       style={{
         display: 'block',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        marginLeft: '0',
+        marginRight: '0',
         width: '50%',
         minWidth: '400px'
       }}

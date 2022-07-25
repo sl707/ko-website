@@ -12,7 +12,7 @@ const AlbumSubwrapper = s.div`
   display: table-row;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: #FFFEE8;
   border: 3px solid grey;
   padding: 15px;
 `
@@ -52,7 +52,7 @@ const AlbumSlideshowRightButton = s.i`
 const firstFivePosts = postList.slice(0, 5)
 
 const increaseSlide = (slideNum, slideNumFunc) => {
-  if (slideNum === 5) {
+  if (slideNum === 3) {
     slideNumFunc(1)
   } else {
     slideNumFunc(slideNum + 1)
@@ -61,7 +61,7 @@ const increaseSlide = (slideNum, slideNumFunc) => {
 
 const decreaseSlide = (slideNum, slideNumFunc) => {
   if (slideNum === 1) {
-    slideNumFunc(5)
+    slideNumFunc(3)
   } else {
     slideNumFunc(slideNum - 1)
   }
@@ -87,8 +87,8 @@ const AlbumSubpanel = () => {
         {(slideNumber === 1) && <PostBlock post={firstFivePosts[0]} front={true}/>}
         {(slideNumber === 2) && <PostBlock post={firstFivePosts[1]} front={true}/>}
         {(slideNumber === 3) && <PostBlock post={firstFivePosts[2]} front={true}/>}
-        {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
-        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>}
+        {/* {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
+        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>} */}
         <AlbumSlideshowRightButton onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
       </AlbumSlideshowWrapper>
     </AlbumSubwrapper>

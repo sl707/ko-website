@@ -4,11 +4,11 @@ import s from 'styled-components'
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const PostWrapper = s.div`
-  display: grid;
   width: 100%;
   justify-content: center;
   align-items: center;
   position: relative;
+  margin: 0;
 `
 
 const PostImage = s.img`
@@ -20,11 +20,13 @@ const PostImage = s.img`
   object-fit: contain;
   text-align: center;
   padding: 20px;
+  padding-top: 0;
+  margin: 0;
 `
 
 const Post = props => (
   <PostWrapper>
-      <TextSubheading style={{textAlign: 'center' }}>
+      <TextSubheading style={{ textAlign: 'center' }}>
         {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
       </TextSubheading>
     <PostImage

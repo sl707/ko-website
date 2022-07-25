@@ -11,7 +11,7 @@ const AlertSubwrapper = s.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px;
-  background-color: white;
+  background-color: #FFFEE8;
   border: 3px solid grey;
   width: 95%;
   padding: 15px;
@@ -29,6 +29,7 @@ const AlertTableWrapper = s.table`
   border: 1px solid grey;
   border-collapse: collapse;
   width: 100%;
+  background-color: white;
 `
 
 const AlertTableCellWrapper = s.tr`

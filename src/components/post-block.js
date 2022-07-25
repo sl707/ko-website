@@ -31,6 +31,7 @@ const PostSlideText = s.div`
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+  background: white;
 `
 const PostBlock = props => (
   <PostWrapper>

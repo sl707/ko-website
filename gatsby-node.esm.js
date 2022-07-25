@@ -8,14 +8,14 @@ exports.createPages = ({ actions }) => {
     createPage({
       path: `/alert/${alert.alertId}/`,
       component: require.resolve('./src/templates/standard-post.js'),
-      context: { post: alert, type: '알림' }
+      context: { post: alert, type: '알 림' }
     })
   })
   postList.forEach(post => {
     createPage({
       path: `/post/${post.postId}/`,
       component: require.resolve('./src/templates/standard-post.js'),
-      context: { post, type: '소식/자료실' }
+      context: { post, type: '소식 / 자료실' }
     })
   })
   newspaperList.forEach(paper => {

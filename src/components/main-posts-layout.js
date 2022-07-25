@@ -10,7 +10,7 @@ const MPWrapper = s.div`
   width: 100%;
   align-items: start;
   justify-content: center;
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 700px) {
     display: flex;
   } 
 `
@@ -20,7 +20,7 @@ const MPWrapper2 = s.div`
   width: 100%;
   align-items: start;
   justify-content: center;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 700px) {
     display: flex;
   }
 `
@@ -77,7 +77,14 @@ const MainPostsLayout = props => (
     </MPWrapper>
     <MPWrapper2>
       {(props.postList.length === 0) && <div>업데이트 중...</div>}
-      {
+      <MPColumnWrapper>
+          {
+            props.postList.map(singlepost => (
+              <PostBlock post={singlepost} news={props.news}/>
+            ))
+          }
+      </MPColumnWrapper>
+      {/* {
         (props.postList.length >= 1) &&
         <MPColumnWrapper>
           {
@@ -96,7 +103,7 @@ const MainPostsLayout = props => (
             ))
           }
         </MPColumnWrapper>
-      }
+      } */}
     </MPWrapper2>
   </Layout>
 )

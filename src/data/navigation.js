@@ -134,7 +134,7 @@ const navLinks = [
     submenu: []
   },
   {
-    name: '연락 / 오시는 길',
+    name: '오시는 길',
     url: '/contact/',
     submenu: []
   }
