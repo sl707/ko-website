@@ -1,13 +1,14 @@
 import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import s from 'styled-components'
-import { Text, TextWrapperOne } from "../data/typography"
+import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const PostWrapper = s.div`
   display: grid;
   width: 100%;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 const PostImage = s.img`
@@ -15,13 +16,17 @@ const PostImage = s.img`
   width: 100%;
   justify-content: center;
   align-items: center;
-  max-height: 600px;
+  max-height: 500px;
   object-fit: contain;
   text-align: center;
+  padding: 20px;
 `
 
 const Post = props => (
   <PostWrapper>
+      <TextSubheading style={{textAlign: 'center' }}>
+        {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
+      </TextSubheading>
     <PostImage
       src={props.imageUrl}
       alt="MISSING JPG"

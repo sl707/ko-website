@@ -25,7 +25,7 @@ const charText = (
 </Text>
 )
 const CharacterPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'성씨표기'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'성씨표기'}>
     <Post imageUrl={'/성씨.gif'} text={charText} />
   </Layout>
 )

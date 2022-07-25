@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const BaljachwiPage = () => (
-  <Layout pageTitle={'중앙종문회'} pageSubtitle={'발자취'}>
+  <Layout pageTitle={'중 앙 종 문 회'} pageSubtitle={'발자취'}>
     <TextWrapperOne>
       <Text>
         <TextSubheading>1. 재경(在京)고씨회 활동</TextSubheading>

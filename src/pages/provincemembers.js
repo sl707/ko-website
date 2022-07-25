@@ -6,10 +6,11 @@ import { SubHeading, Text, TextSubheading, TextWrapperOne } from "../data/typogr
 
 const PMWrapper = s.div`
   display: flex;
+  align-items: start;
 `
 
 const ProvincemembersPage = () => (
-  <Layout pageTitle={'중앙종문회'} pageSubtitle={'지방종문회'}>
+  <Layout pageTitle={'임 원'} pageSubtitle={'지방종문회'}>
     <PMWrapper>
       <TextWrapperOne>
         <Text>
@@ -21,7 +22,6 @@ const ProvincemembersPage = () => (
           강화종문회<br />
           경주종문회<br />
           고씨동탄종문회<br />
-          고씨총본부회<br />
           고창종문회<br />
           고흥종문회<br />
           곡성종문회<br />
@@ -101,6 +101,7 @@ const ProvincemembersPage = () => (
           전주종문회<br />
           정선종문회<br />
           정읍종문회<br />
+          중국종문회<br />
           진안종문회<br />
           진주효열공종문회<br />
           <TextSubheading>(ㅊ)</TextSubheading>

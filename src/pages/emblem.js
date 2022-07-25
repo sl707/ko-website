@@ -22,8 +22,8 @@ const emblemText = (
   </Text>
 )
 const EmblemPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'종기 해설'}>
-    <Post imageUrl={'/종기.png'} text={emblemText} />
+  <Layout pageTitle={'역 사'} pageSubtitle={'종기 해설'}>
+    <Post imageUrl={'/고씨마크.png'} text={emblemText} />
   </Layout>
 )
 

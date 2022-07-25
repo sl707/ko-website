@@ -32,7 +32,7 @@ const fatherText = (
   </Text>
 )
 const FatherPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'시조 고을나왕'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'시조 고을나왕'}>
     <Post imageUrl={'/고을나왕.jpg'} text={fatherText} />
   </Layout>
 )

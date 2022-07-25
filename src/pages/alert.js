@@ -3,10 +3,21 @@ import s from 'styled-components'
 
 import Layout from '../components/layout'
 import { DownloadLink, Text, TextSubheading, TextWrapperOne } from '../data/typography'
+import AlertTable from '../components/alert-table'
+
+const AlertWrapper = s.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px
+`
 
 const AlertPage = () => (
-  <Layout pageTitle={'알림'}>
-    개발중...
+  <Layout pageTitle={'알 림'}>
+    {/* <AlertWrapper>
+      <AlertTable page={true} />
+    </AlertWrapper> */}
+    <div style={{ width: '100%', textAlign: 'center' }}>업데이트 중...</div>
   </Layout>
 )
 

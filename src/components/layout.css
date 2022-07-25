@@ -1,8 +1,8 @@
 :root {
   --border-radius: 4px;
   --color-text: #333;
-  --color-primary: #7026b9;
-  --color-code-bg: #fff4db;
+  --color-primary: #000000;
+  --color-code-bg: #ffdf94;
   --color-code: #8a6534;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";

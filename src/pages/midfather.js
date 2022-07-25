@@ -44,7 +44,7 @@ const midfatherText = (
   </Text>
 )
 const MidfatherPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'중시조 고말로'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'중시조 고말로'}>
     <Post imageUrl={'/고말로.jpg'} text={midfatherText} />
   </Layout>
 )

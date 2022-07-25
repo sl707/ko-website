@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
 const PajoPage = () => (
-  <Layout pageTitle={'역사'} pageSubtitle={'9대 파조'}>
+  <Layout pageTitle={'역 사'} pageSubtitle={'9대 분파조'}>
     <TextWrapperOne>
       <Text>
         <TextSubheading>1. 양경공파(良敬公派) 파조(派祖), 고영신(髙令臣) 중시조4세손(世孫)</TextSubheading>

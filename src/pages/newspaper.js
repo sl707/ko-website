@@ -1,13 +1,12 @@
 import React from 'react'
 import s from 'styled-components'
 
-import Layout from '../components/layout'
 import { DownloadLink, Text, TextSubheading, TextWrapperOne } from '../data/typography'
+import news from '../data/newspapers'
+import MainPostsLayout from '../components/main-posts-layout'
 
 const NewspaperPage = () => (
-  <Layout pageTitle={'종보'}>
-    개발중...
-  </Layout>
+  <MainPostsLayout title={'종 보'} postList={news} news={true} />
 )
 
 export default NewspaperPage

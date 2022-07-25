@@ -6,31 +6,33 @@ import Layout from '../components/layout'
 import { Text, SubHeading, BoldText } from '../data/typography'
 
 const IntroWrapper = s.div`
-  margin: 25px 25px;
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  text-align: justify;
   padding: 10px;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
-// const IntroTextWrapper = s.div`
-//   padding: 20px;
-//   text-align: justify;
-//   text-justify: inter-word;
-// `
+const IntroImage = s.img`
+  position: relative;
+  width: 220px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+`
 
 const IntroductionPage = () => (
-  <Layout pageTitle={'중앙종문회'} pageSubtitle={'회장 인사말'}>
+  <Layout pageTitle={'중 앙 종 문 회'} pageSubtitle={'회장 인사말'}>
     <IntroWrapper>
-      <StaticImage
-        src="../images/고재갑회장.jpg"
-        style={{
-          position: 'relative',
-          margin: '20px',
-          minWidth: '250px'
-        }}
-      />
+      <IntroImage
+          src="/고재갑회장왕.jpg"
+        />
       <Text>
         존경하고 사랑하는 전 세계의 60만 고씨 가족 여러분!<br />
         우리 고씨들은 고을나 대왕의 후손들입니다.<br />

@@ -5,14 +5,16 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 import navLinks from '../data/navigation'
 import postList from '../data/posts'
+import PostBlock from './post-block'
 
 const AlbumSubwrapper = s.div`
-  margin: auto;
+  margin: 10px;
   display: table-row;
   align-items: center;
   justify-content: space-between;
   background-color: white;
   border: 3px solid grey;
+  padding: 15px;
 `
 
 const AlbumSubtitle = s.h1`
@@ -26,32 +28,6 @@ const AlbumSlideshowWrapper = s.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
-
-const AlbumSlideshowSlide = s(Link)`
-  border-collapse: collapse;
-  text-decoration: none;
-`
-
-const AlbumSlideshowImage = s.img`
-  margin: 0;
-  display: flex;
-  position: relative;
-  width: 420px;
-  height: 300px;
-  object-fit: scale-down;
-  border: 1px solid black;
-`
-
-const AlbumSlideshowImageText = s.div`
-  margin: 0;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
 `
 
 // const AlbumSlideshowGuide = s.div`
@@ -73,7 +49,7 @@ const AlbumSlideshowRightButton = s.i`
   -webkit-transform: rotate(-45deg);
 `
 
-const firstFivePosts = postList.sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 5)
+const firstFivePosts = postList.slice(0, 5)
 
 const increaseSlide = (slideNum, slideNumFunc) => {
   if (slideNum === 5) {
@@ -91,21 +67,12 @@ const decreaseSlide = (slideNum, slideNumFunc) => {
   }
 }
 
-const albumSlideTemplate = post => (
-  <AlbumSlideshowSlide to={`/post/${post.postId}`}>
-    <AlbumSlideshowImage src={post.image} />
-    <AlbumSlideshowImageText>
-      {post.title}
-    </AlbumSlideshowImageText>
-  </AlbumSlideshowSlide>
-)
-
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
   return (
     <AlbumSubwrapper>
       <AlbumSubtitle>
-        앨범
+        소 식
       </AlbumSubtitle>
       <AlbumSlideshowWrapper>
         {/* {firstFivePosts.map(post => (
@@ -117,11 +84,11 @@ const AlbumSubpanel = () => {
           </AlbumSlideshowSlide>
         ))} */}
         <AlbumSlideshowLeftButton onClick={() => decreaseSlide(slideNumber, setSlideNumber)} />
-        {(slideNumber === 1) && albumSlideTemplate(firstFivePosts[0])}
-        {(slideNumber === 2) && albumSlideTemplate(firstFivePosts[1])}
-        {(slideNumber === 3) && albumSlideTemplate(firstFivePosts[2])}
-        {(slideNumber === 4) && albumSlideTemplate(firstFivePosts[3])}
-        {(slideNumber === 5) && albumSlideTemplate(firstFivePosts[4])}
+        {(slideNumber === 1) && <PostBlock post={firstFivePosts[0]} front={true}/>}
+        {(slideNumber === 2) && <PostBlock post={firstFivePosts[1]} front={true}/>}
+        {(slideNumber === 3) && <PostBlock post={firstFivePosts[2]} front={true}/>}
+        {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
+        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>}
         <AlbumSlideshowRightButton onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
       </AlbumSlideshowWrapper>
     </AlbumSubwrapper>
