@@ -9,6 +9,8 @@ const PostWrapper = s.div`
   align-items: center;
   position: relative;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const PostImage = s.img`
@@ -17,24 +19,26 @@ const PostImage = s.img`
   justify-content: center;
   align-items: center;
   max-height: 500px;
+  max-width: 700px;
   object-fit: contain;
   text-align: center;
-  padding: 20px;
-  padding-top: 0;
+  padding: 0 20px;
   margin: 0;
 `
 
 const Post = props => (
   <PostWrapper>
-      <TextSubheading style={{ textAlign: 'center' }}>
-        {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
-      </TextSubheading>
     <PostImage
       src={props.imageUrl}
       alt="MISSING JPG"
     />
+    <TextSubheading style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}>
+        {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
+      </TextSubheading>
     <TextWrapperOne>
-      {props.text}
+      <Text>
+        {props.text}
+      </Text>
     </TextWrapperOne>
   </PostWrapper>
 )

@@ -31,7 +31,8 @@ export const TextWrapperOne = s.div`
   white-space: pre-line;
 `
 
-export const TextSubheading = s.h3`
+export const TextSubheading = s.div`
+  
 `
 
 export const TextSubheadingSmall = s.h5`

@@ -10,7 +10,7 @@ const MenuSubwrapper = s.div`
   justify-content: center;
   width: 100%;
   padding: 10px;
-  background-color: #FFFCB9;
+  background-color: #FEFEE1;
 `
 
 const MenuSubsubwrapper = s.div`

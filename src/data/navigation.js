@@ -129,7 +129,7 @@ const navLinks = [
     submenu: []
   },
   {
-    name: '알 림',
+    name: '공지사항',
     url: '/alert/',
     submenu: []
   },

@@ -55,7 +55,7 @@ const NavSubWrapperSmall = s.div`
   z-index: 20;
   position: relative;
   float: right;
-  background-color: #fcfbcc;
+  background-color: #FEFEE1;
   overflow: visible;
   display: grid;
   border: 2px solid #f8ba32;
@@ -67,6 +67,7 @@ const NavSubWrapperSmall = s.div`
 const NavLink = s(Link)`
   text-decoration: none;
   font-size: 20px;
+  font-weight: normal;
 `
 
 const SubnavWrapper = s.nav`

@@ -46,7 +46,7 @@ const ContactPage = () => (
     </TextWrapper>
     <SubHeading style={{ marginBottom: '0' }}>오시는 길</SubHeading>
     <TextWrapper style={{ marginBottom: '15px' }}>
-      <a rel="noreferrer noopener" href="https://naver.me/xAtyv2oy" color='purple'>네이버 지도에서 보기</a>
+      <a rel="noreferrer noopener" href="https://naver.me/xAtyv2oy" style={{ color: 'purple' }}>네이버 지도에서 보기</a>
     </TextWrapper>
     <Post imageUrl={'/종문회빌딩.jpg'}/>
     <SmallerSubHeading>지하철</SmallerSubHeading>

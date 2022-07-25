@@ -13,7 +13,7 @@ const AlertWrapper = s.div`
 `
 
 const AlertPage = () => (
-  <Layout pageTitle={'알 림'}>
+  <Layout pageTitle={'공지사항'}>
     {/* <AlertWrapper>
       <AlertTable page={true} />
     </AlertWrapper> */}
