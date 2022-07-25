@@ -37,7 +37,7 @@ const MenuPanel = () => (
   <MenuSubwrapper>
     <MenuSubsubwrapper>
       <LinkBlock blkImage={'/신문단체.jpg'} blkTitle={'고씨종보'} blkLink={'/newspaper/'}/>
-      <LinkBlock blkImage={'/이사회22.jpg'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
+      <LinkBlock blkImage={'/이사회22.JPG'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
       <LinkBlock blkImage={'/왕위전2.jpg'} blkTitle={'항렬표'} blkLink={'/nameorder/'}/>
     </MenuSubsubwrapper>
     <MenuSubsubwrapper>
@@ -47,7 +47,7 @@ const MenuPanel = () => (
     </MenuSubsubwrapper>
     <MenuSubsubwrapperTwo>
       <LinkBlock blkImage={'/신문단체.jpg'} blkTitle={'고씨종보'} blkLink={'/newspaper/'}/>
-      <LinkBlock blkImage={'/이사회22.jpg'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
+      <LinkBlock blkImage={'/이사회22.JPG'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
     </MenuSubsubwrapperTwo>
     <MenuSubsubwrapperTwo>
       <LinkBlock blkImage={'/왕위전2.jpg'} blkTitle={'항렬표'} blkLink={'/nameorder/'}/>
