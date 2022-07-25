@@ -2,17 +2,26 @@ import React from "react"
 import s from 'styled-components'
 import { StaticImage } from "gatsby-plugin-image"
 
-const PageHeader = s.h1`
+const PageHeader = s.div`
   z-index: 1;
   position: absolute;
   color: white;
-  background-color: #1f1f1f;
+  background-color: #292929;
   border: 5px solid #663946;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border-style: outset;
+  padding: 10px 15px;
+  font-size: 25px;
+  width: 200px;
+  height: 60px;
+  @media screen and (max-width: 800px) {
+    width: 180px;
+    height: 45px;
+    font-size: 25px;
+  }
 `
 
 const PageTitleWrapper = s.div`
@@ -35,7 +44,7 @@ const PageTitle = props => (
               position: 'relative',
               objectFit: 'cover',
               width: '100%',
-              opacity: '0.7'
+              opacity: '1'
             }}
     />
   </PageTitleWrapper>

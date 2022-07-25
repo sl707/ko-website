@@ -38,7 +38,7 @@ const Footer = () => (
       FAX: 02-790-3360
     </FooterText>
     <FooterText>
-      이메일: artspeech@hanmail.net
+      artspeech@hanmail.net
     </FooterText>
   </FooterWrapper>
 )

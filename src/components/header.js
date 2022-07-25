@@ -28,6 +28,7 @@ const TitleText = s.div`
   align-items: center;
   display: flex;
   font-size: 28px;
+  padding-left: 5px;
 `
 const NavWrapper = s.nav`
   display: flex;
@@ -35,6 +36,7 @@ const NavWrapper = s.nav`
   justify-content: space-between;
   width: 100%;
   overflow: hidden;
+  padding-bottom: 5px;
 `
 
 const NavSubWrapper = s.div`
@@ -53,7 +55,7 @@ const NavSubWrapperSmall = s.div`
   z-index: 20;
   position: relative;
   float: right;
-  background-color: #fff7a2;
+  background-color: #fcfbcc;
   overflow: visible;
   display: grid;
   border: 2px solid #f8ba32;

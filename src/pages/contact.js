@@ -35,8 +35,8 @@ const TextWrapper = s.div`
 `
 
 const ContactPage = () => (
-  <Layout pageTitle={'연 락 / 오시는 길'}>
-    <SubHeading style={{ marginBottom: '5px' }}>연 락</SubHeading>
+  <Layout pageTitle={'오시는 길'}>
+    <SubHeading style={{ marginBottom: '5px' }}>연 락 처</SubHeading>
     <TextWrapper>
       <Text>
         이메일: artspeech@hanmail.net<br />
@@ -46,11 +46,11 @@ const ContactPage = () => (
     </TextWrapper>
     <SubHeading style={{ marginBottom: '0' }}>오시는 길</SubHeading>
     <TextWrapper style={{ marginBottom: '15px' }}>
-      <a rel="noreferrer noopener" href="https://naver.me/xAtyv2oy">네이버 지도에서 보기</a>
+      <a rel="noreferrer noopener" href="https://naver.me/xAtyv2oy" color='purple'>네이버 지도에서 보기</a>
     </TextWrapper>
     <Post imageUrl={'/종문회빌딩.jpg'}/>
     <SmallerSubHeading>지하철</SmallerSubHeading>
-    <Post imageUrl={'/지도1.png'} text={subwayText} />
+    <Post imageUrl={'/지도1.png'} text={subwayText} addStyle={{ display: 'grid' }}/>
     <SmallerSubHeading>버스</SmallerSubHeading>
     <Post imageUrl={'/지도2.png'} text={busText} />
   </Layout>

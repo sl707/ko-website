@@ -5,7 +5,7 @@ import { SubHeading, Text } from '../data/typography'
 
 const OuterWrapper = s.div`
   position: absolute;
-  top: 45%;
+  top: 35%;
   z-index: 3;
   border: 3px solid #663946;
   background-color: #667f73;
@@ -22,14 +22,16 @@ const InnerWrapper = s.div`
   z-index: 5;
   border: 3px solid #663946;
   border-style: outset;
+  background-color: #292929;
+  padding: 10px 25px;
 `
 
 const InnerText = s.div`
-  padding: 5px;
+  padding: 0px;
   margin: 0;
   color: white;
-  font-size: 40px;
-  background: #1f1f1f;
+  font-size: 35px;
+  background: #292929;
 `
 
 const BigTitle = props => (

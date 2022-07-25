@@ -25,17 +25,18 @@ const BlockImage = s.img`
   height: 100%;
   top: 0%;
   left: 0%;
-  opacity: 0.2;
+  opacity: 0.3;
   object-fit: cover;
   overflow: hidden;
 `
 
-const BlockText = s.h2`
+const BlockText = s.div`
   position: relative;
   align-items: center;
   justify-content: center;
   text-align: center;
-  top: 25%;
+  top: 30%;
+  font-size: 25px;
 `
 
 const LinkBlock = props => (

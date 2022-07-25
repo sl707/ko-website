@@ -34,7 +34,7 @@ const samText = (
 
 const SamseonghyeolPage = () => (
   <Layout pageTitle={'역 사'} pageSubtitle={'삼성혈'}>
-    <Post imageUrl={'/삼성혈.jpeg'} text={samText} />
+    <Post imageUrl={'/삼성혈.jpg'} text={samText} />
   </Layout>
 )
 
