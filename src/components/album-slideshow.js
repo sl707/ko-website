@@ -12,16 +12,18 @@ const AlbumSubwrapper = s.div`
   display: table-row;
   align-items: center;
   justify-content: space-between;
-  background-color: #FFFEE8;
+  background-color: #FFFEF1;
   border: 3px solid grey;
   padding: 15px;
 `
 
-const AlbumSubtitle = s.h1`
+const AlbumSubtitle = s.div`
   position: relative;
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  font-size: 23px;
+  font-weight: 550;
 `
 
 const AlbumSlideshowWrapper = s.div`
@@ -52,7 +54,7 @@ const AlbumSlideshowRightButton = s.i`
 const firstFivePosts = postList.slice(0, 5)
 
 const increaseSlide = (slideNum, slideNumFunc) => {
-  if (slideNum === 3) {
+  if (slideNum === 5) {
     slideNumFunc(1)
   } else {
     slideNumFunc(slideNum + 1)
@@ -61,7 +63,7 @@ const increaseSlide = (slideNum, slideNumFunc) => {
 
 const decreaseSlide = (slideNum, slideNumFunc) => {
   if (slideNum === 1) {
-    slideNumFunc(3)
+    slideNumFunc(5)
   } else {
     slideNumFunc(slideNum - 1)
   }
@@ -72,7 +74,7 @@ const AlbumSubpanel = () => {
   return (
     <AlbumSubwrapper>
       <AlbumSubtitle>
-        소 식
+        News / 소식
       </AlbumSubtitle>
       <AlbumSlideshowWrapper>
         {/* {firstFivePosts.map(post => (
@@ -87,8 +89,8 @@ const AlbumSubpanel = () => {
         {(slideNumber === 1) && <PostBlock post={firstFivePosts[0]} front={true}/>}
         {(slideNumber === 2) && <PostBlock post={firstFivePosts[1]} front={true}/>}
         {(slideNumber === 3) && <PostBlock post={firstFivePosts[2]} front={true}/>}
-        {/* {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
-        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>} */}
+        {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
+        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>}
         <AlbumSlideshowRightButton onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
       </AlbumSlideshowWrapper>
     </AlbumSubwrapper>

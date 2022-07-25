@@ -11,18 +11,20 @@ const AlertSubwrapper = s.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px;
-  background-color: #FFFEE8;
+  background-color: #FFFEF1;
   border: 3px solid grey;
   width: 95%;
   padding: 15px;
   max-width: 480px;
  `
 
-const AlertSubtitle = s.h1`
+const AlertSubtitle = s.div`
   position: relative;
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  font-size: 23px;
+  font-weight: 550;
 `
 
 const AlertTableWrapper = s.table`
@@ -97,7 +99,7 @@ const AlertSubpanel = props => {
     {
       !(props.page) &&
       <AlertSubtitle>
-        알 림
+        공지사항
       </AlertSubtitle>
     }
     <AlertTableWrapper style={props.page && { width: '100%' }}>

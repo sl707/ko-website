@@ -1,19 +1,20 @@
 import React from "react"
-
+import s from 'styled-components'
 import Layout from "./layout"
+
+const ImageWrapper = s.img`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: scale-down;
+  width: 100%;
+`
 
 const ImageLayout = props => (
   <Layout pageTitle={props.title} pageSubtitle={props.subtitle}>
-    <img
+    <ImageWrapper
       src={props.imageUrl}
       alt="MISSING JPG"
-      style={{
-        display: 'block',
-        marginLeft: '0',
-        marginRight: '0',
-        width: '50%',
-        minWidth: '400px'
-      }}
     />
   </Layout>
 )
