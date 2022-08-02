@@ -25,6 +25,7 @@ const AlertSubtitle = s.div`
   text-align: center;
   font-size: 23px;
   font-weight: 550;
+  padding-bottom: 7px;
 `
 
 const AlertTableWrapper = s.table`
@@ -41,7 +42,16 @@ const AlertTableCellWrapper = s.tr`
 
 const AlertTableCell = s(Link)`
   display: flex;
-  padding: 10px 7px 10px 7px;
+  padding: 12px 7px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const AlertTableEmptyCell = s.div`
+  display: flex;
+  padding: 12px 7px;
   text-decoration: none;
   align-items: center;
   justify-content: space-between;
@@ -106,15 +116,19 @@ const AlertSubpanel = props => {
       {props.page && alertTableHeader}
       {alertArray.map(alert => (
         <AlertTableCellWrapper>
-          <AlertTableCell to={`/alert/${alert.alertId}`}>
-{ alert.empty
-  ? <BlankLine></BlankLine>
-  : <><AlertTableCellTitle>
-              {alert.title}
-            </AlertTableCellTitle><AlertTableCellDate>
-                {alert.date && alert.date.toLocaleDateString('en-CA').slice(props.page ? 0 : 5)}
-              </AlertTableCellDate></>
-}          </AlertTableCell>
+          { alert.empty
+            ? <AlertTableEmptyCell>
+                <BlankLine></BlankLine>
+              </AlertTableEmptyCell>
+            : <AlertTableCell to={`/alert/${alert.alertId}`}>
+                <AlertTableCellTitle>
+                  {alert.title}
+                </AlertTableCellTitle>
+                <AlertTableCellDate>
+                  {alert.date && alert.date.toLocaleDateString('en-CA').slice(props.page ? 0 : 5)}
+                </AlertTableCellDate>
+              </AlertTableCell>
+          }
         </AlertTableCellWrapper>
       ))}
     </AlertTableWrapper>
