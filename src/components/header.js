@@ -77,6 +77,7 @@ const SubnavWrapper = s.nav`
   z-index: 30;
   text-align: center;
   align-items: center;
+  padding: 0 10px;
   @media screen and (max-width: 1000px) {
     position: relative;
     display: flex;
@@ -135,6 +136,24 @@ const HamburgerLine = s.div`
   margin: 3px 0;
 `
 
+const DownTriangle = s.div`
+  width: 0; 
+  height: 10px; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid black;
+  float: right;
+`
+
+const UpTriangle = s.div`
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+  float: right;
+`
+
 const navbarLinks = (small, selectNav, setSelectNav) => navLinks.map(link => (
   <NavSingleWrapper>
     {
@@ -144,7 +163,12 @@ const navbarLinks = (small, selectNav, setSelectNav) => navLinks.map(link => (
           ((link.name === selectNav)
             ? setSelectNav('')
             : setSelectNav(link.name))}
-      >{link.name}</NavSingleTitle>
+          >
+            {link.name}
+            {/* {link.name === selectNav
+              ? <UpTriangle></UpTriangle>
+              : <DownTriangle></DownTriangle>} */}
+          </NavSingleTitle>
     }
     <SubnavWrapper>
       {

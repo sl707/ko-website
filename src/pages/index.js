@@ -75,7 +75,7 @@ import MenuPanel from '../components/menu-panel'
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" />
+    <Seo title="집"/>
     <MainPanel />
     <NewsPanel />
     <MenuPanel />
