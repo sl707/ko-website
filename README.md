@@ -1,2 +1,2 @@
-Koh-si Central Association (고씨중앙종문회) Official Website Code<br/>
+Koh Family Central Association (고씨중앙종문회) Official Website Code<br/>
 Link to website: https://www.kohcentral.com/
