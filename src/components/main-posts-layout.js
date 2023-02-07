@@ -10,7 +10,7 @@ const MPWrapper = s.div`
   width: 100%;
   align-items: start;
   justify-content: center;
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 1050px) {
     display: flex;
   } 
 `
@@ -20,14 +20,26 @@ const MPWrapper2 = s.div`
   width: 100%;
   align-items: start;
   justify-content: center;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 550px) {
     display: flex;
   }
+`
+
+const MPWrapper3 = s.div`
+  display: none;
+  width: 100%;
+  align-items: start;
+  justify-content: center;
+  @media screen and (min-width: 550px) and (max-width: 1050px) {
+    display: flex;
+  } 
 `
 
 const MPColumnWrapper = s.div`
   position: relative;
   margin: 20px;
+  justify-content: center;
+  align-items: center;
 `
 
 const MainPostsLayout = props => (
@@ -84,11 +96,14 @@ const MainPostsLayout = props => (
             ))
           }
       </MPColumnWrapper>
-      {/* {
+    </MPWrapper2>
+    <MPWrapper3>
+      {(props.postList.length === 0) && <div>업데이트 중...</div>}
+      {
         (props.postList.length >= 1) &&
         <MPColumnWrapper>
           {
-            props.postList.filter((element, index) => { return index % 2 === 0 }).map(singlepost => (
+            props.postList.filter((element, index) => { return index % 4 === 0 }).map(singlepost => (
               <PostBlock post={singlepost} news={props.news}/>
             ))
           }
@@ -98,13 +113,13 @@ const MainPostsLayout = props => (
         (props.postList.length >= 2) &&
         <MPColumnWrapper>
           {
-            props.postList.filter((element, index) => { return index % 2 === 1 }).map(singlepost => (
+            props.postList.filter((element, index) => { return index % 4 === 1 }).map(singlepost => (
               <PostBlock post={singlepost} news={props.news}/>
             ))
           }
         </MPColumnWrapper>
-      } */}
-    </MPWrapper2>
+      }
+    </MPWrapper3>
   </Layout>
 )
 
