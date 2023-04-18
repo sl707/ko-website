@@ -8,6 +8,7 @@ const NewsWrapper = s.div`
 `
 
 const NewsImage = s.img`
+  width: 100%
 `
 
 const NewspaperPage = ({ pageContext: { paper } }) => (
