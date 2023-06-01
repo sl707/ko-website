@@ -189,6 +189,16 @@ const postList = [
     type: '총회/이사회',
     postId: 14
   },
+  {
+    title: '고씨대구종문회 정기총회',
+    text: '고성일 총무 사회로 종문 30여명이 참석한 가운데 총회 개최 \n' +
+    '고덕환 회장님 인사와 고준길 고문님 격려사 말씀 \n' +
+    '지난 3월23일 대전뿌리공원에서 개최한 중앙종문회. 군산종묘 참석 경과 보고에 이어 대구종문회장 고덕환 중앙종문 이사 추대 보고등 진지하면서 화기애애한 분위기에서 총회를 개최하였음.',
+    date: new Date('2023-05-20'),
+    image: '/고씨대구종문회.jpeg',
+    type: '총회/이사회',
+    postId: 15
+  }
 ]
 
 const sortedPostList = postList.sort((a, b) => b.date.getTime() - a.date.getTime())
