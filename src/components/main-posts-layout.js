@@ -103,7 +103,7 @@ const MainPostsLayout = props => (
         (props.postList.length >= 1) &&
         <MPColumnWrapper>
           {
-            props.postList.filter((element, index) => { return index % 4 === 0 }).map(singlepost => (
+            props.postList.filter((element, index) => { return index % 2 === 0 }).map(singlepost => (
               <PostBlock post={singlepost} news={props.news}/>
             ))
           }
@@ -113,7 +113,7 @@ const MainPostsLayout = props => (
         (props.postList.length >= 2) &&
         <MPColumnWrapper>
           {
-            props.postList.filter((element, index) => { return index % 4 === 1 }).map(singlepost => (
+            props.postList.filter((element, index) => { return index % 2 === 1 }).map(singlepost => (
               <PostBlock post={singlepost} news={props.news}/>
             ))
           }
