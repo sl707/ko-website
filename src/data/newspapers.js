@@ -1,5 +1,41 @@
 const newspaperList = [
   {
+    newsNumber: 114,
+    newsDate: new Date('2018-07-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/114-1.jpeg'
+  },
+  {
+    newsNumber: 115,
+    newsDate: new Date('2018-09-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/115-1.jpeg'
+  },
+  {
+    newsNumber: 116,
+    newsDate: new Date('2018-11-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/116-1.jpeg'
+  },
+  {
+    newsNumber: 117,
+    newsDate: new Date('2019-01-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/117-1.jpeg'
+  },
+  {
+    newsNumber: 118,
+    newsDate: new Date('2019-03-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/118-1.jpeg'
+  },
+  {
+    newsNumber: 119,
+    newsDate: new Date('2019-05-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/119-1.jpeg'
+  },
+  {
     newsNumber: 120,
     newsDate: new Date('2019-07-01'),
     newsImage: '/news/120main.JPG'
