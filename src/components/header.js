@@ -193,7 +193,7 @@ const Header = ({ siteTitle }) => {
       <NavWrapper>
         <TitleWrapper to="/">
           <StaticImage
-            src="../images/고씨마크.png"
+            src="../images/고씨마크1.png"
             to="/"
             loading="eager"
             width={40}

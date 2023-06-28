@@ -28,12 +28,13 @@ const MainPanel = () => (
       고씨중앙종문회
     </MainPanelText> */}
     <StaticImage
-     src="../images/왕위전1.jpeg"
+     src="../images/연원.jpg"
      loading="eager"
      style={{
-       objectFit: 'cover',
+       objectFit: 'contain',
        minWidth: '100%',
-       minHeight: '100%'
+       minHeight: '100%',
+       filter: 'brightness(50%)'
      }}
     />
     {/* <MainPanelText>

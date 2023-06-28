@@ -128,11 +128,11 @@ const navLinks = [
     url: '/newspaper/',
     submenu: []
   },
-  {
-    name: '공지사항',
-    url: '/alert/',
-    submenu: []
-  },
+  // {
+  //   name: '공지사항',
+  //   url: '/alert/',
+  //   submenu: []
+  // },
   {
     name: '오시는 길',
     url: '/contact/',
