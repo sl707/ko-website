@@ -10,7 +10,7 @@ const FooterWrapper = s.footer`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #c2f1ff;
+  background-color: #3b4547;
 `
 
 const FooterText = s.small`
@@ -18,6 +18,7 @@ const FooterText = s.small`
   align-items: center;
   justify-content: center;
   font-size: x-small;
+  color: white;
 `
 
 const Footer = () => (
