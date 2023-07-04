@@ -12,6 +12,7 @@ const NewsPanelWrapper = s.div`
   padding: 75px;
   overflow: hidden;
   justify-content: center;
+  background-color
   @media screen and (max-width: 1100px) {
     flex-direction: column;
     width: 100%;
@@ -35,11 +36,11 @@ const NewsPanelBackground = s.img`
 `
 
 const NewsPanel = () => (
-  <NewsPanelWrapper>
-    <NewsPanelBackground src={'/삼성혈.jpg'} />
+  // <NewsPanelWrapper>
+    // {/* <NewsPanelBackground src={'/삼성혈.jpg'} /> */}
     <AlbumSlideshow />
-    {/* <AlertTable /> */}
-  </NewsPanelWrapper>
+    // {/* <AlertTable /> */}
+  // </NewsPanelWrapper>
 )
 
 export default NewsPanel
