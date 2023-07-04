@@ -5,7 +5,6 @@ import { SubHeading, Text } from '../data/typography'
 
 const OuterWrapper = s.div`
   position: absolute;
-  top: 35%;
   z-index: 3;
   // border: 3px solid #663946;
   // background-color: #667f73;
@@ -27,20 +26,24 @@ const InnerWrapper = s.div`
 `
 
 const InnerText = s.div`
-  padding: 0px;
-  margin: 0;
   color: white;
-  font-size: 32px;
+  font-size: 45px;
+  font-weight: bold;
   // background: #292929;
+  @media screen and (max-width: 800px) {
+    font-size: 35px;
+  }
 `
 
 const BigTitle = props => (
-  <OuterWrapper><MiddleWrapper>
-    <InnerWrapper>
+  <OuterWrapper>
+    {/* <MiddleWrapper>
+    <InnerWrapper> */}
       {/* {props.subtext && <InnerText style={{ fontSize: '18px' }}>{props.subtext}</InnerText>} */}
       <InnerText>{props.text}</InnerText>
-    </InnerWrapper>
-    </MiddleWrapper></OuterWrapper>
+    {/* </InnerWrapper>
+    </MiddleWrapper> */}
+    </OuterWrapper>
 )
 
 export default BigTitle

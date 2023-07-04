@@ -15,6 +15,7 @@ const HeaderWrapper = s.header`
   top: 0;
   width: 100%;
   z-index: 20;
+  // background-color: #dafffb;
   background-color: white;
 `
 const TitleWrapper = s(Link)`

@@ -6,15 +6,19 @@ import { StaticImage } from 'gatsby-plugin-image'
 import navLinks from '../data/navigation'
 import postList from '../data/posts'
 import PostBlock from './post-block'
+import LeftArrow from '../images/slide-arrow-left.svg'
+import RightArrow from '../images/slide-arrow-right.svg'
 
 const AlbumSubwrapper = s.div`
-  margin: 10px;
-  display: table-row;
+  // margin: 5px;
+  display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  background-color: #FFFEF1;
-  border: 3px solid grey;
-  padding: 15px;
+  // background-color: #dafffb;
+  background-color: white;
+  // border: 3px solid grey;
+  // padding: 15px;
 `
 
 const AlbumSubtitle = s.div`
@@ -22,33 +26,97 @@ const AlbumSubtitle = s.div`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  font-size: 23px;
-  font-weight: 550;
+  font-size: 35px;
+  font-weight: 700;
+  padding: 10px;
+  // color: white;
+  @media screen and (max-width: 800px) {
+    font-size: 25px;
+  }
+`
+
+const AlbumSubwrapper1 = s.div`
+  // margin: 10px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  // border: 3px solid grey;
+  padding: 60px 0;
+  @media screen and (max-width: 800px) {
+    padding: 20px 0;
+  }
+`
+
+const AlbumSubwrapper2 = s.div`
+// margin: 10px;
+display: flex;
+position: relative;
+align-items: center;
+flex-basis: 90%;
+justify-content: space-around;
+// border: 3px solid grey;
+@media screen and (max-width: 800px) {
+  flex-direction: column;
+}
+`
+
+const AlbumContainer = s.div`
 `
 
 const AlbumSlideshowWrapper = s.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
+  flex-basis: 45%;
 `
 
-// const AlbumSlideshowGuide = s.div`
-// `
-
-const AlbumSlideshowLeftButton = s.i`
-  border: solid black;
-  border-width: 0 5px 5px 0;
-  padding: 5px;
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
+const AlbumSlideDescriptionWrapper = s.div`
+  display: flex;
+  // color: white;
+  flex-direction: column;
+  // justify-content: flex-start;
+  // width: 50%;
+  flex-basis: 45%;
 `
 
-const AlbumSlideshowRightButton = s.i`
-  border: solid black;
-  border-width: 0 5px 5px 0;
-  padding: 5px;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
+const AlbumSlideshowLeftButton = s.img`
+  // border: solid black;
+  // border-width: 0 5px 5px 0;
+  // padding: 5px;
+  // transform: rotate(135deg);
+  // -webkit-transform: rotate(135deg);
+  // // color: white;
+`
+
+const AlbumSlideshowRightButton = s.img`
+  // border: solid black;
+  // border-width: 0 5px 5px 0;
+  // padding: 5px;
+  // transform: rotate(-45deg);
+  // -webkit-transform: rotate(-45deg);
+`
+
+const AlbumSlideshowImage = s.img`
+  margin: 0;
+  width: 100%;
+`
+
+const AlbumSlideTitle = s.p`
+  font-size: 30px;
+  font-weight: 600;
+  // color: white;
+  @media screen and (max-width: 800px) {
+    text-align: center;
+    font-size: 20px;
+  }
+`
+
+const AlbumSlideText = s.p`
+  font-size: 20px;
+  @media screen and (max-width: 800px) {
+    font-size: 15px;
+  }
 `
 
 const firstFivePosts = postList.slice(0, 5)
@@ -74,25 +142,41 @@ const AlbumSubpanel = () => {
   return (
     <AlbumSubwrapper>
       <AlbumSubtitle>
-        News / 소식
+        새소식
       </AlbumSubtitle>
-      <AlbumSlideshowWrapper>
-        {/* {firstFivePosts.map(post => (
-          <AlbumSlideshowSlide>
-            <AlbumSlideshowImage src={post.image} />
-            <AlbumSlideshowImageText>
-              {post.text}
-            </AlbumSlideshowImageText>
-          </AlbumSlideshowSlide>
-        ))} */}
-        <AlbumSlideshowLeftButton onClick={() => decreaseSlide(slideNumber, setSlideNumber)} />
-        {(slideNumber === 1) && <PostBlock post={firstFivePosts[0]} front={true}/>}
-        {(slideNumber === 2) && <PostBlock post={firstFivePosts[1]} front={true}/>}
-        {(slideNumber === 3) && <PostBlock post={firstFivePosts[2]} front={true}/>}
-        {(slideNumber === 4) && <PostBlock post={firstFivePosts[3]} front={true}/>}
-        {(slideNumber === 5) && <PostBlock post={firstFivePosts[4]} front={true}/>}
-        <AlbumSlideshowRightButton onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
-      </AlbumSlideshowWrapper>
+      <AlbumSubwrapper1>
+      <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} />
+      <AlbumSubwrapper2>
+        <AlbumSlideshowWrapper>
+          {/* {firstFivePosts.map(post => (
+            <AlbumSlideshowSlide>
+              <AlbumSlideshowImage src={post.image} />
+              <AlbumSlideshowImageText>
+                {post.text}
+              </AlbumSlideshowImageText>
+            </AlbumSlideshowSlide>
+          ))} */}
+          <Link to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
+            <AlbumSlideshowImage src={firstFivePosts[slideNumber - 1].image} alt='Missing Image'/>
+          </Link>
+        </AlbumSlideshowWrapper>
+        <AlbumSlideDescriptionWrapper>
+          <AlbumSlideTitle>
+          {firstFivePosts[slideNumber - 1].title}
+
+          </AlbumSlideTitle>
+          <AlbumSlideText>
+          {firstFivePosts[slideNumber - 1].text.slice(0, 150)}...
+          
+          </AlbumSlideText>
+          <Link to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
+            더보기
+          </Link>
+        </AlbumSlideDescriptionWrapper>
+        </AlbumSubwrapper2>
+        <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
+
+      </AlbumSubwrapper1>
     </AlbumSubwrapper>
   )
 }

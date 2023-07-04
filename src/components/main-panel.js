@@ -8,6 +8,7 @@ const MainPanelWrapper = s.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
   text-align: center;
   position: relative;
 `
@@ -28,12 +29,13 @@ const MainPanel = () => (
       고씨중앙종문회
     </MainPanelText> */}
     <StaticImage
-     src="../images/연원.jpg"
+     src="../images/정기총회.jpeg"
      loading="eager"
      style={{
-       objectFit: 'contain',
-       minWidth: '100%',
-       minHeight: '100%',
+       objectFit: 'scale-down',
+       width: '100%',
+       height: '100%',
+       minHeight: '300px',
        filter: 'brightness(50%)'
      }}
     />
