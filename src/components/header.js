@@ -4,10 +4,13 @@ import s from 'styled-components'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import navLinks from '../data/navigation'
+import DownTriangle from '../images/down-triangle.svg'
+import UpTriangle from '../images/up-triangle.svg'
+
 
 const HeaderWrapper = s.header`
   margin: 0 auto;
-  padding: 10px;
+  // padding: 10px;
   padding-top: 15px;
   display: grid;
   align-items: center;
@@ -22,6 +25,7 @@ const TitleWrapper = s(Link)`
   display: flex;
   text-decoration: none;
   align-items: center;
+  padding-left: 10px;
 `
 
 const TitleText = s.div`
@@ -58,8 +62,11 @@ const NavSubWrapperSmall = s.div`
   float: right;
   background-color: #FEFEE1;
   overflow: visible;
-  display: grid;
-  border: 2px solid #f8ba32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  // border: 2px solid #f8ba32;
   @media screen and (min-width: 1000px) {
     display: none;
   }
@@ -92,6 +99,7 @@ const SubnavWrapper = s.nav`
 const SubnavLink = s(Link)`
   display: table-row;
   text-decoration: none;
+  width: 100%;
   padding: 7px;
   &:hover {
     text-decoration: underline;
@@ -102,6 +110,7 @@ const NavSingleWrapper = s.div`
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  width: 100%;
   @media screen and (min-width: 1000px) {
     &:hover ${SubnavWrapper} {
       display: table
@@ -115,6 +124,7 @@ const MenuIcon = s.div`
   position: relative;
   float: right;
   display: none;
+  padding-right: 10px;
   @media screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
@@ -126,7 +136,7 @@ const NavSingleTitle = s.div`
   padding: 10px;
   text-align: center;
   @media screen and (max-width: 1000px) {
-    border: 1px solid #f8ba32;
+    // border: 1px solid #f8ba32;
   }
 `
 
@@ -136,54 +146,49 @@ const HamburgerLine = s.div`
   background-color: black;
   margin: 3px 0;
 `
-
-const DownTriangle = s.div`
-  width: 0; 
-  height: 10px; 
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid black;
-  float: right;
-`
-
-const UpTriangle = s.div`
-  width: 0; 
-  height: 0; 
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid black;
-  float: right;
+const NavSingleTitleWrapper = s.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const navbarLinks = (small, selectNav, setSelectNav) => navLinks.map(link => (
+  <>
   <NavSingleWrapper>
     {
       (!small || (small && link.submenu.length === 0))
         ? <NavSingleTitle><NavLink to={link.url}>{link.name}</NavLink></NavSingleTitle>
-        : <NavSingleTitle onClick={() =>
+        : <NavSingleTitleWrapper onClick={() =>
           ((link.name === selectNav)
             ? setSelectNav('')
-            : setSelectNav(link.name))}
+            : setSelectNav(link.name))}><NavSingleTitle 
           >
             {link.name}
             {/* {link.name === selectNav
               ? <UpTriangle></UpTriangle>
               : <DownTriangle></DownTriangle>} */}
           </NavSingleTitle>
+          {selectNav !== link.name && <img src={DownTriangle} alt="Missing" style={{margin: 0}}/>}
+          {selectNav === link.name && <img src={UpTriangle} alt="Missing" style={{margin: 0}}/>}
+          </NavSingleTitleWrapper>
     }
     <SubnavWrapper>
       {
         (!small || (selectNav === link.name)) &&
         link.submenu.map(sublink => (
+          <>
           <SubnavLink
             to={sublink.url}
           >
             {sublink.name}
           </SubnavLink>
+          </>
         ))
       }
     </SubnavWrapper>
   </NavSingleWrapper>
+</>
+
 ))
 
 const Header = ({ siteTitle }) => {
