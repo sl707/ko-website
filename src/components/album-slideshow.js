@@ -157,7 +157,11 @@ const AlbumSubpanel = () => {
             </AlbumSlideshowSlide>
           ))} */}
           <Link to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
-            <AlbumSlideshowImage src={firstFivePosts[slideNumber - 1].image} alt='Missing Image'/>
+            {slideNumber === 1 && <AlbumSlideshowImage src={firstFivePosts[0].image} alt='Missing Image'/>}
+            {slideNumber === 2 && <AlbumSlideshowImage src={firstFivePosts[1].image} alt='Missing Image'/>}
+            {slideNumber === 3 && <AlbumSlideshowImage src={firstFivePosts[2].image} alt='Missing Image'/>}
+            {slideNumber === 4 && <AlbumSlideshowImage src={firstFivePosts[3].image} alt='Missing Image'/>}
+            {slideNumber === 5 && <AlbumSlideshowImage src={firstFivePosts[4].image} alt='Missing Image'/>}
           </Link>
         </AlbumSlideshowWrapper>
         <AlbumSlideDescriptionWrapper>
