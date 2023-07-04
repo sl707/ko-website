@@ -89,7 +89,7 @@ const AlbumSlideshowLeftButton = s.img`
   // transform: rotate(135deg);
   // -webkit-transform: rotate(135deg);
   // // color: white;
-  padding-left: 5px;
+  padding: 0 5px;
 `
 
 const AlbumSlideshowRightButton = s.img`
@@ -98,6 +98,7 @@ const AlbumSlideshowRightButton = s.img`
   // padding: 5px;
   // transform: rotate(-45deg);
   // -webkit-transform: rotate(-45deg);
+  padding: 0 5px;
 `
 
 const AlbumSlideshowImage = s.img`
@@ -117,6 +118,8 @@ const AlbumSlideTitle = s.p`
 
 const AlbumSlideText = s.p`
   font-size: 20px;
+  padding-bottom: 15px;
+  margin: 0;
   @media screen and (max-width: 800px) {
     font-size: 15px;
   }
@@ -131,7 +134,7 @@ const AlbumSlideContinue = s(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dcf9fc;
+  background-color: #ebfeff;
   gap: 5px;
 `
 
