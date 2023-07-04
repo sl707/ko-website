@@ -8,6 +8,8 @@ import postList from '../data/posts'
 import PostBlock from './post-block'
 import LeftArrow from '../images/slide-arrow-left.svg'
 import RightArrow from '../images/slide-arrow-right.svg'
+import SmallRightArrow from '../images/slide-arrow-right-small.svg'
+import ContinueArrow from '../images/continue-arrow.svg'
 
 const AlbumSubwrapper = s.div`
   // margin: 5px;
@@ -87,6 +89,7 @@ const AlbumSlideshowLeftButton = s.img`
   // transform: rotate(135deg);
   // -webkit-transform: rotate(135deg);
   // // color: white;
+  padding-left: 5px;
 `
 
 const AlbumSlideshowRightButton = s.img`
@@ -117,6 +120,19 @@ const AlbumSlideText = s.p`
   @media screen and (max-width: 800px) {
     font-size: 15px;
   }
+`
+
+const AlbumSlideContinue = s(Link)`
+  text-decoration: none;
+  border: solid black;
+  width:fit-content;
+  padding: 7px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dcf9fc;
+  gap: 5px;
 `
 
 const firstFivePosts = postList.slice(0, 5)
@@ -173,9 +189,10 @@ const AlbumSubpanel = () => {
           {firstFivePosts[slideNumber - 1].text.slice(0, 150)}...
           
           </AlbumSlideText>
-          <Link to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
-            더보기
-          </Link>
+            <AlbumSlideContinue to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
+            {'더보기'}
+            <img src={ContinueArrow} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0'}}/>
+            </AlbumSlideContinue>
         </AlbumSlideDescriptionWrapper>
         </AlbumSubwrapper2>
         <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} />

@@ -40,6 +40,7 @@ export const TextSubheadingSmall = s.h5`
 `
 
 export const Text = s.p`
+  white-space: pre-wrap;
 `
 
 export const BoldText = s.div`
