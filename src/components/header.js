@@ -169,7 +169,7 @@ const navbarLinks = (small, selectNav, setSelectNav) => navLinks.map(link => (
               : <DownTriangle></DownTriangle>} */}
           </NavSingleTitle>
           {selectNav !== link.name && <img src={DownTriangle} alt="Missing" style={{margin: 0}}/>}
-          {selectNav === link.name && <img src={UpTriangle} alt="Missing" style={{margin: 0}}/>}
+          {selectNav === link.name && <img src={UpTriangle} alt="Missing" style={{margin: 0, transform:'rotate(180deg)'}}/>}
           </NavSingleTitleWrapper>
     }
     <SubnavWrapper>

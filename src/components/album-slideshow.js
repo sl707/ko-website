@@ -165,7 +165,7 @@ const AlbumSubpanel = () => {
         새소식
       </AlbumSubtitle>
       <AlbumSubwrapper1>
-      <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} />
+      <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
       <AlbumSubwrapper2>
         <AlbumSlideshowWrapper>
           {/* {firstFivePosts.map(post => (
