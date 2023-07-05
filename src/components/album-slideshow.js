@@ -136,6 +136,7 @@ const AlbumSlideContinue = s(Link)`
   align-items: center;
   background-color: #ebfeff;
   gap: 5px;
+  border-width: thin;
 `
 
 const firstFivePosts = postList.slice(0, 5)
