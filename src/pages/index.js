@@ -8,6 +8,7 @@ import Seo from '../components/seo'
 import MainPanel from '../components/main-panel'
 import NewsPanel from '../components/news-panel'
 import MenuPanel from '../components/menu-panel'
+import InfoPanel from '../components/info-panel'
 // import * as styles from '../components/index.module.css'
 
 // const links = [
@@ -78,6 +79,7 @@ const IndexPage = () => (
     <Seo title="집"/>
     <MainPanel />
     <NewsPanel />
+    <InfoPanel />
     <MenuPanel />
   </Layout>
   // <>
