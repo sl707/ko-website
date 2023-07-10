@@ -15,7 +15,7 @@ const InfoBlockWrapper = s.div`
 const InfoBlockWrapper1 = s.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin: 0 auto;
   padding: 0 10px;
@@ -38,33 +38,46 @@ const InfoBlockImageWrapper = s.div`
 const InfoBlockText = s.p`
   display: flex;
   flex-basis: 50%;
-  font-size: 20px;
+  font-size: 17px;
   white-space: pre-wrap;
   padding: 5px 0;
+  text-align: justify;
+  text-justify: inter-word;
 `
 
-const BlockContent = ({ image, text, order }) => (
+const InfoBlockSubtitle = s.p`
+  display: flex;
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+  white-space: pre-wrap;
+`
+
+const BlockContent = ({ image, text, order, subtitle }) => (
   <>
     {order % 2 === 0 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
+    <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
     <InfoBlockText>{text}</InfoBlockText>
     {order % 2 === 1 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
   </>
 )
 
-const BlockContent1 = ({ image, text, order }) => (
+const BlockContent1 = ({ image, text, order, subtitle }) => (
   <>
     <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>
+    <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
     <InfoBlockText>{text}</InfoBlockText>
   </>
 )
 
-const InfoBlock = ({ image, text, order }) => (
+const InfoBlock = ({ image, text, order, subtitle }) => (
   <>
     <InfoBlockWrapper>
-      <BlockContent image={image} text={text} order={order} />
+      <BlockContent image={image} text={text} order={order} subtitle={subtitle} />
     </InfoBlockWrapper>
     <InfoBlockWrapper1>
-      <BlockContent1 image={image} text={text} order={order} />
+      <BlockContent1 image={image} text={text} order={order} subtitle={subtitle} />
     </InfoBlockWrapper1>
   </>
 )
