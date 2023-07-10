@@ -37,6 +37,7 @@ const InfoBlockImageWrapper = s.div`
 
 const InfoBlockText = s.p`
   display: flex;
+  flex-direction: column;
   flex-basis: 50%;
   font-size: 17px;
   white-space: pre-wrap;
@@ -46,8 +47,6 @@ const InfoBlockText = s.p`
 `
 
 const InfoBlockSubtitle = s.p`
-  display: flex;
-  align-self: flex-start;
   font-weight: bold;
   font-size: 18px;
   margin: 0;
@@ -57,8 +56,10 @@ const InfoBlockSubtitle = s.p`
 const BlockContent = ({ image, text, order, subtitle }) => (
   <>
     {order % 2 === 0 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
-    <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
-    <InfoBlockText>{text}</InfoBlockText>
+    <InfoBlockText>
+      <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
+      {text}
+    </InfoBlockText>
     {order % 2 === 1 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
   </>
 )
@@ -66,8 +67,10 @@ const BlockContent = ({ image, text, order, subtitle }) => (
 const BlockContent1 = ({ image, text, order, subtitle }) => (
   <>
     <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>
-    <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
-    <InfoBlockText>{text}</InfoBlockText>
+    <InfoBlockText>
+      <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
+      {text}
+    </InfoBlockText>
   </>
 )
 
