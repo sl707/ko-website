@@ -73,6 +73,7 @@ const AlbumSlideDescriptionWrapper = s.div`
   // justify-content: flex-start;
   // width: 50%;
   flex-basis: 45%;
+  align-items: center;
 `
 
 const AlbumSlideshowLeftButton = s.img`
@@ -114,6 +115,8 @@ const AlbumSlideText = s.p`
   font-size: 20px;
   padding-bottom: 15px;
   margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
   @media screen and (max-width: 800px) {
     font-size: 15px;
   }
@@ -189,7 +192,7 @@ const AlbumSubpanel = () => {
         <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
         <AlbumSubwrapper2>
           <AlbumSlideshowWrapper>
-            <Link to={getSlideUrl(firstFiveSlides[slideNumber - 1])} style={{ height: '100%', width: '100%', minWidth: '500px' }}>
+            <Link to={getSlideUrl(firstFiveSlides[slideNumber - 1])} style={{ height: '100%', width: '100%' }}>
               <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[0])} alt='Missing Image' style={{ display: slideNumber !== 1 && 'none'}}/>
               <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[1])} alt='Missing Image' style={{ display: slideNumber !== 2 && 'none'}}/>
               <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[2])} alt='Missing Image' style={{ display: slideNumber !== 3 && 'none'}}/>
