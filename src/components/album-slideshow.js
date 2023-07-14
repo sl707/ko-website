@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
 
-import navLinks from '../data/navigation'
-import postList from '../data/posts'
-import PostBlock from './post-block'
+import slideList from '../data/slides'
 import LeftArrow from '../images/slide-arrow-left.svg'
 import RightArrow from '../images/slide-arrow-right.svg'
-import SmallRightArrow from '../images/slide-arrow-right-small.svg'
 import ContinueArrow from '../images/continue-arrow.svg'
 
 const AlbumSubwrapper = s.div`
@@ -63,9 +59,6 @@ justify-content: space-around;
 }
 `
 
-const AlbumContainer = s.div`
-`
-
 const AlbumSlideshowWrapper = s.div`
   display: flex;
   align-items: center;
@@ -110,8 +103,9 @@ const AlbumSlideTitle = s.p`
   font-size: 30px;
   font-weight: 600;
   // color: white;
+  text-align: center;
+  margin: 0;  
   @media screen and (max-width: 800px) {
-    text-align: center;
     font-size: 20px;
   }
 `
@@ -128,7 +122,7 @@ const AlbumSlideText = s.p`
 const AlbumSlideContinue = s(Link)`
   text-decoration: none;
   border: solid black;
-  width:fit-content;
+  width: fit-content;
   padding: 7px;
   border-radius: 20px;
   display: flex;
@@ -137,70 +131,89 @@ const AlbumSlideContinue = s(Link)`
   background-color: #ebfeff;
   gap: 5px;
   border-width: thin;
+  align-self: center;
 `
 
-const firstFivePosts = postList.slice(0, 5)
+const AlbumSlideDate = s.p`
+  font-size: 20px;
+  // color: white;
+  text-align: center;
+  @media screen and (max-width: 800px) {
+    font-size: 15px;
+  }
+`
+
+const firstFiveSlides = slideList.slice(0, 5)
 
 const increaseSlide = (slideNum, slideNumFunc) => {
-  if (slideNum === 5) {
-    slideNumFunc(1)
-  } else {
-    slideNumFunc(slideNum + 1)
-  }
+  slideNum === 5 ? slideNumFunc(1) : slideNumFunc(slideNum + 1)
 }
 
 const decreaseSlide = (slideNum, slideNumFunc) => {
-  if (slideNum === 1) {
-    slideNumFunc(5)
-  } else {
-    slideNumFunc(slideNum - 1)
-  }
+  slideNum === 1 ? slideNumFunc(5) : slideNumFunc(slideNum - 1)
+}
+
+const getSlideImage = slideData => {
+  return slideData.type === 'post' ? slideData.image : slideData.newsImage
+}
+
+const getSlideTitle = slideData => {
+  return slideData.type === 'post' ? slideData.title : `고씨종보 ${slideData.newsNumber}호`
+}
+
+const getSlideDate = slideData => {
+  return slideData.type === 'post'
+    ? `(${slideData.date.toLocaleString('en-CA').slice(0, 10)})`
+    : `(${slideData.newsDate.toLocaleString('en-CA').slice(0, 10)})`
+}
+
+const getSlideText = slideData => {
+  return slideData.type === 'post' ? `${slideData.text.slice(0, 150)}...` :  ""
+}
+
+const getSlideUrl = slideData => {
+  return slideData.type === 'post'
+    ? `/post/${slideData.postId}`
+    : `/newspaper/${slideData.newsNumber}`
 }
 
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
+  console.log(firstFiveSlides)
   return (
     <AlbumSubwrapper>
       <AlbumSubtitle>
         새소식
       </AlbumSubtitle>
       <AlbumSubwrapper1>
-      <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
-      <AlbumSubwrapper2>
-        <AlbumSlideshowWrapper>
-          {/* {firstFivePosts.map(post => (
-            <AlbumSlideshowSlide>
-              <AlbumSlideshowImage src={post.image} />
-              <AlbumSlideshowImageText>
-                {post.text}
-              </AlbumSlideshowImageText>
-            </AlbumSlideshowSlide>
-          ))} */}
-          <Link to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
-            {slideNumber === 1 && <AlbumSlideshowImage src={firstFivePosts[0].image} alt='Missing Image'/>}
-            {slideNumber === 2 && <AlbumSlideshowImage src={firstFivePosts[1].image} alt='Missing Image'/>}
-            {slideNumber === 3 && <AlbumSlideshowImage src={firstFivePosts[2].image} alt='Missing Image'/>}
-            {slideNumber === 4 && <AlbumSlideshowImage src={firstFivePosts[3].image} alt='Missing Image'/>}
-            {slideNumber === 5 && <AlbumSlideshowImage src={firstFivePosts[4].image} alt='Missing Image'/>}
-          </Link>
-        </AlbumSlideshowWrapper>
-        <AlbumSlideDescriptionWrapper>
-          <AlbumSlideTitle>
-          {firstFivePosts[slideNumber - 1].title}
-
-          </AlbumSlideTitle>
-          <AlbumSlideText>
-          {firstFivePosts[slideNumber - 1].text.slice(0, 150)}...
-          
-          </AlbumSlideText>
-            <AlbumSlideContinue to={`/post/${firstFivePosts[slideNumber - 1].postId}`}>
-            {'더보기'}
-            <img src={ContinueArrow} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0'}}/>
-            </AlbumSlideContinue>
-        </AlbumSlideDescriptionWrapper>
+        <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
+        <AlbumSubwrapper2>
+          <AlbumSlideshowWrapper>
+            <Link to={getSlideUrl(firstFiveSlides[slideNumber - 1])} style={{ height: '100%', width: '100%', minWidth: '500px' }}>
+              <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[0])} alt='Missing Image' style={{ display: slideNumber !== 1 && 'none'}}/>
+              <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[1])} alt='Missing Image' style={{ display: slideNumber !== 2 && 'none'}}/>
+              <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[2])} alt='Missing Image' style={{ display: slideNumber !== 3 && 'none'}}/>
+              <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[3])} alt='Missing Image' style={{ display: slideNumber !== 4 && 'none'}}/>
+              <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[4])} alt='Missing Image' style={{ display: slideNumber !== 5 && 'none'}}/>
+            </Link>
+          </AlbumSlideshowWrapper>
+          <AlbumSlideDescriptionWrapper>
+            <AlbumSlideTitle>
+              {getSlideTitle(firstFiveSlides[slideNumber - 1])}
+            </AlbumSlideTitle>
+            <AlbumSlideDate>
+              {getSlideDate(firstFiveSlides[slideNumber - 1])}
+            </AlbumSlideDate>
+            <AlbumSlideText>
+              {getSlideText(firstFiveSlides[slideNumber - 1])}
+            </AlbumSlideText>
+              <AlbumSlideContinue to={getSlideUrl(firstFiveSlides[slideNumber - 1])}>
+                {'더보기'}
+                <img src={ContinueArrow} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0'}}/>
+              </AlbumSlideContinue>
+          </AlbumSlideDescriptionWrapper>
         </AlbumSubwrapper2>
         <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
-
       </AlbumSubwrapper1>
     </AlbumSubwrapper>
   )
