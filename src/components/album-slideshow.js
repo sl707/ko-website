@@ -26,7 +26,7 @@ const AlbumSubtitle = s.div`
   text-align: center;
   font-size: 35px;
   font-weight: 700;
-  padding: 10px;
+  padding-top: 25px;
   // color: white;
   @media screen and (max-width: 800px) {
     font-size: 25px;
@@ -74,25 +74,29 @@ const AlbumSlideDescriptionWrapper = s.div`
   // width: 50%;
   flex-basis: 45%;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `
 
 const AlbumSlideshowLeftButton = s.img`
-  // border: solid black;
-  // border-width: 0 5px 5px 0;
-  // padding: 5px;
-  // transform: rotate(135deg);
-  // -webkit-transform: rotate(135deg);
-  // // color: white;
-  padding: 0 5px;
+  display: flex;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #ebfeff;
+  border: solid black;
+  border-width: thin;
+  border-radius: 20px;
 `
 
 const AlbumSlideshowRightButton = s.img`
-  // border: solid black;
-  // border-width: 0 5px 5px 0;
-  // padding: 5px;
-  // transform: rotate(-45deg);
-  // -webkit-transform: rotate(-45deg);
-  padding: 0 5px;
+  display: flex;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #ebfeff;
+  border: solid black;
+  border-width: thin;
+  border-radius: 20px;
 `
 
 const AlbumSlideshowImage = s.img`
@@ -146,6 +150,12 @@ const AlbumSlideDate = s.p`
   }
 `
 
+const AlbumSlideOptionsWrapper = s.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`
+
 const firstFiveSlides = slideList.slice(0, 5)
 
 const increaseSlide = (slideNum, slideNumFunc) => {
@@ -189,7 +199,7 @@ const AlbumSubpanel = () => {
         새소식
       </AlbumSubtitle>
       <AlbumSubwrapper1>
-        <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
+        {/* <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/> */}
         <AlbumSubwrapper2>
           <AlbumSlideshowWrapper>
             <Link to={getSlideUrl(firstFiveSlides[slideNumber - 1])} style={{ height: '100%', width: '100%' }}>
@@ -210,13 +220,17 @@ const AlbumSubpanel = () => {
             <AlbumSlideText>
               {getSlideText(firstFiveSlides[slideNumber - 1])}
             </AlbumSlideText>
+            <AlbumSlideOptionsWrapper>
+              <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/>
               <AlbumSlideContinue to={getSlideUrl(firstFiveSlides[slideNumber - 1])}>
                 {'더보기'}
                 <img src={ContinueArrow} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0'}}/>
               </AlbumSlideContinue>
+              <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
+            </AlbumSlideOptionsWrapper>
           </AlbumSlideDescriptionWrapper>
         </AlbumSubwrapper2>
-        <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} />
+        {/* <AlbumSlideshowRightButton src={RightArrow} alt="Right Arrow" onClick={() => increaseSlide(slideNumber, setSlideNumber)} /> */}
       </AlbumSubwrapper1>
     </AlbumSubwrapper>
   )
