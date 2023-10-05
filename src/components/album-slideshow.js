@@ -176,8 +176,8 @@ const getSlideTitle = slideData => {
 
 const getSlideDate = slideData => {
   return slideData.type === 'post'
-    ? `(${slideData.date.toLocaleString('en-CA').slice(0, 10)})`
-    : `(${slideData.newsDate.toLocaleString('en-CA').slice(0, 10)})`
+    ? `${slideData.date.toLocaleString('en-CA').slice(0, 10)}`
+    : `${slideData.newsDate.toLocaleString('en-CA').slice(0, 10)}`
 }
 
 const getSlideText = slideData => {

@@ -5,7 +5,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import ImageLayout from '../components/image-layout'
 
 const CentralmembersPage = () => (
-  <ImageLayout imageUrl={'/중앙임원2.jpg'} title={'임 원'}/>
+  <ImageLayout imageUrl={'/중앙임원3.jpg'} title={'임 원'}/>
 )
 
 export default CentralmembersPage
