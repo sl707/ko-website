@@ -6,7 +6,6 @@ const ImageWrapper = s.img`
   display: flex;
   align-items: center;
   justify-content: center;
-  object-fit: scale-down;
   width: 100%;
 `
 
