@@ -1,4 +1,4 @@
-const postList = [
+const unsortedPostList = [
   {
     title: '제47회 군산시 정기총회',
     text: ('고재갑 중앙종문회장 · 고재유 전 광주광역시장 · 고재규 전사관(중앙종문회 부회장) · 고문구 초헌관(중안종문회 이사) · 고달석 아헌관(중앙조운회 이사) · 종헌관 고삼식(중앙종문회 이사) · 숭모사 고영곤 총무이사 · 고형곤 재무이사 · 고병채 수석부회장 · 고영근 감사 · 고하영 감사 · 고동영 이사 · 군상종문회 고선풍 회장 · 고봉희 재무 · 고찬영 임피회장 · 고창종문회 고황규 회장(중앙종문회 부회장) · 고광헌 도산사 대종회 전직회장 · 고양규 화수회장 · 고용진 재무 · 음성종문회 고제해 회장 · 고재철 감사 · 광산종문회 고봉석 수석부회장(중앙종문회 이사) · 고병선 출렬공 총무 · 광주·전남종문회 고윤근 수석부회장 · 고창옥 부회장 · 고행석 재무 · 울산종문회 고성용 전회장(중앙종문회 이사) · 고태진 사무국장 · 고태일 훈정공회장 · 고영택 천정공회장 · 익산종문회 고금만 회장 · 고용만 총무 고홍곤 사무국장 · 부산종문회 고영철 회장(중앙종문회 이사) · 고재경 사무처장 · 고환규 전주회장 · 중앙종문회 고재훈 총무국장, 고영기 업무국장'),
@@ -227,9 +227,27 @@ const postList = [
     image: '/중국종문회.jpeg',
     type: '총회/이사회',
     postId: 16
+  },
+  {
+    postTitleList: ['군산종문회', '숭모사', '염의서원 대표자 회의'],
+    title: '군산종문회 . 숭모사 . 염의서원 대표자 회의',
+    text: '2023년 11월 9일(목) 11:00 군산시 어시장 음식점에서 중앙종문회와 군산종문회 및 숭모사유지회, 염의서원 대표자들이 긴급 모임을 갖고 숭모사유지회의 발전을 위하여 전국적인 규모로 조직을 확대 개편하고 2024년 제49차「숭모사 대제전」을 성대하게 개최하기 위하여 기획 단계에서부터 철저한 준비에 만전을 기하기로 의견을 모았다. \n\n' +
+    '이날 참석자는 다음과 같다. \n' +
+    '고 재 갑   중앙종문회장  \n' +
+    '고 영 곤   숭모사유지회 총무이사 겸 중앙종문회 부회장 \n' +
+    '고 선 풍   군산종문회 회장 겸 중앙종문회 부회장 \n' +
+    '고 봉 희   염의서원 원장 ․ 중앙종문회 이사 \n' +
+    '고 하 영   숭모사유지회 감사 ․ 중앙종문회 이사 \n' +
+    '고 형 권   숭모사유지회 재무이사 ․ 중앙종문회 이사',
+    date: new Date('2023-11-09'),
+    image: '/군산종문회.jpeg',
+    type: '기타',
+    postId: 17
   }
 ]
 
-const sortedPostList = postList.sort((a, b) => b.date.getTime() - a.date.getTime())
-
-export default sortedPostList
+export const postList = unsortedPostList.sort((a, b) => b.date.getTime() - a.date.getTime())
+export const gatheringPostList = postList.filter(post => post.type === '총회/이사회')
+export const jehyangPostList = postList.filter(post => post.type === '제향')
+export const institutePostList = postList.filter(post => post.type === '연수원')
+export const otherEventsPostList = postList.filter(post => post.type === '기타')
