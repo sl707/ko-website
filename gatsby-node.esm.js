@@ -1,5 +1,5 @@
 import alertList from './src/data/alerts'
-import postList from './src/data/posts'
+import {postList} from './src/data/posts'
 import newspaperList from './src/data/newspapers'
 
 exports.createPages = ({ actions }) => {

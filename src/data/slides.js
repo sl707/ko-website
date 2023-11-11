@@ -1,4 +1,4 @@
-import postList from './posts'
+import {postList} from './posts'
 import newspaperList from './newspapers'
 
 const labelledPostList = postList.map(p => {
