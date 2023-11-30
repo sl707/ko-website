@@ -15,13 +15,15 @@ const NewspaperPage = ({ pageContext: { paper } }) => (
   <Layout pageTitle={'종보'} pageSubtitle={`${paper.newsNumber}호`}>
     <NewsWrapper>
       <NewsImage src={`/news/${paper.newsNumber}-1.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-2.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-3.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-4.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-5.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-6.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-7.${paper.newsImageType ?? 'jpg'}`} />
-      <NewsImage src={`/news/${paper.newsNumber}-8.${paper.newsImageType ?? 'jpg'}`} />
+      {!paper.newsFirstOnly && <>
+        <NewsImage src={`/news/${paper.newsNumber}-2.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-3.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-4.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-5.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-6.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-7.${paper.newsImageType ?? 'jpg'}`} />
+        <NewsImage src={`/news/${paper.newsNumber}-8.${paper.newsImageType ?? 'jpg'}`} />
+      </>}
     </NewsWrapper>
   </Layout>
 )
