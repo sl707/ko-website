@@ -9,7 +9,7 @@ import Post from '../components/post'
 const StandardPost = ({ pageContext: { post, type } }) => {
   return (
   <Layout pageTitle={type} pageSubtitle={post.title}>
-    <Post imageUrl={post.image} text={post.text} date={post.date}/>
+    <Post imageUrl={post.image} imageTwoUrl={post.imageTwo} text={post.text} date={post.date}/>
   </Layout>
   )
 }
