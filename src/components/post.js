@@ -32,6 +32,14 @@ const Post = props => (
       src={props.imageUrl}
       alt="MISSING JPG"
     />
+    <br />
+    {
+      props.imageTwoUrl &&
+      <PostImage
+        src={props.imageTwoUrl}
+        alt="MISSING JPG"
+      />
+    }
     <TextSubheading style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}>
         {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
       </TextSubheading>
