@@ -32,13 +32,20 @@ const Post = props => (
       src={props.imageUrl}
       alt="MISSING JPG"
     />
-    <br />
+    {props.imageCaption && <TextWrapperOne style={{ padding: '0px', width: '100%' }}>
+      <Text style={{ padding: '0px', margin: '0px', fontSize: '14px', fontStyle: 'italic', }}>
+        {props.imageCaption}
+      </Text>
+    </TextWrapperOne>}
     {
       props.imageTwoUrl &&
+      <>
+      <br />
       <PostImage
         src={props.imageTwoUrl}
         alt="MISSING JPG"
       />
+      </>
     }
     <TextSubheading style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}>
         {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
