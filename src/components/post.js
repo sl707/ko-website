@@ -33,7 +33,7 @@ const Post = props => (
       alt="MISSING JPG"
     />
     {props.imageCaption && <TextWrapperOne style={{ padding: '0px', width: '100%' }}>
-      <Text style={{ padding: '0px', margin: '0px', fontSize: '14px', fontStyle: 'italic', }}>
+      <Text style={{ padding: '0px', margin: '0px', fontSize: '16px', fontStyle: 'italic', }}>
         {props.imageCaption}
       </Text>
     </TextWrapperOne>}
