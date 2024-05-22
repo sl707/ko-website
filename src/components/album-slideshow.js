@@ -20,16 +20,15 @@ const AlbumSubwrapper = s.div`
 `
 
 const AlbumSubtitle = s.div`
+  font-size: 25px;
   position: relative;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  font-size: 35px;
   font-weight: 700;
   padding-top: 25px;
-  // color: white;
-  @media screen and (max-width: 800px) {
-    font-size: 25px;
+  @media screen and (min-width: 800px) {
+    display: none;
   }
 `
 
@@ -64,6 +63,7 @@ const AlbumSlideshowWrapper = s.div`
   align-items: center;
   // justify-content: space-between;
   flex-basis: 45%;
+  flex-direction: column;
 `
 
 const AlbumSlideDescriptionWrapper = s.div`
@@ -111,7 +111,7 @@ const AlbumSlideTitle = s.p`
   text-align: center;
   margin: 0;  
   @media screen and (max-width: 800px) {
-    font-size: 20px;
+    display: none;
   }
 `
 
@@ -190,13 +190,16 @@ const getSlideUrl = slideData => {
     : `/newspaper/${slideData.newsNumber}`
 }
 
+const getSlideCaption = slideData => {
+  return slideData.imageCaption
+}
+
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
-  console.log(firstFiveSlides)
   return (
     <AlbumSubwrapper>
       <AlbumSubtitle>
-        새소식
+        {getSlideTitle(firstFiveSlides[slideNumber - 1])}
       </AlbumSubtitle>
       <AlbumSubwrapper1>
         {/* <AlbumSlideshowLeftButton src={LeftArrow} alt="Left Arrow" onClick={() => decreaseSlide(slideNumber, setSlideNumber)} style={{transform: 'rotate(180deg)'}}/> */}
@@ -209,6 +212,9 @@ const AlbumSubpanel = () => {
               <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[3])} alt='Missing Image' style={{ display: slideNumber !== 4 && 'none'}}/>
               <AlbumSlideshowImage src={getSlideImage(firstFiveSlides[4])} alt='Missing Image' style={{ display: slideNumber !== 5 && 'none'}}/>
             </Link>
+            <AlbumSlideText style={{ fontSize: '16px', fontStyle: 'italic' }}>
+              {getSlideCaption(firstFiveSlides[slideNumber - 1])}
+            </AlbumSlideText>
           </AlbumSlideshowWrapper>
           <AlbumSlideDescriptionWrapper>
             <AlbumSlideTitle>
