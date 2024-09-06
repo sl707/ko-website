@@ -325,6 +325,14 @@ const unsortedPostList = [
     imageCaption: `*2024년 5월 20일(월) 11:00 전남 영암군의회 고화자 부의장실`,
     type: '기타',
     postId: 24
+  },
+  {
+    title: '고경명 의병장 추모 연극',
+    text: '',
+    date: new Date('2024-09-01'),
+    image: '/고경명.jpeg',
+    type: '기타',
+    postId: 25,
   }
 ]
 

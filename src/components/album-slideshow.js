@@ -181,7 +181,7 @@ const getSlideDate = slideData => {
 }
 
 const getSlideText = slideData => {
-  return slideData.type === 'post' ? `${slideData.text.slice(0, 150)}...` :  ""
+  return (slideData.type === 'post' && slideData.text !== '') ? `${slideData.text.slice(0, 150)}...` :  ""
 }
 
 const getSlideUrl = slideData => {
