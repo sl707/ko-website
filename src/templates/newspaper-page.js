@@ -24,6 +24,18 @@ const NewspaperPage = ({ pageContext: { paper } }) => (
         <NewsImage src={`/news/${paper.newsNumber}-7.${paper.newsImageType ?? 'jpg'}`} />
         <NewsImage src={`/news/${paper.newsNumber}-8.${paper.newsImageType ?? 'jpg'}`} />
       </>}
+      {
+        !paper.newsFirstOnly && paper.newsDoublePages && <>
+          <NewsImage src={`/news/${paper.newsNumber}-9.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-10.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-11.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-12.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-13.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-14.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-15.${paper.newsImageType ?? 'jpg'}`} />
+          <NewsImage src={`/news/${paper.newsNumber}-16.${paper.newsImageType ?? 'jpg'}`} />
+        </>
+      }
     </NewsWrapper>
   </Layout>
 )
