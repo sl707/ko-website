@@ -1,5 +1,55 @@
 const newspaperList = [
   {
+    newsNumber: 104,
+    newsDate: new Date('2016-10-15'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/104-1.jpeg',
+    newsDoublePages: true,
+  },
+  {
+    newsNumber: 105,
+    newsDate: new Date('2017-01-02'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/105-1.jpeg',
+    newsDoublePages: true,
+  },
+  {
+    newsNumber: 106,
+    newsDate: new Date('2017-03-02'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/106-1.jpeg',
+  },
+  {
+    newsNumber: 107,
+    newsDate: new Date('2017-05-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/107-1.jpeg',
+  },
+  {
+    newsNumber: 108,
+    newsDate: new Date('2017-07-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/108-1.jpeg',
+  },
+  {
+    newsNumber: 109,
+    newsDate: new Date('2017-09-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/109-1.jpeg',
+  },
+  {
+    newsNumber: 110,
+    newsDate: new Date('2017-11-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/110-1.jpeg',
+  },
+  {
+    newsNumber: 111,
+    newsDate: new Date('2018-01-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/111-1.jpeg',
+  },
+  {
     newsNumber: 112,
     newsDate: new Date('2018-03-01'),
     newsImageType: 'jpeg',
