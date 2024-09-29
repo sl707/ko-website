@@ -1,17 +1,108 @@
 const newspaperList = [
   {
+    newsNumber: 90,
+    newsDate: new Date('2012-01-17'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/90-1.jpeg',
+    newsNumPages: 12,
+  },
+  {
+    newsNumber: 91,
+    newsDate: new Date('2012-05-15'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/91-1.jpeg',
+  },
+  {
+    newsNumber: 92,
+    newsDate: new Date('2012-09-24'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/92-1.jpeg',
+  },
+  {
+    newsNumber: 93,
+    newsDate: new Date('2013-01-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/93-1.jpeg',
+  },
+  {
+    newsNumber: 94,
+    newsDate: new Date('2013-05-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/94-1.jpeg',
+    newsNumPages: 12,
+  },
+  {
+    newsNumber: 95,
+    newsDate: new Date('2013-09-27'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/95-1.jpeg',
+    newsNumPages: 12,
+  },
+  {
+    newsNumber: 96,
+    newsDate: new Date('2014-01-29'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/96-1.jpeg',
+    newsNumPages: 12,
+  },
+  {
+    newsNumber: 97,
+    newsDate: new Date('2014-06-20'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/97-1.jpeg',
+  },
+  {
+    newsNumber: 98,
+    newsDate: new Date('2014-10-15'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/98-1.jpeg',
+  },
+  {
+    newsNumber: 99,
+    newsDate: new Date('2015-01-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/99-1.jpeg',
+    newsNumPages: 12
+  },
+  {
+    newsNumber: 100,
+    newsDate: new Date('2015-06-15'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/100-1.jpeg',
+    newsNumPages: 16
+  },
+  {
+    newsNumber: 101,
+    newsDate: new Date('2015-09-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/101-1.jpeg'
+  },
+  {
+    newsNumber: 102,
+    newsDate: new Date('2016-01-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/102-1.jpeg',
+    newsNumPages: 16
+  },
+  {
+    newsNumber: 103,
+    newsDate: new Date('2016-06-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/103-1.jpeg',
+  },
+  {
     newsNumber: 104,
     newsDate: new Date('2016-10-15'),
     newsImageType: 'jpeg',
     newsImage: '/news/104-1.jpeg',
-    newsDoublePages: true,
+    newsNumPages: 16,
   },
   {
     newsNumber: 105,
     newsDate: new Date('2017-01-02'),
     newsImageType: 'jpeg',
     newsImage: '/news/105-1.jpeg',
-    newsDoublePages: true,
+    newsNumPages: 16,
   },
   {
     newsNumber: 106,
