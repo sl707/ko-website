@@ -23,7 +23,6 @@ const newspaperList = [
     newsDate: new Date('2013-01-30'),
     newsImageType: 'jpeg',
     newsImage: '/news/93-1.jpeg',
-    newsFirstOnly: true,
   },
   {
     newsNumber: 94,
@@ -71,6 +70,12 @@ const newspaperList = [
     newsImageType: 'jpeg',
     newsImage: '/news/100-1.jpeg',
     newsNumPages: 16
+  },
+  {
+    newsNumber: 101,
+    newsDate: new Date('2015-09-30'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/101-1.jpeg'
   },
   {
     newsNumber: 102,
