@@ -1,5 +1,23 @@
 const newspaperList = [
   {
+    newsNumber: 87,
+    newsDate: new Date('2011-01-05'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/87-1.jpeg',
+  },
+  {
+    newsNumber: 88,
+    newsDate: new Date('2011-05-20'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/88-1.jpeg',
+  },
+  {
+    newsNumber: 89,
+    newsDate: new Date('2011-09-10'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/89-1.jpeg',
+  },
+  {
     newsNumber: 90,
     newsDate: new Date('2012-01-17'),
     newsImageType: 'jpeg',
