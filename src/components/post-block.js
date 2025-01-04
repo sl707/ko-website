@@ -32,6 +32,8 @@ const PostSlideText = s.div`
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   background: white;
+  word-break: keep-all;
+  line-break: strict;
 `
 const PostBlock = props => (
   <PostWrapper style={props.front ? {} : { width: '225px' }}>
