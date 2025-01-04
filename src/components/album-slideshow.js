@@ -121,6 +121,8 @@ const AlbumSlideText = s.p`
   margin: 0;
   text-align: justify;
   text-justify: inter-word;
+  word-break: keep-all;
+  line-break: strict;
   @media screen and (max-width: 800px) {
     font-size: 15px;
   }
