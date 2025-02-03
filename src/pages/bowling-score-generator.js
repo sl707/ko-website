@@ -4,10 +4,11 @@ import s from 'styled-components'
 
 const BowlingScoreGenerator = () => {
   const [score, setScore] = useState([])
-
+  const [frame, setFrame] = useState(-1)
   const [cumScore, setCumScore] = useState([])
 
   const generateNewScore = () => {
+    setFrame(-1)
     const strikeProb = 0.4
     const spareProb = 0.75
     const spareNumProbs = [
@@ -59,6 +60,12 @@ const BowlingScoreGenerator = () => {
     setScore(newScore)
   }
 
+  const showFrame = () => {
+    if (frame < 9) {
+      setFrame(frame + 1)
+    }
+  }
+
   const calculateScore = () => {
     let cumScore = 0
     let rolls = []
@@ -107,10 +114,11 @@ const BowlingScoreGenerator = () => {
     <div>
       <div>
         {score.map((elem, i) => (
-          <p key={i}>{elem}</p>
+          i <= frame && <p key={i}>{elem}</p>
         ))}
       </div>
       <button onClick={() => generateNewScore()}>Regenerate Score</button>
+      <button onClick={() => showFrame()}>Show Frame</button>
       <button onClick={() => calculateScore()}>Calculate Score</button>
       <div>{cumScore}</div>
     </div>
