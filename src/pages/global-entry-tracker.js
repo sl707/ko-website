@@ -10,7 +10,7 @@ const GlobalEntryTracker = () => {
     // Auto-refresh the page every 1 minute (60,000 ms)
     const interval = setInterval(() => {
       window.location.reload();  // Reloads the page
-    }, 60000);  // 60,000 ms = 1 minute
+    }, 300000);  // 60,000 ms = 1 minute
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);
@@ -81,7 +81,7 @@ const GlobalEntryTracker = () => {
         Available Global Entry Interview Times at Philadelphia International Airport
       </h1>
       <h2>
-        Auto-refreshes every minute
+        Auto-refreshes every 5 minutes
       </h2>
       <ul style={{
         fontSize: '96px',      // Make the font bigger
