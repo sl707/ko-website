@@ -1,10 +1,20 @@
-// Thanks ChatGPT
+// Thanks ChatGPT, actually tho
 import React, { useEffect, useState } from 'react'
 
 const GlobalEntryTracker = () => {
   const [timestamps, setTimestamps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    // Auto-refresh the page every 1 minute (60,000 ms)
+    const interval = setInterval(() => {
+      window.location.reload();  // Reloads the page
+    }, 60000);  // 60,000 ms = 1 minute
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Function to fetch data, filter, and sort it
@@ -70,6 +80,9 @@ const GlobalEntryTracker = () => {
       <h1>
         Available Global Entry Interview Times at Philadelphia International Airport
       </h1>
+      <h2>
+        Auto-refreshes every minute
+      </h2>
       <ul style={{
         fontSize: '96px',      // Make the font bigger
         padding: '30px',       // Add some padding inside the list
