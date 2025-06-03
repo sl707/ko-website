@@ -20,10 +20,15 @@ const NewspaperPage = ({ pageContext: { paper } }) => (
           <NewsImage src={`/news/${paper.newsNumber}-2.${paper.newsImageType ?? 'jpg'}`} />
           <NewsImage src={`/news/${paper.newsNumber}-3.${paper.newsImageType ?? 'jpg'}`} />
           <NewsImage src={`/news/${paper.newsNumber}-4.${paper.newsImageType ?? 'jpg'}`} />
-          <NewsImage src={`/news/${paper.newsNumber}-5.${paper.newsImageType ?? 'jpg'}`} />
-          <NewsImage src={`/news/${paper.newsNumber}-6.${paper.newsImageType ?? 'jpg'}`} />
-          <NewsImage src={`/news/${paper.newsNumber}-7.${paper.newsImageType ?? 'jpg'}`} />
-          <NewsImage src={`/news/${paper.newsNumber}-8.${paper.newsImageType ?? 'jpg'}`} />
+          {
+            (!paper.newsNumPages || paper.newsNumPages >= 8) &&
+            <>
+              <NewsImage src={`/news/${paper.newsNumber}-5.${paper.newsImageType ?? 'jpg'}`} />
+              <NewsImage src={`/news/${paper.newsNumber}-6.${paper.newsImageType ?? 'jpg'}`} />
+              <NewsImage src={`/news/${paper.newsNumber}-7.${paper.newsImageType ?? 'jpg'}`} />
+              <NewsImage src={`/news/${paper.newsNumber}-8.${paper.newsImageType ?? 'jpg'}`} />
+            </>
+          }
           {
             paper.newsNumPages >= 12 &&
             <>
