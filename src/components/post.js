@@ -52,7 +52,7 @@ const Post = props => (
       </TextSubheading>
     <TextWrapperOne>
       <Text>
-        {props.text}
+        {props.text && props.text.replace(/\n{3,}|\n{2}/g, match => match.length >= 3 ? '\n\n' : '\n')}
       </Text>
     </TextWrapperOne>
   </PostWrapper>
