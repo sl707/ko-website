@@ -367,7 +367,7 @@ const unsortedPostList = [
 초헌관 고주환 상주종문회장\n
 아헌관 고진협 영월종문회 이사\n
 종헌관 고복규 영월종문회 이사`,
-    date: new Date('2025-10-13'),
+    date: new Date('2025-10-03'),
     image: '/영월군2025.jpg',
     type: '제향',
     postId: 28,
