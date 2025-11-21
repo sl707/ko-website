@@ -688,25 +688,6 @@ const GoodsmileTracker = () => {
             Test Alert Sound
           </button>
         </div>
-        
-        <div>
-          <button 
-            onClick={() => {
-              window.open('https://nhentai.net/random/', '_blank');
-            }}
-            style={{
-              padding: '5px 10px',
-              backgroundColor: '#4285f4',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '14px'
-            }}
-          >
-            I'm Feeling Lucky :)
-          </button>
-        </div>
             </div>
           )}
         </div>
