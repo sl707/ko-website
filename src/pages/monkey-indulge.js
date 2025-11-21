@@ -75,12 +75,12 @@ const GoodsmileTracker = () => {
       let effectiveDurationInSeconds;
       
       if (actualPagesFetched > 1 && !hasAutoAdjustedDuration) {
-        // Auto-set to 5 minutes if multiple pages were fetched (only once)
+        // Auto-set to 3 minutes if multiple pages were fetched (only once)
         console.log(`Multiple pages fetched (${actualPagesFetched}), automatically setting refresh to 5 minutes`);
-        setRefreshDuration(2);
+        setRefreshDuration(3);
         setRefreshUnit('minutes');
         setHasAutoAdjustedDuration(true);
-        effectiveDurationInSeconds = 5 * 60; // 5 minutes
+        effectiveDurationInSeconds = 3 * 60; // 3 minutes
       } else {
         // Use user setting with minimum enforcement
         if (refreshUnit === 'seconds') {
