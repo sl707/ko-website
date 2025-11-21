@@ -32,6 +32,9 @@ const GoodsmileTracker = () => {
   const [previousProducts, setPreviousProducts] = useState(new Set());
   const [newProducts, setNewProducts] = useState([]);
   
+  // Loading progress tracking
+  const [loadingProgress, setLoadingProgress] = useState({ currentPage: 0, totalProducts: 0 });
+  
   // Store all products from all pages (before filtering)
   const [allProducts, setAllProducts] = useState([]);
   const [masterDocHtml, setMasterDocHtml] = useState('');
@@ -89,9 +92,11 @@ const GoodsmileTracker = () => {
   useEffect(() => {
     // Function to fetch data from all pages
     const fetchData = async () => {
+      let consecutiveErrors = 0; // Move to function scope
+      
       try {
         const proxyUrl = 'https://corsproxy.io/?';
-        const baseUrl = 'https://www.goodsmileus.com/collections/on-sale?sort_by=price-ascending';
+        const baseUrl = 'https://www.goodsmileus.com/collections/on-sale?filter.p.product_type=Scale+Figure&sort_by=price-ascending';
         
         let allProductItems = [];
         let currentPage = 1;
@@ -104,10 +109,37 @@ const GoodsmileTracker = () => {
           const targetUrl = currentPage === 1 ? baseUrl : `${baseUrl}&page=${currentPage}`;
           console.log(`Fetching page ${currentPage}...`);
           
-          const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
+          // Update loading progress
+          setLoadingProgress({ currentPage, totalProducts: allProductItems.length });
+          
+          // Add moderate random delay between 800-1500ms between requests (except for the first page)
+          if (currentPage > 1) {
+            const randomDelay = Math.floor(Math.random() * (1500 - 800 + 1)) + 800;
+            console.log(`Waiting ${randomDelay}ms before next request...`);
+            await new Promise(resolve => setTimeout(resolve, randomDelay));
+          }
+          
+          // Add headers to appear more like a real browser
+          const headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
+          };
+          
+          const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), { headers });
           
           if (!response.ok) {
-            throw new Error(`Network response was not ok for page ${currentPage}`);
+            if (response.status === 429 || response.status === 503) {
+              console.log(`Rate limited on page ${currentPage}, waiting 30 seconds...`);
+              await new Promise(resolve => setTimeout(resolve, 30000));
+              // Retry the same page
+              continue;
+            }
+            throw new Error(`Network response was not ok for page ${currentPage}: ${response.status}`);
           }
           
           const htmlText = await response.text();
@@ -121,6 +153,9 @@ const GoodsmileTracker = () => {
           } else {
             console.log(`Found ${productItems.length} products on page ${currentPage}`);
             allProductItems = [...allProductItems, ...Array.from(productItems)];
+            
+            // Update progress with new product count
+            setLoadingProgress({ currentPage, totalProducts: allProductItems.length });
             
             // Use the first page as our master document to preserve styling
             if (currentPage === 1) {
@@ -198,7 +233,18 @@ const GoodsmileTracker = () => {
         applyFiltering(processedProducts, masterDoc);
 
       } catch (err) {
-        setError(err.message);
+        console.log('Fetch error:', err);
+        if (err.message.includes('429') || err.message.includes('503')) {
+          consecutiveErrors++;
+          const backoffDelay = Math.min(60000, 5000 * Math.pow(2, consecutiveErrors));
+          console.log(`Rate limit error, backing off for ${backoffDelay}ms`);
+          setError(`Rate limited. Retrying in ${Math.ceil(backoffDelay/1000)} seconds...`);
+          setTimeout(() => {
+            window.location.reload();
+          }, backoffDelay);
+        } else {
+          setError(err.message);
+        }
       } finally {
         setLoading(false);
       }
@@ -381,7 +427,18 @@ const GoodsmileTracker = () => {
   }, [basePriceThreshold, percentThreshold, allProducts, masterDocHtml]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <h2>Loading Goodsmile Tracker...</h2>
+        {loadingProgress.currentPage > 0 ? (
+          <p>
+            Fetching page {loadingProgress.currentPage} - Found {loadingProgress.totalProducts} products so far
+          </p>
+        ) : (
+          <p>Starting to fetch product data...</p>
+        )}
+      </div>
+    );
   }
 
   if (error) {
@@ -516,7 +573,7 @@ const GoodsmileTracker = () => {
           zIndex: 100
         }}>
           <h2 style={{ margin: 0, color: '#0284c7' }}>
-            Goodsmile Sale Tracker - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
+            Goodsmile Sale Tracker (Scale Figures Only) - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
           </h2>
         </div>
       )}
