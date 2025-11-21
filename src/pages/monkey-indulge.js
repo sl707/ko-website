@@ -29,11 +29,16 @@ const GoodsmileTracker = () => {
   const [autoReloadEnabled, setAutoReloadEnabled] = useState(() => getStoredSetting('autoReload', false));
   const [percentThreshold, setPercentThreshold] = useState(() => getStoredSetting('percentThreshold', 50));
   const [basePriceThreshold, setBasePriceThreshold] = useState(() => getStoredSetting('basePriceThreshold', 95));
-  const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes
+  const [basePriceCeiling, setBasePriceCeiling] = useState(() => getStoredSetting('basePriceCeiling', 300));
+  const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes/seconds
+  const [refreshUnit, setRefreshUnit] = useState(() => getStoredSetting('refreshUnit', 'minutes'));
   const [scaleFiguresOnly, setScaleFiguresOnly] = useState(() => getStoredSetting('scaleFiguresOnly', true));
   
   // Settings collapse state
   const [settingsCollapsed, setSettingsCollapsed] = useState(() => getStoredSetting('settingsCollapsed', true));
+  
+  // Track if we've already auto-adjusted the refresh duration
+  const [hasAutoAdjustedDuration, setHasAutoAdjustedDuration] = useState(false);
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -49,17 +54,35 @@ const GoodsmileTracker = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [masterDocHtml, setMasterDocHtml] = useState('');
   const [isFromDataReload, setIsFromDataReload] = useState(false);
+  const [actualPagesFetched, setActualPagesFetched] = useState(1);
   
   useEffect(() => {
-    if (!autoReloadEnabled) return; // Exit early if auto-reload is disabled
+    if (!autoReloadEnabled || loading) return; // Exit early if auto-reload is disabled or still loading
     
     const scheduleNextReload = () => {
-      // Convert minutes to seconds, ensure minimum 1 minute, then random interval: duration ±5 seconds
-      const durationInSeconds = Math.max(refreshDuration, 1) * 60; // Ensure minimum 1 minute
-      const minMs = (durationInSeconds - 5) * 1000;
-      const maxMs = (durationInSeconds + 5) * 1000;
+      // Determine effective duration based on unit and number of pages fetched
+      let effectiveDurationInSeconds;
+      
+      if (actualPagesFetched > 1 && !hasAutoAdjustedDuration) {
+        // Auto-set to 5 minutes if multiple pages were fetched (only once)
+        console.log(`Multiple pages fetched (${actualPagesFetched}), automatically setting refresh to 5 minutes`);
+        setRefreshDuration(2);
+        setRefreshUnit('minutes');
+        setHasAutoAdjustedDuration(true);
+        effectiveDurationInSeconds = 5 * 60; // 5 minutes
+      } else {
+        // Use user setting with minimum enforcement
+        if (refreshUnit === 'seconds') {
+          effectiveDurationInSeconds = Math.max(refreshDuration, 5); // Minimum 5 seconds
+        } else {
+          effectiveDurationInSeconds = Math.max(refreshDuration, 1) * 60; // Minimum 1 minute, convert to seconds
+        }
+      }
+      
+      const minMs = (effectiveDurationInSeconds - 5) * 1000;
+      const maxMs = (effectiveDurationInSeconds + 5) * 1000;
       const randomInterval = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
-      console.log(`Next reload in ${randomInterval / 1000} seconds`);
+      console.log(`Next reload in ${randomInterval / 1000} seconds (${effectiveDurationInSeconds}s ±5s)`);
       
       const timeout = setTimeout(() => {
         window.location.reload();  // Reloads the page
@@ -73,7 +96,7 @@ const GoodsmileTracker = () => {
 
     // Clean up the timeout on component unmount
     return () => clearTimeout(timeout);
-  }, [autoReloadEnabled, refreshDuration]);
+  }, [autoReloadEnabled, refreshDuration, refreshUnit, allProducts, loading, hasAutoAdjustedDuration, actualPagesFetched]);
 
   // Save settings to localStorage when they change
   useEffect(() => {
@@ -89,8 +112,16 @@ const GoodsmileTracker = () => {
   }, [basePriceThreshold]);
 
   useEffect(() => {
+    storeSetting('basePriceCeiling', basePriceCeiling);
+  }, [basePriceCeiling]);
+
+  useEffect(() => {
     storeSetting('refreshDuration', refreshDuration);
   }, [refreshDuration]);
+
+  useEffect(() => {
+    storeSetting('refreshUnit', refreshUnit);
+  }, [refreshUnit]);
 
   useEffect(() => {
     storeSetting('scaleFiguresOnly', scaleFiguresOnly);
@@ -184,6 +215,27 @@ const GoodsmileTracker = () => {
             hasMorePages = false;
           } else {
             console.log(`Found ${productItems.length} products on page ${currentPage}`);
+            
+            // Check if any product has a discounted price greater than the ceiling
+            let hasProductAboveCeiling = false;
+            productItems.forEach((item) => {
+              const currentPriceEl = item.querySelector('span.product__price.product__price--current');
+              if (currentPriceEl) {
+                const currentPrice = parseFloat(currentPriceEl.textContent.replace('$', '').trim());
+                if (currentPrice > basePriceCeiling) {
+                  hasProductAboveCeiling = true;
+                }
+              }
+            });
+            
+            console.log(`Page ${currentPage}: ${hasProductAboveCeiling ? 'Has' : 'No'} products above ceiling ($${basePriceCeiling})`);
+            
+            // Stop fetching if any product on this page exceeds the ceiling
+            if (hasProductAboveCeiling) {
+              console.log(`Found product(s) above ceiling ($${basePriceCeiling}) on page ${currentPage}, stopping...`);
+              hasMorePages = false;
+            }
+            
             allProductItems = [...allProductItems, ...Array.from(productItems)];
             
             // Update progress with new product count
@@ -199,6 +251,9 @@ const GoodsmileTracker = () => {
         }
         
         console.log(`Total products collected from ${currentPage - 1} pages: ${allProductItems.length}`);
+        
+        // Store the actual number of pages fetched
+        setActualPagesFetched(currentPage - 1);
         
         // Create a clean document with only the essential structure
         const cleanDoc = new DOMParser().parseFromString(`
@@ -306,8 +361,8 @@ const GoodsmileTracker = () => {
     const newProductsFound = [];
     
     products.forEach((product) => {
-      // Filter 1: Original price must be >= threshold
-      if (product.originalPrice >= basePriceThreshold) {
+      // Filter 1: Original price must be >= threshold AND current price <= ceiling
+      if (product.originalPrice >= basePriceThreshold && product.currentPrice <= basePriceCeiling) {
         // Filter 2: Percent decrease must be >= threshold
         if (product.percentDecrease >= percentThreshold) {
           currentProducts.add(product.productId);
@@ -535,7 +590,7 @@ const GoodsmileTracker = () => {
       const doc = new DOMParser().parseFromString(masterDocHtml, 'text/html');
       applyFiltering(allProducts, doc);
     }
-  }, [basePriceThreshold, percentThreshold, allProducts, masterDocHtml]);
+  }, [basePriceThreshold, percentThreshold, basePriceCeiling, allProducts, masterDocHtml]);
 
   // Add error boundary
   if (hasError) {
@@ -646,6 +701,16 @@ const GoodsmileTracker = () => {
         </div>
         
         <div>
+          <label style={{ marginRight: '10px' }}>Current Price Ceiling: $</label>
+          <input 
+            type="number" 
+            value={basePriceCeiling} 
+            onChange={(e) => setBasePriceCeiling(Number(e.target.value))}
+            style={{ width: '80px', padding: '5px' }}
+          />
+        </div>
+        
+        <div>
           <label style={{ marginRight: '10px' }}>Discount Threshold: </label>
           <input 
             type="number" 
@@ -660,10 +725,27 @@ const GoodsmileTracker = () => {
           <input 
             type="number" 
             value={refreshDuration} 
-            min="1"
-            onChange={(e) => setRefreshDuration(Math.max(1, Number(e.target.value)))}
+            min={refreshUnit === 'seconds' ? "5" : "1"}
+            onChange={(e) => {
+              const minValue = refreshUnit === 'seconds' ? 5 : 1;
+              setRefreshDuration(Math.max(minValue, Number(e.target.value)));
+            }}
             style={{ width: '60px', padding: '5px' }}
-          /> minutes
+          />
+          <select 
+            value={refreshUnit}
+            onChange={(e) => {
+              setRefreshUnit(e.target.value);
+              // Adjust duration if switching units and below minimum
+              if (e.target.value === 'seconds' && refreshDuration < 5) {
+                setRefreshDuration(5);
+              }
+            }}
+            style={{ marginLeft: '5px', padding: '5px' }}
+          >
+            <option value="seconds">seconds</option>
+            <option value="minutes">minutes</option>
+          </select>
         </div>
         
         <div>
@@ -771,7 +853,7 @@ const GoodsmileTracker = () => {
           textAlign: 'center'
         }}>
           <h4 style={{ margin: 0, color: '#0284c7' }}>
-            Goodsmile Sale Tracker - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
+            Goodsmile Sale Tracker - Found {filteredProducts[0]?.count || 0} products (${basePriceThreshold}-${basePriceCeiling} price range, ≥{percentThreshold}% off)
           </h4>
         </div>
       )}
