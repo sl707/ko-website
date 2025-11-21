@@ -32,6 +32,9 @@ const GoodsmileTracker = () => {
   const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes
   const [scaleFiguresOnly, setScaleFiguresOnly] = useState(() => getStoredSetting('scaleFiguresOnly', true));
   
+  // Settings collapse state
+  const [settingsCollapsed, setSettingsCollapsed] = useState(() => getStoredSetting('settingsCollapsed', true));
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -91,6 +94,10 @@ const GoodsmileTracker = () => {
   useEffect(() => {
     storeSetting('scaleFiguresOnly', scaleFiguresOnly);
   }, [scaleFiguresOnly]);
+
+  useEffect(() => {
+    storeSetting('settingsCollapsed', settingsCollapsed);
+  }, [settingsCollapsed]);
 
   // Request notification permission on component mount with safety checks
   useEffect(() => {
@@ -557,14 +564,39 @@ const GoodsmileTracker = () => {
       <div>
         {/* Controls */}
         <div style={{ 
-          padding: '20px', 
           backgroundColor: '#f8f9fa', 
-          borderBottom: '1px solid #dee2e6',
-          display: 'flex',
-          gap: '20px',
-          flexWrap: 'wrap',
-          alignItems: 'center'
+          borderBottom: '1px solid #dee2e6'
         }}>
+          {/* Settings Header */}
+          <div 
+            onClick={() => setSettingsCollapsed(!settingsCollapsed)}
+            style={{
+              padding: '8px 15px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: '#e9ecef',
+              borderBottom: settingsCollapsed ? 'none' : '1px solid #dee2e6'
+            }}
+          >
+            <h3 style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>
+              Settings & Controls
+            </h3>
+            <span style={{ fontSize: '14px', fontWeight: 'bold' }}>
+              {settingsCollapsed ? '▶' : '▼'}
+            </span>
+          </div>
+          
+          {/* Collapsible Settings Content */}
+          {!settingsCollapsed && (
+            <div style={{ 
+              padding: '12px 15px', 
+              display: 'flex',
+              gap: '15px',
+              flexWrap: 'wrap',
+              alignItems: 'center'
+            }}>
         <div>
           <label style={{ marginRight: '10px' }}>Base Price Threshold: $</label>
           <input 
@@ -675,7 +707,9 @@ const GoodsmileTracker = () => {
             I'm Feeling Lucky :)
           </button>
         </div>
-      </div>
+            </div>
+          )}
+        </div>
 
       {/* New Products Alert */}
       {newProducts.length > 0 && (
@@ -714,11 +748,12 @@ const GoodsmileTracker = () => {
           borderBottom: '2px solid #0284c7',
           position: 'sticky',
           top: newProducts.length > 0 ? '60px' : 0,
-          zIndex: 100
+          zIndex: 100,
+          textAlign: 'center'
         }}>
-          <h2 style={{ margin: 0, color: '#0284c7' }}>
+          <h4 style={{ margin: 0, color: '#0284c7' }}>
             Goodsmile Sale Tracker - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
-          </h2>
+          </h4>
         </div>
       )}
       
