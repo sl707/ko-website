@@ -2,8 +2,12 @@
 import React, { useEffect, useState } from 'react'
 
 const GoodsmileTracker = () => {
-  // Helper functions for localStorage
+  // Add error boundary state
+  const [hasError, setHasError] = useState(false);
+  
+  // Helper functions for localStorage with better error handling
   const getStoredSetting = (key, defaultValue) => {
+    if (typeof window === 'undefined') return defaultValue;
     try {
       const stored = localStorage.getItem(`goodsmile-${key}`);
       return stored ? JSON.parse(stored) : defaultValue;
@@ -13,6 +17,7 @@ const GoodsmileTracker = () => {
   };
 
   const storeSetting = (key, value) => {
+    if (typeof window === 'undefined') return;
     try {
       localStorage.setItem(`goodsmile-${key}`, JSON.stringify(value));
     } catch (e) {
@@ -87,10 +92,14 @@ const GoodsmileTracker = () => {
     storeSetting('scaleFiguresOnly', scaleFiguresOnly);
   }, [scaleFiguresOnly]);
 
-  // Request notification permission on component mount
+  // Request notification permission on component mount with safety checks
   useEffect(() => {
-    if (Notification.permission === 'default') {
-      Notification.requestPermission();
+    try {
+      if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission();
+      }
+    } catch (e) {
+      console.warn('Notification API not supported:', e);
     }
   }, []);
 
@@ -348,30 +357,38 @@ const GoodsmileTracker = () => {
     if (isFromDataReload && newProductsFound.length > 0) {
       setNewProducts(newProductsFound);
       
-      // Browser notification (if permission granted)
-      if (Notification.permission === 'granted') {
-        new Notification(`${newProductsFound.length} New Goodsmile Deal${newProductsFound.length > 1 ? 's' : ''}!`, {
-          body: newProductsFound.map(p => `${p.title} - ${p.percentDecrease}% OFF`).join('\n'),
-          icon: '//www.goodsmileus.com/favicon.ico'
-        });
+      // Browser notification (if permission granted and supported)
+      try {
+        if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
+          new Notification(`${newProductsFound.length} New Goodsmile Deal${newProductsFound.length > 1 ? 's' : ''}!`, {
+            body: newProductsFound.map(p => `${p.title} - ${p.percentDecrease}% OFF`).join('\n'),
+            icon: '//www.goodsmileus.com/favicon.ico'
+          });
+        }
+      } catch (e) {
+        console.log('Notification failed:', e);
       }
       
       // Console alert
       console.log('🚨 NEW PRODUCTS FOUND:', newProductsFound);
       
-      // Audio alert - Metal Gear Solid sounds
+      // Audio alert - Metal Gear Solid sounds (with Safari compatibility)
       try {
-        console.log('Playing first alert sound...');
-        // First sound: tindeck_1
-        const audio1 = new Audio('/tindeck_1.mp3');
-        audio1.play().catch((e) => console.log('First alert audio failed:', e));
-        
-        // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
-        setTimeout(() => {
-          console.log('Playing second alert sound...');
-          const audio2 = new Audio('/untitled_1150.mp3');
-          audio2.play().catch((e) => console.log('Second alert audio failed:', e));
-        }, 3000);
+        if (typeof window !== 'undefined' && 'Audio' in window) {
+          console.log('Playing first alert sound...');
+          // First sound: tindeck_1
+          const audio1 = new Audio('/tindeck_1.mp3');
+          audio1.load(); // Preload for Safari
+          audio1.play().catch((e) => console.log('First alert audio failed:', e));
+          
+          // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
+          setTimeout(() => {
+            console.log('Playing second alert sound...');
+            const audio2 = new Audio('/untitled_1150.mp3');
+            audio2.load(); // Preload for Safari
+            audio2.play().catch((e) => console.log('Second alert audio failed:', e));
+          }, 3000);
+        }
       } catch (e) {
         console.log('Alert audio error:', e);
       }
@@ -433,6 +450,25 @@ const GoodsmileTracker = () => {
     }
   }, [basePriceThreshold, percentThreshold, allProducts, masterDocHtml]);
 
+  // Add error boundary
+  if (hasError) {
+    return (
+      <div style={{ padding: '20px', textAlign: 'center', color: 'red' }}>
+        <h2>Something went wrong</h2>
+        <p>The tracker encountered an error. This may be due to browser compatibility.</p>
+        <button 
+          onClick={() => {
+            setHasError(false);
+            window.location.reload();
+          }}
+          style={{ padding: '10px', marginTop: '10px' }}
+        >
+          Reload Page
+        </button>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div style={{ padding: '20px', textAlign: 'center' }}>
@@ -452,18 +488,20 @@ const GoodsmileTracker = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <div>
-      {/* Controls */}
-      <div style={{ 
-        padding: '20px', 
-        backgroundColor: '#f8f9fa', 
-        borderBottom: '1px solid #dee2e6',
-        display: 'flex',
-        gap: '20px',
-        flexWrap: 'wrap',
-        alignItems: 'center'
-      }}>
+  // Wrap entire render in try-catch for iPhone Safari
+  try {
+    return (
+      <div>
+        {/* Controls */}
+        <div style={{ 
+          padding: '20px', 
+          backgroundColor: '#f8f9fa', 
+          borderBottom: '1px solid #dee2e6',
+          display: 'flex',
+          gap: '20px',
+          flexWrap: 'wrap',
+          alignItems: 'center'
+        }}>
         <div>
           <label style={{ marginRight: '10px' }}>Base Price Threshold: $</label>
           <input 
@@ -521,17 +559,23 @@ const GoodsmileTracker = () => {
           <button 
             onClick={() => {
               try {
-                console.log('Playing first sound...');
-                // First sound: tindeck_1
-                const audio1 = new Audio('/tindeck_1.mp3');
-                audio1.play().catch((e) => console.log('First audio failed:', e));
-                
-                // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
-                setTimeout(() => {
-                  console.log('Playing second sound...');
-                  const audio2 = new Audio('/untitled_1150.mp3');
-                  audio2.play().catch((e) => console.log('Second audio failed:', e));
-                }, 3000);
+                if (typeof window !== 'undefined' && 'Audio' in window) {
+                  console.log('Playing first sound...');
+                  // First sound: tindeck_1
+                  const audio1 = new Audio('/tindeck_1.mp3');
+                  audio1.load(); // Preload for Safari
+                  audio1.play().catch((e) => console.log('First audio failed:', e));
+                  
+                  // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
+                  setTimeout(() => {
+                    console.log('Playing second sound...');
+                    const audio2 = new Audio('/untitled_1150.mp3');
+                    audio2.load(); // Preload for Safari
+                    audio2.play().catch((e) => console.log('Second audio failed:', e));
+                  }, 3000);
+                } else {
+                  console.log('Audio not supported in this browser');
+                }
               } catch (e) {
                 console.log('Audio error:', e);
               }
@@ -607,6 +651,22 @@ const GoodsmileTracker = () => {
       )}
     </div>
   );
+  } catch (error) {
+    console.error('Render error:', error);
+    setHasError(true);
+    return (
+      <div style={{ padding: '20px', textAlign: 'center', color: 'red' }}>
+        <h2>Rendering Error</h2>
+        <p>Failed to render the tracker. Please reload the page.</p>
+        <button 
+          onClick={() => window.location.reload()}
+          style={{ padding: '10px', marginTop: '10px' }}
+        >
+          Reload
+        </button>
+      </div>
+    );
+  }
 }
 
 export default GoodsmileTracker
