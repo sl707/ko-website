@@ -43,6 +43,7 @@ const GoodsmileTracker = () => {
   
   // Loading progress tracking
   const [loadingProgress, setLoadingProgress] = useState({ currentPage: 0, totalProducts: 0 });
+  const [rateLimitInfo, setRateLimitInfo] = useState({ isRateLimited: false, waitTime: 0 });
   
   // Store all products from all pages (before filtering)
   const [allProducts, setAllProducts] = useState([]);
@@ -135,9 +136,9 @@ const GoodsmileTracker = () => {
           // Update loading progress
           setLoadingProgress({ currentPage, totalProducts: allProductItems.length });
           
-          // Add moderate random delay between 1-3 seconds between requests (except for the first page)
+          // Add moderate random delay between 2-4 seconds between requests (except for the first page)
           if (currentPage > 1) {
-            const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
+            const randomDelay = Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
             console.log(`Waiting ${randomDelay}ms before next request...`);
             await new Promise(resolve => setTimeout(resolve, randomDelay));
           }
@@ -158,7 +159,15 @@ const GoodsmileTracker = () => {
           if (!response.ok) {
             if (response.status === 429 || response.status === 503) {
               console.log(`Rate limited on page ${currentPage}, waiting 30 seconds...`);
-              await new Promise(resolve => setTimeout(resolve, 30000));
+              setRateLimitInfo({ isRateLimited: true, waitTime: 30 });
+              
+              // Countdown timer
+              for (let i = 30; i > 0; i--) {
+                setRateLimitInfo({ isRateLimited: true, waitTime: i });
+                await new Promise(resolve => setTimeout(resolve, 1000));
+              }
+              
+              setRateLimitInfo({ isRateLimited: false, waitTime: 0 });
               // Retry the same page
               continue;
             }
@@ -260,11 +269,19 @@ const GoodsmileTracker = () => {
         if (err.message.includes('429') || err.message.includes('503')) {
           consecutiveErrors++;
           const backoffDelay = Math.min(60000, 5000 * Math.pow(2, consecutiveErrors));
+          const backoffSeconds = Math.ceil(backoffDelay/1000);
           console.log(`Rate limit error, backing off for ${backoffDelay}ms`);
-          setError(`Rate limited. Retrying in ${Math.ceil(backoffDelay/1000)} seconds...`);
-          setTimeout(() => {
-            window.location.reload();
-          }, backoffDelay);
+          setError(`Rate limited. Retrying in ${backoffSeconds} seconds...`);
+          setRateLimitInfo({ isRateLimited: true, waitTime: backoffSeconds });
+          
+          // Countdown timer for backoff
+          for (let i = backoffSeconds; i > 0; i--) {
+            setRateLimitInfo({ isRateLimited: true, waitTime: i });
+            setError(`Rate limited. Retrying in ${i} seconds...`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+          
+          window.location.reload();
         } else {
           setError(err.message);
         }
@@ -543,7 +560,28 @@ const GoodsmileTracker = () => {
     return (
       <div style={{ padding: '20px', textAlign: 'center' }}>
         <h2>Loading Goodsmile Tracker...</h2>
-        {loadingProgress.currentPage > 0 ? (
+        {rateLimitInfo.isRateLimited ? (
+          <div>
+            <p style={{ color: '#dc2626', fontWeight: 'bold' }}>
+              ⚠️ Rate Limited - Waiting {rateLimitInfo.waitTime} seconds before retrying...
+            </p>
+            <div style={{ 
+              width: '300px', 
+              height: '10px', 
+              backgroundColor: '#f3f4f6', 
+              borderRadius: '5px',
+              margin: '10px auto',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                width: `${((30 - rateLimitInfo.waitTime) / 30) * 100}%`,
+                height: '100%',
+                backgroundColor: '#dc2626',
+                transition: 'width 1s linear'
+              }} />
+            </div>
+          </div>
+        ) : loadingProgress.currentPage > 0 ? (
           <p>
             Fetching page {loadingProgress.currentPage} - Found {loadingProgress.totalProducts} products so far
           </p>
