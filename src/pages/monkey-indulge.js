@@ -41,6 +41,7 @@ const GoodsmileTracker = () => {
   const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes/seconds
   const [refreshUnit, setRefreshUnit] = useState(() => getStoredSetting('refreshUnit', 'minutes'));
   const [scaleFiguresOnly, setScaleFiguresOnly] = useState(() => getStoredSetting('scaleFiguresOnly', true));
+  const [youtubeAlertsEnabled, setYoutubeAlertsEnabled] = useState(() => getStoredSetting('youtubeAlerts', false));
   
   // Settings collapse state
   const [settingsCollapsed, setSettingsCollapsed] = useState(() => getStoredSetting('settingsCollapsed', true));
@@ -51,9 +52,8 @@ const GoodsmileTracker = () => {
   // Hidden products tracking
   const [hiddenProducts, setHiddenProducts] = useState(() => getStoredSetting('hiddenProducts', new Set()));
   
-  // Audio context state
-  const [audioUnlocked, setAudioUnlocked] = useState(false);
-  const [audioElements, setAudioElements] = useState({ audio1: null, audio2: null });
+  // YouTube alert URL
+  const alertVideoUrl = 'https://youtu.be/CEvzFcqKbXw?si=IP7XvnxjQH5LN2DY';
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -143,6 +143,10 @@ const GoodsmileTracker = () => {
   }, [scaleFiguresOnly]);
 
   useEffect(() => {
+    storeSetting('youtubeAlerts', youtubeAlertsEnabled);
+  }, [youtubeAlertsEnabled]);
+
+  useEffect(() => {
     storeSetting('settingsCollapsed', settingsCollapsed);
   }, [settingsCollapsed]);
 
@@ -168,69 +172,25 @@ const GoodsmileTracker = () => {
     setHiddenProducts(new Set());
   };
 
-  // Audio unlock and preload function
-  const unlockAudio = () => {
-    if (typeof window !== 'undefined' && 'Audio' in window && !audioUnlocked) {
-      try {
-        const audio1 = new Audio('/tindeck_1.mp3');
-        const audio2 = new Audio('/untitled_1150.mp3');
-        
-        // Set volume and preload
-        audio1.volume = 0.7;
-        audio2.volume = 0.7;
-        audio1.preload = 'auto';
-        audio2.preload = 'auto';
-        
-        // Try to play and immediately pause to unlock audio context
-        const playPromise1 = audio1.play();
-        if (playPromise1) {
-          playPromise1.then(() => {
-            audio1.pause();
-            audio1.currentTime = 0;
-          }).catch(() => {});
-        }
-        
-        const playPromise2 = audio2.play();
-        if (playPromise2) {
-          playPromise2.then(() => {
-            audio2.pause();
-            audio2.currentTime = 0;
-          }).catch(() => {});
-        }
-        
-        setAudioElements({ audio1, audio2 });
-        setAudioUnlocked(true);
-        console.log('🔓 Audio context unlocked and preloaded');
-      } catch (e) {
-        console.log('❌ Audio unlock failed:', e);
+  // Function to open YouTube alert video
+  const openAlertVideo = () => {
+    try {
+      console.log('🎥 Opening YouTube alert video in new tab...');
+      if (typeof window !== 'undefined') {
+        window.open(alertVideoUrl, '_blank', 'noopener,noreferrer');
+        console.log('✅ YouTube alert video opened successfully');
       }
+    } catch (e) {
+      console.log('❌ Failed to open YouTube alert video:', e);
     }
   };
 
-  // Function to play alert sounds
-  const playAlertSounds = () => {
-    if (!audioUnlocked || !audioElements.audio1 || !audioElements.audio2) {
-      console.log('❌ Audio not unlocked or not preloaded');
-      return;
-    }
-    
-    try {
-      console.log('🔊 Playing first alert sound...');
-      audioElements.audio1.currentTime = 0;
-      audioElements.audio1.play().then(() => {
-        console.log('✅ First alert sound played successfully');
-      }).catch((e) => console.log('❌ First alert audio failed:', e));
-      
-      // Second sound after 3 seconds
-      setTimeout(() => {
-        console.log('🔊 Playing second alert sound...');
-        audioElements.audio2.currentTime = 0;
-        audioElements.audio2.play().then(() => {
-          console.log('✅ Second alert sound played successfully');
-        }).catch((e) => console.log('❌ Second alert audio failed:', e));
-      }, 3000);
-    } catch (e) {
-      console.log('❌ Alert audio error:', e);
+  // Function to trigger alert (YouTube video)
+  const triggerAlert = () => {
+    if (youtubeAlertsEnabled) {
+      openAlertVideo();
+    } else {
+      console.log('🔕 YouTube alerts disabled - skipping alert video');
     }
   };
 
@@ -244,22 +204,7 @@ const GoodsmileTracker = () => {
       console.warn('Notification API not supported:', e);
     }
     
-    // Add click event listener to unlock audio context
-    const handleUserInteraction = () => {
-      unlockAudio();
-    };
-    
-    if (typeof window !== 'undefined') {
-      document.addEventListener('click', handleUserInteraction, { once: true });
-      document.addEventListener('keydown', handleUserInteraction, { once: true });
-    }
-    
-    return () => {
-      if (typeof window !== 'undefined') {
-        document.removeEventListener('click', handleUserInteraction);
-        document.removeEventListener('keydown', handleUserInteraction);
-      }
-    };
+    // No special event listeners needed for YouTube alerts
   }, []);
 
   useEffect(() => {
@@ -598,8 +543,8 @@ const GoodsmileTracker = () => {
       // Console alert
       console.log('🚨 NEW PRODUCTS FOUND:', newProductsFound);
       
-      // Audio alert - Metal Gear Solid sounds
-      playAlertSounds();
+      // YouTube alert video
+      triggerAlert();
     }
     
     // Update previous products for next comparison - only if this filtering came from a data reload
@@ -900,10 +845,20 @@ const GoodsmileTracker = () => {
         </div>
         
         <div>
+          <label style={{ marginRight: '10px' }}>
+            <input 
+              type="checkbox" 
+              checked={youtubeAlertsEnabled}
+              onChange={(e) => setYoutubeAlertsEnabled(e.target.checked)}
+            />
+            YouTube Alert Videos
+          </label>
+        </div>
+        
+        <div>
           <button 
             onClick={() => {
-              unlockAudio(); // Ensure audio is unlocked
-              setTimeout(() => playAlertSounds(), 100); // Small delay to ensure unlock completes
+              triggerAlert();
             }}
             style={{
               padding: '5px 10px',
@@ -915,7 +870,7 @@ const GoodsmileTracker = () => {
               fontSize: '14px'
             }}
           >
-            Test Alert Sound {audioUnlocked ? '🔓' : '🔒'}
+            Test Alert (YouTube) 🎥
           </button>
         </div>
         
