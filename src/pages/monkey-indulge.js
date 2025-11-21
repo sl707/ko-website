@@ -24,7 +24,7 @@ const GoodsmileTracker = () => {
   const [autoReloadEnabled, setAutoReloadEnabled] = useState(() => getStoredSetting('autoReload', false));
   const [percentThreshold, setPercentThreshold] = useState(() => getStoredSetting('percentThreshold', 50));
   const [basePriceThreshold, setBasePriceThreshold] = useState(() => getStoredSetting('basePriceThreshold', 95));
-  const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 1)); // in minutes
+  const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -96,7 +96,7 @@ const GoodsmileTracker = () => {
       
       try {
         const proxyUrl = 'https://corsproxy.io/?';
-        const baseUrl = 'https://www.goodsmileus.com/collections/on-sale?filter.p.product_type=Scale+Figure&sort_by=price-ascending';
+        const baseUrl = 'https://www.goodsmileus.com/collections/on-sale?sort_by=price-ascending';
         
         let allProductItems = [];
         let currentPage = 1;
@@ -112,9 +112,9 @@ const GoodsmileTracker = () => {
           // Update loading progress
           setLoadingProgress({ currentPage, totalProducts: allProductItems.length });
           
-          // Add moderate random delay between 800-1500ms between requests (except for the first page)
+          // Add moderate random delay between 1-3 seconds between requests (except for the first page)
           if (currentPage > 1) {
-            const randomDelay = Math.floor(Math.random() * (1500 - 800 + 1)) + 800;
+            const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
             console.log(`Waiting ${randomDelay}ms before next request...`);
             await new Promise(resolve => setTimeout(resolve, randomDelay));
           }
@@ -573,7 +573,7 @@ const GoodsmileTracker = () => {
           zIndex: 100
         }}>
           <h2 style={{ margin: 0, color: '#0284c7' }}>
-            Goodsmile Sale Tracker (Scale Figures Only) - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
+            Goodsmile Sale Tracker - Found {filteredProducts[0]?.count || 0} products (≥${basePriceThreshold} original, ≥{percentThreshold}% off)
           </h2>
         </div>
       )}
