@@ -416,20 +416,83 @@ const GoodsmileTracker = () => {
       .product-card__image {
         width: 100%;
         max-width: 100%;
-        height: 280px;
+        height: 350px;
+        max-height: 350px;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
       }
       .product-card__image img {
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
+        object-position: center center;
       }
       .collection-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1rem;
         padding: 1rem;
+      }
+      
+      /* Mobile responsive: Force minimum 2 columns, but allow expansion */
+      @media (max-width: 768px) and (min-width: 561px) {
+        .collection-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 0.5rem;
+          padding: 0.5rem;
+        }
+      }
+      
+      /* Narrow mobile: Force exactly 2 columns */
+      @media (max-width: 560px) {
+        .collection-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+          padding: 0.5rem;
+        }
+        .collection-grid__product {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+        }
+        .product-card__image {
+          height: 250px;
+          max-height: 250px;
+        }
+      }
+      
+      /* Extra small screens - still force 2 columns */
+      @media (max-width: 480px) {
+        .collection-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.25rem;
+          padding: 0.25rem;
+        }
+        .collection-grid__product {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+        }
+        .product-card__image {
+          height: 200px;
+          max-height: 200px;
+        }
+      }
+      
+      /* Very narrow screens - still maintain 2 columns but smaller */
+      @media (max-width: 320px) {
+        .collection-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.125rem;
+          padding: 0.125rem;
+        }
+        .product-card__image {
+          height: 150px;
+          max-height: 150px;
+        }
       }
     `;
     doc.head.appendChild(styleEl);
@@ -551,7 +614,7 @@ const GoodsmileTracker = () => {
               checked={scaleFiguresOnly}
               onChange={(e) => setScaleFiguresOnly(e.target.checked)}
             />
-            Scale Figures Only
+            Scale Figures Only (On Next Reload)
           </label>
         </div>
         
@@ -591,6 +654,25 @@ const GoodsmileTracker = () => {
             }}
           >
             Test Alert Sound
+          </button>
+        </div>
+        
+        <div>
+          <button 
+            onClick={() => {
+              window.open('https://nhentai.net/random/', '_blank');
+            }}
+            style={{
+              padding: '5px 10px',
+              backgroundColor: '#4285f4',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '14px'
+            }}
+          >
+            I'm Feeling Lucky :)
           </button>
         </div>
       </div>
