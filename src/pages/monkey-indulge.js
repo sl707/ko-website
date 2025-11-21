@@ -13,7 +13,7 @@ const GoodsmileTracker = () => {
       if (stored) {
         const parsed = JSON.parse(stored);
         // Handle Set objects (stored as arrays)
-        if (key === 'hiddenProducts' && Array.isArray(parsed)) {
+        if ((key === 'hiddenProducts' || key === 'previousProducts') && Array.isArray(parsed)) {
           return new Set(parsed);
         }
         return parsed;
@@ -51,10 +51,14 @@ const GoodsmileTracker = () => {
   // Hidden products tracking
   const [hiddenProducts, setHiddenProducts] = useState(() => getStoredSetting('hiddenProducts', new Set()));
   
+  // Audio context state
+  const [audioUnlocked, setAudioUnlocked] = useState(false);
+  const [audioElements, setAudioElements] = useState({ audio1: null, audio2: null });
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [previousProducts, setPreviousProducts] = useState(new Set());
+  const [previousProducts, setPreviousProducts] = useState(() => getStoredSetting('previousProducts', new Set()));
   const [newProducts, setNewProducts] = useState([]);
   
   // Loading progress tracking
@@ -146,6 +150,10 @@ const GoodsmileTracker = () => {
     storeSetting('hiddenProducts', Array.from(hiddenProducts));
   }, [hiddenProducts]);
 
+  useEffect(() => {
+    storeSetting('previousProducts', Array.from(previousProducts));
+  }, [previousProducts]);
+
   // Helper function to hide a product
   const hideProduct = (productId) => {
     setHiddenProducts(prev => {
@@ -160,7 +168,73 @@ const GoodsmileTracker = () => {
     setHiddenProducts(new Set());
   };
 
-  // Request notification permission on component mount with safety checks
+  // Audio unlock and preload function
+  const unlockAudio = () => {
+    if (typeof window !== 'undefined' && 'Audio' in window && !audioUnlocked) {
+      try {
+        const audio1 = new Audio('/tindeck_1.mp3');
+        const audio2 = new Audio('/untitled_1150.mp3');
+        
+        // Set volume and preload
+        audio1.volume = 0.7;
+        audio2.volume = 0.7;
+        audio1.preload = 'auto';
+        audio2.preload = 'auto';
+        
+        // Try to play and immediately pause to unlock audio context
+        const playPromise1 = audio1.play();
+        if (playPromise1) {
+          playPromise1.then(() => {
+            audio1.pause();
+            audio1.currentTime = 0;
+          }).catch(() => {});
+        }
+        
+        const playPromise2 = audio2.play();
+        if (playPromise2) {
+          playPromise2.then(() => {
+            audio2.pause();
+            audio2.currentTime = 0;
+          }).catch(() => {});
+        }
+        
+        setAudioElements({ audio1, audio2 });
+        setAudioUnlocked(true);
+        console.log('🔓 Audio context unlocked and preloaded');
+      } catch (e) {
+        console.log('❌ Audio unlock failed:', e);
+      }
+    }
+  };
+
+  // Function to play alert sounds
+  const playAlertSounds = () => {
+    if (!audioUnlocked || !audioElements.audio1 || !audioElements.audio2) {
+      console.log('❌ Audio not unlocked or not preloaded');
+      return;
+    }
+    
+    try {
+      console.log('🔊 Playing first alert sound...');
+      audioElements.audio1.currentTime = 0;
+      audioElements.audio1.play().then(() => {
+        console.log('✅ First alert sound played successfully');
+      }).catch((e) => console.log('❌ First alert audio failed:', e));
+      
+      // Second sound after 3 seconds
+      setTimeout(() => {
+        console.log('🔊 Playing second alert sound...');
+        audioElements.audio2.currentTime = 0;
+        audioElements.audio2.play().then(() => {
+          console.log('✅ Second alert sound played successfully');
+        }).catch((e) => console.log('❌ Second alert audio failed:', e));
+      }, 3000);
+    } catch (e) {
+      console.log('❌ Alert audio error:', e);
+    }
+  };
+
+  // Request notification permission on component mount with safety checksount
   useEffect(() => {
     try {
       if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'default') {
@@ -169,6 +243,23 @@ const GoodsmileTracker = () => {
     } catch (e) {
       console.warn('Notification API not supported:', e);
     }
+    
+    // Add click event listener to unlock audio context
+    const handleUserInteraction = () => {
+      unlockAudio();
+    };
+    
+    if (typeof window !== 'undefined') {
+      document.addEventListener('click', handleUserInteraction, { once: true });
+      document.addEventListener('keydown', handleUserInteraction, { once: true });
+    }
+    
+    return () => {
+      if (typeof window !== 'undefined') {
+        document.removeEventListener('click', handleUserInteraction);
+        document.removeEventListener('keydown', handleUserInteraction);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -402,13 +493,17 @@ const GoodsmileTracker = () => {
           currentProducts.add(product.productId);
           
           // Check if this is a new product - only if this filtering came from a data reload, not settings change
-          if (isFromDataReload && previousProducts.size > 0 && !previousProducts.has(product.productId)) {
-            newProductsFound.push({
-              title: product.title,
-              originalPrice: product.originalPrice,
-              currentPrice: product.currentPrice,
-              percentDecrease: Math.round(product.percentDecrease)
-            });
+          if (isFromDataReload && !previousProducts.has(product.productId)) {
+            // Only alert for new products if we have previous products (not on first ever load)
+            if (previousProducts.size > 0) {
+              console.log('🆕 New product detected:', product.title, product.productId);
+              newProductsFound.push({
+                title: product.title,
+                originalPrice: product.originalPrice,
+                currentPrice: product.currentPrice,
+                percentDecrease: Math.round(product.percentDecrease)
+              });
+            }
           }
           
           // Clone the element for modification
@@ -479,7 +574,10 @@ const GoodsmileTracker = () => {
     });
     
     // Handle new products alerts - only if this filtering came from a data reload
+    console.log('Alert check:', { isFromDataReload, newProductsFoundCount: newProductsFound.length, previousProductsCount: previousProducts.size });
+    
     if (isFromDataReload && newProductsFound.length > 0) {
+      console.log('🚨 TRIGGERING ALERTS for', newProductsFound.length, 'new products');
       setNewProducts(newProductsFound);
       
       // Browser notification (if permission granted and supported)
@@ -489,34 +587,19 @@ const GoodsmileTracker = () => {
             body: newProductsFound.map(p => `${p.title} - ${p.percentDecrease}% OFF`).join('\n'),
             icon: '//www.goodsmileus.com/favicon.ico'
           });
+          console.log('✅ Browser notification sent');
+        } else {
+          console.log('❌ Browser notification not available:', Notification?.permission);
         }
       } catch (e) {
-        console.log('Notification failed:', e);
+        console.log('❌ Notification failed:', e);
       }
       
       // Console alert
       console.log('🚨 NEW PRODUCTS FOUND:', newProductsFound);
       
-      // Audio alert - Metal Gear Solid sounds (with Safari compatibility)
-      try {
-        if (typeof window !== 'undefined' && 'Audio' in window) {
-          console.log('Playing first alert sound...');
-          // First sound: tindeck_1
-          const audio1 = new Audio('/tindeck_1.mp3');
-          audio1.load(); // Preload for Safari
-          audio1.play().catch((e) => console.log('First alert audio failed:', e));
-          
-          // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
-          setTimeout(() => {
-            console.log('Playing second alert sound...');
-            const audio2 = new Audio('/untitled_1150.mp3');
-            audio2.load(); // Preload for Safari
-            audio2.play().catch((e) => console.log('Second alert audio failed:', e));
-          }, 3000);
-        }
-      } catch (e) {
-        console.log('Alert audio error:', e);
-      }
+      // Audio alert - Metal Gear Solid sounds
+      playAlertSounds();
     }
     
     // Update previous products for next comparison - only if this filtering came from a data reload
@@ -819,27 +902,8 @@ const GoodsmileTracker = () => {
         <div>
           <button 
             onClick={() => {
-              try {
-                if (typeof window !== 'undefined' && 'Audio' in window) {
-                  console.log('Playing first sound...');
-                  // First sound: tindeck_1
-                  const audio1 = new Audio('/tindeck_1.mp3');
-                  audio1.load(); // Preload for Safari
-                  audio1.play().catch((e) => console.log('First audio failed:', e));
-                  
-                  // Second sound: untitled_1150 (play after first one ends or after 3 seconds)
-                  setTimeout(() => {
-                    console.log('Playing second sound...');
-                    const audio2 = new Audio('/untitled_1150.mp3');
-                    audio2.load(); // Preload for Safari
-                    audio2.play().catch((e) => console.log('Second audio failed:', e));
-                  }, 3000);
-                } else {
-                  console.log('Audio not supported in this browser');
-                }
-              } catch (e) {
-                console.log('Audio error:', e);
-              }
+              unlockAudio(); // Ensure audio is unlocked
+              setTimeout(() => playAlertSounds(), 100); // Small delay to ensure unlock completes
             }}
             style={{
               padding: '5px 10px',
@@ -851,7 +915,7 @@ const GoodsmileTracker = () => {
               fontSize: '14px'
             }}
           >
-            Test Alert Sound
+            Test Alert Sound {audioUnlocked ? '🔓' : '🔒'}
           </button>
         </div>
         
