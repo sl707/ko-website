@@ -10,7 +10,15 @@ const GoodsmileTracker = () => {
     if (typeof window === 'undefined') return defaultValue;
     try {
       const stored = localStorage.getItem(`goodsmile-${key}`);
-      return stored ? JSON.parse(stored) : defaultValue;
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        // Handle Set objects (stored as arrays)
+        if (key === 'hiddenProducts' && Array.isArray(parsed)) {
+          return new Set(parsed);
+        }
+        return parsed;
+      }
+      return defaultValue;
     } catch {
       return defaultValue;
     }
@@ -39,6 +47,9 @@ const GoodsmileTracker = () => {
   
   // Track if we've already auto-adjusted the refresh duration
   const [hasAutoAdjustedDuration, setHasAutoAdjustedDuration] = useState(false);
+  
+  // Hidden products tracking
+  const [hiddenProducts, setHiddenProducts] = useState(() => getStoredSetting('hiddenProducts', new Set()));
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -79,7 +90,7 @@ const GoodsmileTracker = () => {
         }
       }
       
-      const minMs = (effectiveDurationInSeconds - 5) * 1000;
+      const minMs = Math.max(effectiveDurationInSeconds - 5, 5) * 1000;
       const maxMs = (effectiveDurationInSeconds + 5) * 1000;
       const randomInterval = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
       console.log(`Next reload in ${randomInterval / 1000} seconds (${effectiveDurationInSeconds}s ±5s)`);
@@ -130,6 +141,24 @@ const GoodsmileTracker = () => {
   useEffect(() => {
     storeSetting('settingsCollapsed', settingsCollapsed);
   }, [settingsCollapsed]);
+
+  useEffect(() => {
+    storeSetting('hiddenProducts', Array.from(hiddenProducts));
+  }, [hiddenProducts]);
+
+  // Helper function to hide a product
+  const hideProduct = (productId) => {
+    setHiddenProducts(prev => {
+      const newSet = new Set(prev);
+      newSet.add(productId);
+      return newSet;
+    });
+  };
+
+  // Helper function to reset hidden products
+  const resetHiddenProducts = () => {
+    setHiddenProducts(new Set());
+  };
 
   // Request notification permission on component mount with safety checks
   useEffect(() => {
@@ -361,6 +390,11 @@ const GoodsmileTracker = () => {
     const newProductsFound = [];
     
     products.forEach((product) => {
+      // Filter 0: Skip hidden products
+      if (hiddenProducts.has(product.productId)) {
+        return;
+      }
+      
       // Filter 1: Original price must be >= threshold AND current price <= ceiling
       if (product.originalPrice >= basePriceThreshold && product.currentPrice <= basePriceCeiling) {
         // Filter 2: Percent decrease must be >= threshold
@@ -423,6 +457,18 @@ const GoodsmileTracker = () => {
             
             // Replace the button with the link
             buyNowButton.parentNode.replaceChild(buyNowLink, buyNowButton);
+          }
+          
+          // Add Hide button
+          const hideButton = doc.createElement('button');
+          hideButton.textContent = '✕ Hide';
+          hideButton.className = 'goodsmile-hide-btn';
+          hideButton.style.cssText = 'background-color: #6b7280; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; width: 100%; font-weight: bold;';
+          hideButton.setAttribute('data-product-id', product.productId);
+          
+          // Add hide button to price container
+          if (priceContainer) {
+            priceContainer.appendChild(hideButton);
           }
           
           // Add the filtered item to the clean container
@@ -590,7 +636,7 @@ const GoodsmileTracker = () => {
       const doc = new DOMParser().parseFromString(masterDocHtml, 'text/html');
       applyFiltering(allProducts, doc);
     }
-  }, [basePriceThreshold, percentThreshold, basePriceCeiling, allProducts, masterDocHtml]);
+  }, [basePriceThreshold, percentThreshold, basePriceCeiling, allProducts, masterDocHtml, hiddenProducts]);
 
   // Add error boundary
   if (hasError) {
@@ -808,6 +854,23 @@ const GoodsmileTracker = () => {
             Test Alert Sound
           </button>
         </div>
+        
+        <div>
+          <button 
+            onClick={resetHiddenProducts}
+            style={{
+              padding: '5px 10px',
+              backgroundColor: '#dc2626',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '14px'
+            }}
+          >
+            Reset Hidden Products ({hiddenProducts.size})
+          </button>
+        </div>
             </div>
           )}
         </div>
@@ -859,7 +922,37 @@ const GoodsmileTracker = () => {
       )}
       
       {filteredProducts.length > 0 ? (
-        <div dangerouslySetInnerHTML={{ __html: filteredProducts[0].modifiedHtml }} />
+        <div 
+          dangerouslySetInnerHTML={{ __html: filteredProducts[0].modifiedHtml }} 
+          onClick={(e) => {
+            // Handle hide button clicks using event delegation
+            if (e.target.classList.contains('goodsmile-hide-btn')) {
+              e.preventDefault();
+              e.stopPropagation();
+              const productId = e.target.getAttribute('data-product-id');
+              if (productId) {
+                hideProduct(productId);
+                // Remove the product card from DOM immediately
+                const productCard = e.target.closest('.collection-grid__product');
+                if (productCard) {
+                  productCard.remove();
+                }
+              }
+            }
+          }}
+          onMouseOver={(e) => {
+            // Handle hover effects for hide buttons
+            if (e.target.classList.contains('goodsmile-hide-btn')) {
+              e.target.style.backgroundColor = '#374151';
+            }
+          }}
+          onMouseOut={(e) => {
+            // Handle hover effects for hide buttons
+            if (e.target.classList.contains('goodsmile-hide-btn')) {
+              e.target.style.backgroundColor = '#6b7280';
+            }
+          }}
+        />
       ) : (
         !loading && (
           <div style={{ padding: '20px', textAlign: 'center' }}>
