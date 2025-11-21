@@ -25,6 +25,7 @@ const GoodsmileTracker = () => {
   const [percentThreshold, setPercentThreshold] = useState(() => getStoredSetting('percentThreshold', 50));
   const [basePriceThreshold, setBasePriceThreshold] = useState(() => getStoredSetting('basePriceThreshold', 95));
   const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes
+  const [scaleFiguresOnly, setScaleFiguresOnly] = useState(() => getStoredSetting('scaleFiguresOnly', true));
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -82,6 +83,10 @@ const GoodsmileTracker = () => {
     storeSetting('refreshDuration', refreshDuration);
   }, [refreshDuration]);
 
+  useEffect(() => {
+    storeSetting('scaleFiguresOnly', scaleFiguresOnly);
+  }, [scaleFiguresOnly]);
+
   // Request notification permission on component mount
   useEffect(() => {
     if (Notification.permission === 'default') {
@@ -96,7 +101,9 @@ const GoodsmileTracker = () => {
       
       try {
         const proxyUrl = 'https://corsproxy.io/?';
-        const baseUrl = 'https://www.goodsmileus.com/collections/on-sale?sort_by=price-ascending';
+        const baseUrl = scaleFiguresOnly 
+          ? 'https://www.goodsmileus.com/collections/on-sale?filter.p.product_type=Scale+Figure&sort_by=price-ascending'
+          : 'https://www.goodsmileus.com/collections/on-sale?sort_by=price-ascending';
         
         let allProductItems = [];
         let currentPage = 1;
@@ -251,7 +258,7 @@ const GoodsmileTracker = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures this runs once on component mount
+  }, [scaleFiguresOnly]); // Re-fetch when Scale Figures filter changes
 
   // Function to apply filtering without re-fetching
   const applyFiltering = (products, doc) => {
@@ -496,6 +503,17 @@ const GoodsmileTracker = () => {
               onChange={(e) => setAutoReloadEnabled(e.target.checked)}
             />
             Auto Reload
+          </label>
+        </div>
+        
+        <div>
+          <label style={{ marginRight: '10px' }}>
+            <input 
+              type="checkbox" 
+              checked={scaleFiguresOnly}
+              onChange={(e) => setScaleFiguresOnly(e.target.checked)}
+            />
+            Scale Figures Only
           </label>
         </div>
         
