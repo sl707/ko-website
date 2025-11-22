@@ -36,8 +36,8 @@ const GoodsmileTracker = () => {
   // Frontend configurable values with localStorage persistence
   const [autoReloadEnabled, setAutoReloadEnabled] = useState(() => getStoredSetting('autoReload', false));
   const [percentThreshold, setPercentThreshold] = useState(() => getStoredSetting('percentThreshold', 50));
-  const [basePriceThreshold, setBasePriceThreshold] = useState(() => getStoredSetting('basePriceThreshold', 95));
-  const [basePriceCeiling, setBasePriceCeiling] = useState(() => getStoredSetting('basePriceCeiling', 300));
+  const [basePriceThreshold, setBasePriceThreshold] = useState(() => getStoredSetting('basePriceThreshold', 45));
+  const [basePriceCeiling, setBasePriceCeiling] = useState(() => getStoredSetting('basePriceCeiling', 100));
   const [refreshDuration, setRefreshDuration] = useState(() => getStoredSetting('refreshDuration', 5)); // in minutes/seconds
   const [refreshUnit, setRefreshUnit] = useState(() => getStoredSetting('refreshUnit', 'minutes'));
   const [scaleFiguresOnly, setScaleFiguresOnly] = useState(() => getStoredSetting('scaleFiguresOnly', true));
