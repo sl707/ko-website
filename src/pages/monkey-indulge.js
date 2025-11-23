@@ -46,6 +46,10 @@ const GoodsmileTracker = () => {
   // Settings collapse state
   const [settingsCollapsed, setSettingsCollapsed] = useState(() => getStoredSetting('settingsCollapsed', true));
   
+  // Bypass text input for faster refresh rates
+  const [bypassText, setBypassText] = useState(() => getStoredSetting('bypassText', ''));
+  const isBypassActive = bypassText === 'bipass';
+  
   // Track if we've already auto-adjusted the refresh duration
   const [hasAutoAdjustedDuration, setHasAutoAdjustedDuration] = useState(false);
   
@@ -86,9 +90,10 @@ const GoodsmileTracker = () => {
         setHasAutoAdjustedDuration(true);
         effectiveDurationInSeconds = 3 * 60; // 3 minutes
       } else {
-        // Use user setting with minimum enforcement
+        // Use user setting with minimum enforcement (bypass allows 5 seconds/1 minute)
         if (refreshUnit === 'seconds') {
-          effectiveDurationInSeconds = Math.max(refreshDuration, 5); // Minimum 5 seconds
+          const minSeconds = isBypassActive ? 5 : 60;
+          effectiveDurationInSeconds = Math.max(refreshDuration, minSeconds);
         } else {
           effectiveDurationInSeconds = Math.max(refreshDuration, 1) * 60; // Minimum 1 minute, convert to seconds
         }
@@ -149,6 +154,10 @@ const GoodsmileTracker = () => {
   useEffect(() => {
     storeSetting('settingsCollapsed', settingsCollapsed);
   }, [settingsCollapsed]);
+
+  useEffect(() => {
+    storeSetting('bypassText', bypassText);
+  }, [bypassText]);
 
   useEffect(() => {
     storeSetting('hiddenProducts', Array.from(hiddenProducts));
@@ -799,20 +808,26 @@ const GoodsmileTracker = () => {
           <input 
             type="number" 
             value={refreshDuration} 
-            min={refreshUnit === 'seconds' ? "5" : "1"}
+            min={refreshUnit === 'seconds' ? (isBypassActive ? "5" : "60") : "1"}
             onChange={(e) => {
-              const minValue = refreshUnit === 'seconds' ? 5 : 1;
+              const minValue = refreshUnit === 'seconds' ? (isBypassActive ? 5 : 60) : 1;
               setRefreshDuration(Math.max(minValue, Number(e.target.value)));
             }}
-            style={{ width: '60px', padding: '5px' }}
+            style={{ 
+              width: '60px', 
+              padding: '5px',
+              backgroundColor: isBypassActive ? '#dcfce7' : 'white',
+              border: isBypassActive ? '2px solid #16a34a' : '1px solid #ccc'
+            }}
           />
           <select 
             value={refreshUnit}
             onChange={(e) => {
               setRefreshUnit(e.target.value);
               // Adjust duration if switching units and below minimum
-              if (e.target.value === 'seconds' && refreshDuration < 5) {
-                setRefreshDuration(5);
+              const minSeconds = isBypassActive ? 5 : 60;
+              if (e.target.value === 'seconds' && refreshDuration < minSeconds) {
+                setRefreshDuration(minSeconds);
               }
             }}
             style={{ marginLeft: '5px', padding: '5px' }}
@@ -889,6 +904,23 @@ const GoodsmileTracker = () => {
           >
             Reset Hidden Products ({hiddenProducts.size})
           </button>
+        </div>
+        
+        <div>
+          <input 
+            type="text" 
+            value={bypassText}
+            onChange={(e) => setBypassText(e.target.value)}
+            placeholder=""
+            style={{
+              padding: '5px',
+              width: '80px',
+              fontSize: '12px',
+              backgroundColor: isBypassActive ? '#dcfce7' : 'white',
+              border: isBypassActive ? '2px solid #16a34a' : '1px solid #ccc',
+              borderRadius: '4px'
+            }}
+          />
         </div>
             </div>
           )}
