@@ -265,11 +265,11 @@ const GoodsmileTracker = () => {
           
           if (!response.ok) {
             if (response.status === 429 || response.status === 503) {
-              console.log(`Rate limited on page ${currentPage}, waiting 30 seconds...`);
-              setRateLimitInfo({ isRateLimited: true, waitTime: 30 });
+              console.log(`Rate limited on page ${currentPage}, waiting 5 minutes...`);
+              setRateLimitInfo({ isRateLimited: true, waitTime: 300 });
               
               // Countdown timer
-              for (let i = 30; i > 0; i--) {
+              for (let i = 300; i > 0; i--) {
                 setRateLimitInfo({ isRateLimited: true, waitTime: i });
                 await new Promise(resolve => setTimeout(resolve, 1000));
               }
@@ -714,7 +714,7 @@ const GoodsmileTracker = () => {
               overflow: 'hidden'
             }}>
               <div style={{
-                width: `${((30 - rateLimitInfo.waitTime) / 30) * 100}%`,
+                width: `${((300 - rateLimitInfo.waitTime) / 300) * 100}%`,
                 height: '100%',
                 backgroundColor: '#dc2626',
                 transition: 'width 1s linear'
