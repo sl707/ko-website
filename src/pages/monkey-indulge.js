@@ -265,11 +265,20 @@ const GoodsmileTracker = () => {
           
           if (!response.ok) {
             if (response.status === 429 || response.status === 503) {
-              console.log(`Rate limited on page ${currentPage}, waiting 5 minutes...`);
-              setRateLimitInfo({ isRateLimited: true, waitTime: 300 });
+              const errorType = response.status === 429 ? 'Rate Limited (429 - Too Many Requests)' : 'Service Unavailable (503)';
+              console.log(`${errorType} on page ${currentPage}, waiting 10 minutes...`);
+              setRateLimitInfo({ isRateLimited: true, waitTime: 600, errorType });
+              
+              // Open YouTube link when rate limited
+              try {
+                window.open('https://www.youtube.com/watch?v=mhCRHOd10jE&list=RDmhCRHOd10jE&start_radio=1', '_blank', 'noopener,noreferrer');
+                console.log('🎵 Rate limit YouTube link opened');
+              } catch (e) {
+                console.log('❌ Failed to open rate limit YouTube link:', e);
+              }
               
               // Countdown timer
-              for (let i = 300; i > 0; i--) {
+              for (let i = 600; i > 0; i--) {
                 setRateLimitInfo({ isRateLimited: true, waitTime: i });
                 await new Promise(resolve => setTimeout(resolve, 1000));
               }
@@ -703,7 +712,7 @@ const GoodsmileTracker = () => {
         {rateLimitInfo.isRateLimited ? (
           <div>
             <p style={{ color: '#dc2626', fontWeight: 'bold' }}>
-              ⚠️ Rate Limited - Waiting {rateLimitInfo.waitTime} seconds before retrying...
+              ⚠️ {rateLimitInfo.errorType || 'Rate Limited'} - Waiting {rateLimitInfo.waitTime} seconds before retrying...
             </p>
             <div style={{ 
               width: '300px', 
@@ -714,7 +723,7 @@ const GoodsmileTracker = () => {
               overflow: 'hidden'
             }}>
               <div style={{
-                width: `${((300 - rateLimitInfo.waitTime) / 300) * 100}%`,
+                width: `${((600 - rateLimitInfo.waitTime) / 600) * 100}%`,
                 height: '100%',
                 backgroundColor: '#dc2626',
                 transition: 'width 1s linear'
