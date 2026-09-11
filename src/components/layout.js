@@ -8,25 +8,13 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import s from 'styled-components'
 
 import Header from './header'
 import Footer from './footer'
 import './layout.css'
 import PageTitle from './page-title'
 import { SubHeading } from '../data/typography'
-import theme from '../theme'
-
-const MainContent = s.main`
-  padding-top: var(--header-height);
-  min-height: calc(100vh - 200px);
-`
-
-const PageContent = s.div`
-  max-width: ${theme.maxWidth};
-  margin: 0 auto;
-  padding: 0 var(--size-gutter);
-`
+import * as styles from './layout.module.css'
 
 const Layout = ({ children, pageTitle, pageSubtitle }) => {
   const data = useStaticQuery(graphql`
@@ -42,15 +30,15 @@ const Layout = ({ children, pageTitle, pageSubtitle }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || '고씨중앙종문회'} />
-      <MainContent>
+      <main className={styles.mainContent}>
         {pageTitle && <PageTitle pageTitle={pageTitle} />}
         {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
         {pageTitle || pageSubtitle ? (
-          <PageContent>{children}</PageContent>
+          <div className={styles.pageContent}>{children}</div>
         ) : (
           children
         )}
-      </MainContent>
+      </main>
       <Footer />
     </>
   )

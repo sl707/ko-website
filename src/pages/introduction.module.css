@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: justify;
+  padding: 24px 0 48px;
+}
+
+.image {
+  width: 200px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,61 +1,45 @@
-import { StaticImage } from "gatsby-plugin-image"
-import React from "react"
-import s from 'styled-components'
-import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
-
-const PostWrapper = s.div`
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-`
-
-const PostImage = s.img`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  max-height: 500px;
-  max-width: 700px;
-  object-fit: contain;
-  text-align: center;
-  padding: 0 20px;
-  margin: 0;
-`
+import React from 'react'
+import { Text, TextSubheading, TextWrapperOne } from '../data/typography'
+import * as styles from './post.module.css'
 
 const Post = props => (
-  <PostWrapper>
-    <PostImage
-      src={props.imageUrl}
-      alt="MISSING JPG"
-    />
-    {props.imageCaption && <TextWrapperOne style={{ padding: '0px', width: '100%' }}>
-      <Text style={{ padding: '0px', margin: '0px', fontSize: '16px', fontStyle: 'italic', }}>
-        {props.imageCaption}
-      </Text>
-    </TextWrapperOne>}
-    {
-      props.imageTwoUrl &&
+  <div className={styles.wrapper}>
+    <img className={styles.image} src={props.imageUrl} alt="" />
+    {props.imageCaption && (
+      <TextWrapperOne style={{ padding: '0px', width: '100%' }}>
+        <Text
+          style={{
+            padding: '0px',
+            margin: '0px',
+            fontSize: '16px',
+            fontStyle: 'italic',
+          }}
+        >
+          {props.imageCaption}
+        </Text>
+      </TextWrapperOne>
+    )}
+    {props.imageTwoUrl && (
       <>
-      <br />
-      <PostImage
-        src={props.imageTwoUrl}
-        alt="MISSING JPG"
-      />
+        <br />
+        <img className={styles.image} src={props.imageTwoUrl} alt="" />
       </>
-    }
-    <TextSubheading style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}>
-        {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
-      </TextSubheading>
+    )}
+    <TextSubheading
+      style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}
+    >
+      {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
+    </TextSubheading>
     <TextWrapperOne>
       <Text>
-        {props.text && typeof props.text === 'string' ? props.text.replace(/\n{3,}|\n{2}/g, match => match.length >= 3 ? '\n\n' : '\n') : props.text}
+        {props.text && typeof props.text === 'string'
+          ? props.text.replace(/\n{3,}|\n{2}/g, match =>
+              match.length >= 3 ? '\n\n' : '\n'
+            )
+          : props.text}
       </Text>
     </TextWrapperOne>
-  </PostWrapper>
+  </div>
 )
 
 export default Post

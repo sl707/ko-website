@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  border: 2px solid;
+  margin: 10px;
+  border-collapse: collapse;
+}
+
+.row {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+.cell {
+  border: 1px solid;
+  border-collapse: collapse;
+}

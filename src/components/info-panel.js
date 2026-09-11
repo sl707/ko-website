@@ -1,46 +1,6 @@
 import React from 'react'
-import s from 'styled-components'
 import InfoBlock from './info-block'
-import theme from '../theme'
-
-const InfoPanelWrapper = s.section`
-  background-color: ${theme.colors.background};
-  padding: 64px var(--size-gutter);
-
-  @media screen and (max-width: 800px) {
-    padding: 40px var(--size-gutter);
-  }
-`
-
-const InfoPanelInner = s.div`
-  max-width: ${theme.maxWidth};
-  margin: 0 auto;
-`
-
-const InfoPanelTitle = s.h2`
-  font-family: ${theme.fonts.serif};
-  font-size: 2rem;
-  font-weight: 700;
-  color: ${theme.colors.primary};
-  text-align: center;
-  margin: 0 0 8px;
-`
-
-const InfoPanelSubtitle = s.p`
-  text-align: center;
-  color: ${theme.colors.textMuted};
-  font-size: 1rem;
-  margin: 0 0 48px;
-`
-
-const InfoPanelDivider = s.hr`
-  border: none;
-  width: 48px;
-  height: 3px;
-  background: ${theme.colors.accent};
-  margin: 0 auto 48px;
-  border-radius: 2px;
-`
+import * as styles from './info-panel.module.css'
 
 const infoList = [
   {
@@ -81,11 +41,11 @@ const infoList = [
 ].sort((a, b) => (a.order > b.order ? 1 : -1))
 
 const InfoPanel = () => (
-  <InfoPanelWrapper>
-    <InfoPanelInner>
-      <InfoPanelTitle>고씨중앙종문회란?</InfoPanelTitle>
-      <InfoPanelSubtitle>3,739년의 역사와 전통을 이어가는 고씨 가문</InfoPanelSubtitle>
-      <InfoPanelDivider />
+  <section className={styles.section}>
+    <div className={styles.inner}>
+      <h2 className={styles.title}>고씨중앙종문회란?</h2>
+      <p className={styles.subtitle}>3,739년의 역사와 전통을 이어가는 고씨 가문</p>
+      <hr className={styles.divider} />
       {infoList.map(i => (
         <InfoBlock
           key={i.order}
@@ -95,8 +55,8 @@ const InfoPanel = () => (
           subtitle={i.subtitle ?? ''}
         />
       ))}
-    </InfoPanelInner>
-  </InfoPanelWrapper>
+    </div>
+  </section>
 )
 
 export default InfoPanel

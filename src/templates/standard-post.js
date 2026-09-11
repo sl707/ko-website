@@ -1,7 +1,6 @@
 import { navigate } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
-import s from 'styled-components'
 
 import Layout from '../components/layout'
 import Post from '../components/post'

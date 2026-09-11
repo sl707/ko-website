@@ -11,7 +11,17 @@
   --color-background-alt: #f0ebe0;
   --color-surface: #ffffff;
   --color-border: #e0d8cc;
+  --color-border-light: #ede8df;
+  --color-text-light: #ffffff;
   --color-footer: #1e2d3d;
+  --max-width: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-header: 0 2px 12px rgba(26, 46, 76, 0.08);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
   --color-code-bg: #f0ebe0;
   --color-code: #6b5a3e;
   --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",

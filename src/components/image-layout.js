@@ -1,20 +1,10 @@
-import React from "react"
-import s from 'styled-components'
-import Layout from "./layout"
-
-const ImageWrapper = s.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-`
+import React from 'react'
+import Layout from './layout'
+import * as styles from './image-layout.module.css'
 
 const ImageLayout = props => (
   <Layout pageTitle={props.title} pageSubtitle={props.subtitle}>
-    <ImageWrapper
-      src={props.imageUrl}
-      alt="MISSING JPG"
-    />
+    <img className={styles.wrapper} src={props.imageUrl} alt="" />
   </Layout>
 )
 

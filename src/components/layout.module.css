@@ -1,0 +1,10 @@
+.mainContent {
+  padding-top: var(--header-height);
+  min-height: calc(100vh - 200px);
+}
+
+.pageContent {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--size-gutter);
+}
