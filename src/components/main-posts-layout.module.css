@@ -1,3 +1,18 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0 0;
+}
+
+.count {
+  max-width: none;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
@@ -6,10 +21,23 @@
   width: 100%;
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 8px 0 48px;
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  .list {
+    gap: 10px;
     padding-bottom: 32px;
   }
 }

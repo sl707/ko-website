@@ -1,5 +1,9 @@
 const centralSubmenu = [
   {
+    name: '중앙종문회 안내',
+    url: '/central/'
+  },
+  {
     name: '회장 인사',
     url: '/introduction/'
   },
@@ -22,6 +26,10 @@ const centralSubmenu = [
 ]
 
 const historySubmenu = [
+  {
+    name: '역사 안내',
+    url: '/history/'
+  },
   {
     name: '시조 고을나왕',
     url: '/father/'
@@ -86,12 +94,12 @@ const memberSubmenu = [
 const navLinks = [
   {
     name: '중앙종문회',
-    url: '/introduction/',
+    url: '/central/',
     submenu: centralSubmenu
   },
   {
     name: '고씨역사',
-    url: '/father/',
+    url: '/history/',
     submenu: historySubmenu
   },
   {

@@ -90,3 +90,64 @@
   margin-top: auto;
   padding-top: 4px;
 }
+
+.cardList {
+  height: auto;
+}
+
+.linkList {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  min-height: 150px;
+}
+
+.imageWrapList {
+  height: 100%;
+  min-height: 150px;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
+.bodyList {
+  justify-content: center;
+  min-width: 0;
+  padding: 20px 24px;
+}
+
+.bodyList .title {
+  font-size: 1.08rem;
+}
+
+@media screen and (max-width: 600px) {
+  .linkList {
+    grid-template-columns: 112px minmax(0, 1fr);
+    min-height: 112px;
+    border-radius: var(--radius-md);
+  }
+
+  .imageWrapList {
+    min-height: 112px;
+  }
+
+  .bodyList {
+    gap: 5px;
+    padding: 12px 14px;
+  }
+
+  .bodyList .meta {
+    font-size: 0.66rem;
+  }
+
+  .bodyList .title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .bodyList .date {
+    font-size: 0.72rem;
+  }
+}

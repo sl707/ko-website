@@ -32,14 +32,16 @@ const getItems = (pathname, pageTitle, pageSubtitle) => {
   )
 
   if (parent) {
+    // Section landing page: the tab itself is the destination.
+    if (parent.url === path) {
+      return [{ label: '홈', to: '/' }, { label: parent.name }]
+    }
+
     const child = parent.submenu.find(item => item.url === path)
     if (child) {
       return [
         { label: '홈', to: '/' },
-        {
-          label: parent.name,
-          to: parent.url === path ? undefined : parent.url,
-        },
+        { label: parent.name, to: parent.url },
         { label: child.name },
       ]
     }

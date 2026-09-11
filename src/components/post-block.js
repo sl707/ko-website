@@ -5,7 +5,7 @@ import * as styles from './post-block.module.css'
 const formatDate = date =>
   date ? date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
 
-const PostBlock = ({ post, news, front }) => {
+const PostBlock = ({ post, news, front, view = 'grid' }) => {
   const href = news ? `/newspaper/${post.newsNumber}/` : `/post/${post.postId}/`
   const title = news
     ? `고씨종보 ${post.newsNumber}호`
@@ -14,21 +14,28 @@ const PostBlock = ({ post, news, front }) => {
       : [post.title]
 
   const titles = Array.isArray(title) ? title : [title]
+  const isList = view === 'list'
 
   return (
-    <article className={styles.card}>
-      <Link className={styles.link} to={href}>
-        <div className={`${styles.imageWrap} ${front ? styles.imageFront : ''}`}>
+    <article className={`${styles.card} ${isList ? styles.cardList : ''}`}>
+      <Link className={`${styles.link} ${isList ? styles.linkList : ''}`} to={href}>
+        <div
+          className={`${styles.imageWrap} ${front ? styles.imageFront : ''} ${
+            isList ? styles.imageWrapList : ''
+          }`}
+        >
           <img
             className={styles.image}
             src={news ? post.newsImage : post.image}
             alt={titles[0]}
+            loading="lazy"
+            decoding="async"
           />
         </div>
-        <div className={styles.body}>
-          {news && (
-            <span className={styles.meta}>종보 · {post.newsNumber}호</span>
-          )}
+        <div className={`${styles.body} ${isList ? styles.bodyList : ''}`}>
+          <span className={styles.meta}>
+            {news ? `종보 · ${post.newsNumber}호` : post.type}
+          </span>
           <h3 className={styles.title}>
             {titles.map((line, i) => (
               <span key={i} className={styles.titleLine}>{line}</span>

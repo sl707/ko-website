@@ -63,9 +63,17 @@
   color: var(--color-text-light);
 }
 
+.resultsToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
 .resultCount {
   max-width: none;
-  margin: 16px 0 0;
+  margin: 0;
   color: var(--color-text-muted);
   font-size: 0.82rem;
 }
@@ -74,6 +82,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 24px;
+  padding: 16px 0 48px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   padding: 16px 0 48px;
 }
 
@@ -104,6 +119,11 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  .list {
+    gap: 10px;
     padding-bottom: 32px;
   }
 }
