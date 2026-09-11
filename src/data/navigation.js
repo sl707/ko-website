@@ -83,25 +83,6 @@ const memberSubmenu = [
   }
 ]
 
-const gallerySubmenu = [
-  {
-    name: '총회 / 이사회',
-    url: '/gathering/'
-  },
-  {
-    name: '제향',
-    url: '/jehyang/'
-  },
-  {
-    name: '연수원',
-    url: '/institute/'
-  },
-  {
-    name: '기타',
-    url: '/otherevents/'
-  }
-]
-
 const navLinks = [
   {
     name: '중앙종문회',
@@ -120,8 +101,8 @@ const navLinks = [
   },
   {
     name: '소식 / 자료실',
-    url: '/gathering/',
-    submenu: gallerySubmenu
+    url: '/posts/',
+    submenu: []
   },
   {
     name: '종 보',

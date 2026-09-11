@@ -1,0 +1,109 @@
+.filters {
+  padding: 20px 0 8px;
+}
+
+.filterList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--touch-min);
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.filterButton:hover {
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.filterButtonActive {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.filterButtonActive:hover {
+  color: var(--color-text-light);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-background-alt);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+}
+
+.filterButtonActive .count {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-text-light);
+}
+
+.resultCount {
+  max-width: none;
+  margin: 16px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+  padding: 16px 0 48px;
+}
+
+@media screen and (max-width: 600px) {
+  .filters {
+    padding-top: 14px;
+  }
+
+  .filterList {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin: 0 calc(var(--size-gutter) * -1);
+    padding: 0 var(--size-gutter) 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .filterList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterButton {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 32px;
+  }
+}

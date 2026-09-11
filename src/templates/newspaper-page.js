@@ -1,39 +1,91 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import * as styles from './newspaper-page.module.css'
 
 const ZOOM_LEVELS = [1, 1.35, 1.75, 2.25]
 
-const NewspaperPage = ({ pageContext: { paper } }) => {
+const NewspaperPage = ({ pageContext: { paper, previousPaper, nextPaper } }) => {
   const [page, setPage] = useState(1)
   const [zoomIndex, setZoomIndex] = useState(0)
+  const [useOriginal, setUseOriginal] = useState(false)
   const viewerRef = useRef(null)
   const viewportRef = useRef(null)
-  const pageCount = paper.newsFirstOnly ? 1 : (paper.newsNumPages || 8)
+  const touchStartRef = useRef(null)
+  const prefetchedRef = useRef(new Set())
+
+  const pageCount = paper.newsFirstOnly ? 1 : paper.newsNumPages || 8
   const imageType = paper.newsImageType ?? 'jpg'
-  const imageUrl = `/news/${paper.newsNumber}-${page}.${imageType}`
   const zoom = ZOOM_LEVELS[zoomIndex]
 
-  const changePage = nextPage => {
-    setPage(Math.min(pageCount, Math.max(1, nextPage)))
-    setZoomIndex(0)
-  }
+  const originalUrl = pageNumber =>
+    `/news/${paper.newsNumber}-${pageNumber}.${imageType}`
+
+  const optimizedUrl = pageNumber =>
+    `/generated/news/${paper.newsNumber}-${pageNumber}.webp`
+
+  // Reading width is enough at 100%; zooming swaps in the full-resolution scan.
+  const showOriginal = useOriginal || zoom > 1
+
+  const changePage = useCallback(
+    nextPage => {
+      setPage(current => {
+        const target = Math.min(pageCount, Math.max(1, nextPage))
+        return target === current ? current : target
+      })
+      setZoomIndex(0)
+    },
+    [pageCount]
+  )
 
   useEffect(() => {
+    setUseOriginal(false)
     if (viewportRef.current) {
       viewportRef.current.scrollTo({ top: 0, left: 0 })
     }
   }, [page])
 
-  const handlePageImageLoad = () => {
-    ;[page - 1, page + 1]
-      .filter(nextPage => nextPage >= 1 && nextPage <= pageCount)
-      .forEach(nextPage => {
-        const image = new Image()
-        image.src = `/news/${paper.newsNumber}-${nextPage}.${imageType}`
+  const prefetchPage = useCallback(
+    pageNumber => {
+      if (
+        pageNumber < 1 ||
+        pageNumber > pageCount ||
+        prefetchedRef.current.has(pageNumber)
+      ) {
+        return
+      }
+
+      prefetchedRef.current.add(pageNumber)
+      const image = new Image()
+      image.src = optimizedUrl(pageNumber)
+    },
+    [pageCount, paper.newsNumber]
+  )
+
+  const handlePageImageLoad = useCallback(() => {
+    prefetchPage(page + 1)
+    prefetchPage(page - 1)
+
+    const remaining = Array.from({ length: pageCount }, (_, i) => i + 1).filter(
+      pageNumber => !prefetchedRef.current.has(pageNumber)
+    )
+
+    const scheduleIdle =
+      typeof window !== 'undefined' && window.requestIdleCallback
+        ? window.requestIdleCallback
+        : callback => window.setTimeout(callback, 300)
+
+    const prefetchNext = index => {
+      if (index >= remaining.length) return
+      scheduleIdle(() => {
+        prefetchPage(remaining[index])
+        prefetchNext(index + 1)
       })
-  }
+    }
+
+    prefetchNext(0)
+  }, [page, pageCount, prefetchPage])
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -49,7 +101,7 @@ const NewspaperPage = ({ pageContext: { paper } }) => {
 
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [page])
+  }, [changePage, page])
 
   const toggleFullscreen = () => {
     if (document.fullscreenElement) {
@@ -57,6 +109,24 @@ const NewspaperPage = ({ pageContext: { paper } }) => {
     } else if (viewerRef.current?.requestFullscreen) {
       viewerRef.current.requestFullscreen()
     }
+  }
+
+  const handleTouchStart = event => {
+    if (zoom !== 1) return
+    const touch = event.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+  }
+
+  const handleTouchEnd = event => {
+    if (zoom !== 1 || !touchStartRef.current) return
+
+    const touch = event.changedTouches[0]
+    const deltaX = touch.clientX - touchStartRef.current.x
+    const deltaY = touch.clientY - touchStartRef.current.y
+    touchStartRef.current = null
+
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return
+    changePage(deltaX < 0 ? page + 1 : page - 1)
   }
 
   return (
@@ -122,25 +192,66 @@ const NewspaperPage = ({ pageContext: { paper } }) => {
           </div>
         </div>
 
-        <div className={styles.viewport} ref={viewportRef}>
+        <div
+          className={`${styles.viewport} ${zoom === 1 ? styles.swipeViewport : ''}`}
+          ref={viewportRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={() => {
+            touchStartRef.current = null
+          }}
+        >
           <div className={styles.canvas} style={{ width: `${zoom * 100}%` }}>
             <img
-              key={imageUrl}
+              key={`${page}-${showOriginal ? 'original' : 'optimized'}`}
               className={styles.image}
-              src={imageUrl}
+              src={showOriginal ? originalUrl(page) : optimizedUrl(page)}
               alt={`고씨종보 ${paper.newsNumber}호 ${page}면`}
               loading="eager"
               decoding="async"
               onLoad={handlePageImageLoad}
+              onError={() => setUseOriginal(true)}
               onClick={() => setZoomIndex(zoomIndex === 0 ? 2 : 0)}
             />
           </div>
         </div>
 
         <p className={styles.hint}>
-          이미지를 누르면 확대됩니다. 키보드의 ← → 키로 면을 넘길 수 있습니다.
+          이미지를 누르면 확대됩니다. 좌우로 밀거나 ← → 키로 면을 넘길 수 있습니다.
         </p>
       </section>
+
+      <nav className={styles.issueNav} aria-label="다른 호 보기">
+        {previousPaper ? (
+          <Link
+            className={styles.issueLink}
+            to={`/newspaper/${previousPaper.newsNumber}/`}
+            rel="prev"
+          >
+            <span className={styles.issueLabel}>이전 호</span>
+            <span className={styles.issueNumber}>제{previousPaper.newsNumber}호</span>
+          </Link>
+        ) : (
+          <span className={styles.issueLinkEmpty} />
+        )}
+
+        <Link className={styles.issueListLink} to="/newspaper/">
+          전체 목록
+        </Link>
+
+        {nextPaper ? (
+          <Link
+            className={`${styles.issueLink} ${styles.issueLinkNext}`}
+            to={`/newspaper/${nextPaper.newsNumber}/`}
+            rel="next"
+          >
+            <span className={styles.issueLabel}>다음 호</span>
+            <span className={styles.issueNumber}>제{nextPaper.newsNumber}호</span>
+          </Link>
+        ) : (
+          <span className={styles.issueLinkEmpty} />
+        )}
+      </nav>
     </Layout>
   )
 }

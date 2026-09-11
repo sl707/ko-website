@@ -8,9 +8,11 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
 
 import Header from './header'
 import Footer from './footer'
+import Breadcrumbs from './breadcrumbs'
 import './layout.css'
 import '../styles/animations.css'
 import PageTitle from './page-title'
@@ -18,6 +20,7 @@ import { SubHeading } from '../data/typography'
 import * as styles from './layout.module.css'
 
 const Layout = ({ children, pageTitle, pageSubtitle }) => {
+  const location = useLocation()
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -33,6 +36,13 @@ const Layout = ({ children, pageTitle, pageSubtitle }) => {
       <Header siteTitle={data.site.siteMetadata?.title || '고씨중앙종문회'} />
       <main className={styles.mainContent}>
         {pageTitle && <PageTitle pageTitle={pageTitle} />}
+        {pageTitle && (
+          <Breadcrumbs
+            pathname={location.pathname}
+            pageTitle={pageTitle}
+            pageSubtitle={pageSubtitle}
+          />
+        )}
         {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
         {pageTitle || pageSubtitle ? (
           <div className={styles.pageContent}>{children}</div>
