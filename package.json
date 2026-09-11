@@ -30,7 +30,10 @@
   ],
   "license": "0BSD",
   "scripts": {
+    "prepare-slides": "node scripts/prepare-slideshow-images.js",
+    "prebuild": "npm run prepare-slides",
     "build": "gatsby build",
+    "predevelop": "npm run prepare-slides",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",

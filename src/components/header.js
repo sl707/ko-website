@@ -15,10 +15,10 @@ const navbarLinks = () =>
       </div>
     ) : (
       <div className={styles.navItem} key={link.name}>
-        <div className={styles.navTitle}>
+        <button type="button" className={styles.navTitle} aria-haspopup="true">
           {link.name}
           <img src={DownTriangle} alt="" className={styles.chevron} />
-        </div>
+        </button>
         <nav className={styles.subnav}>
           {link.submenu.map(sublink => (
             <Link key={sublink.url} className={styles.subnavLink} to={sublink.url}>

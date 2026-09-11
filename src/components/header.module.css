@@ -56,7 +56,17 @@
   position: relative;
 }
 
-.navItem:hover > .subnav {
+.navItem::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.navItem:hover > .subnav,
+.navItem:focus-within > .subnav {
   display: flex;
   animation: fadeUp 0.2s ease both;
 }
@@ -79,6 +89,9 @@
 }
 
 .navTitle {
+  border: none;
+  background: transparent;
+  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-text-muted);

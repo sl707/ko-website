@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 
 import slideList from '../data/slides'
@@ -6,9 +6,6 @@ import SectionHeader from './section-header'
 import * as styles from './album-slideshow.module.css'
 
 const firstFiveSlides = slideList.slice(0, 5)
-
-const getSlideImage = slideData =>
-  slideData.type === 'post' ? slideData.image : slideData.newsImage
 
 const getSlideTitle = slideData =>
   slideData.type === 'post'
@@ -36,10 +33,25 @@ const getSlideCaption = slideData => slideData.imageCaption
 
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
+  const [imageLoading, setImageLoading] = useState(true)
   const currentSlide = firstFiveSlides[slideNumber - 1]
 
   const goPrev = () => setSlideNumber(n => (n === 1 ? 5 : n - 1))
   const goNext = () => setSlideNumber(n => (n === 5 ? 1 : n + 1))
+
+  useEffect(() => {
+    setImageLoading(true)
+
+    const adjacentSlides = [
+      slideNumber === 1 ? 5 : slideNumber - 1,
+      slideNumber === 5 ? 1 : slideNumber + 1,
+    ]
+
+    adjacentSlides.forEach(number => {
+      const image = new Image()
+      image.src = `/generated/slides/slide-${number}-960.webp`
+    })
+  }, [slideNumber])
 
   return (
     <section className={styles.section}>
@@ -52,11 +64,27 @@ const AlbumSubpanel = () => {
         <div className={styles.card}>
           <div className={styles.cardInner}>
             <div className={styles.media}>
+              <div
+                className={`${styles.imagePlaceholder} ${
+                  imageLoading ? styles.imagePlaceholderVisible : ''
+                }`}
+                aria-hidden="true"
+              />
               <Link className={styles.imageLink} to={getSlideUrl(currentSlide)}>
                 <img
+                  key={slideNumber}
                   className={styles.image}
-                  src={getSlideImage(currentSlide)}
+                  src={`/generated/slides/slide-${slideNumber}-960.webp`}
+                  srcSet={[
+                    `/generated/slides/slide-${slideNumber}-480.webp 480w`,
+                    `/generated/slides/slide-${slideNumber}-960.webp 960w`,
+                    `/generated/slides/slide-${slideNumber}-1440.webp 1440w`,
+                  ].join(', ')}
+                  sizes="(max-width: 900px) calc(100vw - 32px), min(50vw, 640px)"
                   alt={getSlideTitle(currentSlide)}
+                  loading={slideNumber === 1 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  onLoad={() => setImageLoading(false)}
                 />
               </Link>
               {getSlideCaption(currentSlide) && (
