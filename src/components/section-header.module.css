@@ -1,0 +1,77 @@
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin: 0 auto;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+  border: none;
+  border-radius: var(--radius-full);
+  margin: 20px auto 0;
+}
+
+/* Light variant for dark backgrounds */
+.headerLight .label {
+  color: var(--color-accent-light);
+}
+
+.headerLight .title {
+  color: var(--color-text-light);
+}
+
+.headerLight .subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.headerLight .divider {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+}
+
+.headerLeft {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.headerLeft .divider {
+  margin: 20px 0 0;
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    padding: 0 8px;
+  }
+}

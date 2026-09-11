@@ -1,55 +1,20 @@
-import React from "react"
-import s from 'styled-components'
-import { StaticImage } from "gatsby-plugin-image"
+import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
+import * as styles from './page-title.module.css'
 
-const PageHeader = s.div`
-  z-index: 1;
-  position: absolute;
-  color: white;
-  // background-color: #292929;
-  // border: 5px solid #663946;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  // border-style: outset;
-  padding: 10px 15px;
-  font-size: 35px;
-  // width: 200px;
-  // height: 60px;
-  font-weight: bold;
-  @media screen and (max-width: 800px) {
-    // width: 180px;
-    // height: 45px;
-    font-size: 30px;
-  }
-`
-
-const PageTitleWrapper = s.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-`
-
-const PageTitle = props => (
-  <PageTitleWrapper>
-    <PageHeader>
-      {props.pageTitle}
-    </PageHeader>
+const PageTitle = ({ pageTitle }) => (
+  <div className={styles.wrapper}>
     <StaticImage
-            src="../images/성주전.jpeg"
-            loading="eager"
-            alt="MISSING"
-            style={{
-              position: 'relative',
-              objectFit: 'cover',
-              width: '100%',
-              opacity: '1',
-              filter: 'brightness(50%)'
-            }}
+      src="../images/성주전.jpeg"
+      loading="eager"
+      alt=""
+      className={styles.bgImage}
+      imgClassName={styles.bgImage}
+      imgStyle={{ objectFit: 'cover', width: '100%', height: '100%' }}
     />
-  </PageTitleWrapper>
+    <div className={styles.overlay} />
+    <h1 className={styles.title}>{pageTitle}</h1>
+  </div>
 )
 
 export default PageTitle

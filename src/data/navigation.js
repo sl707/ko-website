@@ -1,5 +1,9 @@
 const centralSubmenu = [
   {
+    name: '중앙종문회 안내',
+    url: '/central/'
+  },
+  {
     name: '회장 인사',
     url: '/introduction/'
   },
@@ -22,6 +26,10 @@ const centralSubmenu = [
 ]
 
 const historySubmenu = [
+  {
+    name: '역사 안내',
+    url: '/history/'
+  },
   {
     name: '시조 고을나왕',
     url: '/father/'
@@ -83,34 +91,15 @@ const memberSubmenu = [
   }
 ]
 
-const gallerySubmenu = [
-  {
-    name: '총회 / 이사회',
-    url: '/gathering/'
-  },
-  {
-    name: '제향',
-    url: '/jehyang/'
-  },
-  {
-    name: '연수원',
-    url: '/institute/'
-  },
-  {
-    name: '기타',
-    url: '/otherevents/'
-  }
-]
-
 const navLinks = [
   {
     name: '중앙종문회',
-    url: '/introduction/',
+    url: '/central/',
     submenu: centralSubmenu
   },
   {
     name: '고씨역사',
-    url: '/father/',
+    url: '/history/',
     submenu: historySubmenu
   },
   {
@@ -120,8 +109,8 @@ const navLinks = [
   },
   {
     name: '소식 / 자료실',
-    url: '/gathering/',
-    submenu: gallerySubmenu
+    url: '/posts/',
+    submenu: []
   },
   {
     name: '종 보',

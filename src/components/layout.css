@@ -1,89 +1,158 @@
 :root {
-  --border-radius: 4px;
-  --color-text: #333;
-  --color-primary: #000000;
-  --color-code-bg: #ffdf94;
-  --color-code: #8a6534;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --border-radius: 12px;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-primary: #0f1b2d;
+  --color-primary-light: #1a3050;
+  --color-primary-mid: #243b5c;
+  --color-accent: #c9952e;
+  --color-accent-light: #e8b84a;
+  --color-accent-dark: #a67c1f;
+  --color-accent-red: #9b2c42;
+  --color-background: #f8f6f3;
+  --color-background-alt: #eeeae4;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-border: #e2ddd6;
+  --color-border-light: #ece8e2;
+  --color-text-light: #ffffff;
+  --color-footer: #0a1220;
+  --max-width: 1280px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  --shadow-header: 0 1px 0 rgba(15, 27, 45, 0.06);
+  --shadow-glass: 0 8px 32px rgba(15, 27, 45, 0.08);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(15, 27, 45, 0.88) 0%,
+    rgba(15, 27, 45, 0.55) 50%,
+    rgba(15, 27, 45, 0.75) 100%
+  );
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --color-code-bg: #f0ebe0;
+  --color-code: #6b5a3e;
+  --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  --font-serif: "Noto Serif KR", Georgia, "Times New Roman", serif;
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --font-lg: 18px;
   --font-md: 16px;
   --font-sm: 14px;
   --font-sx: 12px;
-  --line-height-loose: 1.75;
-  --line-height-normal: 1.5;
-  --line-height-dense: 1.1;
+  --line-height-loose: 1.85;
+  --line-height-normal: 1.65;
+  --line-height-dense: 1.2;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 16px;
   --space-4: 24px;
   --space-5: 32px;
   --space-6: 64px;
-  --size-content: 54rem;
-  --size-gutter: var(--space-5);
-  --size-gap: var(--space-6);
+  --size-content: 75rem;
+  --size-gutter: var(--space-4);
+  --size-gap: var(--space-5);
+  --header-height: 76px;
+  --touch-min: 44px;
+  --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 27, 45, 0.08);
+  --shadow-lg: 0 16px 48px rgba(15, 27, 45, 0.12);
+  --shadow-card: 0 2px 8px rgba(15, 27, 45, 0.04), 0 12px 32px rgba(15, 27, 45, 0.06);
 }
+
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  font: sans-serif;
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
-  font-family: sans-serif;
   font-family: var(--font-sans);
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   word-wrap: break-word;
+  /* `clip` guards against stray horizontal overflow without creating a scroll
+     container, which would break `position: sticky` further down the tree. */
+  overflow-x: hidden;
+  overflow-x: clip;
+  background-color: var(--color-background);
+  -webkit-tap-highlight-color: rgba(201, 149, 46, 0.15);
 }
+
+@media screen and (max-width: 600px) {
+  :root {
+    --size-gutter: 16px;
+    --header-height: 64px;
+  }
+}
+
 a {
   background-color: transparent;
   color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  transition: color 0.15s ease;
 }
-a:active,
+
 a:hover {
-  outline-width: 0;
-  text-decoration: none;
+  color: var(--color-accent-dark);
 }
+
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
   text-decoration: none;
 }
+
 b,
 strong {
-  font-weight: inherit;
-  font-weight: bolder;
+  font-weight: 700;
 }
+
 dfn {
   font-style: italic;
 }
-h1 {
-  margin: 0;
-  margin-bottom: 3rem;
-  padding: 0;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  color: var(--color-primary);
   line-height: var(--line-height-dense);
   letter-spacing: -0.01em;
 }
+
+h1 {
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
 h1 > b {
   color: var(--color-primary);
 }
+
 img {
   border-style: none;
   max-width: 100%;
 }
+
 code,
 kbd,
 pre,
@@ -92,29 +161,28 @@ samp {
   font-size: 1em;
   line-height: inherit;
 }
+
 hr {
   box-sizing: content-box;
   overflow: visible;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
+  margin: 0;
   padding: 0;
   margin-bottom: calc(var(--space-4) - 1px);
-  background: hsla(0, 0%, 0%, 0.2);
+  background: var(--color-border);
   border: none;
   height: 1px;
 }
+
 * {
   box-sizing: inherit;
 }
-*:before {
-  box-sizing: inherit;
-}
+
+*:before,
 *:after {
   box-sizing: inherit;
 }
+
 hgroup,
-img,
 figure,
 fieldset,
 ul,
@@ -126,12 +194,21 @@ p {
   padding: 0;
   margin-bottom: var(--space-4);
 }
+
+/* Images always sit in containers that own their spacing; a default bottom
+   margin just leaves a gap inside framed and clipped image wrappers. */
+img {
+  margin: 0;
+  padding: 0;
+}
+
 ul,
 ol {
   margin-left: var(--space-4);
   list-style-position: outside;
   list-style-image: none;
 }
+
 pre {
   margin-left: 0;
   margin-right: 0;
@@ -139,63 +216,78 @@ pre {
   margin-bottom: var(--space-4);
   font-size: 0.875rem;
   line-height: var(--line-height-normal);
-  background: hsla(0, 0%, 0%, 0.04);
+  background: var(--color-background-alt);
   border-radius: var(--border-radius);
   overflow: auto;
   word-wrap: normal;
   padding: var(--space-4);
 }
+
 b,
 strong,
 dt,
 th {
   font-weight: bold;
 }
+
 li {
   margin-bottom: calc(var(--space-4) / 2);
 }
+
 ol li,
 ul li {
   padding-left: 0;
 }
+
 li > ol,
 li > ul {
   margin-bottom: calc(var(--space-4) / 2);
   margin-left: var(--space-4);
   margin-top: calc(var(--space-4) / 2);
 }
+
 blockquote *:last-child {
   margin-bottom: 0;
 }
+
 li *:last-child {
   margin-bottom: 0;
 }
+
 p *:last-child {
   margin-bottom: 0;
 }
+
 li > p {
   margin-bottom: calc(var(--space-4) / 2);
 }
+
 p {
-  max-width: 680px;
+  max-width: 720px;
 }
+
 code {
   font-size: 0.875rem;
 }
+
 kbd {
   font-size: 0.875rem;
 }
+
 samp {
   font-size: 0.875rem;
 }
+
 abbr {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 acronym {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
   cursor: help;
 }
+
 tt,
 code {
   background-color: var(--color-code-bg);
@@ -206,9 +298,11 @@ code {
   padding-top: 0.25em;
   word-break: normal;
 }
+
 pre code {
   background: none;
 }
+
 code:before,
 code:after,
 tt:before,
@@ -216,6 +310,7 @@ tt:after {
   content: "\00a0";
   letter-spacing: -0.2em;
 }
+
 pre code:before,
 pre code:after,
 pre tt:before,

@@ -58,6 +58,9 @@ typings/
 .cache/
 public
 
+# generated image derivatives (rebuilt by `npm run prepare-images`)
+static/generated/news/
+
 # Mac files
 .DS_Store
 

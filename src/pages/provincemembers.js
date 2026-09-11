@@ -1,17 +1,12 @@
-import React from "react"
-import s from 'styled-components'
+import React from 'react'
 
-import Layout from "../components/layout"
-import { SubHeading, Text, TextSubheading, TextWrapperOne } from "../data/typography"
-
-const PMWrapper = s.div`
-  display: flex;
-  align-items: start;
-`
+import Layout from '../components/layout'
+import { Text, TextSubheading, TextWrapperOne } from '../data/typography'
+import * as styles from './provincemembers.module.css'
 
 const ProvincemembersPage = () => (
   <Layout pageTitle={'임 원'} pageSubtitle={'지방종문회'}>
-    <PMWrapper>
+    <div className={styles.wrapper}>
       <TextWrapperOne>
         <Text>
           <TextSubheading>(ㄱ)</TextSubheading>
@@ -126,7 +121,7 @@ const ProvincemembersPage = () => (
           훈춘시종문회<br />
         </Text>
       </TextWrapperOne>
-    </PMWrapper>
+    </div>
   </Layout>
 )
 

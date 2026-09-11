@@ -1,59 +1,55 @@
 import React from 'react'
-import s from 'styled-components'
 import { Link } from 'gatsby'
+import * as styles from './post-block.module.css'
 
-const PostWrapper = s.div`
-`
+const formatDate = date =>
+  date ? date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
 
-const PostSlide = s(Link)`
-  border-collapse: collapse;
-  text-decoration: none;
-  padding: 10px;
-  display: grid;
-`
+const PostBlock = ({ post, news, front, view = 'grid' }) => {
+  const href = news ? `/newspaper/${post.newsNumber}/` : `/post/${post.postId}/`
+  const title = news
+    ? `고씨종보 ${post.newsNumber}호`
+    : post.postTitleList && !front
+      ? post.postTitleList
+      : [post.title]
 
-const PostSlideImage = s.img`
-  margin: 0;
-  display: flex;
-  position: relative;
-  width: 225px;
-  height: 150px;
-  object-fit: cover;
-  border: 1px solid black;
-`
+  const titles = Array.isArray(title) ? title : [title]
+  const isList = view === 'list'
 
-const PostSlideText = s.div`
-  margin: 0;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  background: white;
-  word-break: keep-all;
-  line-break: strict;
-`
-const PostBlock = props => (
-  <PostWrapper style={props.front ? {} : { width: '225px' }}>
-    <PostSlide
-      to={props.news ? `/newspaper/${props.post.newsNumber}/` : `/post/${props.post.postId}/`}
-      style={props.front && { margin: '0px' }}>
-      <PostSlideImage
-        src={props.news ? props.post.newsImage : props.post.image}
-        alt="MISSING JPG"
-        style={props.front && { width: '420px', height: '300px' }}/>
-      <PostSlideText>
-        {props.news
-          ? `${props.post.newsNumber}호`
-          : ((props.post.postTitleList && !props.front)
-            ? (props.post.postTitleList.map((pt, i) => (<div style={i == 0 ? {margin: '-2px'} : {margin: '-2px', marginTop: '-6px'}}>{pt}</div>)))
-            : props.post.title)
-        }
-      </PostSlideText>
-    </PostSlide>
-  </PostWrapper>
-)
+  return (
+    <article className={`${styles.card} ${isList ? styles.cardList : ''}`}>
+      <Link className={`${styles.link} ${isList ? styles.linkList : ''}`} to={href}>
+        <div
+          className={`${styles.imageWrap} ${front ? styles.imageFront : ''} ${
+            isList ? styles.imageWrapList : ''
+          }`}
+        >
+          <img
+            className={styles.image}
+            src={news ? post.newsImage : post.image}
+            alt={titles[0]}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div className={`${styles.body} ${isList ? styles.bodyList : ''}`}>
+          <span className={styles.meta}>
+            {news ? `종보 · ${post.newsNumber}호` : post.type}
+          </span>
+          <h3 className={styles.title}>
+            {titles.map((line, i) => (
+              <span key={i} className={styles.titleLine}>{line}</span>
+            ))}
+          </h3>
+          {(news ? post.newsDate : post.date) && (
+            <time className={styles.date} dateTime={(news ? post.newsDate : post.date).toISOString()}>
+              {formatDate(news ? post.newsDate : post.date)}
+            </time>
+          )}
+        </div>
+      </Link>
+    </article>
+  )
+}
 
 export default PostBlock

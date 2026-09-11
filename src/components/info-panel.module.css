@@ -1,0 +1,36 @@
+.section {
+  background: var(--color-background);
+  padding: 80px var(--size-gutter);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(201, 149, 46, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(15, 27, 45, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media screen and (max-width: 900px) {
+  .section {
+    padding: 56px var(--size-gutter);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

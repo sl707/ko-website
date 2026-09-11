@@ -1,5 +1,4 @@
 import React from 'react'
-import s from 'styled-components'
 
 import Post from '../components/post'
 import Layout from '../components/layout'

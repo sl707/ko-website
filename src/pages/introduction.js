@@ -1,38 +1,13 @@
 import React from 'react'
-import s from 'styled-components'
-import { StaticImage } from 'gatsby-plugin-image'
 
 import Layout from '../components/layout'
-import { Text, SubHeading, BoldText } from '../data/typography'
-
-const IntroWrapper = s.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: start;
-  text-align: justify;
-  padding: 10px;
-  @media screen and (max-width: 750px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
-
-const IntroImage = s.img`
-  position: relative;
-  width: 220px;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-`
+import { Text, BoldText } from '../data/typography'
+import * as styles from './introduction.module.css'
 
 const IntroductionPage = () => (
   <Layout pageTitle={'중 앙 종 문 회'} pageSubtitle={'회장 인사말'}>
-    <IntroWrapper>
-      <IntroImage
-          src="/고재갑회장왕.jpg"
-        />
+    <div className={styles.wrapper}>
+      <img className={styles.image} src="/고재갑회장왕.jpg" alt="고재갑 회장" />
       <Text>
         존경하고 사랑하는 전 세계의 60만 고씨 가족 여러분!<br />
         우리 고씨들은 고을나 대왕의 후손들입니다.<br />
@@ -45,11 +20,9 @@ const IntroductionPage = () => (
         고씨 일가 여러분들의 가정에 행복이 가득하시기를 기원합니다.<br />
         감사합니다.<br />
         <br />
-        <BoldText>
-          고씨중앙종문회장 고재갑
-        </BoldText>
+        <BoldText>고씨중앙종문회장 고재갑</BoldText>
       </Text>
-    </IntroWrapper>
+    </div>
   </Layout>
 )
 
