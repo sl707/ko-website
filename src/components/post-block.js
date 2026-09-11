@@ -1,56 +1,70 @@
 import React from 'react'
 import s from 'styled-components'
 import { Link } from 'gatsby'
+import theme from '../theme'
 
 const PostWrapper = s.div`
+  margin-bottom: 24px;
 `
 
 const PostSlide = s(Link)`
-  border-collapse: collapse;
+  display: block;
   text-decoration: none;
-  padding: 10px;
-  display: grid;
+  border-radius: ${theme.radius.md};
+  overflow: hidden;
+  background: ${theme.colors.surface};
+  box-shadow: ${theme.shadows.sm};
+  transition: transform ${theme.transitions.normal},
+    box-shadow ${theme.transitions.normal};
+  width: ${props => (props.$front ? 'auto' : '225px')};
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${theme.shadows.md};
+  }
 `
 
 const PostSlideImage = s.img`
-  margin: 0;
-  display: flex;
-  position: relative;
-  width: 225px;
-  height: 150px;
+  display: block;
+  width: 100%;
+  height: ${props => (props.$front ? '300px' : '150px')};
   object-fit: cover;
-  border: 1px solid black;
 `
 
 const PostSlideText = s.div`
-  margin: 0;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+  padding: 12px 14px;
   text-align: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  background: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: ${theme.colors.text};
   word-break: keep-all;
   line-break: strict;
+  border-top: 1px solid ${theme.colors.borderLight};
 `
+
 const PostBlock = props => (
-  <PostWrapper style={props.front ? {} : { width: '225px' }}>
+  <PostWrapper>
     <PostSlide
-      to={props.news ? `/newspaper/${props.post.newsNumber}/` : `/post/${props.post.postId}/`}
-      style={props.front && { margin: '0px' }}>
+      to={
+        props.news
+          ? `/newspaper/${props.post.newsNumber}/`
+          : `/post/${props.post.postId}/`
+      }
+      $front={props.front}
+    >
       <PostSlideImage
         src={props.news ? props.post.newsImage : props.post.image}
-        alt="MISSING JPG"
-        style={props.front && { width: '420px', height: '300px' }}/>
+        alt=""
+        $front={props.front}
+      />
       <PostSlideText>
         {props.news
           ? `${props.post.newsNumber}호`
-          : ((props.post.postTitleList && !props.front)
-            ? (props.post.postTitleList.map((pt, i) => (<div style={i == 0 ? {margin: '-2px'} : {margin: '-2px', marginTop: '-6px'}}>{pt}</div>)))
-            : props.post.title)
-        }
+          : props.post.postTitleList && !props.front
+            ? props.post.postTitleList.map((pt, i) => (
+                <div key={i}>{pt}</div>
+              ))
+            : props.post.title}
       </PostSlideText>
     </PostSlide>
   </PostWrapper>

@@ -8,11 +8,11 @@ import { Text, SubHeading, BoldText } from '../data/typography'
 const IntroWrapper = s.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  gap: 32px;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   text-align: justify;
-  padding: 10px;
+  padding: 24px 0 48px;
   @media screen and (max-width: 750px) {
     flex-direction: column;
     align-items: center;
@@ -20,11 +20,10 @@ const IntroWrapper = s.div`
 `
 
 const IntroImage = s.img`
-  position: relative;
-  width: 220px;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
+  width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(26, 46, 76, 0.12);
+  flex-shrink: 0;
 `
 
 const IntroductionPage = () => (

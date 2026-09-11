@@ -25,10 +25,8 @@ module.exports = {
         name: '고씨중앙종문회',
         short_name: '고씨',
         start_url: '/',
-        background_color: '#663399',
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: '#faf8f3',
+        theme_color: '#1a2e4c',
         display: 'minimal-ui',
         icon: 'src/images/고씨마크.png' // This path is relative to the root of the site.
       }

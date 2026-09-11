@@ -8,13 +8,25 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import s from 'styled-components'
 
 import Header from './header'
 import Footer from './footer'
 import './layout.css'
-import { StaticImage } from 'gatsby-plugin-image'
 import PageTitle from './page-title'
 import { SubHeading } from '../data/typography'
+import theme from '../theme'
+
+const MainContent = s.main`
+  padding-top: var(--header-height);
+  min-height: calc(100vh - 200px);
+`
+
+const PageContent = s.div`
+  max-width: ${theme.maxWidth};
+  margin: 0 auto;
+  padding: 0 var(--size-gutter);
+`
 
 const Layout = ({ children, pageTitle, pageSubtitle }) => {
   const data = useStaticQuery(graphql`
@@ -30,35 +42,22 @@ const Layout = ({ children, pageTitle, pageSubtitle }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || '고씨중앙종문회'} />
-      <br /><br /><br />
-      {/* <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 'var(--size-content)',
-          padding: 'var(--size-gutter)'
-        }}
-      > */}
-      {pageTitle && <PageTitle pageTitle={pageTitle} />}
-      {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
-      <main>{children}</main>
-        {/* <footer
-          style={{
-            marginTop: 'var(--space-5)',
-            fontSize: 'var(--font-sm)'
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {' '}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer> */}
-      {/* </div> */}
+      <MainContent>
+        {pageTitle && <PageTitle pageTitle={pageTitle} />}
+        {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
+        {pageTitle || pageSubtitle ? (
+          <PageContent>{children}</PageContent>
+        ) : (
+          children
+        )}
+      </MainContent>
       <Footer />
     </>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

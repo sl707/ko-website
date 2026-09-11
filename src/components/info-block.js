@@ -1,88 +1,77 @@
 import React from 'react'
 import s from 'styled-components'
+import theme from '../theme'
 
 const InfoBlockWrapper = s.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  padding: 0 10px;
+  gap: 48px;
+  margin-bottom: 56px;
+
   @media screen and (max-width: 1100px) {
-    display: none;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
   }
 `
 
-const InfoBlockWrapper1 = s.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  margin: 0 auto;
-  padding: 0 10px;
-  @media screen and (min-width: 1100px) {
-    display: none;
+const InfoBlockImageWrapper = s.div`
+  flex: 0 0 42%;
+  border-radius: ${theme.radius.lg};
+  overflow: hidden;
+  box-shadow: ${theme.shadows.md};
+
+  @media screen and (max-width: 1100px) {
+    flex: none;
+    width: 100%;
+    max-width: 480px;
   }
 `
 
 const InfoBlockImage = s.img`
-  display: flex;
-  max-height: 400px;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
 `
 
-const InfoBlockImageWrapper = s.div`
-  display: flex;
-  flex-basis: 40%;
-  padding: 5px 0;
-`
-
-const InfoBlockText = s.p`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 50%;
-  font-size: 17px;
+const InfoBlockText = s.div`
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.85;
   white-space: pre-wrap;
-  padding: 5px 0;
+  color: ${theme.colors.text};
   text-align: justify;
   text-justify: inter-word;
 `
 
-const InfoBlockSubtitle = s.p`
-  font-weight: bold;
-  font-size: 18px;
-  margin: 0;
-  white-space: pre-wrap;
+const InfoBlockSubtitle = s.h3`
+  font-family: ${theme.fonts.serif};
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: ${theme.colors.primary};
+  margin: 0 0 12px;
 `
 
-const BlockContent = ({ image, text, order, subtitle }) => (
-  <>
-    {order % 2 === 0 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
-    <InfoBlockText>
-      <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
-      {text}
-    </InfoBlockText>
-    {order % 2 === 1 && <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>}
-  </>
-)
-
-const BlockContent1 = ({ image, text, order, subtitle }) => (
-  <>
-    <InfoBlockImageWrapper><InfoBlockImage src={image} alt='missing' /></InfoBlockImageWrapper>
-    <InfoBlockText>
-      <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>
-      {text}
-    </InfoBlockText>
-  </>
-)
-
 const InfoBlock = ({ image, text, order, subtitle }) => (
-  <>
-    <InfoBlockWrapper>
-      <BlockContent image={image} text={text} order={order} subtitle={subtitle} />
-    </InfoBlockWrapper>
-    <InfoBlockWrapper1>
-      <BlockContent1 image={image} text={text} order={order} subtitle={subtitle} />
-    </InfoBlockWrapper1>
-  </>
+  <InfoBlockWrapper>
+    {order % 2 === 0 && (
+      <InfoBlockImageWrapper>
+        <InfoBlockImage src={image} alt="" />
+      </InfoBlockImageWrapper>
+    )}
+    <InfoBlockText>
+      {subtitle && <InfoBlockSubtitle>{subtitle}</InfoBlockSubtitle>}
+      {text}
+    </InfoBlockText>
+    {order % 2 === 1 && (
+      <InfoBlockImageWrapper>
+        <InfoBlockImage src={image} alt="" />
+      </InfoBlockImageWrapper>
+    )}
+  </InfoBlockWrapper>
 )
 
 export default InfoBlock

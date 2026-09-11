@@ -1,54 +1,64 @@
-import React from "react"
+import React from 'react'
 import s from 'styled-components'
-import { StaticImage } from "gatsby-plugin-image"
-
-const PageHeader = s.div`
-  z-index: 1;
-  position: absolute;
-  color: white;
-  // background-color: #292929;
-  // border: 5px solid #663946;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  // border-style: outset;
-  padding: 10px 15px;
-  font-size: 35px;
-  // width: 200px;
-  // height: 60px;
-  font-weight: bold;
-  @media screen and (max-width: 800px) {
-    // width: 180px;
-    // height: 45px;
-    font-size: 30px;
-  }
-`
+import { StaticImage } from 'gatsby-plugin-image'
+import theme from '../theme'
 
 const PageTitleWrapper = s.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  min-height: 200px;
+  overflow: hidden;
+`
+
+const HeroOverlay = s.div`
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 46, 76, 0.5) 0%,
+    rgba(26, 46, 76, 0.7) 100%
+  );
+  z-index: 2;
+`
+
+const PageHeader = s.h1`
+  position: absolute;
+  z-index: 3;
+  font-family: ${theme.fonts.serif};
+  color: ${theme.colors.textLight};
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+
+  @media screen and (max-width: 800px) {
+    font-size: 1.75rem;
+  }
 `
 
 const PageTitle = props => (
   <PageTitleWrapper>
-    <PageHeader>
-      {props.pageTitle}
-    </PageHeader>
     <StaticImage
-            src="../images/성주전.jpeg"
-            loading="eager"
-            alt="MISSING"
-            style={{
-              position: 'relative',
-              objectFit: 'cover',
-              width: '100%',
-              opacity: '1',
-              filter: 'brightness(50%)'
-            }}
+      src="../images/성주전.jpeg"
+      loading="eager"
+      alt=""
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+      }}
+      imgStyle={{
+        objectFit: 'cover',
+        width: '100%',
+        height: '100%',
+      }}
     />
+    <HeroOverlay />
+    <PageHeader>{props.pageTitle}</PageHeader>
   </PageTitleWrapper>
 )
 
