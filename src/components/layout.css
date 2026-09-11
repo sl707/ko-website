@@ -183,7 +183,6 @@ hr {
 }
 
 hgroup,
-img,
 figure,
 fieldset,
 ul,
@@ -194,6 +193,13 @@ p {
   margin: 0;
   padding: 0;
   margin-bottom: var(--space-4);
+}
+
+/* Images always sit in containers that own their spacing; a default bottom
+   margin just leaves a gap inside framed and clipped image wrappers. */
+img {
+  margin: 0;
+  padding: 0;
 }
 
 ul,
