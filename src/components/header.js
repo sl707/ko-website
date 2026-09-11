@@ -17,7 +17,7 @@ const navbarLinks = () =>
       <div className={styles.navItem} key={link.name}>
         <div className={styles.navTitle}>
           {link.name}
-          <img src={DownTriangle} alt="" style={{ margin: 0, width: 10, opacity: 0.5 }} />
+          <img src={DownTriangle} alt="" className={styles.chevron} />
         </div>
         <nav className={styles.subnav}>
           {link.submenu.map(sublink => (
@@ -47,7 +47,7 @@ const mobileNavLinks = (selectNav, setSelectNav) =>
             <img
               src={selectNav === link.name ? UpTriangle : DownTriangle}
               alt=""
-              style={{ margin: 0, width: 12, opacity: 0.5 }}
+              className={styles.chevronMobile}
             />
           </div>
           {selectNav === link.name && (
@@ -84,7 +84,7 @@ const Header = ({ siteTitle }) => {
           type="button"
           className={styles.menuButton}
           onClick={() => setNavOn(!navOn)}
-          aria-label="메뉴 열기"
+          aria-label={navOn ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={navOn}
         >
           <span className={styles.hamburgerLine} />

@@ -1,5 +1,21 @@
 .wrapper {
   display: flex;
-  width: 100%;
   justify-content: center;
+  padding: 24px 0 48px;
+}
+
+.imageFrame {
+  width: 100%;
+  max-width: 960px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
 }

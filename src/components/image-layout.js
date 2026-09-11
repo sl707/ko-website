@@ -2,9 +2,13 @@ import React from 'react'
 import Layout from './layout'
 import * as styles from './image-layout.module.css'
 
-const ImageLayout = props => (
-  <Layout pageTitle={props.title} pageSubtitle={props.subtitle}>
-    <img className={styles.wrapper} src={props.imageUrl} alt="" />
+const ImageLayout = ({ title, subtitle, imageUrl }) => (
+  <Layout pageTitle={title} pageSubtitle={subtitle}>
+    <div className={styles.wrapper}>
+      <div className={styles.imageFrame}>
+        <img className={styles.image} src={imageUrl} alt={subtitle || title || ''} />
+      </div>
+    </div>
   </Layout>
 )
 

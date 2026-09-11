@@ -45,7 +45,7 @@ const AlbumSubpanel = () => {
     <section className={styles.section}>
       <div className={styles.inner}>
         <SectionHeader
-          label="News"
+          label="소식"
           title="소식"
           subtitle="종문회의 최신 소식과 고씨종보를 확인하세요"
         />

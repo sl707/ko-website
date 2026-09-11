@@ -94,6 +94,18 @@
   color: var(--color-primary);
 }
 
+.chevron {
+  margin: 0;
+  width: 10px;
+  opacity: 0.5;
+}
+
+.chevronMobile {
+  margin: 0;
+  width: 12px;
+  opacity: 0.5;
+}
+
 .subnav {
   display: none;
   position: absolute;

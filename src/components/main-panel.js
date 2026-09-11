@@ -12,8 +12,7 @@ const MainPanel = () => (
         alt="고씨중앙종문회 정기총회"
         className={styles.heroImage}
         imgClassName={styles.heroImage}
-        style={{ width: '100%', height: '100%' }}
-        imgStyle={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        imgStyle={{ objectFit: 'cover' }}
       />
     </div>
     <div className={styles.heroOverlay} />
@@ -34,7 +33,7 @@ const MainPanel = () => (
       </div>
     </div>
     <div className={styles.scrollHint}>
-      <span>Scroll</span>
+      <span>아래로</span>
       <div className={styles.scrollLine} />
     </div>
   </div>

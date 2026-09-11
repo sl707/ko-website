@@ -24,6 +24,14 @@
   color: var(--color-primary);
 }
 
+.text-subheading {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 1.25em 0 0.5em;
+}
+
 .text-wrapper-one {
   padding: 16px var(--size-gutter);
   width: 100%;

@@ -7,7 +7,7 @@ const MenuPanel = () => (
   <section className={styles.section}>
     <div className={styles.inner}>
       <SectionHeader
-        label="Explore"
+        label="바로가기"
         title="바로가기"
         subtitle="종문회의 주요 페이지를 빠르게 찾아보세요"
         variant="light"

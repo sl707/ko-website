@@ -14,7 +14,7 @@ export const TextWrapperOne = ({ children, className = '', style }) => (
 )
 
 export const TextSubheading = ({ children, className = '', style }) => (
-  <div className={className} style={style}>{children}</div>
+  <div className={`text-subheading ${className}`.trim()} style={style}>{children}</div>
 )
 
 export const TextSubheadingSmall = ({ children, className = '', style }) => (

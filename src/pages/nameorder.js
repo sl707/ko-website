@@ -80,12 +80,14 @@ const mainNameOrder = [
 
 const orderTable = nameArray => (
   <table className={styles.table}>
-    {nameArray.map(row => (
-      <tr key={row.age} className={styles.row}>
-        <td className={styles.cell}>{row.age}</td>
-        <td className={styles.cell}>{row.name}</td>
-      </tr>
-    ))}
+    <tbody>
+      {nameArray.map(row => (
+        <tr key={row.age} className={styles.row}>
+          <td className={styles.cell}>{row.age}</td>
+          <td className={styles.cell}>{row.name}</td>
+        </tr>
+      ))}
+    </tbody>
   </table>
 )
 

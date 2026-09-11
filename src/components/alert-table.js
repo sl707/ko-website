@@ -4,56 +4,44 @@ import { Link } from 'gatsby'
 import alertList from '../data/alerts'
 import * as styles from './alert-table.module.css'
 
-const alertTableHeader = (
-  <div className={styles.head}>
-    <div className={styles.cellTitle} style={{ fontWeight: 'bolder' }}>
-      제목
-    </div>
-    <small className={styles.cellDate} style={{ fontSize: '15px' }}>
-      날자
-    </small>
-  </div>
-)
+const formatDate = (date, short) => {
+  if (!date) return ''
+  const formatted = date.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
+  return short ? formatted.replace(/^\d{4}\.\s*/, '') : formatted
+}
 
-const AlertSubpanel = props => {
-  const alertArray = props.page ? alertList : alertList.slice(0, 7)
-  for (let i = alertArray.length; i < 7; i++) {
-    alertArray[i] = {
-      empty: true,
-    }
+const AlertSubpanel = ({ page, compact }) => {
+  const items = page ? [...alertList] : alertList.slice(0, 7)
+
+  if (items.length === 0) {
+    return (
+      <div className={styles.wrapper}>
+        {!page && <div className={styles.subtitle}>공지사항</div>}
+        <div className={styles.empty}>
+          <p className={styles.emptyTitle}>등록된 공지사항이 없습니다</p>
+          <p className={styles.emptyText}>새로운 공지가 올라오면 이곳에 표시됩니다.</p>
+        </div>
+      </div>
+    )
   }
+
   return (
-    <div
-      className={styles.wrapper}
-      style={props.page && { width: '80%', maxWidth: 'none', padding: '0' }}
-    >
-      {!props.page && <div className={styles.subtitle}>공지사항</div>}
-      <table className={styles.table} style={props.page && { width: '100%' }}>
-        {props.page && alertTableHeader}
-        {alertArray.map((alert, index) => (
-          <tr key={index} className={styles.row}>
-            {alert.empty ? (
-              <td>
-                <div className={styles.emptyCell}>
-                  <div className={styles.blankLine} />
-                </div>
-              </td>
-            ) : (
-              <td>
-                <Link className={styles.cellLink} to={`/alert/${alert.alertId}`}>
-                  <div className={styles.cellTitle}>{alert.title}</div>
-                  <small className={styles.cellDate}>
-                    {alert.date &&
-                      alert.date
-                        .toLocaleDateString('en-CA')
-                        .slice(props.page ? 0 : 5)}
-                  </small>
-                </Link>
-              </td>
-            )}
-          </tr>
+    <div className={styles.wrapper}>
+      {!page && <div className={styles.subtitle}>공지사항</div>}
+      <ul className={styles.list}>
+        {items.map(alert => (
+          <li key={alert.alertId} className={styles.item}>
+            <Link className={styles.link} to={`/alert/${alert.alertId}`}>
+              <span className={styles.title}>{alert.title}</span>
+              <time className={styles.date}>{formatDate(alert.date, compact)}</time>
+            </Link>
+          </li>
         ))}
-      </table>
+      </ul>
     </div>
   )
 }

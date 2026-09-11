@@ -38,7 +38,7 @@ const InfoPanel = () => (
   <section className={styles.section}>
     <div className={styles.inner}>
       <SectionHeader
-        label="About"
+        label="소개"
         title="고씨중앙종문회란?"
         subtitle="3,739년의 역사와 전통을 이어가는 고씨 가문"
       />
