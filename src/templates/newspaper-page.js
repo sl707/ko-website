@@ -24,14 +24,16 @@ const NewspaperPage = ({ pageContext: { paper } }) => {
     if (viewportRef.current) {
       viewportRef.current.scrollTo({ top: 0, left: 0 })
     }
+  }, [page])
 
+  const handlePageImageLoad = () => {
     ;[page - 1, page + 1]
       .filter(nextPage => nextPage >= 1 && nextPage <= pageCount)
       .forEach(nextPage => {
         const image = new Image()
         image.src = `/news/${paper.newsNumber}-${nextPage}.${imageType}`
       })
-  }, [imageType, page, pageCount, paper.newsNumber])
+  }
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -129,6 +131,7 @@ const NewspaperPage = ({ pageContext: { paper } }) => {
               alt={`고씨종보 ${paper.newsNumber}호 ${page}면`}
               loading="eager"
               decoding="async"
+              onLoad={handlePageImageLoad}
               onClick={() => setZoomIndex(zoomIndex === 0 ? 2 : 0)}
             />
           </div>

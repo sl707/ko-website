@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
 import slideList from '../data/slides'
@@ -36,11 +36,16 @@ const AlbumSubpanel = () => {
   const [imageLoading, setImageLoading] = useState(true)
   const currentSlide = firstFiveSlides[slideNumber - 1]
 
-  const goPrev = () => setSlideNumber(n => (n === 1 ? 5 : n - 1))
-  const goNext = () => setSlideNumber(n => (n === 5 ? 1 : n + 1))
-
-  useEffect(() => {
+  const selectSlide = number => {
     setImageLoading(true)
+    setSlideNumber(number)
+  }
+
+  const goPrev = () => selectSlide(slideNumber === 1 ? 5 : slideNumber - 1)
+  const goNext = () => selectSlide(slideNumber === 5 ? 1 : slideNumber + 1)
+
+  const handleImageLoad = () => {
+    setImageLoading(false)
 
     const adjacentSlides = [
       slideNumber === 1 ? 5 : slideNumber - 1,
@@ -51,7 +56,7 @@ const AlbumSubpanel = () => {
       const image = new Image()
       image.src = `/generated/slides/slide-${number}-960.webp`
     })
-  }, [slideNumber])
+  }
 
   return (
     <section className={styles.section}>
@@ -84,7 +89,7 @@ const AlbumSubpanel = () => {
                   alt={getSlideTitle(currentSlide)}
                   loading={slideNumber === 1 ? 'eager' : 'lazy'}
                   decoding="async"
-                  onLoad={() => setImageLoading(false)}
+                  onLoad={handleImageLoad}
                 />
               </Link>
               {getSlideCaption(currentSlide) && (
@@ -112,7 +117,7 @@ const AlbumSubpanel = () => {
                   key={i}
                   type="button"
                   className={`${styles.dot} ${slideNumber === i + 1 ? styles.dotActive : ''}`}
-                  onClick={() => setSlideNumber(i + 1)}
+                  onClick={() => selectSlide(i + 1)}
                   aria-label={`슬라이드 ${i + 1}`}
                 />
               ))}
