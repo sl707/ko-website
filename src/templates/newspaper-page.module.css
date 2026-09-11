@@ -16,6 +16,17 @@
   background: var(--color-surface);
 }
 
+@media screen and (max-width: 600px) {
+  .wrapper {
+    gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  .image {
+    border-radius: var(--radius-sm);
+  }
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
     gap: 32px;

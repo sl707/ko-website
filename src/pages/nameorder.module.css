@@ -51,5 +51,16 @@
 @media screen and (max-width: 600px) {
   .wrapper {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px 0 32px;
+  }
+
+  .cell {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .cell:first-child {
+    width: 38%;
   }
 }

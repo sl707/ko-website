@@ -70,4 +70,15 @@
   color: var(--color-text-muted);
   margin: 0;
   word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
 }

@@ -76,6 +76,7 @@
   margin: 0 0 16px;
   line-height: 1.4;
   word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .excerpt {
@@ -85,6 +86,7 @@
   margin: 0;
   flex: 1;
   word-break: keep-all;
+  overflow-wrap: anywhere;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -121,8 +123,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  flex-shrink: 0;
   border: none;
   border-radius: var(--radius-sm);
   background: transparent;
@@ -151,23 +154,36 @@
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  position: relative;
+  width: var(--touch-min);
+  height: var(--touch-min);
   border: none;
   cursor: pointer;
   padding: 0;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--color-border);
+  transform: translate(-50%, -50%);
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.dot:hover {
+.dot:hover::after {
   background: var(--color-accent);
 }
 
-.dotActive {
+.dotActive::after {
   background: var(--color-primary);
-  transform: scale(1.2);
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
 @media screen and (max-width: 900px) {
@@ -189,5 +205,25 @@
 
   .content {
     padding: 24px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 40px var(--size-gutter);
+  }
+
+  .footer {
+    padding: 12px 8px;
+    gap: 4px;
+  }
+
+  .counter {
+    font-size: 0.75rem;
+  }
+
+  .readMore {
+    min-height: var(--touch-min);
+    align-items: center;
   }
 }

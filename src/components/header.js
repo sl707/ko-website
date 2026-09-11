@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
@@ -30,18 +30,22 @@ const navbarLinks = () =>
     )
   )
 
-const mobileNavLinks = (selectNav, setSelectNav) =>
+const mobileNavLinks = (selectNav, setSelectNav, closeMenu) =>
   navLinks.map(link => (
     <div className={styles.mobileNavItem} key={link.name}>
       {link.submenu.length === 0 ? (
-        <Link className={styles.mobileNavLink} to={link.url}>{link.name}</Link>
+        <Link className={styles.mobileNavLink} to={link.url} onClick={closeMenu}>
+          {link.name}
+        </Link>
       ) : (
         <>
-          <div
+          <button
+            type="button"
             className={styles.mobileNavToggle}
             onClick={() =>
               setSelectNav(link.name === selectNav ? '' : link.name)
             }
+            aria-expanded={selectNav === link.name}
           >
             {link.name}
             <img
@@ -49,11 +53,16 @@ const mobileNavLinks = (selectNav, setSelectNav) =>
               alt=""
               className={styles.chevronMobile}
             />
-          </div>
+          </button>
           {selectNav === link.name && (
             <div className={styles.mobileSubnav}>
               {link.submenu.map(sublink => (
-                <Link key={sublink.url} className={styles.mobileSubnavLink} to={sublink.url}>
+                <Link
+                  key={sublink.url}
+                  className={styles.mobileSubnavLink}
+                  to={sublink.url}
+                  onClick={closeMenu}
+                >
                   {sublink.name}
                 </Link>
               ))}
@@ -67,6 +76,22 @@ const mobileNavLinks = (selectNav, setSelectNav) =>
 const Header = ({ siteTitle }) => {
   const [navOn, setNavOn] = useState(false)
   const [selectNav, setSelectNav] = useState('')
+
+  const closeMenu = () => {
+    setNavOn(false)
+    setSelectNav('')
+  }
+
+  useEffect(() => {
+    if (navOn) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [navOn])
 
   return (
     <header className={styles.header}>
@@ -83,7 +108,7 @@ const Header = ({ siteTitle }) => {
         <button
           type="button"
           className={styles.menuButton}
-          onClick={() => setNavOn(!navOn)}
+          onClick={() => (navOn ? closeMenu() : setNavOn(true))}
           aria-label={navOn ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={navOn}
         >
@@ -94,7 +119,7 @@ const Header = ({ siteTitle }) => {
         <nav className={styles.nav}>{navbarLinks()}</nav>
       </div>
       <div className={navOn ? styles.mobileMenuOpen : styles.mobileMenu}>
-        {mobileNavLinks(selectNav, setSelectNav)}
+        {mobileNavLinks(selectNav, setSelectNav, closeMenu)}
       </div>
     </header>
   )

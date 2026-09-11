@@ -34,3 +34,15 @@
   padding: 0 24px;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    min-height: 200px;
+  }
+
+  .title {
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+    letter-spacing: 0.04em;
+    padding: 0 16px;
+  }
+}

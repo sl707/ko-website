@@ -66,6 +66,10 @@
 }
 
 @media screen and (max-width: 800px) {
+  .footer {
+    padding: 48px var(--size-gutter) calc(24px + env(safe-area-inset-bottom));
+  }
+
   .top {
     grid-template-columns: 1fr;
     gap: 32px;

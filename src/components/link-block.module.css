@@ -73,3 +73,22 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    min-height: 160px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .text {
+    font-size: 1.15rem;
+  }
+
+  .arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -2,6 +2,11 @@ import React from 'react'
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+      key="viewport"
+    />,
     <link rel="preconnect" href="https://fonts.googleapis.com" key="preconnect-google" />,
     <link
       rel="preconnect"

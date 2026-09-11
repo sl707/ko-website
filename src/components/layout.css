@@ -60,6 +60,7 @@
   --size-gutter: var(--space-4);
   --size-gap: var(--space-5);
   --header-height: 76px;
+  --touch-min: 44px;
   --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.05);
   --shadow-md: 0 8px 24px rgba(15, 27, 45, 0.08);
   --shadow-lg: 0 16px 48px rgba(15, 27, 45, 0.12);
@@ -71,6 +72,7 @@ html {
   box-sizing: border-box;
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -83,7 +85,16 @@ body {
   font-weight: 400;
   margin: 0;
   word-wrap: break-word;
+  overflow-x: hidden;
   background-color: var(--color-background);
+  -webkit-tap-highlight-color: rgba(201, 149, 46, 0.15);
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --size-gutter: 16px;
+    --header-height: 64px;
+  }
 }
 
 a {

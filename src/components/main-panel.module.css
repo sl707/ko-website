@@ -153,8 +153,31 @@
 
 @media screen and (max-width: 800px) {
   .hero {
-    min-height: 85vh;
+    min-height: 85dvh;
     max-height: none;
+  }
+
+  .heroContent {
+    padding: 0 16px;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    letter-spacing: 0.02em;
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding: 14px 24px;
   }
 
   .scrollHint {

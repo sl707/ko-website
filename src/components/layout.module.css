@@ -8,3 +8,9 @@
   margin: 0 auto;
   padding: 0 var(--size-gutter) 48px;
 }
+
+@media screen and (max-width: 600px) {
+  .pageContent {
+    padding-bottom: 32px;
+  }
+}

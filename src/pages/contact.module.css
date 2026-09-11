@@ -33,3 +33,10 @@
 .mapWrapper {
   margin-bottom: 16px;
 }
+
+@media screen and (max-width: 600px) {
+  .mapLink {
+    min-height: var(--touch-min);
+    align-items: center;
+  }
+}
