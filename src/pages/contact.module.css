@@ -1,0 +1,35 @@
+.section {
+  padding: 8px 0;
+}
+
+.sectionTight {
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.textWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-accent);
+  transition: color var(--transition-fast);
+}
+
+.mapLink:hover {
+  color: var(--color-primary);
+}
+
+.mapWrapper {
+  margin-bottom: 16px;
+}

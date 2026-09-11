@@ -1,61 +1,52 @@
-import { StaticImage } from "gatsby-plugin-image"
-import React from "react"
-import s from 'styled-components'
-import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
+import React from 'react'
+import { Text, TextWrapperOne } from '../data/typography'
+import * as styles from './post.module.css'
 
-const PostWrapper = s.div`
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-`
+const toDate = value => (value instanceof Date ? value : new Date(value))
 
-const PostImage = s.img`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  max-height: 500px;
-  max-width: 700px;
-  object-fit: contain;
-  text-align: center;
-  padding: 0 20px;
-  margin: 0;
-`
+const formatDate = date => {
+  if (!date) return ''
+  const parsed = toDate(date)
+  if (Number.isNaN(parsed.getTime())) return ''
+  return parsed.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })
+}
 
-const Post = props => (
-  <PostWrapper>
-    <PostImage
-      src={props.imageUrl}
-      alt="MISSING JPG"
-    />
-    {props.imageCaption && <TextWrapperOne style={{ padding: '0px', width: '100%' }}>
-      <Text style={{ padding: '0px', margin: '0px', fontSize: '16px', fontStyle: 'italic', }}>
-        {props.imageCaption}
-      </Text>
-    </TextWrapperOne>}
-    {
-      props.imageTwoUrl &&
-      <>
-      <br />
-      <PostImage
-        src={props.imageTwoUrl}
-        alt="MISSING JPG"
-      />
-      </>
-    }
-    <TextSubheading style={{ textAlign: 'center', margin: '0', paddingBottom: '10px' }}>
-        {props.date && props.date.toLocaleString('en-CA').slice(0, 10)}
-      </TextSubheading>
-    <TextWrapperOne>
-      <Text>
-        {props.text && typeof props.text === 'string' ? props.text.replace(/\n{3,}|\n{2}/g, match => match.length >= 3 ? '\n\n' : '\n') : props.text}
-      </Text>
-    </TextWrapperOne>
-  </PostWrapper>
+const toIsoDate = date => {
+  if (!date) return undefined
+  const parsed = toDate(date)
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString()
+}
+
+const Post = ({ imageUrl, imageTwoUrl, imageCaption, text, date }) => (
+  <article className={styles.wrapper}>
+    {imageUrl && (
+      <div className={styles.imageFrame}>
+        <img className={styles.image} src={imageUrl} alt="" />
+      </div>
+    )}
+    {imageCaption && <p className={styles.caption}>{imageCaption}</p>}
+    {imageTwoUrl && (
+      <div className={styles.imageFrame}>
+        <img className={styles.image} src={imageTwoUrl} alt="" />
+      </div>
+    )}
+    {date && (
+      <time className={styles.date} dateTime={toIsoDate(date)}>
+        {formatDate(date)}
+      </time>
+    )}
+    {(text || typeof text !== 'string') && (
+      <div className={styles.body}>
+        <TextWrapperOne>
+          <Text>
+            {text && typeof text === 'string'
+              ? text.replace(/\n{3,}|\n{2}/g, match => (match.length >= 3 ? '\n\n' : '\n'))
+              : text}
+          </Text>
+        </TextWrapperOne>
+      </div>
+    )}
+  </article>
 )
 
 export default Post

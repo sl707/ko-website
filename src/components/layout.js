@@ -12,9 +12,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import Footer from './footer'
 import './layout.css'
-import { StaticImage } from 'gatsby-plugin-image'
+import '../styles/animations.css'
 import PageTitle from './page-title'
 import { SubHeading } from '../data/typography'
+import * as styles from './layout.module.css'
 
 const Layout = ({ children, pageTitle, pageSubtitle }) => {
   const data = useStaticQuery(graphql`
@@ -30,35 +31,22 @@ const Layout = ({ children, pageTitle, pageSubtitle }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || '고씨중앙종문회'} />
-      <br /><br /><br />
-      {/* <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 'var(--size-content)',
-          padding: 'var(--size-gutter)'
-        }}
-      > */}
-      {pageTitle && <PageTitle pageTitle={pageTitle} />}
-      {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
-      <main>{children}</main>
-        {/* <footer
-          style={{
-            marginTop: 'var(--space-5)',
-            fontSize: 'var(--font-sm)'
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {' '}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer> */}
-      {/* </div> */}
+      <main className={styles.mainContent}>
+        {pageTitle && <PageTitle pageTitle={pageTitle} />}
+        {pageSubtitle && <SubHeading>{pageSubtitle}</SubHeading>}
+        {pageTitle || pageSubtitle ? (
+          <div className={styles.pageContent}>{children}</div>
+        ) : (
+          children
+        )}
+      </main>
       <Footer />
     </>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

@@ -1,138 +1,48 @@
 import React from 'react'
-import s from 'styled-components'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
 
-import navLinks from '../data/navigation'
 import alertList from '../data/alerts'
+import * as styles from './alert-table.module.css'
 
-const AlertSubwrapper = s.div`
-  display: table-row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px;
-  background-color: #FFFEF1;
-  border: 3px solid grey;
-  width: 95%;
-  padding: 15px;
-  max-width: 480px;
- `
+const formatDate = (date, short) => {
+  if (!date) return ''
+  const formatted = date.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
+  return short ? formatted.replace(/^\d{4}\.\s*/, '') : formatted
+}
 
-const AlertSubtitle = s.div`
-  position: relative;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 23px;
-  font-weight: 550;
-  padding-bottom: 7px;
-`
+const AlertSubpanel = ({ page, compact }) => {
+  const items = page ? [...alertList] : alertList.slice(0, 7)
 
-const AlertTableWrapper = s.table`
-  border: 1px solid grey;
-  border-collapse: collapse;
-  width: 100%;
-  background-color: white;
-`
-
-const AlertTableCellWrapper = s.tr`
-  border: 1px solid grey;
-  border-collapse: collapse;
-`
-
-const AlertTableCell = s(Link)`
-  display: flex;
-  padding: 12px 7px;
-  text-decoration: none;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`
-
-const AlertTableEmptyCell = s.div`
-  display: flex;
-  padding: 12px 7px;
-  text-decoration: none;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`
-
-const AlertTableCellTitle = s.div`
-  color: black;
-  text-align: left;
-`
-
-const AlertTableCellDate = s.small`
-  color: grey;
-  text-align: right;
-`
-
-const AlertTableHead = s.div`
-  display: flex;
-  padding: 10px 7px 10px 7px;
-  text-decoration: none;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  border-bottom: 3px solid grey;
-  border-collapse: collapse;
-`
-
-const BlankLine = s.div`
-  width: 100%;
-  height: 2px;
-  background-color: #dfdfdf;
-  margin: 5px 0;
-`
-
-const alertTableHeader = (
-  <AlertTableHead>
-    <AlertTableCellTitle style={{ fontWeight: 'bolder' }}>
-      제목
-    </AlertTableCellTitle>
-    <AlertTableCellDate style={{ fontSize: '15px' }}>
-      날자
-    </AlertTableCellDate>
-  </AlertTableHead>
-)
-
-const AlertSubpanel = props => {
-  const alertArray = props.page ? alertList : alertList.slice(0, 7)
-  for (let i = alertArray.length; i < 7; i++) {
-    alertArray[i] = {
-      empty: true
-    }
+  if (items.length === 0) {
+    return (
+      <div className={styles.wrapper}>
+        {!page && <div className={styles.subtitle}>공지사항</div>}
+        <div className={styles.empty}>
+          <p className={styles.emptyTitle}>등록된 공지사항이 없습니다</p>
+          <p className={styles.emptyText}>새로운 공지가 올라오면 이곳에 표시됩니다.</p>
+        </div>
+      </div>
+    )
   }
+
   return (
-  <AlertSubwrapper style={props.page && { width: '80%', maxWidth: 'none', padding: '0' }}>
-    {
-      !(props.page) &&
-      <AlertSubtitle>
-        공지사항
-      </AlertSubtitle>
-    }
-    <AlertTableWrapper style={props.page && { width: '100%' }}>
-      {props.page && alertTableHeader}
-      {alertArray.map(alert => (
-        <AlertTableCellWrapper>
-          { alert.empty
-            ? <AlertTableEmptyCell>
-                <BlankLine></BlankLine>
-              </AlertTableEmptyCell>
-            : <AlertTableCell to={`/alert/${alert.alertId}`}>
-                <AlertTableCellTitle>
-                  {alert.title}
-                </AlertTableCellTitle>
-                <AlertTableCellDate>
-                  {alert.date && alert.date.toLocaleDateString('en-CA').slice(props.page ? 0 : 5)}
-                </AlertTableCellDate>
-              </AlertTableCell>
-          }
-        </AlertTableCellWrapper>
-      ))}
-    </AlertTableWrapper>
-  </AlertSubwrapper>
+    <div className={styles.wrapper}>
+      {!page && <div className={styles.subtitle}>공지사항</div>}
+      <ul className={styles.list}>
+        {items.map(alert => (
+          <li key={alert.alertId} className={styles.item}>
+            <Link className={styles.link} to={`/alert/${alert.alertId}`}>
+              <span className={styles.title}>{alert.title}</span>
+              <time className={styles.date}>{formatDate(alert.date, compact)}</time>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

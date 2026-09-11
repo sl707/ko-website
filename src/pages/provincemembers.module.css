@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}

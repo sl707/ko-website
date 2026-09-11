@@ -1,48 +1,42 @@
 import React from 'react'
-import s from 'styled-components'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import BigTitle from './big-title'
-
-const MainPanelWrapper = s.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  text-align: center;
-  position: relative;
-`
-
-const MainPanelText = s.h1`
-  position: absolute;
-  background-color: #fff7a2;
-  top: 50%;
-  color: #696969;
-  z-index: 5;
-  padding: 5px 5px 5px 5px;
-`
+import * as styles from './main-panel.module.css'
 
 const MainPanel = () => (
-  <MainPanelWrapper>
-    <BigTitle text={'고씨중앙종문회'} subtext={'탐라국의 왕손'} />
-    {/* <MainPanelText>
-      고씨중앙종문회
-    </MainPanelText> */}
-    <StaticImage
-     src="../images/정기총회.jpeg"
-     loading="eager"
-     style={{
-       objectFit: 'scale-down',
-       width: '100%',
-       height: '100%',
-       minHeight: '300px',
-       filter: 'brightness(50%)'
-     }}
-    />
-    {/* <MainPanelText>
-      탐라국의 왕손, 고씨
-    </MainPanelText> */}
-  </MainPanelWrapper>
+  <div className={styles.hero}>
+    <div className={styles.imageContainer}>
+      <StaticImage
+        src="../images/정기총회.jpeg"
+        loading="eager"
+        alt="고씨중앙종문회 정기총회"
+        className={styles.heroImage}
+        imgClassName={styles.heroImage}
+        imgStyle={{ objectFit: 'cover' }}
+      />
+    </div>
+    <div className={styles.heroOverlay} />
+    <div className={`${styles.heroContent} animate-fade-up`}>
+      <span className={styles.badge}>탐라국의 왕손</span>
+      <h1 className={styles.heroTitle}>고씨중앙종문회</h1>
+      <p className={styles.heroSubtitle}>
+        3,739년의 역사와 전통을 이어가는<br />
+        전 세계 60만 고씨 가족의 중심
+      </p>
+      <div className={`${styles.ctaRow} animate-fade-up-delay-2`}>
+        <Link className={styles.ctaPrimary} to="/introduction/">
+          종문회 소개
+        </Link>
+        <Link className={styles.ctaSecondary} to="/newspaper/">
+          고씨종보
+        </Link>
+      </div>
+    </div>
+    <div className={styles.scrollHint}>
+      <span>아래로</span>
+      <div className={styles.scrollLine} />
+    </div>
+  </div>
 )
 
 export default MainPanel
