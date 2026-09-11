@@ -24,8 +24,8 @@ module.exports = {
         name: '고씨중앙종문회',
         short_name: '고씨',
         start_url: '/',
-        background_color: '#faf8f3',
-        theme_color: '#1a2e4c',
+        background_color: '#f8f6f3',
+        theme_color: '#0f1b2d',
         display: 'minimal-ui',
         icon: 'src/images/고씨마크.png' // This path is relative to the root of the site.
       }

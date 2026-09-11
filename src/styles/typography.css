@@ -3,11 +3,11 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 20px var(--size-gutter) 8px;
+  padding: 28px var(--size-gutter) 12px;
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--color-primary);
 }
 
@@ -16,10 +16,10 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 24px var(--size-gutter) 8px;
+  padding: 32px var(--size-gutter) 12px;
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-primary);
 }
@@ -49,11 +49,13 @@
 }
 
 .download-link {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--color-accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-accent);
+  transition: color var(--transition-fast);
 }
 
 .download-link:hover {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
 }

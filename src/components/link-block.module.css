@@ -1,21 +1,20 @@
 .card {
   display: flex;
   position: relative;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   text-decoration: none;
-  text-align: center;
-  height: 180px;
+  min-height: 200px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-primary-mid);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .image {
@@ -24,7 +23,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-normal);
+  opacity: 0.45;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.card:hover .image {
+  opacity: 0.55;
+  transform: scale(1.05);
 }
 
 .overlay {
@@ -32,20 +37,39 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(26, 46, 76, 0.75) 0%,
-    rgba(26, 46, 76, 0.25) 60%,
-    rgba(26, 46, 76, 0.1) 100%
+    rgba(15, 27, 45, 0.9) 0%,
+    rgba(15, 27, 45, 0.3) 50%,
+    transparent 100%
   );
-  transition: background var(--transition-normal);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  width: 100%;
 }
 
 .text {
-  position: relative;
-  z-index: 2;
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--color-text-light);
-  letter-spacing: 0.08em;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.arrow {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 1.25rem;
+  color: var(--color-accent-light);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
 }

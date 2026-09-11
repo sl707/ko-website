@@ -3,42 +3,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 280px;
   overflow: hidden;
-}
-
-.heroImage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(26, 46, 76, 0.5) 0%,
-    rgba(26, 46, 76, 0.7) 100%
-  );
+  background: var(--gradient-hero);
   z-index: 2;
 }
 
 .title {
-  position: absolute;
+  position: relative;
   z-index: 3;
   font-family: var(--font-serif);
   color: var(--color-text-light);
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   margin: 0;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 0 24px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width: 800px) {
-  .title {
-    font-size: 1.75rem;
-  }
+.breadcrumb {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
 }

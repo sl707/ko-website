@@ -1,27 +1,41 @@
 :root {
-  --border-radius: 8px;
-  --color-text: #2c2c2c;
-  --color-text-muted: #5a5a5a;
-  --color-primary: #1a2e4c;
-  --color-primary-light: #2a4570;
-  --color-accent: #c4a35a;
-  --color-accent-dark: #a8873f;
-  --color-accent-red: #8b2942;
-  --color-background: #faf8f3;
-  --color-background-alt: #f0ebe0;
+  --border-radius: 12px;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-primary: #0f1b2d;
+  --color-primary-light: #1a3050;
+  --color-primary-mid: #243b5c;
+  --color-accent: #c9952e;
+  --color-accent-light: #e8b84a;
+  --color-accent-dark: #a67c1f;
+  --color-accent-red: #9b2c42;
+  --color-background: #f8f6f3;
+  --color-background-alt: #eeeae4;
   --color-surface: #ffffff;
-  --color-border: #e0d8cc;
-  --color-border-light: #ede8df;
+  --color-surface-elevated: #ffffff;
+  --color-border: #e2ddd6;
+  --color-border-light: #ece8e2;
   --color-text-light: #ffffff;
-  --color-footer: #1e2d3d;
-  --max-width: 1200px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --color-footer: #0a1220;
+  --max-width: 1280px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
-  --shadow-header: 0 2px 12px rgba(26, 46, 76, 0.08);
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s ease;
+  --shadow-header: 0 1px 0 rgba(15, 27, 45, 0.06);
+  --shadow-glass: 0 8px 32px rgba(15, 27, 45, 0.08);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(15, 27, 45, 0.88) 0%,
+    rgba(15, 27, 45, 0.55) 50%,
+    rgba(15, 27, 45, 0.75) 100%
+  );
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.5);
   --color-code-bg: #f0ebe0;
   --color-code: #6b5a3e;
   --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -45,10 +59,11 @@
   --size-content: 75rem;
   --size-gutter: var(--space-4);
   --size-gap: var(--space-5);
-  --header-height: 72px;
-  --shadow-sm: 0 1px 3px rgba(26, 46, 76, 0.08);
-  --shadow-md: 0 4px 16px rgba(26, 46, 76, 0.1);
-  --shadow-lg: 0 8px 32px rgba(26, 46, 76, 0.14);
+  --header-height: 76px;
+  --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 27, 45, 0.08);
+  --shadow-lg: 0 16px 48px rgba(15, 27, 45, 0.12);
+  --shadow-card: 0 2px 8px rgba(15, 27, 45, 0.04), 0 12px 32px rgba(15, 27, 45, 0.06);
 }
 
 html {

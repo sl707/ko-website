@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
 import slideList from '../data/slides'
-import LeftArrow from '../images/slide-arrow-left.svg'
-import RightArrow from '../images/slide-arrow-right.svg'
-import ContinueArrow from '../images/continue-arrow.svg'
+import SectionHeader from './section-header'
 import * as styles from './album-slideshow.module.css'
 
 const firstFiveSlides = slideList.slice(0, 5)
@@ -32,7 +30,7 @@ const getSlideDate = slideData =>
 
 const getSlideText = slideData =>
   slideData.type === 'post' && slideData.text !== ''
-    ? `${slideData.text.slice(0, 150)}...`
+    ? `${slideData.text.slice(0, 180)}...`
     : ''
 
 const getSlideUrl = slideData =>
@@ -49,10 +47,14 @@ const AlbumSubpanel = () => {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <h2 className={styles.sectionTitle}>소식</h2>
+        <SectionHeader
+          label="News"
+          title="소식"
+          subtitle="종문회의 최신 소식과 고씨종보를 확인하세요"
+        />
         <div className={styles.content}>
-          <div className={styles.imageWrapper}>
-            <Link to={getSlideUrl(currentSlide)}>
+          <div className={styles.imageCard}>
+            <Link className={styles.imageLink} to={getSlideUrl(currentSlide)}>
               <img
                 className={styles.image}
                 src={getSlideImage(currentSlide)}
@@ -64,8 +66,8 @@ const AlbumSubpanel = () => {
             )}
           </div>
           <div className={styles.description}>
+            <span className={styles.dateBadge}>{getSlideDate(currentSlide)}</span>
             <h3 className={styles.slideTitle}>{getSlideTitle(currentSlide)}</h3>
-            <p className={styles.slideDate}>{getSlideDate(currentSlide)}</p>
             {getSlideText(currentSlide) && (
               <p className={styles.slideText}>{getSlideText(currentSlide)}</p>
             )}
@@ -76,11 +78,10 @@ const AlbumSubpanel = () => {
                 onClick={() => decreaseSlide(slideNumber, setSlideNumber)}
                 aria-label="이전"
               >
-                <img src={LeftArrow} alt="" style={{ transform: 'rotate(180deg)' }} />
+                ‹
               </button>
               <Link className={styles.continueLink} to={getSlideUrl(currentSlide)}>
-                더보기
-                <img src={ContinueArrow} alt="" />
+                더보기 →
               </Link>
               <button
                 type="button"
@@ -88,7 +89,7 @@ const AlbumSubpanel = () => {
                 onClick={() => increaseSlide(slideNumber, setSlideNumber)}
                 aria-label="다음"
               >
-                <img src={RightArrow} alt="" />
+                ›
               </button>
               <div className={styles.dots}>
                 {firstFiveSlides.map((_, i) => (

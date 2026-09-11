@@ -1,54 +1,73 @@
-.block {
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 48px;
-  margin-bottom: 56px;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .imageWrapper {
-  flex: 0 0 42%;
-  border-radius: var(--radius-lg);
+  position: relative;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
 }
 
 .image {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 360px;
+  height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.orderBadge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  background: rgba(15, 27, 45, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+}
+
+.content {
+  padding: 24px 28px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.3;
 }
 
 .text {
-  flex: 1;
-  font-size: 1rem;
-  line-height: 1.85;
-  white-space: pre-wrap;
-  color: var(--color-text);
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-.subtitle {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  margin: 0 0 12px;
-}
-
-@media screen and (max-width: 1100px) {
-  .block {
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-
-  .imageWrapper {
-    flex: none;
-    width: 100%;
-    max-width: 480px;
-  }
+  font-size: 0.925rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin: 0;
+  word-break: keep-all;
 }

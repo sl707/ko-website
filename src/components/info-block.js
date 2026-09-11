@@ -1,23 +1,17 @@
 import React from 'react'
 import * as styles from './info-block.module.css'
 
-const InfoBlock = ({ image, text, order, subtitle }) => (
-  <div className={styles.block}>
-    {order % 2 === 0 && (
-      <div className={styles.imageWrapper}>
-        <img className={styles.image} src={image} alt="" />
-      </div>
-    )}
-    <div className={styles.text}>
-      {subtitle && <h3 className={styles.subtitle}>{subtitle}</h3>}
-      {text}
+const InfoBlock = ({ image, text, title, order }) => (
+  <article className={styles.card}>
+    <div className={styles.imageWrapper}>
+      <img className={styles.image} src={image} alt={title} />
+      <span className={styles.orderBadge}>{String(order).padStart(2, '0')}</span>
     </div>
-    {order % 2 === 1 && (
-      <div className={styles.imageWrapper}>
-        <img className={styles.image} src={image} alt="" />
-      </div>
-    )}
-  </div>
+    <div className={styles.content}>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.text}>{text}</p>
+    </div>
+  </article>
 )
 
 export default InfoBlock
