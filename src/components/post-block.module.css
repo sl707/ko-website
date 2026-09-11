@@ -1,51 +1,85 @@
-.wrapper {
-  margin-bottom: 24px;
-}
-
 .card {
-  display: block;
+  height: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
-  border-radius: var(--radius-md);
-  overflow: hidden;
   background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-  width: 225px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
+.link:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
 }
 
-.cardFront {
-  width: auto;
+.imageWrap {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-background-alt);
 }
 
 .image {
   display: block;
   width: 100%;
-  height: 150px;
+  height: 100%;
   object-fit: cover;
   transition: transform var(--transition-normal);
 }
 
-.card:hover .image {
-  transform: scale(1.03);
+.link:hover .image {
+  transform: scale(1.04);
 }
 
 .imageFront {
-  height: 300px;
+  aspect-ratio: 16 / 10;
 }
 
-.text {
-  padding: 14px 16px;
-  text-align: center;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-primary);
+  margin: 0;
   word-break: keep-all;
   line-break: strict;
-  border-top: 1px solid var(--color-border-light);
+}
+
+.titleLine {
+  display: block;
+}
+
+.titleLine + .titleLine {
+  margin-top: 2px;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  padding-top: 4px;
 }
