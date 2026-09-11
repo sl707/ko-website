@@ -20,6 +20,7 @@
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--color-border-light);
+  box-shadow: 0 6px 16px rgba(15, 27, 45, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -248,26 +249,34 @@
     border-left: 0;
     border-right: 0;
     border-radius: 0;
+    /* Must not be a scroll container, otherwise the sticky toolbar detaches
+       from the page viewport and scrolls up behind the fixed site header. */
+    overflow: visible;
   }
 
   .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    padding: 8px;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 8px 10px;
   }
 
   .pageControls,
   .zoomControls {
-    justify-content: center;
-  }
-
-  .pageControls {
+    flex: 1 1 auto;
     justify-content: space-between;
   }
 
+  .zoomControls {
+    justify-content: flex-end;
+  }
+
   .controlButton {
-    min-width: 64px;
+    min-width: 52px;
+    padding: 8px 10px;
+  }
+
+  .pagePicker select {
+    padding: 6px 8px;
   }
 
   .controlButton span,
