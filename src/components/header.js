@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import navLinks from '../data/navigation'
 import DownTriangle from '../images/down-triangle.svg'
-import UpTriangle from '../images/up-triangle.svg'
 import * as styles from './header.module.css'
 
 const navbarLinks = () =>
@@ -17,7 +16,7 @@ const navbarLinks = () =>
       <div className={styles.navItem} key={link.name}>
         <button type="button" className={styles.navTitle} aria-haspopup="true">
           {link.name}
-          <img src={DownTriangle} alt="" className={styles.chevron} />
+          <img src={DownTriangle} alt="" className={`${styles.chevron} ${styles.chevronTurn}`} />
         </button>
         <nav className={styles.subnav}>
           {link.submenu.map(sublink => (
@@ -49,13 +48,19 @@ const mobileNavLinks = (selectNav, setSelectNav, closeMenu) =>
           >
             {link.name}
             <img
-              src={selectNav === link.name ? UpTriangle : DownTriangle}
+              src={DownTriangle}
               alt=""
-              className={styles.chevronMobile}
+              className={`${styles.chevronMobile} ${
+                selectNav === link.name ? styles.chevronOpen : ''
+              }`}
             />
           </button>
-          {selectNav === link.name && (
-            <div className={styles.mobileSubnav}>
+          <div
+            className={`${styles.mobileSubnav} ${
+              selectNav === link.name ? styles.mobileSubnavOpen : ''
+            }`}
+          >
+            <div className={styles.mobileSubnavInner}>
               {link.submenu.map(sublink => (
                 <Link
                   key={sublink.url}
@@ -67,7 +72,7 @@ const mobileNavLinks = (selectNav, setSelectNav, closeMenu) =>
                 </Link>
               ))}
             </div>
-          )}
+          </div>
         </>
       )}
     </div>
@@ -107,7 +112,7 @@ const Header = ({ siteTitle }) => {
         </Link>
         <button
           type="button"
-          className={styles.menuButton}
+          className={`${styles.menuButton} ${navOn ? styles.menuButtonOpen : ''}`}
           onClick={() => (navOn ? closeMenu() : setNavOn(true))}
           aria-label={navOn ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={navOn}
