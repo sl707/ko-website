@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import IntroSeal from '../components/intro-seal'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import MainPanel from '../components/main-panel'
@@ -11,6 +12,7 @@ import InfoPanel from '../components/info-panel'
 const IndexPage = () => (
   <Layout>
     <Seo title="집" />
+    <IntroSeal />
     <MainPanel />
     <StatsPanel />
     <NewsPanel />

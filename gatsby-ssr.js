@@ -1,6 +1,16 @@
 import React from 'react'
 
-export const onRenderBody = ({ setHeadComponents }) => {
+// Decided before first paint so returning visitors never see the parchment.
+const introScript = `(function(){try{
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(sessionStorage.getItem('ko-intro-seen'))return;
+sessionStorage.setItem('ko-intro-seen','1');
+document.documentElement.classList.add('intro-on');
+}catch(e){}})();`
+
+export const onRenderBody = ({ setHeadComponents, pathname }) => {
+  const isHome = pathname === '/'
+
   setHeadComponents([
     <meta
       name="viewport"
@@ -19,5 +29,11 @@ export const onRenderBody = ({ setHeadComponents }) => {
       rel="stylesheet"
       key="google-fonts"
     />,
+    ...(isHome
+      ? [
+          <link rel="preload" as="image" href="/emblem-seal.webp" key="intro-emblem" />,
+          <script key="intro-seal" dangerouslySetInnerHTML={{ __html: introScript }} />,
+        ]
+      : []),
   ])
 }

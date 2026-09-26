@@ -1,0 +1,198 @@
+:global(html.intro-on) {
+  --intro-delay: 1.85s;
+}
+
+.intro {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  background: #f3ecdf;
+}
+
+:global(html.intro-on) .intro {
+  display: grid;
+  animation: introLeave 0.7s ease 1.9s forwards;
+}
+
+:global(html.intro-leaving) .intro {
+  animation: introLeave 0.35s ease forwards;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background: repeating-linear-gradient(
+    3deg,
+    transparent 0 5px,
+    rgba(104, 74, 33, 0.05) 6px
+  );
+}
+
+.seal {
+  position: relative;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+:global(html.intro-on) .seal {
+  animation:
+    stampShake 0.3s ease 0.68s,
+    sealAway 0.7s ease 1.9s forwards;
+}
+
+.stage {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 22px;
+}
+
+.emblem {
+  position: absolute;
+  inset: 11px;
+  width: 168px;
+  height: 168px;
+  opacity: 0;
+}
+
+:global(html.intro-on) .emblem {
+  animation: emblemStamp 0.78s cubic-bezier(0.3, 0, 0.25, 1) 0.2s forwards;
+}
+
+.ink {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    rgba(201, 149, 46, 0.35) 0 52%,
+    rgba(201, 149, 46, 0) 72%
+  );
+}
+
+:global(html.intro-on) .ink {
+  animation: inkSpread 0.75s ease-out 0.68s forwards;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0;
+}
+
+:global(html.intro-on) .name {
+  animation: nameIn 0.55s ease 0.9s forwards;
+}
+
+@keyframes emblemStamp {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--stamp-drop, -120px)) scale(2.6) rotate(-10deg);
+    filter: drop-shadow(0 40px 34px rgba(60, 35, 5, 0.28));
+  }
+  22% {
+    opacity: 1;
+  }
+  62% {
+    transform: translateY(0) scale(0.94) rotate(-3deg);
+    filter: drop-shadow(0 2px 3px rgba(60, 35, 5, 0.4));
+  }
+  78% {
+    transform: translateY(0) scale(1.03) rotate(-3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(-3deg);
+    filter: drop-shadow(0 6px 10px rgba(60, 35, 5, 0.2));
+  }
+}
+
+@keyframes inkSpread {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+
+@keyframes stampShake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(0, 3px);
+  }
+  60% {
+    transform: translate(0, -1px);
+  }
+}
+
+@keyframes nameIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sealAway {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes introLeave {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .intro {
+    --stamp-drop: -80px;
+  }
+
+  .stage {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 16px;
+  }
+
+  .emblem {
+    inset: 8px;
+    width: 124px;
+    height: 124px;
+  }
+
+  .name {
+    font-size: 1.65rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.intro-on) .intro {
+    display: none;
+  }
+}
