@@ -7,9 +7,9 @@ const MainPanel = () => (
   <div className={styles.hero}>
     <div className={styles.imageContainer}>
       <StaticImage
-        src="../images/정기총회.jpeg"
+        src="../images/제53회정기총회.jpeg"
         loading="eager"
-        alt="고씨중앙종문회 정기총회"
+        alt="제53회 고씨중앙종문회 정기총회"
         className={styles.heroImage}
         imgClassName={styles.heroImage}
         imgStyle={{ objectFit: 'cover' }}
