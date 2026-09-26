@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'gatsby'
 
 import slideList from '../data/slides'
@@ -31,10 +31,52 @@ const getSlideUrl = slideData =>
 
 const getSlideCaption = slideData => slideData.imageCaption
 
+const slideImageUrl = (number, width) =>
+  `/generated/slides/slide-${number}-${width}.webp`
+
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
   const [imageLoading, setImageLoading] = useState(true)
+  const sectionRef = useRef(null)
+  const preloadedSlides = useRef(new Set([1]))
   const currentSlide = firstFiveSlides[slideNumber - 1]
+
+  const preloadSlide = number => {
+    if (
+      typeof window === 'undefined' ||
+      preloadedSlides.current.has(number)
+    ) {
+      return
+    }
+
+    preloadedSlides.current.add(number)
+    const image = new Image()
+    image.src = slideImageUrl(number, 960)
+    image.srcset = [
+      `${slideImageUrl(number, 480)} 480w`,
+      `${slideImageUrl(number, 960)} 960w`,
+      `${slideImageUrl(number, 1440)} 1440w`,
+    ].join(', ')
+    image.sizes =
+      '(max-width: 900px) calc(100vw - 32px), min(50vw, 640px)'
+  }
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section || typeof IntersectionObserver === 'undefined') return undefined
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return
+        firstFiveSlides.forEach((_, index) => preloadSlide(index + 1))
+        observer.disconnect()
+      },
+      { rootMargin: '800px 0px' }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
 
   const selectSlide = number => {
     setImageLoading(true)
@@ -52,14 +94,11 @@ const AlbumSubpanel = () => {
       slideNumber === 5 ? 1 : slideNumber + 1,
     ]
 
-    adjacentSlides.forEach(number => {
-      const image = new Image()
-      image.src = `/generated/slides/slide-${number}-960.webp`
-    })
+    adjacentSlides.forEach(preloadSlide)
   }
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={sectionRef}>
       <div className={styles.inner}>
         <SectionHeader
           label="소식"
@@ -79,11 +118,11 @@ const AlbumSubpanel = () => {
                 <img
                   key={slideNumber}
                   className={styles.image}
-                  src={`/generated/slides/slide-${slideNumber}-960.webp`}
+                  src={slideImageUrl(slideNumber, 960)}
                   srcSet={[
-                    `/generated/slides/slide-${slideNumber}-480.webp 480w`,
-                    `/generated/slides/slide-${slideNumber}-960.webp 960w`,
-                    `/generated/slides/slide-${slideNumber}-1440.webp 1440w`,
+                    `${slideImageUrl(slideNumber, 480)} 480w`,
+                    `${slideImageUrl(slideNumber, 960)} 960w`,
+                    `${slideImageUrl(slideNumber, 1440)} 1440w`,
                   ].join(', ')}
                   sizes="(max-width: 900px) calc(100vw - 32px), min(50vw, 640px)"
                   alt={getSlideTitle(currentSlide)}
@@ -118,6 +157,8 @@ const AlbumSubpanel = () => {
                   type="button"
                   className={`${styles.dot} ${slideNumber === i + 1 ? styles.dotActive : ''}`}
                   onClick={() => selectSlide(i + 1)}
+                  onPointerEnter={() => preloadSlide(i + 1)}
+                  onFocus={() => preloadSlide(i + 1)}
                   aria-label={`슬라이드 ${i + 1}`}
                 />
               ))}

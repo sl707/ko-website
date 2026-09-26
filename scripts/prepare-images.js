@@ -26,15 +26,25 @@ const isUpToDate = (sourcePath, outputPath) => {
   return fs.statSync(outputPath).mtimeMs >= fs.statSync(sourcePath).mtimeMs
 }
 
-async function renderVariant(sourcePath, outputPath, width, quality) {
+async function renderVariant(sourcePath, outputPath, width, quality, options = {}) {
   if (isUpToDate(sourcePath, outputPath)) {
     stats.cached += 1
     return
   }
 
-  await sharp(sourcePath)
-    .rotate()
-    .resize({ width, withoutEnlargement: true })
+  const pipeline = sharp(sourcePath).rotate()
+  const resizeOptions = options.height
+    ? {
+        width,
+        height: options.height,
+        fit: 'cover',
+        position: 'centre',
+        withoutEnlargement: true,
+      }
+    : { width, withoutEnlargement: true }
+
+  await pipeline
+    .resize(resizeOptions)
     .webp({ quality, effort: 4 })
     .toFile(outputPath)
 
@@ -58,6 +68,7 @@ function buildTaskList() {
         sourcePath,
         outputPath: path.join(SLIDE_DIR, `slide-${index + 1}-${width}.webp`),
         width,
+        height: Math.round((width * 10) / 16),
         quality: 76,
       })
     })
@@ -99,7 +110,9 @@ async function runTasks(tasks) {
     while (cursor < tasks.length) {
       const task = tasks[cursor]
       cursor += 1
-      await renderVariant(task.sourcePath, task.outputPath, task.width, task.quality)
+      await renderVariant(task.sourcePath, task.outputPath, task.width, task.quality, {
+        height: task.height,
+      })
     }
   })
 
