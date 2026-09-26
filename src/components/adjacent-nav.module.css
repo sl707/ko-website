@@ -1,14 +1,13 @@
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: stretch;
-  justify-content: space-between;
   gap: 12px;
   margin: 4px 0 24px;
 }
 
 .link,
 .empty {
-  flex: 1 1 0;
   min-width: 0;
 }
 
@@ -17,6 +16,7 @@
   flex-direction: column;
   gap: 2px;
   min-height: var(--touch-min);
+  overflow: hidden;
   padding: 12px 16px;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md);
@@ -56,7 +56,7 @@
 .list {
   display: inline-flex;
   align-items: center;
-  flex: 0 0 auto;
+  justify-self: center;
   padding: 12px 18px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
