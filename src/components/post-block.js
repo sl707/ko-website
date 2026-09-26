@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import OptimizedImage from './optimized-image'
 import * as styles from './post-block.module.css'
 
 const formatDate = date =>
@@ -24,10 +25,16 @@ const PostBlock = ({ post, news, front, view = 'grid' }) => {
             isList ? styles.imageWrapList : ''
           }`}
         >
-          <img
+          <OptimizedImage
             className={styles.image}
             src={news ? post.newsImage : post.image}
             alt={titles[0]}
+            profile="card"
+            sizes={
+              isList
+                ? '(max-width: 600px) 112px, 210px'
+                : '(max-width: 600px) calc(100vw - 32px), 400px'
+            }
             loading="lazy"
             decoding="async"
           />

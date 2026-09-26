@@ -1,13 +1,19 @@
 import React from 'react'
 
 import Layout from '../components/layout'
+import OptimizedImage from '../components/optimized-image'
 import { Text, BoldText } from '../data/typography'
 import * as styles from './introduction.module.css'
 
 const IntroductionPage = () => (
   <Layout pageTitle={'중 앙 종 문 회'} pageSubtitle={'회장 인사말'}>
     <div className={styles.wrapper}>
-      <img className={styles.image} src="/고재갑회장왕.jpg" alt="고재갑 회장" />
+      <OptimizedImage
+        className={styles.image}
+        src="/고재갑회장왕.jpg"
+        alt="고재갑 회장"
+        profile="content"
+      />
       <Text>
         존경하고 사랑하는 전 세계의 60만 고씨 가족 여러분!<br />
         우리 고씨들은 고을나 대왕의 후손들입니다.<br />

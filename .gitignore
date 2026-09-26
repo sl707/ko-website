@@ -60,6 +60,7 @@ public
 
 # generated image derivatives (rebuilt by `npm run prepare-images`)
 static/generated/news/
+static/generated/site/
 
 # Mac files
 .DS_Store

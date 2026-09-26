@@ -3,6 +3,7 @@ import { navigate } from 'gatsby'
 import { useLocation } from '@reach/router'
 
 import Layout from '../components/layout'
+import OptimizedImage from '../components/optimized-image'
 import { TextSubheading, TextWrapperOne } from '../data/typography'
 import * as styles from './members.module.css'
 
@@ -11,7 +12,12 @@ const groups = [ALL, '중앙종문회', '중앙종문장학회', '지방종문�
 
 const RosterImage = ({ src, alt }) => (
   <div className={styles.imageFrame}>
-    <img className={styles.image} src={src} alt={alt} />
+    <OptimizedImage
+      className={styles.image}
+      src={src}
+      alt={alt}
+      profile="content"
+    />
   </div>
 )
 

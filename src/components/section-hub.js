@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from './layout'
+import OptimizedImage from './optimized-image'
 import * as styles from './section-hub.module.css'
 
 const SectionHub = ({ title, subtitle, intro, items }) => (
@@ -11,11 +12,12 @@ const SectionHub = ({ title, subtitle, intro, items }) => (
       {items.map((item, index) => (
         <Link className={styles.card} key={item.url} to={item.url}>
           <div className={styles.media}>
-            <img
+            <OptimizedImage
               className={styles.image}
               src={item.image}
               alt=""
-              loading={index < 4 ? 'eager' : 'lazy'}
+              profile="feature"
+              loading={index < 2 ? 'eager' : 'lazy'}
               decoding="async"
             />
             <span className={styles.number}>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TextWrapperOne } from '../data/typography'
+import OptimizedImage from './optimized-image'
 import * as styles from './post.module.css'
 
 const toDate = value => (value instanceof Date ? value : new Date(value))
@@ -21,13 +22,23 @@ const Post = ({ imageUrl, imageTwoUrl, imageCaption, text, date }) => (
   <article className={styles.wrapper}>
     {imageUrl && (
       <div className={styles.imageFrame}>
-        <img className={styles.image} src={imageUrl} alt="" />
+        <OptimizedImage
+          className={styles.image}
+          src={imageUrl}
+          alt=""
+          profile="content"
+        />
       </div>
     )}
     {imageCaption && <p className={styles.caption}>{imageCaption}</p>}
     {imageTwoUrl && (
       <div className={styles.imageFrame}>
-        <img className={styles.image} src={imageTwoUrl} alt="" />
+        <OptimizedImage
+          className={styles.image}
+          src={imageTwoUrl}
+          alt=""
+          profile="content"
+        />
       </div>
     )}
     {date && (

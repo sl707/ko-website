@@ -9,6 +9,7 @@ const MainPanel = () => (
       <StaticImage
         src="../images/제53회정기총회.jpeg"
         loading="eager"
+        fetchPriority="high"
         alt="제53회 고씨중앙종문회 정기총회"
         className={styles.heroImage}
         imgClassName={styles.heroImage}
