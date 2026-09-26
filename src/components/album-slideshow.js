@@ -49,7 +49,7 @@ const AlbumSubpanel = () => {
   const [outgoing, setOutgoing] = useState(null)
   const [imageLoading, setImageLoading] = useState(true)
   const sectionRef = useRef(null)
-  const preloadedSlides = useRef(new Set([1]))
+  const preloadedSlides = useRef(new Set())
   const currentSlide = firstFiveSlides[slideNumber - 1]
   const outgoingSlide = outgoing ? firstFiveSlides[outgoing - 1] : null
 
@@ -109,16 +109,21 @@ const AlbumSubpanel = () => {
   const goPrev = () => selectSlide(slideNumber === 1 ? 5 : slideNumber - 1)
   const goNext = () => selectSlide(slideNumber === 5 ? 1 : slideNumber + 1)
 
-  const handleImageLoad = () => {
-    preloadedSlides.current.add(slideNumber)
+  const finishLoading = number => {
+    preloadedSlides.current.add(number)
     setImageLoading(false)
 
     const adjacentSlides = [
-      slideNumber === 1 ? 5 : slideNumber - 1,
-      slideNumber === 5 ? 1 : slideNumber + 1,
+      number === 1 ? 5 : number - 1,
+      number === 5 ? 1 : number + 1,
     ]
-
     adjacentSlides.forEach(preloadSlide)
+  }
+
+  const setImageNode = node => {
+    // A cached image can finish before React attaches onLoad, which left the
+    // first slide under the loading shimmer until another slide was chosen.
+    if (node?.complete) finishLoading(slideNumber)
   }
 
   return (
@@ -156,7 +161,9 @@ const AlbumSubpanel = () => {
                   alt={getSlideTitle(currentSlide)}
                   loading={slideNumber === 1 ? 'eager' : 'lazy'}
                   decoding="async"
-                  onLoad={handleImageLoad}
+                  ref={setImageNode}
+                  onLoad={() => finishLoading(slideNumber)}
+                  onError={() => setImageLoading(false)}
                 />
               </Link>
               {getSlideCaption(currentSlide) && (
