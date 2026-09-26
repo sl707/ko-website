@@ -14,7 +14,12 @@ const AdjacentNav = ({
 }) => (
   <nav className={styles.nav} aria-label={label}>
     {previous ? (
-      <Link className={styles.link} to={previous.href} rel="prev">
+      <Link
+        className={`${styles.link} ${styles.previous}`}
+        to={previous.href}
+        rel="prev"
+        title={previous.title}
+      >
         <span className={styles.direction}>{previousLabel}</span>
         <span className={styles.title}>{previous.title}</span>
       </Link>
@@ -27,7 +32,12 @@ const AdjacentNav = ({
     </Link>
 
     {next ? (
-      <Link className={`${styles.link} ${styles.next}`} to={next.href} rel="next">
+      <Link
+        className={`${styles.link} ${styles.next}`}
+        to={next.href}
+        rel="next"
+        title={next.title}
+      >
         <span className={styles.direction}>{nextLabel}</span>
         <span className={styles.title}>{next.title}</span>
       </Link>

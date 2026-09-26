@@ -1,9 +1,11 @@
 .nav {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: stretch;
-  gap: 12px;
-  margin: 4px 0 24px;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .link,
@@ -13,79 +15,78 @@
 
 .link {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: baseline;
+  gap: 8px;
   min-height: var(--touch-min);
+  align-content: center;
+  flex-wrap: nowrap;
   overflow: hidden;
-  padding: 12px 16px;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.link:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: var(--touch-min);
+  transition: color var(--transition-fast);
 }
 
 .next {
+  flex-direction: row-reverse;
   text-align: right;
 }
 
 .direction {
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
+  flex: 0 0 auto;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
+}
+
+.previous .direction::before {
+  content: '‹ ';
+}
+
+.next .direction::after {
+  content: ' ›';
 }
 
 .title {
   overflow: hidden;
-  color: var(--color-primary);
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.35;
+  color: var(--color-text);
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.link:hover,
+.link:hover .title {
+  color: var(--color-primary);
 }
 
 .list {
   display: inline-flex;
   align-items: center;
   justify-self: center;
-  padding: 12px 18px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  min-height: var(--touch-min);
+  padding: 0 4px;
   color: var(--color-text-muted);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .list:hover {
-  border-color: var(--color-accent);
   color: var(--color-primary);
 }
 
 @media screen and (max-width: 600px) {
   .nav {
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .link {
-    padding: 10px 12px;
+    gap: 10px;
+    margin-bottom: 14px;
   }
 
   .title {
-    font-size: 0.82rem;
+    display: none;
   }
 
+  .link,
   .list {
-    padding: 10px 12px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
 }
