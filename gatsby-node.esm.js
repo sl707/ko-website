@@ -28,11 +28,24 @@ exports.createPages = ({ actions }) => {
       context: { post: alert, type: '알 림' }
     })
   })
-  postList.forEach(post => {
+  const orderedPosts = [...postList].sort((a, b) => {
+    const byDate = a.date.getTime() - b.date.getTime()
+    return byDate || a.postId - b.postId
+  })
+
+  orderedPosts.forEach((post, index) => {
+    const summarize = item =>
+      item ? { postId: item.postId, title: item.title } : null
+
     createPage({
       path: `/post/${post.postId}/`,
       component: require.resolve('./src/templates/standard-post.js'),
-      context: { post, type: '소식 / 자료실' }
+      context: {
+        post,
+        type: '소식 / 자료실',
+        previousPost: summarize(orderedPosts[index - 1]),
+        nextPost: summarize(orderedPosts[index + 1]),
+      }
     })
   })
   const orderedPapers = [...newspaperList].sort(

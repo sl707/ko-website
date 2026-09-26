@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'gatsby'
 
+import AdjacentNav from '../components/adjacent-nav'
 import Layout from '../components/layout'
 import * as styles from './newspaper-page.module.css'
 
@@ -129,8 +129,25 @@ const NewspaperPage = ({ pageContext: { paper, previousPaper, nextPaper } }) => 
     changePage(deltaX < 0 ? page + 1 : page - 1)
   }
 
+  const issueLink = item =>
+    item
+      ? {
+          href: `/newspaper/${item.newsNumber}/`,
+          title: `제${item.newsNumber}호`,
+        }
+      : null
+
   return (
     <Layout pageTitle="종보" pageSubtitle={`${paper.newsNumber}호`}>
+      <AdjacentNav
+        label="다른 호 보기"
+        listHref="/newspaper/"
+        listLabel="전체 목록"
+        previousLabel="이전 호"
+        nextLabel="다음 호"
+        previous={issueLink(previousPaper)}
+        next={issueLink(nextPaper)}
+      />
       <section className={styles.reader} ref={viewerRef}>
         <div className={styles.toolbar}>
           <div className={styles.pageControls}>
@@ -220,38 +237,6 @@ const NewspaperPage = ({ pageContext: { paper, previousPaper, nextPaper } }) => 
           이미지를 누르면 확대됩니다. 좌우로 밀거나 ← → 키로 면을 넘길 수 있습니다.
         </p>
       </section>
-
-      <nav className={styles.issueNav} aria-label="다른 호 보기">
-        {previousPaper ? (
-          <Link
-            className={styles.issueLink}
-            to={`/newspaper/${previousPaper.newsNumber}/`}
-            rel="prev"
-          >
-            <span className={styles.issueLabel}>이전 호</span>
-            <span className={styles.issueNumber}>제{previousPaper.newsNumber}호</span>
-          </Link>
-        ) : (
-          <span className={styles.issueLinkEmpty} />
-        )}
-
-        <Link className={styles.issueListLink} to="/newspaper/">
-          전체 목록
-        </Link>
-
-        {nextPaper ? (
-          <Link
-            className={`${styles.issueLink} ${styles.issueLinkNext}`}
-            to={`/newspaper/${nextPaper.newsNumber}/`}
-            rel="next"
-          >
-            <span className={styles.issueLabel}>다음 호</span>
-            <span className={styles.issueNumber}>제{nextPaper.newsNumber}호</span>
-          </Link>
-        ) : (
-          <span className={styles.issueLinkEmpty} />
-        )}
-      </nav>
     </Layout>
   )
 }
