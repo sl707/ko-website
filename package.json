@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Samuel Lee <samulee@seas.upenn.edu>",
   "dependencies": {
-    "babel-plugin-styled-components": "^2.0.7",
     "esm": "^3.2.25",
     "gatsby": "^4.15.2",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
@@ -15,15 +14,13 @@
     "gatsby-plugin-offline": "^5.15.1",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sharp": "^4.15.1",
-    "gatsby-plugin-styled-components": "^5.16.0",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.1",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "source-map": "^0.8.0-beta.0",
-    "styled-components": "^5.3.5"
+    "source-map": "^0.8.0-beta.0"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
@@ -33,7 +30,10 @@
   ],
   "license": "0BSD",
   "scripts": {
+    "prepare-images": "node scripts/prepare-images.js",
+    "prebuild": "npm run prepare-images",
     "build": "gatsby build",
+    "predevelop": "npm run prepare-images",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",

@@ -1,63 +1,36 @@
 import React from 'react'
-import s from 'styled-components'
-
 import LinkBlock from './link-block'
+import Reveal from './reveal'
+import SectionHeader from './section-header'
+import * as styles from './menu-panel.module.css'
 
-const MenuSubwrapper = s.div`
-  display: block;
-  position: relative;
-  align-items: center:
-  justify-content: center;
-  width: 100%;
-  padding: 10px;
-  background-color: #3b4547;
-`
-
-const MenuSubsubwrapper = s.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  @media screen and (max-width: 750px) {
-    display: none;
-  }
-`
-
-const MenuSubsubwrapperTwo = s.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  @media screen and (min-width: 750px) {
-    display: none;
-  }
-`
+const shortcuts = [
+  { image: '/신문단체.jpg', title: '고씨종보', link: '/newspaper/' },
+  { image: '/이사회22.JPG', title: '중앙종문회', link: '/central/' },
+  { image: '/왕위전2.jpg', title: '항렬표', link: '/nameorder/' },
+  { image: '/연원.jpg', title: '역 사', link: '/history/' },
+  { image: '/news/130main.jpg', title: '임 원', link: '/members/' },
+  { image: '/종문회빌딩.jpeg', title: '오시는 길', link: '/contact/' },
+]
 
 const MenuPanel = () => (
-  <MenuSubwrapper>
-    <MenuSubsubwrapper>
-      <LinkBlock blkImage={'/신문단체.jpg'} blkTitle={'고씨종보'} blkLink={'/newspaper/'}/>
-      <LinkBlock blkImage={'/이사회22.JPG'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
-      <LinkBlock blkImage={'/왕위전2.jpg'} blkTitle={'항렬표'} blkLink={'/nameorder/'}/>
-    </MenuSubsubwrapper>
-    <MenuSubsubwrapper>
-      <LinkBlock blkImage={'/연원.jpg'} blkTitle={'역 사'} blkLink={'/father/'}/>
-      <LinkBlock blkImage={'/news/130main.jpg'} blkTitle={'임 원'} blkLink={'/centralmembers/'}/>
-      <LinkBlock blkImage={'/종문회빌딩.jpeg'} blkTitle={'오시는 길'} blkLink={'/contact/'}/>
-    </MenuSubsubwrapper>
-    <MenuSubsubwrapperTwo>
-      <LinkBlock blkImage={'/신문단체.jpg'} blkTitle={'고씨종보'} blkLink={'/newspaper/'}/>
-      <LinkBlock blkImage={'/이사회22.JPG'} blkTitle={'중앙종문회'} blkLink={'/introduction/'}/>
-    </MenuSubsubwrapperTwo>
-    <MenuSubsubwrapperTwo>
-      <LinkBlock blkImage={'/왕위전2.jpg'} blkTitle={'항렬표'} blkLink={'/nameorder/'}/>
-      <LinkBlock blkImage={'/연원.jpg'} blkTitle={'역 사'} blkLink={'/father/'}/>
-    </MenuSubsubwrapperTwo>
-    <MenuSubsubwrapperTwo>
-      <LinkBlock blkImage={'/news/130main.jpg'} blkTitle={'임 원'} blkLink={'/centralmembers/'}/>
-      <LinkBlock blkImage={'/종문회빌딩.jpeg'} blkTitle={'오시는 길'} blkLink={'/contact/'}/>
-    </MenuSubsubwrapperTwo>
-  </MenuSubwrapper>
+  <section className={styles.section}>
+    <div className={styles.inner}>
+      <SectionHeader
+        label="바로가기"
+        title="바로가기"
+        subtitle="종문회의 주요 페이지를 빠르게 찾아보세요"
+        variant="light"
+      />
+      <div className={styles.grid}>
+        {shortcuts.map((item, index) => (
+          <Reveal key={item.link} delay={(index % 3) * 80}>
+            <LinkBlock blkImage={item.image} blkTitle={item.title} blkLink={item.link} />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
 )
 
 export default MenuPanel

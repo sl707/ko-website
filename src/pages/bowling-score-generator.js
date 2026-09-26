@@ -1,6 +1,5 @@
 import { element } from 'prop-types'
 import React, { useState } from 'react'
-import s from 'styled-components'
 
 const BowlingScoreGenerator = () => {
   const [score, setScore] = useState([])

@@ -1,48 +1,85 @@
-import React from 'react'
-import s from 'styled-components'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import BigTitle from './big-title'
+import * as styles from './main-panel.module.css'
 
-const MainPanelWrapper = s.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  text-align: center;
-  position: relative;
-`
+const MainPanel = () => {
+  const heroRef = useRef(null)
+  const mediaRef = useRef(null)
+  const contentRef = useRef(null)
 
-const MainPanelText = s.h1`
-  position: absolute;
-  background-color: #fff7a2;
-  top: 50%;
-  color: #696969;
-  z-index: 5;
-  padding: 5px 5px 5px 5px;
-`
+  useEffect(() => {
+    const hero = heroRef.current
+    const media = mediaRef.current
+    const content = contentRef.current
+    if (!hero || !media || !content) return undefined
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
 
-const MainPanel = () => (
-  <MainPanelWrapper>
-    <BigTitle text={'고씨중앙종문회'} subtext={'탐라국의 왕손'} />
-    {/* <MainPanelText>
-      고씨중앙종문회
-    </MainPanelText> */}
-    <StaticImage
-     src="../images/정기총회.jpeg"
-     loading="eager"
-     style={{
-       objectFit: 'scale-down',
-       width: '100%',
-       height: '100%',
-       minHeight: '300px',
-       filter: 'brightness(50%)'
-     }}
-    />
-    {/* <MainPanelText>
-      탐라국의 왕손, 고씨
-    </MainPanelText> */}
-  </MainPanelWrapper>
-)
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const rect = hero.getBoundingClientRect()
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return
+      const progress = Math.min(1, Math.max(0, -rect.top / rect.height))
+      const mobile = window.matchMedia('(max-width: 800px)').matches
+      const shift = progress * rect.height * (mobile ? 0.1 : 0.2)
+      media.style.transform = `translate3d(0, ${shift.toFixed(2)}px, 0)`
+      if (window.scrollY < 2) {
+        content.style.opacity = ''
+        content.style.transform = ''
+        return
+      }
+      content.style.opacity = String(Math.max(0, 1 - progress * (mobile ? 1.35 : 1.1)))
+      content.style.transform = `translate3d(0, ${(shift * 0.28).toFixed(2)}px, 0)`
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return (
+  <div className={styles.hero} ref={heroRef}>
+    <div className={styles.imageContainer} ref={mediaRef}>
+      <StaticImage
+        src="../images/제53회정기총회.jpeg"
+        loading="eager"
+        fetchPriority="high"
+        alt="제53회 고씨중앙종문회 정기총회"
+        className={styles.heroImage}
+        imgClassName={styles.heroImage}
+        imgStyle={{ objectFit: 'cover' }}
+      />
+    </div>
+    <div className={styles.heroOverlay} />
+    <div className={styles.heroContent} ref={contentRef}>
+      <span className={styles.badge}>탐라국의 왕손</span>
+      <h1 className={styles.heroTitle}>고씨중앙종문회</h1>
+      <p className={styles.heroSubtitle}>
+        3,739년의 역사와 전통을 이어가는<br />
+        전 세계 60만 고씨 가족의 중심
+      </p>
+      <div className={styles.ctaRow}>
+        <Link className={styles.ctaPrimary} to="/introduction/">
+          종문회 소개
+        </Link>
+        <Link className={styles.ctaSecondary} to="/newspaper/">
+          고씨종보
+        </Link>
+      </div>
+    </div>
+    <div className={styles.scrollHint}>
+      <span>아래로</span>
+      <div className={styles.scrollLine} />
+    </div>
+  </div>
+  )
+}
 
 export default MainPanel

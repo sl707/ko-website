@@ -1,10 +1,9 @@
 import React from "react"
-import s from 'styled-components'
 
 import Layout from "../components/layout"
 import { Text, TextSubheading, TextWrapperOne } from "../data/typography"
 
-const BaljachwiPage = () => (
+const OpeningstoryPage = () => (
   <Layout pageTitle={'역 사'} pageSubtitle={'개국설화'}>
     <TextWrapperOne>
       <Text>
@@ -50,4 +49,4 @@ const BaljachwiPage = () => (
   </Layout>
 )
 
-export default BaljachwiPage
+export default OpeningstoryPage

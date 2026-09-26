@@ -1,0 +1,1460 @@
+{
+  "/post36.jpeg": {
+    "card": {
+      "src": "/generated/site/card-cadef9621a91-800.webp",
+      "srcSet": "/generated/site/card-cadef9621a91-400.webp 400w, /generated/site/card-cadef9621a91-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-cadef9621a91-1400.webp",
+      "srcSet": "/generated/site/content-cadef9621a91-800.webp 800w, /generated/site/content-cadef9621a91-1400.webp 1400w"
+    }
+  },
+  "/post35.jpeg": {
+    "card": {
+      "src": "/generated/site/card-bd7afa04d5db-800.webp",
+      "srcSet": "/generated/site/card-bd7afa04d5db-400.webp 400w, /generated/site/card-bd7afa04d5db-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-bd7afa04d5db-1400.webp",
+      "srcSet": "/generated/site/content-bd7afa04d5db-800.webp 800w, /generated/site/content-bd7afa04d5db-1400.webp 1400w"
+    }
+  },
+  "/post34-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-9cc085972c57-800.webp",
+      "srcSet": "/generated/site/card-9cc085972c57-400.webp 400w, /generated/site/card-9cc085972c57-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-9cc085972c57-1400.webp",
+      "srcSet": "/generated/site/content-9cc085972c57-800.webp 800w, /generated/site/content-9cc085972c57-1400.webp 1400w"
+    }
+  },
+  "/post34-2.jpg": {
+    "content": {
+      "src": "/generated/site/content-52d04d1d1191-1400.webp",
+      "srcSet": "/generated/site/content-52d04d1d1191-800.webp 800w, /generated/site/content-52d04d1d1191-1400.webp 1400w"
+    }
+  },
+  "/post33.jpg": {
+    "card": {
+      "src": "/generated/site/card-ef09ef9d02fe-800.webp",
+      "srcSet": "/generated/site/card-ef09ef9d02fe-400.webp 400w, /generated/site/card-ef09ef9d02fe-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-ef09ef9d02fe-1400.webp",
+      "srcSet": "/generated/site/content-ef09ef9d02fe-800.webp 800w, /generated/site/content-ef09ef9d02fe-1400.webp 1400w"
+    }
+  },
+  "/post32.jpg": {
+    "card": {
+      "src": "/generated/site/card-59b3d48a955d-800.webp",
+      "srcSet": "/generated/site/card-59b3d48a955d-400.webp 400w, /generated/site/card-59b3d48a955d-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-59b3d48a955d-1400.webp",
+      "srcSet": "/generated/site/content-59b3d48a955d-800.webp 800w, /generated/site/content-59b3d48a955d-1400.webp 1400w"
+    }
+  },
+  "/post31.jpg": {
+    "card": {
+      "src": "/generated/site/card-c271a8b7cc90-800.webp",
+      "srcSet": "/generated/site/card-c271a8b7cc90-400.webp 400w, /generated/site/card-c271a8b7cc90-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-c271a8b7cc90-1400.webp",
+      "srcSet": "/generated/site/content-c271a8b7cc90-800.webp 800w, /generated/site/content-c271a8b7cc90-1400.webp 1400w"
+    }
+  },
+  "/post30.jpg": {
+    "card": {
+      "src": "/generated/site/card-dc56692f70ad-800.webp",
+      "srcSet": "/generated/site/card-dc56692f70ad-400.webp 400w, /generated/site/card-dc56692f70ad-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-dc56692f70ad-1400.webp",
+      "srcSet": "/generated/site/content-dc56692f70ad-800.webp 800w, /generated/site/content-dc56692f70ad-1400.webp 1400w"
+    }
+  },
+  "/광주전남.jpeg": {
+    "card": {
+      "src": "/generated/site/card-076815026649-800.webp",
+      "srcSet": "/generated/site/card-076815026649-400.webp 400w, /generated/site/card-076815026649-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-076815026649-1400.webp",
+      "srcSet": "/generated/site/content-076815026649-800.webp 800w, /generated/site/content-076815026649-1400.webp 1400w"
+    }
+  },
+  "/영월군2025.jpg": {
+    "card": {
+      "src": "/generated/site/card-0158d22ff6bf-800.webp",
+      "srcSet": "/generated/site/card-0158d22ff6bf-400.webp 400w, /generated/site/card-0158d22ff6bf-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-0158d22ff6bf-1400.webp",
+      "srcSet": "/generated/site/content-0158d22ff6bf-800.webp 800w, /generated/site/content-0158d22ff6bf-1400.webp 1400w"
+    }
+  },
+  "/군산50.jpeg": {
+    "card": {
+      "src": "/generated/site/card-f11c3d8dab8c-800.webp",
+      "srcSet": "/generated/site/card-f11c3d8dab8c-400.webp 400w, /generated/site/card-f11c3d8dab8c-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-f11c3d8dab8c-1400.webp",
+      "srcSet": "/generated/site/content-f11c3d8dab8c-800.webp 800w, /generated/site/content-f11c3d8dab8c-1400.webp 1400w"
+    }
+  },
+  "/이사회205.jpeg": {
+    "card": {
+      "src": "/generated/site/card-c10fe46a8fa4-800.webp",
+      "srcSet": "/generated/site/card-c10fe46a8fa4-400.webp 400w, /generated/site/card-c10fe46a8fa4-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-c10fe46a8fa4-1400.webp",
+      "srcSet": "/generated/site/content-c10fe46a8fa4-800.webp 800w, /generated/site/content-c10fe46a8fa4-1400.webp 1400w"
+    }
+  },
+  "/고경명.jpeg": {
+    "card": {
+      "src": "/generated/site/card-68952cd9e58f-800.webp",
+      "srcSet": "/generated/site/card-68952cd9e58f-400.webp 400w, /generated/site/card-68952cd9e58f-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-68952cd9e58f-1400.webp",
+      "srcSet": "/generated/site/content-68952cd9e58f-800.webp 800w, /generated/site/content-68952cd9e58f-1400.webp 1400w"
+    }
+  },
+  "/영암종문회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-3d27da4d1576-800.webp",
+      "srcSet": "/generated/site/card-3d27da4d1576-400.webp 400w, /generated/site/card-3d27da4d1576-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-3d27da4d1576-1400.webp",
+      "srcSet": "/generated/site/content-3d27da4d1576-800.webp 800w, /generated/site/content-3d27da4d1576-1400.webp 1400w"
+    }
+  },
+  "/숭모사49-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-76dfba20c357-800.webp",
+      "srcSet": "/generated/site/card-76dfba20c357-400.webp 400w, /generated/site/card-76dfba20c357-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-76dfba20c357-1400.webp",
+      "srcSet": "/generated/site/content-76dfba20c357-800.webp 800w, /generated/site/content-76dfba20c357-1400.webp 1400w"
+    }
+  },
+  "/숭모사49-2.jpeg": {
+    "content": {
+      "src": "/generated/site/content-968a81428e3a-1400.webp",
+      "srcSet": "/generated/site/content-968a81428e3a-800.webp 800w, /generated/site/content-968a81428e3a-1400.webp 1400w"
+    }
+  },
+  "/중국2024.jpeg": {
+    "card": {
+      "src": "/generated/site/card-8bd97257973b-800.webp",
+      "srcSet": "/generated/site/card-8bd97257973b-400.webp 400w, /generated/site/card-8bd97257973b-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-8bd97257973b-1400.webp",
+      "srcSet": "/generated/site/content-8bd97257973b-800.webp 800w, /generated/site/content-8bd97257973b-1400.webp 1400w"
+    }
+  },
+  "/탐라국20.jpeg": {
+    "card": {
+      "src": "/generated/site/card-68d56b0ba988-800.webp",
+      "srcSet": "/generated/site/card-68d56b0ba988-400.webp 400w, /generated/site/card-68d56b0ba988-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-68d56b0ba988-1400.webp",
+      "srcSet": "/generated/site/content-68d56b0ba988-800.webp 800w, /generated/site/content-68d56b0ba988-1400.webp 1400w"
+    }
+  },
+  "/정기총회51.jpeg": {
+    "card": {
+      "src": "/generated/site/card-3ce0b8def04e-800.webp",
+      "srcSet": "/generated/site/card-3ce0b8def04e-400.webp 400w, /generated/site/card-3ce0b8def04e-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-3ce0b8def04e-1400.webp",
+      "srcSet": "/generated/site/content-3ce0b8def04e-800.webp 800w, /generated/site/content-3ce0b8def04e-1400.webp 1400w"
+    }
+  },
+  "/회장추임.jpeg": {
+    "card": {
+      "src": "/generated/site/card-75cb56267657-800.webp",
+      "srcSet": "/generated/site/card-75cb56267657-400.webp 400w, /generated/site/card-75cb56267657-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-75cb56267657-1400.webp",
+      "srcSet": "/generated/site/content-75cb56267657-800.webp 800w, /generated/site/content-75cb56267657-1400.webp 1400w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-75cb56267657-800.webp",
+      "srcSet": "/generated/site/feature-75cb56267657-400.webp 400w, /generated/site/feature-75cb56267657-800.webp 800w"
+    }
+  },
+  "/문충공파.jpeg": {
+    "card": {
+      "src": "/generated/site/card-22e2e11a61ff-800.webp",
+      "srcSet": "/generated/site/card-22e2e11a61ff-400.webp 400w, /generated/site/card-22e2e11a61ff-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-22e2e11a61ff-1400.webp",
+      "srcSet": "/generated/site/content-22e2e11a61ff-800.webp 800w, /generated/site/content-22e2e11a61ff-1400.webp 1400w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-22e2e11a61ff-800.webp",
+      "srcSet": "/generated/site/feature-22e2e11a61ff-400.webp 400w, /generated/site/feature-22e2e11a61ff-800.webp 800w"
+    }
+  },
+  "/군산종문회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-262a057e2acd-800.webp",
+      "srcSet": "/generated/site/card-262a057e2acd-400.webp 400w, /generated/site/card-262a057e2acd-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-262a057e2acd-1400.webp",
+      "srcSet": "/generated/site/content-262a057e2acd-800.webp 800w, /generated/site/content-262a057e2acd-1400.webp 1400w"
+    }
+  },
+  "/중국종문회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-6571b87c3929-800.webp",
+      "srcSet": "/generated/site/card-6571b87c3929-400.webp 400w, /generated/site/card-6571b87c3929-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-6571b87c3929-1400.webp",
+      "srcSet": "/generated/site/content-6571b87c3929-800.webp 800w, /generated/site/content-6571b87c3929-1400.webp 1400w"
+    }
+  },
+  "/고씨대구종문회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-2be2734152c3-800.webp",
+      "srcSet": "/generated/site/card-2be2734152c3-400.webp 400w, /generated/site/card-2be2734152c3-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-2be2734152c3-1400.webp",
+      "srcSet": "/generated/site/content-2be2734152c3-800.webp 800w, /generated/site/content-2be2734152c3-1400.webp 1400w"
+    }
+  },
+  "/광주종문회.jpg": {
+    "card": {
+      "src": "/generated/site/card-df855ec8c934-800.webp",
+      "srcSet": "/generated/site/card-df855ec8c934-400.webp 400w, /generated/site/card-df855ec8c934-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-df855ec8c934-1400.webp",
+      "srcSet": "/generated/site/content-df855ec8c934-800.webp 800w, /generated/site/content-df855ec8c934-1400.webp 1400w"
+    }
+  },
+  "/고창종문회42.jpeg": {
+    "card": {
+      "src": "/generated/site/card-f7d8a62d81db-800.webp",
+      "srcSet": "/generated/site/card-f7d8a62d81db-400.webp 400w, /generated/site/card-f7d8a62d81db-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-f7d8a62d81db-1400.webp",
+      "srcSet": "/generated/site/content-f7d8a62d81db-800.webp 800w, /generated/site/content-f7d8a62d81db-1400.webp 1400w"
+    }
+  },
+  "/제봉고경명선생학술대회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-02eb1693aec2-800.webp",
+      "srcSet": "/generated/site/card-02eb1693aec2-400.webp 400w, /generated/site/card-02eb1693aec2-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-02eb1693aec2-1400.webp",
+      "srcSet": "/generated/site/content-02eb1693aec2-800.webp 800w, /generated/site/content-02eb1693aec2-1400.webp 1400w"
+    }
+  },
+  "/도산사이사회.jpeg": {
+    "card": {
+      "src": "/generated/site/card-a1d311e4e5f8-800.webp",
+      "srcSet": "/generated/site/card-a1d311e4e5f8-400.webp 400w, /generated/site/card-a1d311e4e5f8-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-a1d311e4e5f8-1400.webp",
+      "srcSet": "/generated/site/content-a1d311e4e5f8-800.webp 800w, /generated/site/content-a1d311e4e5f8-1400.webp 1400w"
+    }
+  },
+  "/제47차군산숭모사.jpg": {
+    "card": {
+      "src": "/generated/site/card-f48bae424467-800.webp",
+      "srcSet": "/generated/site/card-f48bae424467-400.webp 400w, /generated/site/card-f48bae424467-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-f48bae424467-1400.webp",
+      "srcSet": "/generated/site/content-f48bae424467-800.webp 800w, /generated/site/content-f48bae424467-1400.webp 1400w"
+    }
+  },
+  "/제18회탐라국.jpg": {
+    "card": {
+      "src": "/generated/site/card-960c38b26eda-800.webp",
+      "srcSet": "/generated/site/card-960c38b26eda-400.webp 400w, /generated/site/card-960c38b26eda-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-960c38b26eda-1400.webp",
+      "srcSet": "/generated/site/content-960c38b26eda-800.webp 800w, /generated/site/content-960c38b26eda-1400.webp 1400w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-960c38b26eda-800.webp",
+      "srcSet": "/generated/site/feature-960c38b26eda-400.webp 400w, /generated/site/feature-960c38b26eda-800.webp 800w"
+    }
+  },
+  "/총회49.jpg": {
+    "card": {
+      "src": "/generated/site/card-60ab58b6745b-800.webp",
+      "srcSet": "/generated/site/card-60ab58b6745b-400.webp 400w, /generated/site/card-60ab58b6745b-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-60ab58b6745b-1400.webp",
+      "srcSet": "/generated/site/content-60ab58b6745b-800.webp 800w, /generated/site/content-60ab58b6745b-1400.webp 1400w"
+    }
+  },
+  "/장흥연수원통지서.jpg": {
+    "card": {
+      "src": "/generated/site/card-a2d50db97248-800.webp",
+      "srcSet": "/generated/site/card-a2d50db97248-400.webp 400w, /generated/site/card-a2d50db97248-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-a2d50db97248-1400.webp",
+      "srcSet": "/generated/site/content-a2d50db97248-800.webp 800w, /generated/site/content-a2d50db97248-1400.webp 1400w"
+    }
+  },
+  "/장흥백파조.jpg": {
+    "card": {
+      "src": "/generated/site/card-10a9484fcce6-800.webp",
+      "srcSet": "/generated/site/card-10a9484fcce6-400.webp 400w, /generated/site/card-10a9484fcce6-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-10a9484fcce6-1400.webp",
+      "srcSet": "/generated/site/content-10a9484fcce6-800.webp 800w, /generated/site/content-10a9484fcce6-1400.webp 1400w"
+    }
+  },
+  "/문경공.jpg": {
+    "card": {
+      "src": "/generated/site/card-831f7c306115-800.webp",
+      "srcSet": "/generated/site/card-831f7c306115-400.webp 400w, /generated/site/card-831f7c306115-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-831f7c306115-1400.webp",
+      "srcSet": "/generated/site/content-831f7c306115-800.webp 800w, /generated/site/content-831f7c306115-1400.webp 1400w"
+    }
+  },
+  "/장흥연수원기증.jpg": {
+    "card": {
+      "src": "/generated/site/card-93eb0d01d0a4-800.webp",
+      "srcSet": "/generated/site/card-93eb0d01d0a4-400.webp 400w, /generated/site/card-93eb0d01d0a4-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-93eb0d01d0a4-1400.webp",
+      "srcSet": "/generated/site/content-93eb0d01d0a4-800.webp 800w, /generated/site/content-93eb0d01d0a4-1400.webp 1400w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-93eb0d01d0a4-800.webp",
+      "srcSet": "/generated/site/feature-93eb0d01d0a4-400.webp 400w, /generated/site/feature-93eb0d01d0a4-800.webp 800w"
+    }
+  },
+  "/장흥연수원기증서.jpg": {
+    "card": {
+      "src": "/generated/site/card-d59c332c6599-800.webp",
+      "srcSet": "/generated/site/card-d59c332c6599-400.webp 400w, /generated/site/card-d59c332c6599-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-d59c332c6599-1400.webp",
+      "srcSet": "/generated/site/content-d59c332c6599-800.webp 800w, /generated/site/content-d59c332c6599-1400.webp 1400w"
+    }
+  },
+  "/총회48.jpg": {
+    "card": {
+      "src": "/generated/site/card-e9f014f6e2d8-800.webp",
+      "srcSet": "/generated/site/card-e9f014f6e2d8-400.webp 400w, /generated/site/card-e9f014f6e2d8-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-e9f014f6e2d8-1400.webp",
+      "srcSet": "/generated/site/content-e9f014f6e2d8-800.webp 800w, /generated/site/content-e9f014f6e2d8-1400.webp 1400w"
+    }
+  },
+  "/총회47.jpg": {
+    "card": {
+      "src": "/generated/site/card-aa506715a25a-800.webp",
+      "srcSet": "/generated/site/card-aa506715a25a-400.webp 400w, /generated/site/card-aa506715a25a-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-aa506715a25a-1400.webp",
+      "srcSet": "/generated/site/content-aa506715a25a-800.webp 800w, /generated/site/content-aa506715a25a-1400.webp 1400w"
+    }
+  },
+  "/news/152-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-1d05ba2c4905-800.webp",
+      "srcSet": "/generated/site/card-1d05ba2c4905-400.webp 400w, /generated/site/card-1d05ba2c4905-800.webp 800w"
+    }
+  },
+  "/news/151-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-60357c94dd6c-800.webp",
+      "srcSet": "/generated/site/card-60357c94dd6c-400.webp 400w, /generated/site/card-60357c94dd6c-800.webp 800w"
+    }
+  },
+  "/news/150-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-480679a1973a-800.webp",
+      "srcSet": "/generated/site/card-480679a1973a-400.webp 400w, /generated/site/card-480679a1973a-800.webp 800w"
+    }
+  },
+  "/news/149-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-fac73788bc53-800.webp",
+      "srcSet": "/generated/site/card-fac73788bc53-400.webp 400w, /generated/site/card-fac73788bc53-800.webp 800w"
+    }
+  },
+  "/news/148-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-4858ed728125-800.webp",
+      "srcSet": "/generated/site/card-4858ed728125-400.webp 400w, /generated/site/card-4858ed728125-800.webp 800w"
+    }
+  },
+  "/news/147-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-0f53cce99689-800.webp",
+      "srcSet": "/generated/site/card-0f53cce99689-400.webp 400w, /generated/site/card-0f53cce99689-800.webp 800w"
+    }
+  },
+  "/news/146-1.JPG": {
+    "card": {
+      "src": "/generated/site/card-d0fcf5aea32a-800.webp",
+      "srcSet": "/generated/site/card-d0fcf5aea32a-400.webp 400w, /generated/site/card-d0fcf5aea32a-800.webp 800w"
+    }
+  },
+  "/news/145-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-c8dbe6d5f049-800.webp",
+      "srcSet": "/generated/site/card-c8dbe6d5f049-400.webp 400w, /generated/site/card-c8dbe6d5f049-800.webp 800w"
+    }
+  },
+  "/news/144-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-2d81b5f462ca-800.webp",
+      "srcSet": "/generated/site/card-2d81b5f462ca-400.webp 400w, /generated/site/card-2d81b5f462ca-800.webp 800w"
+    }
+  },
+  "/news/143-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-7a49940b9732-800.webp",
+      "srcSet": "/generated/site/card-7a49940b9732-400.webp 400w, /generated/site/card-7a49940b9732-800.webp 800w"
+    }
+  },
+  "/news/142-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c48c08566a20-800.webp",
+      "srcSet": "/generated/site/card-c48c08566a20-400.webp 400w, /generated/site/card-c48c08566a20-800.webp 800w"
+    }
+  },
+  "/news/141-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e5acd1e6402d-800.webp",
+      "srcSet": "/generated/site/card-e5acd1e6402d-400.webp 400w, /generated/site/card-e5acd1e6402d-800.webp 800w"
+    }
+  },
+  "/news/140-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d34380841a32-800.webp",
+      "srcSet": "/generated/site/card-d34380841a32-400.webp 400w, /generated/site/card-d34380841a32-800.webp 800w"
+    }
+  },
+  "/news/139-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-81c39586d9f8-800.webp",
+      "srcSet": "/generated/site/card-81c39586d9f8-400.webp 400w, /generated/site/card-81c39586d9f8-800.webp 800w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-81c39586d9f8-800.webp",
+      "srcSet": "/generated/site/feature-81c39586d9f8-400.webp 400w, /generated/site/feature-81c39586d9f8-800.webp 800w"
+    }
+  },
+  "/news/138-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-0d4eab7f03ca-800.webp",
+      "srcSet": "/generated/site/card-0d4eab7f03ca-400.webp 400w, /generated/site/card-0d4eab7f03ca-800.webp 800w"
+    }
+  },
+  "/news/137-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-da24ddae287f-800.webp",
+      "srcSet": "/generated/site/card-da24ddae287f-400.webp 400w, /generated/site/card-da24ddae287f-800.webp 800w"
+    }
+  },
+  "/news/136-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-1fcc7e9930f0-800.webp",
+      "srcSet": "/generated/site/card-1fcc7e9930f0-400.webp 400w, /generated/site/card-1fcc7e9930f0-800.webp 800w"
+    }
+  },
+  "/news/135main.jpg": {
+    "card": {
+      "src": "/generated/site/card-d31620ea5766-800.webp",
+      "srcSet": "/generated/site/card-d31620ea5766-400.webp 400w, /generated/site/card-d31620ea5766-800.webp 800w"
+    }
+  },
+  "/news/134main.JPG": {
+    "card": {
+      "src": "/generated/site/card-070e6c5ce969-800.webp",
+      "srcSet": "/generated/site/card-070e6c5ce969-400.webp 400w, /generated/site/card-070e6c5ce969-800.webp 800w"
+    }
+  },
+  "/news/133main.jpg": {
+    "card": {
+      "src": "/generated/site/card-bb7e6ce61722-800.webp",
+      "srcSet": "/generated/site/card-bb7e6ce61722-400.webp 400w, /generated/site/card-bb7e6ce61722-800.webp 800w"
+    }
+  },
+  "/news/132main.jpg": {
+    "card": {
+      "src": "/generated/site/card-61f088fbd409-800.webp",
+      "srcSet": "/generated/site/card-61f088fbd409-400.webp 400w, /generated/site/card-61f088fbd409-800.webp 800w"
+    }
+  },
+  "/news/131main.JPG": {
+    "card": {
+      "src": "/generated/site/card-0bf7fcffc61f-800.webp",
+      "srcSet": "/generated/site/card-0bf7fcffc61f-400.webp 400w, /generated/site/card-0bf7fcffc61f-800.webp 800w"
+    }
+  },
+  "/news/130main.jpg": {
+    "card": {
+      "src": "/generated/site/card-4549743146d0-800.webp",
+      "srcSet": "/generated/site/card-4549743146d0-400.webp 400w, /generated/site/card-4549743146d0-800.webp 800w"
+    },
+    "feature": {
+      "src": "/generated/site/feature-4549743146d0-800.webp",
+      "srcSet": "/generated/site/feature-4549743146d0-400.webp 400w, /generated/site/feature-4549743146d0-800.webp 800w"
+    }
+  },
+  "/news/129main.JPG": {
+    "card": {
+      "src": "/generated/site/card-28d61d906a80-800.webp",
+      "srcSet": "/generated/site/card-28d61d906a80-400.webp 400w, /generated/site/card-28d61d906a80-800.webp 800w"
+    }
+  },
+  "/news/128main.jpg": {
+    "card": {
+      "src": "/generated/site/card-88ff1f5da789-800.webp",
+      "srcSet": "/generated/site/card-88ff1f5da789-400.webp 400w, /generated/site/card-88ff1f5da789-800.webp 800w"
+    }
+  },
+  "/news/127main.jpg": {
+    "card": {
+      "src": "/generated/site/card-6b3ef6d43d00-800.webp",
+      "srcSet": "/generated/site/card-6b3ef6d43d00-400.webp 400w, /generated/site/card-6b3ef6d43d00-800.webp 800w"
+    }
+  },
+  "/news/126main.JPG": {
+    "card": {
+      "src": "/generated/site/card-95e41c88dd90-800.webp",
+      "srcSet": "/generated/site/card-95e41c88dd90-400.webp 400w, /generated/site/card-95e41c88dd90-800.webp 800w"
+    }
+  },
+  "/news/125main.JPG": {
+    "card": {
+      "src": "/generated/site/card-956c5cfcbcf2-800.webp",
+      "srcSet": "/generated/site/card-956c5cfcbcf2-400.webp 400w, /generated/site/card-956c5cfcbcf2-800.webp 800w"
+    }
+  },
+  "/news/124main.JPG": {
+    "card": {
+      "src": "/generated/site/card-eebbdfad9bfa-800.webp",
+      "srcSet": "/generated/site/card-eebbdfad9bfa-400.webp 400w, /generated/site/card-eebbdfad9bfa-800.webp 800w"
+    }
+  },
+  "/news/123main.JPG": {
+    "card": {
+      "src": "/generated/site/card-0b28104a8bc9-800.webp",
+      "srcSet": "/generated/site/card-0b28104a8bc9-400.webp 400w, /generated/site/card-0b28104a8bc9-800.webp 800w"
+    }
+  },
+  "/news/122main.jpg": {
+    "card": {
+      "src": "/generated/site/card-8ef7b11dbc04-800.webp",
+      "srcSet": "/generated/site/card-8ef7b11dbc04-400.webp 400w, /generated/site/card-8ef7b11dbc04-800.webp 800w"
+    }
+  },
+  "/news/121main.JPG": {
+    "card": {
+      "src": "/generated/site/card-f79218781d79-800.webp",
+      "srcSet": "/generated/site/card-f79218781d79-400.webp 400w, /generated/site/card-f79218781d79-800.webp 800w"
+    }
+  },
+  "/news/120main.JPG": {
+    "card": {
+      "src": "/generated/site/card-f0950b8842ee-800.webp",
+      "srcSet": "/generated/site/card-f0950b8842ee-400.webp 400w, /generated/site/card-f0950b8842ee-800.webp 800w"
+    }
+  },
+  "/news/119-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-00644c887399-800.webp",
+      "srcSet": "/generated/site/card-00644c887399-400.webp 400w, /generated/site/card-00644c887399-800.webp 800w"
+    }
+  },
+  "/news/118-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-3dae066ceaf1-800.webp",
+      "srcSet": "/generated/site/card-3dae066ceaf1-400.webp 400w, /generated/site/card-3dae066ceaf1-800.webp 800w"
+    }
+  },
+  "/news/117-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-23b8c65183a0-800.webp",
+      "srcSet": "/generated/site/card-23b8c65183a0-400.webp 400w, /generated/site/card-23b8c65183a0-800.webp 800w"
+    }
+  },
+  "/news/116-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-5028a008b2ab-800.webp",
+      "srcSet": "/generated/site/card-5028a008b2ab-400.webp 400w, /generated/site/card-5028a008b2ab-800.webp 800w"
+    }
+  },
+  "/news/115-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-12225cbd7f36-800.webp",
+      "srcSet": "/generated/site/card-12225cbd7f36-400.webp 400w, /generated/site/card-12225cbd7f36-800.webp 800w"
+    }
+  },
+  "/news/114-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-e5f72795c646-800.webp",
+      "srcSet": "/generated/site/card-e5f72795c646-400.webp 400w, /generated/site/card-e5f72795c646-800.webp 800w"
+    }
+  },
+  "/news/113-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-b1d9059dd13c-800.webp",
+      "srcSet": "/generated/site/card-b1d9059dd13c-400.webp 400w, /generated/site/card-b1d9059dd13c-800.webp 800w"
+    }
+  },
+  "/news/112-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-b2d1fb276b4f-800.webp",
+      "srcSet": "/generated/site/card-b2d1fb276b4f-400.webp 400w, /generated/site/card-b2d1fb276b4f-800.webp 800w"
+    }
+  },
+  "/news/111-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-e91c65c5c1f3-800.webp",
+      "srcSet": "/generated/site/card-e91c65c5c1f3-400.webp 400w, /generated/site/card-e91c65c5c1f3-800.webp 800w"
+    }
+  },
+  "/news/110-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-85d02db06953-800.webp",
+      "srcSet": "/generated/site/card-85d02db06953-400.webp 400w, /generated/site/card-85d02db06953-800.webp 800w"
+    }
+  },
+  "/news/109-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-7ea6faf60365-800.webp",
+      "srcSet": "/generated/site/card-7ea6faf60365-400.webp 400w, /generated/site/card-7ea6faf60365-800.webp 800w"
+    }
+  },
+  "/news/108-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-b6301c79afa1-800.webp",
+      "srcSet": "/generated/site/card-b6301c79afa1-400.webp 400w, /generated/site/card-b6301c79afa1-800.webp 800w"
+    }
+  },
+  "/news/107-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-955d5ce33f23-800.webp",
+      "srcSet": "/generated/site/card-955d5ce33f23-400.webp 400w, /generated/site/card-955d5ce33f23-800.webp 800w"
+    }
+  },
+  "/news/106-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-964b17d06436-800.webp",
+      "srcSet": "/generated/site/card-964b17d06436-400.webp 400w, /generated/site/card-964b17d06436-800.webp 800w"
+    }
+  },
+  "/news/105-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-7242dc45458a-800.webp",
+      "srcSet": "/generated/site/card-7242dc45458a-400.webp 400w, /generated/site/card-7242dc45458a-800.webp 800w"
+    }
+  },
+  "/news/104-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-5954bd4d9d65-800.webp",
+      "srcSet": "/generated/site/card-5954bd4d9d65-400.webp 400w, /generated/site/card-5954bd4d9d65-800.webp 800w"
+    }
+  },
+  "/news/103-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-d85eecd0674f-800.webp",
+      "srcSet": "/generated/site/card-d85eecd0674f-400.webp 400w, /generated/site/card-d85eecd0674f-800.webp 800w"
+    }
+  },
+  "/news/102-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-2b0a4e6cb7b8-800.webp",
+      "srcSet": "/generated/site/card-2b0a4e6cb7b8-400.webp 400w, /generated/site/card-2b0a4e6cb7b8-800.webp 800w"
+    }
+  },
+  "/news/101-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-efc092ff2109-800.webp",
+      "srcSet": "/generated/site/card-efc092ff2109-400.webp 400w, /generated/site/card-efc092ff2109-800.webp 800w"
+    }
+  },
+  "/news/100-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-a469f300bd6f-800.webp",
+      "srcSet": "/generated/site/card-a469f300bd6f-400.webp 400w, /generated/site/card-a469f300bd6f-800.webp 800w"
+    }
+  },
+  "/news/99-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-f1d9800269e4-800.webp",
+      "srcSet": "/generated/site/card-f1d9800269e4-400.webp 400w, /generated/site/card-f1d9800269e4-800.webp 800w"
+    }
+  },
+  "/news/98-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-6bab409c28d4-800.webp",
+      "srcSet": "/generated/site/card-6bab409c28d4-400.webp 400w, /generated/site/card-6bab409c28d4-800.webp 800w"
+    }
+  },
+  "/news/97-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-af675cf05f7a-800.webp",
+      "srcSet": "/generated/site/card-af675cf05f7a-400.webp 400w, /generated/site/card-af675cf05f7a-800.webp 800w"
+    }
+  },
+  "/news/96-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-628dbb4dc3f6-800.webp",
+      "srcSet": "/generated/site/card-628dbb4dc3f6-400.webp 400w, /generated/site/card-628dbb4dc3f6-800.webp 800w"
+    }
+  },
+  "/news/95-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-bd5185863c72-800.webp",
+      "srcSet": "/generated/site/card-bd5185863c72-400.webp 400w, /generated/site/card-bd5185863c72-800.webp 800w"
+    }
+  },
+  "/news/94-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-9a45cbd2269a-800.webp",
+      "srcSet": "/generated/site/card-9a45cbd2269a-400.webp 400w, /generated/site/card-9a45cbd2269a-800.webp 800w"
+    }
+  },
+  "/news/93-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-3e884d907b24-800.webp",
+      "srcSet": "/generated/site/card-3e884d907b24-400.webp 400w, /generated/site/card-3e884d907b24-800.webp 800w"
+    }
+  },
+  "/news/92-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-c273804d2d9a-800.webp",
+      "srcSet": "/generated/site/card-c273804d2d9a-400.webp 400w, /generated/site/card-c273804d2d9a-800.webp 800w"
+    }
+  },
+  "/news/91-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-dad3b7133559-800.webp",
+      "srcSet": "/generated/site/card-dad3b7133559-400.webp 400w, /generated/site/card-dad3b7133559-800.webp 800w"
+    }
+  },
+  "/news/90-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-8602281490a1-800.webp",
+      "srcSet": "/generated/site/card-8602281490a1-400.webp 400w, /generated/site/card-8602281490a1-800.webp 800w"
+    }
+  },
+  "/news/89-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-55fc9568efdf-800.webp",
+      "srcSet": "/generated/site/card-55fc9568efdf-400.webp 400w, /generated/site/card-55fc9568efdf-800.webp 800w"
+    }
+  },
+  "/news/88-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-963eb2a631be-800.webp",
+      "srcSet": "/generated/site/card-963eb2a631be-400.webp 400w, /generated/site/card-963eb2a631be-800.webp 800w"
+    }
+  },
+  "/news/87-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-1cc81a43ad4c-800.webp",
+      "srcSet": "/generated/site/card-1cc81a43ad4c-400.webp 400w, /generated/site/card-1cc81a43ad4c-800.webp 800w"
+    }
+  },
+  "/news/86-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-7548a0f672d1-800.webp",
+      "srcSet": "/generated/site/card-7548a0f672d1-400.webp 400w, /generated/site/card-7548a0f672d1-800.webp 800w"
+    }
+  },
+  "/news/85-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c8a917484db9-800.webp",
+      "srcSet": "/generated/site/card-c8a917484db9-400.webp 400w, /generated/site/card-c8a917484db9-800.webp 800w"
+    }
+  },
+  "/news/84-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b557930cc1d9-800.webp",
+      "srcSet": "/generated/site/card-b557930cc1d9-400.webp 400w, /generated/site/card-b557930cc1d9-800.webp 800w"
+    }
+  },
+  "/news/83-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b6bdcecd679a-800.webp",
+      "srcSet": "/generated/site/card-b6bdcecd679a-400.webp 400w, /generated/site/card-b6bdcecd679a-800.webp 800w"
+    }
+  },
+  "/news/82-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-efb4c2a1e14f-800.webp",
+      "srcSet": "/generated/site/card-efb4c2a1e14f-400.webp 400w, /generated/site/card-efb4c2a1e14f-800.webp 800w"
+    }
+  },
+  "/news/81-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-7b36e859ce48-800.webp",
+      "srcSet": "/generated/site/card-7b36e859ce48-400.webp 400w, /generated/site/card-7b36e859ce48-800.webp 800w"
+    }
+  },
+  "/news/80-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d7b8d8c99f81-800.webp",
+      "srcSet": "/generated/site/card-d7b8d8c99f81-400.webp 400w, /generated/site/card-d7b8d8c99f81-800.webp 800w"
+    }
+  },
+  "/news/79-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-4b60932502fe-800.webp",
+      "srcSet": "/generated/site/card-4b60932502fe-400.webp 400w, /generated/site/card-4b60932502fe-800.webp 800w"
+    }
+  },
+  "/news/78-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-11b0bd505123-800.webp",
+      "srcSet": "/generated/site/card-11b0bd505123-400.webp 400w, /generated/site/card-11b0bd505123-800.webp 800w"
+    }
+  },
+  "/news/77-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-4aa4a2696f35-800.webp",
+      "srcSet": "/generated/site/card-4aa4a2696f35-400.webp 400w, /generated/site/card-4aa4a2696f35-800.webp 800w"
+    }
+  },
+  "/news/76-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-a211e73b7842-800.webp",
+      "srcSet": "/generated/site/card-a211e73b7842-400.webp 400w, /generated/site/card-a211e73b7842-800.webp 800w"
+    }
+  },
+  "/news/75-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-eb6a7687f0bf-800.webp",
+      "srcSet": "/generated/site/card-eb6a7687f0bf-400.webp 400w, /generated/site/card-eb6a7687f0bf-800.webp 800w"
+    }
+  },
+  "/news/74-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-988a427f9661-800.webp",
+      "srcSet": "/generated/site/card-988a427f9661-400.webp 400w, /generated/site/card-988a427f9661-800.webp 800w"
+    }
+  },
+  "/news/73-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-2f60251b133b-800.webp",
+      "srcSet": "/generated/site/card-2f60251b133b-400.webp 400w, /generated/site/card-2f60251b133b-800.webp 800w"
+    }
+  },
+  "/news/72-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-5ccc814ea070-800.webp",
+      "srcSet": "/generated/site/card-5ccc814ea070-400.webp 400w, /generated/site/card-5ccc814ea070-800.webp 800w"
+    }
+  },
+  "/news/71-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-f350bd159fc0-800.webp",
+      "srcSet": "/generated/site/card-f350bd159fc0-400.webp 400w, /generated/site/card-f350bd159fc0-800.webp 800w"
+    }
+  },
+  "/news/70-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d2a063f88bba-800.webp",
+      "srcSet": "/generated/site/card-d2a063f88bba-400.webp 400w, /generated/site/card-d2a063f88bba-800.webp 800w"
+    }
+  },
+  "/news/69-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-48b86aacdc48-800.webp",
+      "srcSet": "/generated/site/card-48b86aacdc48-400.webp 400w, /generated/site/card-48b86aacdc48-800.webp 800w"
+    }
+  },
+  "/news/68-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-8cfacb0c66ca-800.webp",
+      "srcSet": "/generated/site/card-8cfacb0c66ca-400.webp 400w, /generated/site/card-8cfacb0c66ca-800.webp 800w"
+    }
+  },
+  "/news/67-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-21ddabe68d40-800.webp",
+      "srcSet": "/generated/site/card-21ddabe68d40-400.webp 400w, /generated/site/card-21ddabe68d40-800.webp 800w"
+    }
+  },
+  "/news/66-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-025a830653e3-800.webp",
+      "srcSet": "/generated/site/card-025a830653e3-400.webp 400w, /generated/site/card-025a830653e3-800.webp 800w"
+    }
+  },
+  "/news/65-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-0e3aac6b775d-800.webp",
+      "srcSet": "/generated/site/card-0e3aac6b775d-400.webp 400w, /generated/site/card-0e3aac6b775d-800.webp 800w"
+    }
+  },
+  "/news/64-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b36e901e8e7c-800.webp",
+      "srcSet": "/generated/site/card-b36e901e8e7c-400.webp 400w, /generated/site/card-b36e901e8e7c-800.webp 800w"
+    }
+  },
+  "/news/63-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-0b8880d92b1b-800.webp",
+      "srcSet": "/generated/site/card-0b8880d92b1b-400.webp 400w, /generated/site/card-0b8880d92b1b-800.webp 800w"
+    }
+  },
+  "/news/62-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-6678071582a9-800.webp",
+      "srcSet": "/generated/site/card-6678071582a9-400.webp 400w, /generated/site/card-6678071582a9-800.webp 800w"
+    }
+  },
+  "/news/61-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-5db689a8bec5-800.webp",
+      "srcSet": "/generated/site/card-5db689a8bec5-400.webp 400w, /generated/site/card-5db689a8bec5-800.webp 800w"
+    }
+  },
+  "/news/60-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-a6699d050cc6-800.webp",
+      "srcSet": "/generated/site/card-a6699d050cc6-400.webp 400w, /generated/site/card-a6699d050cc6-800.webp 800w"
+    }
+  },
+  "/news/59-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-9adf40a20469-800.webp",
+      "srcSet": "/generated/site/card-9adf40a20469-400.webp 400w, /generated/site/card-9adf40a20469-800.webp 800w"
+    }
+  },
+  "/news/58-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-81b714ec98e5-800.webp",
+      "srcSet": "/generated/site/card-81b714ec98e5-400.webp 400w, /generated/site/card-81b714ec98e5-800.webp 800w"
+    }
+  },
+  "/news/57-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e11a287c6c85-800.webp",
+      "srcSet": "/generated/site/card-e11a287c6c85-400.webp 400w, /generated/site/card-e11a287c6c85-800.webp 800w"
+    }
+  },
+  "/news/56-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-fb2ffdba9a72-800.webp",
+      "srcSet": "/generated/site/card-fb2ffdba9a72-400.webp 400w, /generated/site/card-fb2ffdba9a72-800.webp 800w"
+    }
+  },
+  "/news/55-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-cbaac8533ecc-800.webp",
+      "srcSet": "/generated/site/card-cbaac8533ecc-400.webp 400w, /generated/site/card-cbaac8533ecc-800.webp 800w"
+    }
+  },
+  "/news/54-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-a577ed451e73-800.webp",
+      "srcSet": "/generated/site/card-a577ed451e73-400.webp 400w, /generated/site/card-a577ed451e73-800.webp 800w"
+    }
+  },
+  "/news/53-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-bc5e3844d7d2-800.webp",
+      "srcSet": "/generated/site/card-bc5e3844d7d2-400.webp 400w, /generated/site/card-bc5e3844d7d2-800.webp 800w"
+    }
+  },
+  "/news/52-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-ae195a05c8eb-800.webp",
+      "srcSet": "/generated/site/card-ae195a05c8eb-400.webp 400w, /generated/site/card-ae195a05c8eb-800.webp 800w"
+    }
+  },
+  "/news/51-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-460391bd991a-800.webp",
+      "srcSet": "/generated/site/card-460391bd991a-400.webp 400w, /generated/site/card-460391bd991a-800.webp 800w"
+    }
+  },
+  "/news/50-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-26fe0d1405f3-800.webp",
+      "srcSet": "/generated/site/card-26fe0d1405f3-400.webp 400w, /generated/site/card-26fe0d1405f3-800.webp 800w"
+    }
+  },
+  "/news/49-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-03207c9bffff-800.webp",
+      "srcSet": "/generated/site/card-03207c9bffff-400.webp 400w, /generated/site/card-03207c9bffff-800.webp 800w"
+    }
+  },
+  "/news/48-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-f99b547f553a-800.webp",
+      "srcSet": "/generated/site/card-f99b547f553a-400.webp 400w, /generated/site/card-f99b547f553a-800.webp 800w"
+    }
+  },
+  "/news/47-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-8fa2afea7782-800.webp",
+      "srcSet": "/generated/site/card-8fa2afea7782-400.webp 400w, /generated/site/card-8fa2afea7782-800.webp 800w"
+    }
+  },
+  "/news/46-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-866375c95312-800.webp",
+      "srcSet": "/generated/site/card-866375c95312-400.webp 400w, /generated/site/card-866375c95312-800.webp 800w"
+    }
+  },
+  "/news/45-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c394cb51e6fa-800.webp",
+      "srcSet": "/generated/site/card-c394cb51e6fa-400.webp 400w, /generated/site/card-c394cb51e6fa-800.webp 800w"
+    }
+  },
+  "/news/44-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-7510314a937c-800.webp",
+      "srcSet": "/generated/site/card-7510314a937c-400.webp 400w, /generated/site/card-7510314a937c-800.webp 800w"
+    }
+  },
+  "/news/43-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d49b255a1e36-800.webp",
+      "srcSet": "/generated/site/card-d49b255a1e36-400.webp 400w, /generated/site/card-d49b255a1e36-800.webp 800w"
+    }
+  },
+  "/news/42-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c897b7e835b1-800.webp",
+      "srcSet": "/generated/site/card-c897b7e835b1-400.webp 400w, /generated/site/card-c897b7e835b1-800.webp 800w"
+    }
+  },
+  "/news/41-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d7d09b33bf30-800.webp",
+      "srcSet": "/generated/site/card-d7d09b33bf30-400.webp 400w, /generated/site/card-d7d09b33bf30-800.webp 800w"
+    }
+  },
+  "/news/40-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e1660a4d58cc-800.webp",
+      "srcSet": "/generated/site/card-e1660a4d58cc-400.webp 400w, /generated/site/card-e1660a4d58cc-800.webp 800w"
+    }
+  },
+  "/news/39-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d726a935d015-800.webp",
+      "srcSet": "/generated/site/card-d726a935d015-400.webp 400w, /generated/site/card-d726a935d015-800.webp 800w"
+    }
+  },
+  "/news/38-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-9f85ba265128-800.webp",
+      "srcSet": "/generated/site/card-9f85ba265128-400.webp 400w, /generated/site/card-9f85ba265128-800.webp 800w"
+    }
+  },
+  "/news/37-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-3e1c57fafc56-800.webp",
+      "srcSet": "/generated/site/card-3e1c57fafc56-400.webp 400w, /generated/site/card-3e1c57fafc56-800.webp 800w"
+    }
+  },
+  "/news/36-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e5ffec298352-800.webp",
+      "srcSet": "/generated/site/card-e5ffec298352-400.webp 400w, /generated/site/card-e5ffec298352-800.webp 800w"
+    }
+  },
+  "/news/35-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-a2f1bcf126c4-800.webp",
+      "srcSet": "/generated/site/card-a2f1bcf126c4-400.webp 400w, /generated/site/card-a2f1bcf126c4-800.webp 800w"
+    }
+  },
+  "/news/34-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-9710a46bc829-800.webp",
+      "srcSet": "/generated/site/card-9710a46bc829-400.webp 400w, /generated/site/card-9710a46bc829-800.webp 800w"
+    }
+  },
+  "/news/33-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b5017dd8f316-800.webp",
+      "srcSet": "/generated/site/card-b5017dd8f316-400.webp 400w, /generated/site/card-b5017dd8f316-800.webp 800w"
+    }
+  },
+  "/news/32-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-40387f21aed8-800.webp",
+      "srcSet": "/generated/site/card-40387f21aed8-400.webp 400w, /generated/site/card-40387f21aed8-800.webp 800w"
+    }
+  },
+  "/news/31-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b1f9236657f6-800.webp",
+      "srcSet": "/generated/site/card-b1f9236657f6-400.webp 400w, /generated/site/card-b1f9236657f6-800.webp 800w"
+    }
+  },
+  "/news/30-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-05d86906928e-800.webp",
+      "srcSet": "/generated/site/card-05d86906928e-400.webp 400w, /generated/site/card-05d86906928e-800.webp 800w"
+    }
+  },
+  "/news/29-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-bd15208fb48a-800.webp",
+      "srcSet": "/generated/site/card-bd15208fb48a-400.webp 400w, /generated/site/card-bd15208fb48a-800.webp 800w"
+    }
+  },
+  "/news/28-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-845e8ce80548-800.webp",
+      "srcSet": "/generated/site/card-845e8ce80548-400.webp 400w, /generated/site/card-845e8ce80548-800.webp 800w"
+    }
+  },
+  "/news/27-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-6cfca84df3e7-800.webp",
+      "srcSet": "/generated/site/card-6cfca84df3e7-400.webp 400w, /generated/site/card-6cfca84df3e7-800.webp 800w"
+    }
+  },
+  "/news/26-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-eaaeeb3f4928-800.webp",
+      "srcSet": "/generated/site/card-eaaeeb3f4928-400.webp 400w, /generated/site/card-eaaeeb3f4928-800.webp 800w"
+    }
+  },
+  "/news/25-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-0546e7479313-800.webp",
+      "srcSet": "/generated/site/card-0546e7479313-400.webp 400w, /generated/site/card-0546e7479313-800.webp 800w"
+    }
+  },
+  "/news/24-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-43aaecc78522-800.webp",
+      "srcSet": "/generated/site/card-43aaecc78522-400.webp 400w, /generated/site/card-43aaecc78522-800.webp 800w"
+    }
+  },
+  "/news/23-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-d7f0f68828d0-800.webp",
+      "srcSet": "/generated/site/card-d7f0f68828d0-400.webp 400w, /generated/site/card-d7f0f68828d0-800.webp 800w"
+    }
+  },
+  "/news/22-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-6004ab349dfb-800.webp",
+      "srcSet": "/generated/site/card-6004ab349dfb-400.webp 400w, /generated/site/card-6004ab349dfb-800.webp 800w"
+    }
+  },
+  "/news/21-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c92c7c28069a-800.webp",
+      "srcSet": "/generated/site/card-c92c7c28069a-400.webp 400w, /generated/site/card-c92c7c28069a-800.webp 800w"
+    }
+  },
+  "/news/20-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-77e45f01f948-800.webp",
+      "srcSet": "/generated/site/card-77e45f01f948-400.webp 400w, /generated/site/card-77e45f01f948-800.webp 800w"
+    }
+  },
+  "/news/19-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-9888c64bab08-800.webp",
+      "srcSet": "/generated/site/card-9888c64bab08-400.webp 400w, /generated/site/card-9888c64bab08-800.webp 800w"
+    }
+  },
+  "/news/18-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-3dc986217a8a-800.webp",
+      "srcSet": "/generated/site/card-3dc986217a8a-400.webp 400w, /generated/site/card-3dc986217a8a-800.webp 800w"
+    }
+  },
+  "/news/17-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e72522257d4b-800.webp",
+      "srcSet": "/generated/site/card-e72522257d4b-400.webp 400w, /generated/site/card-e72522257d4b-800.webp 800w"
+    }
+  },
+  "/news/16-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-6b414840ef3a-800.webp",
+      "srcSet": "/generated/site/card-6b414840ef3a-400.webp 400w, /generated/site/card-6b414840ef3a-800.webp 800w"
+    }
+  },
+  "/news/15-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-be1a869203c1-800.webp",
+      "srcSet": "/generated/site/card-be1a869203c1-400.webp 400w, /generated/site/card-be1a869203c1-800.webp 800w"
+    }
+  },
+  "/news/14-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-5cc3092418a8-800.webp",
+      "srcSet": "/generated/site/card-5cc3092418a8-400.webp 400w, /generated/site/card-5cc3092418a8-800.webp 800w"
+    }
+  },
+  "/news/13-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-01136dda5e78-800.webp",
+      "srcSet": "/generated/site/card-01136dda5e78-400.webp 400w, /generated/site/card-01136dda5e78-800.webp 800w"
+    }
+  },
+  "/news/12-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-c2acc84e54ed-800.webp",
+      "srcSet": "/generated/site/card-c2acc84e54ed-400.webp 400w, /generated/site/card-c2acc84e54ed-800.webp 800w"
+    }
+  },
+  "/news/11-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-6d62664e4574-800.webp",
+      "srcSet": "/generated/site/card-6d62664e4574-400.webp 400w, /generated/site/card-6d62664e4574-800.webp 800w"
+    }
+  },
+  "/news/10-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-432d6fbb7409-800.webp",
+      "srcSet": "/generated/site/card-432d6fbb7409-400.webp 400w, /generated/site/card-432d6fbb7409-800.webp 800w"
+    }
+  },
+  "/news/9-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-532d977d4544-800.webp",
+      "srcSet": "/generated/site/card-532d977d4544-400.webp 400w, /generated/site/card-532d977d4544-800.webp 800w"
+    }
+  },
+  "/news/8-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-0e6dd0b0d3ca-800.webp",
+      "srcSet": "/generated/site/card-0e6dd0b0d3ca-400.webp 400w, /generated/site/card-0e6dd0b0d3ca-800.webp 800w"
+    }
+  },
+  "/news/7-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-44da1c860ea6-800.webp",
+      "srcSet": "/generated/site/card-44da1c860ea6-400.webp 400w, /generated/site/card-44da1c860ea6-800.webp 800w"
+    }
+  },
+  "/news/6-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-23e75d0db5ca-800.webp",
+      "srcSet": "/generated/site/card-23e75d0db5ca-400.webp 400w, /generated/site/card-23e75d0db5ca-800.webp 800w"
+    }
+  },
+  "/news/5-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-3be4b3bf1cd8-800.webp",
+      "srcSet": "/generated/site/card-3be4b3bf1cd8-400.webp 400w, /generated/site/card-3be4b3bf1cd8-800.webp 800w"
+    }
+  },
+  "/news/4-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-8f5360507fab-800.webp",
+      "srcSet": "/generated/site/card-8f5360507fab-400.webp 400w, /generated/site/card-8f5360507fab-800.webp 800w"
+    }
+  },
+  "/news/3-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-39afffff0682-800.webp",
+      "srcSet": "/generated/site/card-39afffff0682-400.webp 400w, /generated/site/card-39afffff0682-800.webp 800w"
+    }
+  },
+  "/news/2-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-e9c0a705c1c8-800.webp",
+      "srcSet": "/generated/site/card-e9c0a705c1c8-400.webp 400w, /generated/site/card-e9c0a705c1c8-800.webp 800w"
+    }
+  },
+  "/news/1-1.jpg": {
+    "card": {
+      "src": "/generated/site/card-b0bca7e3c9f8-800.webp",
+      "srcSet": "/generated/site/card-b0bca7e3c9f8-400.webp 400w, /generated/site/card-b0bca7e3c9f8-800.webp 800w"
+    }
+  },
+  "/연원.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-f0e09f75245b-800.webp",
+      "srcSet": "/generated/site/feature-f0e09f75245b-400.webp 400w, /generated/site/feature-f0e09f75245b-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-f0e09f75245b-1400.webp",
+      "srcSet": "/generated/site/content-f0e09f75245b-800.webp 800w, /generated/site/content-f0e09f75245b-1400.webp 1400w"
+    }
+  },
+  "/정기총회.jpeg": {
+    "feature": {
+      "src": "/generated/site/feature-fbabc94c87ac-800.webp",
+      "srcSet": "/generated/site/feature-fbabc94c87ac-400.webp 400w, /generated/site/feature-fbabc94c87ac-800.webp 800w"
+    }
+  },
+  "/신문단체.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-37c9a527f889-800.webp",
+      "srcSet": "/generated/site/feature-37c9a527f889-400.webp 400w, /generated/site/feature-37c9a527f889-800.webp 800w"
+    }
+  },
+  "/이사회22.JPG": {
+    "feature": {
+      "src": "/generated/site/feature-86c68743d5cd-800.webp",
+      "srcSet": "/generated/site/feature-86c68743d5cd-400.webp 400w, /generated/site/feature-86c68743d5cd-800.webp 800w"
+    }
+  },
+  "/왕위전2.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-80b7f8a106fc-800.webp",
+      "srcSet": "/generated/site/feature-80b7f8a106fc-400.webp 400w, /generated/site/feature-80b7f8a106fc-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-80b7f8a106fc-1400.webp",
+      "srcSet": "/generated/site/content-80b7f8a106fc-800.webp 800w, /generated/site/content-80b7f8a106fc-1400.webp 1400w"
+    }
+  },
+  "/종문회빌딩.jpeg": {
+    "feature": {
+      "src": "/generated/site/feature-e050cdf58859-800.webp",
+      "srcSet": "/generated/site/feature-e050cdf58859-400.webp 400w, /generated/site/feature-e050cdf58859-800.webp 800w"
+    }
+  },
+  "/고씨마크.png": {
+    "feature": {
+      "src": "/generated/site/feature-150c52734967-800.webp",
+      "srcSet": "/generated/site/feature-150c52734967-400.webp 400w, /generated/site/feature-150c52734967-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-150c52734967-1400.webp",
+      "srcSet": "/generated/site/content-150c52734967-800.webp 800w, /generated/site/content-150c52734967-1400.webp 1400w"
+    }
+  },
+  "/장학임원.jpeg": {
+    "feature": {
+      "src": "/generated/site/feature-611b43c8ba5f-800.webp",
+      "srcSet": "/generated/site/feature-611b43c8ba5f-400.webp 400w, /generated/site/feature-611b43c8ba5f-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-611b43c8ba5f-1400.webp",
+      "srcSet": "/generated/site/content-611b43c8ba5f-800.webp 800w, /generated/site/content-611b43c8ba5f-1400.webp 1400w"
+    }
+  },
+  "/고을나왕.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-96a0a1443022-800.webp",
+      "srcSet": "/generated/site/feature-96a0a1443022-400.webp 400w, /generated/site/feature-96a0a1443022-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-96a0a1443022-1400.webp",
+      "srcSet": "/generated/site/content-96a0a1443022-800.webp 800w, /generated/site/content-96a0a1443022-1400.webp 1400w"
+    }
+  },
+  "/고말로.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-6ee3c13c2cd4-800.webp",
+      "srcSet": "/generated/site/feature-6ee3c13c2cd4-400.webp 400w, /generated/site/feature-6ee3c13c2cd4-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-6ee3c13c2cd4-1400.webp",
+      "srcSet": "/generated/site/content-6ee3c13c2cd4-800.webp 800w, /generated/site/content-6ee3c13c2cd4-1400.webp 1400w"
+    }
+  },
+  "/삼성혈.jpeg": {
+    "feature": {
+      "src": "/generated/site/feature-7f27e0811700-800.webp",
+      "srcSet": "/generated/site/feature-7f27e0811700-400.webp 400w, /generated/site/feature-7f27e0811700-800.webp 800w"
+    }
+  },
+  "/유래.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-0530cc7ff7d7-800.webp",
+      "srcSet": "/generated/site/feature-0530cc7ff7d7-400.webp 400w, /generated/site/feature-0530cc7ff7d7-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-0530cc7ff7d7-1400.webp",
+      "srcSet": "/generated/site/content-0530cc7ff7d7-800.webp 800w, /generated/site/content-0530cc7ff7d7-1400.webp 1400w"
+    }
+  },
+  "/삼성혈.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-f971232138c4-800.webp",
+      "srcSet": "/generated/site/feature-f971232138c4-400.webp 400w, /generated/site/feature-f971232138c4-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-f971232138c4-1400.webp",
+      "srcSet": "/generated/site/content-f971232138c4-800.webp 800w, /generated/site/content-f971232138c4-1400.webp 1400w"
+    }
+  },
+  "/종훈.jpg": {
+    "feature": {
+      "src": "/generated/site/feature-0ee1630362b2-800.webp",
+      "srcSet": "/generated/site/feature-0ee1630362b2-400.webp 400w, /generated/site/feature-0ee1630362b2-800.webp 800w"
+    },
+    "content": {
+      "src": "/generated/site/content-0ee1630362b2-1400.webp",
+      "srcSet": "/generated/site/content-0ee1630362b2-800.webp 800w, /generated/site/content-0ee1630362b2-1400.webp 1400w"
+    }
+  },
+  "/중앙임원4.jpg": {
+    "content": {
+      "src": "/generated/site/content-82e4834f45a0-1400.webp",
+      "srcSet": "/generated/site/content-82e4834f45a0-800.webp 800w, /generated/site/content-82e4834f45a0-1400.webp 1400w"
+    }
+  },
+  "/고재갑회장왕.jpg": {
+    "content": {
+      "src": "/generated/site/content-bd89dda5f348-1400.webp",
+      "srcSet": "/generated/site/content-bd89dda5f348-800.webp 800w, /generated/site/content-bd89dda5f348-1400.webp 1400w"
+    }
+  },
+  "/종문회빌딩.jpg": {
+    "content": {
+      "src": "/generated/site/content-807b41cfe67b-1400.webp",
+      "srcSet": "/generated/site/content-807b41cfe67b-800.webp 800w, /generated/site/content-807b41cfe67b-1400.webp 1400w"
+    }
+  },
+  "/지도1.png": {
+    "content": {
+      "src": "/generated/site/content-aace74a4c5d3-1400.webp",
+      "srcSet": "/generated/site/content-aace74a4c5d3-800.webp 800w, /generated/site/content-aace74a4c5d3-1400.webp 1400w"
+    }
+  },
+  "/지도2.png": {
+    "content": {
+      "src": "/generated/site/content-b3041c2d1c03-1400.webp",
+      "srcSet": "/generated/site/content-b3041c2d1c03-800.webp 800w, /generated/site/content-b3041c2d1c03-1400.webp 1400w"
+    }
+  }
+}

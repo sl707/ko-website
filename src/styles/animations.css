@@ -1,0 +1,45 @@
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fadeUp 0.7s 0.3s ease both;
+}

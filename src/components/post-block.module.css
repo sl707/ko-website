@@ -1,0 +1,153 @@
+.card {
+  height: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.link:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-background-alt);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.link:hover .image {
+  transform: scale(1.04);
+}
+
+.imageFront {
+  aspect-ratio: 16 / 10;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-dark);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-primary);
+  margin: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+@media screen and (max-width: 600px) {
+  .body {
+    padding: 16px;
+  }
+}
+
+.titleLine {
+  display: block;
+}
+
+.titleLine + .titleLine {
+  margin-top: 2px;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.cardList {
+  height: auto;
+}
+
+.linkList {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  min-height: 150px;
+}
+
+.imageWrapList {
+  height: 100%;
+  min-height: 150px;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
+.bodyList {
+  justify-content: center;
+  min-width: 0;
+  padding: 20px 24px;
+}
+
+.bodyList .title {
+  font-size: 1.08rem;
+}
+
+@media screen and (max-width: 600px) {
+  .linkList {
+    grid-template-columns: 112px minmax(0, 1fr);
+    min-height: 112px;
+    border-radius: var(--radius-md);
+  }
+
+  .imageWrapList {
+    min-height: 112px;
+  }
+
+  .bodyList {
+    gap: 5px;
+    padding: 12px 14px;
+  }
+
+  .bodyList .meta {
+    font-size: 0.66rem;
+  }
+
+  .bodyList .title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .bodyList .date {
+    font-size: 0.72rem;
+  }
+}
