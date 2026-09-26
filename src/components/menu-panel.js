@@ -17,7 +17,7 @@ const MenuPanel = () => (
         <LinkBlock blkImage={'/이사회22.JPG'} blkTitle={'중앙종문회'} blkLink={'/central/'} />
         <LinkBlock blkImage={'/왕위전2.jpg'} blkTitle={'항렬표'} blkLink={'/nameorder/'} />
         <LinkBlock blkImage={'/연원.jpg'} blkTitle={'역 사'} blkLink={'/history/'} />
-        <LinkBlock blkImage={'/news/130main.jpg'} blkTitle={'임 원'} blkLink={'/centralmembers/'} />
+        <LinkBlock blkImage={'/news/130main.jpg'} blkTitle={'임 원'} blkLink={'/members/'} />
         <LinkBlock blkImage={'/종문회빌딩.jpeg'} blkTitle={'오시는 길'} blkLink={'/contact/'} />
       </div>
     </div>

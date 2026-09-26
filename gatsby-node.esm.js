@@ -21,6 +21,21 @@ exports.createPages = ({ actions }) => {
     })
   })
 
+  const legacyMemberPages = {
+    '/centralmembers/': '중앙종문회',
+    '/scholarshipmembers/': '중앙종문장학회',
+    '/provincemembers/': '지방종문회',
+  }
+
+  Object.entries(legacyMemberPages).forEach(([fromPath, group]) => {
+    createRedirect({
+      fromPath,
+      toPath: `/members/?group=${encodeURIComponent(group)}`,
+      isPermanent: true,
+      redirectInBrowser: true,
+    })
+  })
+
   alertList.forEach(alert => {
     createPage({
       path: `/alert/${alert.alertId}/`,

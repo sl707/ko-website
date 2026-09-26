@@ -76,21 +76,6 @@ const historySubmenu = [
   }
 ]
 
-const memberSubmenu = [
-  {
-    name: '중앙종문회',
-    url: '/centralmembers/'
-  },
-  {
-    name: '중앙종문장학회',
-    url: '/scholarshipmembers/'
-  },
-  {
-    name: '지방종문회',
-    url: '/provincemembers/'
-  }
-]
-
 const navLinks = [
   {
     name: '중앙종문회',
@@ -104,8 +89,8 @@ const navLinks = [
   },
   {
     name: '임 원',
-    url: '/centralmembers/',
-    submenu: memberSubmenu
+    url: '/members/',
+    submenu: []
   },
   {
     name: '소식 / 자료실',
