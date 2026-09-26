@@ -13,7 +13,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  animation: heroFade 1.05s ease var(--intro-delay, 0s) both;
+  animation: heroFade 2.1s ease var(--intro-delay, 0s) both;
   will-change: transform;
 }
 
@@ -48,7 +48,7 @@
 
 .badge {
   display: inline-block;
-  animation: rise 0.7s calc(var(--intro-delay, 0s) + 0.4s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 1.4s calc(var(--intro-delay, 0s) + 0.8s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -63,7 +63,7 @@
 }
 
 .heroTitle {
-  animation: rise 0.75s calc(var(--intro-delay, 0s) + 0.55s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 1.5s calc(var(--intro-delay, 0s) + 1.1s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
   font-family: var(--font-serif);
   color: var(--color-text-light);
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -75,7 +75,7 @@
 }
 
 .heroSubtitle {
-  animation: rise 0.75s calc(var(--intro-delay, 0s) + 0.7s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 1.5s calc(var(--intro-delay, 0s) + 1.4s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
   font-family: var(--font-sans);
   color: rgba(255, 255, 255, 0.85);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -86,7 +86,7 @@
 }
 
 .ctaRow {
-  animation: rise 0.75s calc(var(--intro-delay, 0s) + 0.86s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 1.5s calc(var(--intro-delay, 0s) + 1.72s) cubic-bezier(0.2, 0.7, 0.2, 1) both;
   display: flex;
   gap: 16px;
   justify-content: center;

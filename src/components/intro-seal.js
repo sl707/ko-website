@@ -4,8 +4,8 @@ import * as styles from './intro-seal.module.css'
 
 export const INTRO_CLASS = 'intro-on'
 const LEAVING_CLASS = 'intro-leaving'
-const INTRO_DURATION = 2700
-const SKIP_FADE = 380
+const INTRO_DURATION = 5400
+const SKIP_FADE = 760
 
 const IntroSeal = () => {
   useEffect(() => {
