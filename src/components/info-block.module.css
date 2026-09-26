@@ -9,9 +9,15 @@
   flex-direction: column;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card:hover .image {
+    transform: scale(1.04);
+  }
 }
 
 .imageWrapper {
@@ -28,9 +34,6 @@
   transition: transform var(--transition-normal);
 }
 
-.card:hover .image {
-  transform: scale(1.04);
-}
 
 .orderBadge {
   position: absolute;

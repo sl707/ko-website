@@ -1,11 +1,52 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as styles from './main-panel.module.css'
 
-const MainPanel = () => (
-  <div className={styles.hero}>
-    <div className={styles.imageContainer}>
+const MainPanel = () => {
+  const heroRef = useRef(null)
+  const mediaRef = useRef(null)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    const media = mediaRef.current
+    const content = contentRef.current
+    if (!hero || !media || !content) return undefined
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const rect = hero.getBoundingClientRect()
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return
+      const progress = Math.min(1, Math.max(0, -rect.top / rect.height))
+      const mobile = window.matchMedia('(max-width: 800px)').matches
+      const shift = progress * rect.height * (mobile ? 0.1 : 0.2)
+      media.style.transform = `translate3d(0, ${shift.toFixed(2)}px, 0)`
+      if (window.scrollY < 2) {
+        content.style.opacity = ''
+        content.style.transform = ''
+        return
+      }
+      content.style.opacity = String(Math.max(0, 1 - progress * (mobile ? 1.35 : 1.1)))
+      content.style.transform = `translate3d(0, ${(shift * 0.28).toFixed(2)}px, 0)`
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return (
+  <div className={styles.hero} ref={heroRef}>
+    <div className={styles.imageContainer} ref={mediaRef}>
       <StaticImage
         src="../images/제53회정기총회.jpeg"
         loading="eager"
@@ -17,14 +58,14 @@ const MainPanel = () => (
       />
     </div>
     <div className={styles.heroOverlay} />
-    <div className={`${styles.heroContent} animate-fade-up`}>
+    <div className={styles.heroContent} ref={contentRef}>
       <span className={styles.badge}>탐라국의 왕손</span>
       <h1 className={styles.heroTitle}>고씨중앙종문회</h1>
       <p className={styles.heroSubtitle}>
         3,739년의 역사와 전통을 이어가는<br />
         전 세계 60만 고씨 가족의 중심
       </p>
-      <div className={`${styles.ctaRow} animate-fade-up-delay-2`}>
+      <div className={styles.ctaRow}>
         <Link className={styles.ctaPrimary} to="/introduction/">
           종문회 소개
         </Link>
@@ -38,6 +79,7 @@ const MainPanel = () => (
       <div className={styles.scrollLine} />
     </div>
   </div>
-)
+  )
+}
 
 export default MainPanel

@@ -20,6 +20,30 @@
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.armed {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.armed.statShown,
+.statImmediate {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.armed .meeting {
+  opacity: 0;
+}
+
+.armed.statShown .meeting,
+.statImmediate .meeting {
+  opacity: 1;
+  transition: opacity 0.7s ease 0.85s;
+}
+
 .stat:last-child {
   border-right: none;
 }
@@ -39,6 +63,16 @@
   color: rgba(255, 255, 255, 0.75);
   margin: 0;
   letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat,
+  .meeting,
+  .statShown .meeting {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media screen and (max-width: 700px) {

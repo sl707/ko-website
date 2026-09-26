@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'gatsby'
 
 import slideList from '../data/slides'
+import Reveal from './reveal'
 import SectionHeader from './section-header'
 import * as styles from './album-slideshow.module.css'
 
@@ -34,12 +35,23 @@ const getSlideCaption = slideData => slideData.imageCaption
 const slideImageUrl = (number, width) =>
   `/generated/slides/slide-${number}-${width}.webp`
 
+const slideSources = number => ({
+  src: slideImageUrl(number, 960),
+  srcSet: [
+    `${slideImageUrl(number, 480)} 480w`,
+    `${slideImageUrl(number, 960)} 960w`,
+    `${slideImageUrl(number, 1440)} 1440w`,
+  ].join(', '),
+})
+
 const AlbumSubpanel = () => {
   const [slideNumber, setSlideNumber] = useState(1)
+  const [outgoing, setOutgoing] = useState(null)
   const [imageLoading, setImageLoading] = useState(true)
   const sectionRef = useRef(null)
   const preloadedSlides = useRef(new Set([1]))
   const currentSlide = firstFiveSlides[slideNumber - 1]
+  const outgoingSlide = outgoing ? firstFiveSlides[outgoing - 1] : null
 
   const preloadSlide = number => {
     if (
@@ -79,14 +91,26 @@ const AlbumSubpanel = () => {
   }, [])
 
   const selectSlide = number => {
-    setImageLoading(true)
+    if (number === slideNumber) return
+    const reduce =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!reduce) setOutgoing(slideNumber)
     setSlideNumber(number)
+    setImageLoading(!preloadedSlides.current.has(number))
   }
+
+  useEffect(() => {
+    if (!outgoing) return undefined
+    const timer = window.setTimeout(() => setOutgoing(null), 700)
+    return () => window.clearTimeout(timer)
+  }, [outgoing])
 
   const goPrev = () => selectSlide(slideNumber === 1 ? 5 : slideNumber - 1)
   const goNext = () => selectSlide(slideNumber === 5 ? 1 : slideNumber + 1)
 
   const handleImageLoad = () => {
+    preloadedSlides.current.add(slideNumber)
     setImageLoading(false)
 
     const adjacentSlides = [
@@ -105,25 +129,29 @@ const AlbumSubpanel = () => {
           title="소식"
           subtitle="종문회의 최신 소식과 고씨종보를 확인하세요"
         />
+        <Reveal className={styles.revealCard}>
         <div className={styles.card}>
           <div className={styles.cardInner}>
             <div className={styles.media}>
               <div
                 className={`${styles.imagePlaceholder} ${
-                  imageLoading ? styles.imagePlaceholderVisible : ''
+                  imageLoading && !outgoing ? styles.imagePlaceholderVisible : ''
                 }`}
                 aria-hidden="true"
               />
+              {outgoingSlide && (
+                <img
+                  className={styles.outgoing}
+                  {...slideSources(outgoing)}
+                  alt=""
+                  onAnimationEnd={() => setOutgoing(null)}
+                />
+              )}
               <Link className={styles.imageLink} to={getSlideUrl(currentSlide)}>
                 <img
                   key={slideNumber}
-                  className={styles.image}
-                  src={slideImageUrl(slideNumber, 960)}
-                  srcSet={[
-                    `${slideImageUrl(slideNumber, 480)} 480w`,
-                    `${slideImageUrl(slideNumber, 960)} 960w`,
-                    `${slideImageUrl(slideNumber, 1440)} 1440w`,
-                  ].join(', ')}
+                  className={`${styles.image} ${outgoing ? styles.incoming : ''}`}
+                  {...slideSources(slideNumber)}
                   sizes="(max-width: 900px) calc(100vw - 32px), min(50vw, 640px)"
                   alt={getSlideTitle(currentSlide)}
                   loading={slideNumber === 1 ? 'eager' : 'lazy'}
@@ -135,7 +163,7 @@ const AlbumSubpanel = () => {
                 <p className={styles.caption}>{getSlideCaption(currentSlide)}</p>
               )}
             </div>
-            <div className={styles.content}>
+            <div className={`${styles.content} ${styles.contentEnter}`} key={slideNumber}>
               <p className={styles.meta}>{getSlideDate(currentSlide)}</p>
               <h3 className={styles.title}>{getSlideTitle(currentSlide)}</h3>
               {getSlideText(currentSlide) && (
@@ -169,6 +197,7 @@ const AlbumSubpanel = () => {
             </button>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   )

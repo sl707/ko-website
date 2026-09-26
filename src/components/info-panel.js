@@ -1,5 +1,6 @@
 import React from 'react'
 import InfoBlock from './info-block'
+import Reveal from './reveal'
 import SectionHeader from './section-header'
 import * as styles from './info-panel.module.css'
 
@@ -43,14 +44,15 @@ const InfoPanel = () => (
         subtitle="3,739년의 역사와 전통을 이어가는 고씨 가문"
       />
       <div className={styles.grid}>
-        {infoList.map(i => (
-          <InfoBlock
-            key={i.order}
-            image={i.image}
-            text={i.text}
-            title={i.title}
-            order={i.order}
-          />
+        {infoList.map((item, index) => (
+          <Reveal key={item.order} delay={(index % 2) * 90}>
+            <InfoBlock
+              image={item.image}
+              text={item.text}
+              title={item.title}
+              order={item.order}
+            />
+          </Reveal>
         ))}
       </div>
     </div>
