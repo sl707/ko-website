@@ -4,16 +4,16 @@ import * as styles from './stats-panel.module.css'
 const stats = [
   { key: 'years', label: '탐라국 통치 역사' },
   { key: 'families', label: '전 세계 고씨 가족' },
-  { key: 'meeting', label: '2023년 정기총회' },
+  { key: 'meeting', label: '2026년 정기총회' },
 ]
 
 const formatStat = (key, value) => {
   if (key === 'years') return `${value.toLocaleString('ko-KR')}년`
   if (key === 'families') return `${value}만+`
-  return '제50회'
+  return `제${value}회`
 }
 
-const targets = { years: 3739, families: 60, meeting: 50 }
+const targets = { years: 3739, families: 60, meeting: 53 }
 
 const StatsPanel = () => {
   const ref = useRef(null)
