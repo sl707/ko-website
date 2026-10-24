@@ -831,6 +831,12 @@ const newspaperList = [
     newsDate: new Date('2026-07-20'),
     newsImageType: 'jpeg',
     newsImage: '/news/152-1.jpeg'
+  },
+  {
+    newsNumber: 153,
+    newsDate: new Date('2026-11-01'),
+    newsImageType: 'jpeg',
+    newsImage: '/news/153-1.jpeg'
   }
 ]
 

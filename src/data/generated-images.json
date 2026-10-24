@@ -387,6 +387,12 @@
       "srcSet": "/generated/site/content-aa506715a25a-800.webp 800w, /generated/site/content-aa506715a25a-1400.webp 1400w"
     }
   },
+  "/news/153-1.jpeg": {
+    "card": {
+      "src": "/generated/site/card-58770e9bfa9e-800.webp",
+      "srcSet": "/generated/site/card-58770e9bfa9e-400.webp 400w, /generated/site/card-58770e9bfa9e-800.webp 800w"
+    }
+  },
   "/news/152-1.jpeg": {
     "card": {
       "src": "/generated/site/card-1d05ba2c4905-800.webp",
